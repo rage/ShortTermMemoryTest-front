@@ -1,7 +1,9 @@
-'devDependencies': {
+{
+ 'devDependencies': {
   'karma': '~0.10',
   'karma-jasmine':'~0.2.0'
-}
-'scripts': {
+},
+ 'scripts': {
    'test': './node_modules/.bin/karma start --browsers Firefox --single-run'
+}
 }
