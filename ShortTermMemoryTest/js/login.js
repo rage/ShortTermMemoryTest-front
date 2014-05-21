@@ -15,24 +15,36 @@ function Login(){
     
     function checkUsername(){
         
-        var url = "http://shorttermmemorytest.herokuapp.com/login";
-        
+        //var url = "http://shorttermmemorytest.herokuapp.com/login";
+        var url = "http://localhost:3000/login";
         var req = createCORSRequest("POST", url);
+        console.log(req);
         
         req.onload = function() {
             var text = req.responseText;
             var title = getTitle(text);
             console.log(url + ': ' + title + " : " +text);
             };
-        
+        console.log(req.response);
         req.onerror = function() {
             console.log('Kysely ei onnistunut');
-        };
-
-        req.send();
+        }; 
+        var params = "username=Asd";
         
-         
-        return true;
+        req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        req.setRequestHeader("Content-length", params.length);
+        req.send(params);
+        
+        console.log(req.responseText);
+        
+        if(req.responseText == "true"){
+            console.log("true");
+            stateMachine.gameStartScreen();
+        }else{
+            console.log("false");
+            stateMachine.startRegister();
+        }
+        
     }
     
     function createCORSRequest(method, url) {
@@ -40,7 +52,7 @@ function Login(){
         var req = new XMLHttpRequest();
         
         if ("withCredentials" in req) {
-            req.open(method, url, true);
+            req.open(method, url, false);
         } else if (typeof XDomainRequest != "undefined") {
             req = new XDomainRequest();
             req.open(method, url);
