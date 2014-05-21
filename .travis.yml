@@ -9,6 +9,6 @@ deploy:
   app: enigmatic-retreat-3175
   on:
     repo: TTL-tests/ShortTermMemoryTest-front
-env:
-  global:
-    secure: WYu+lj2W0McGSb3kC6uFWeI3FKj+FSrF6RrdoO5KpLJoz9onFZ3vHcf494m4FpOoBYaxWfd8tAMVrjMl+Is7qzZIv/4/Dj5Ol3+76XT/tql++En7wRZfD8/1pZcCSJSl+AN14humQYDsns5D/NqZOi1tZ8QpYKoVvN8bCChRBYo=
+  api_key:
+    secure: p3fIqme4FPifUBI1fDssjYLOy0M50dZjRv5+gsA2xcyODcx0FGaq34B5SYQNVH+lO1Q/IdsyTZip/ysXoYo2fOvkGgohiv15tCWKSrq80nTb5NpS7IKMDs179VZy7CQNPthzrY0Wj5cpeMcJbvi8XPvwpuHrMTEZezyljnAgmaU=
+
