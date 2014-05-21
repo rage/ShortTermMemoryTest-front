@@ -6,8 +6,9 @@ before_script:
 - sh -e /etc/init.d/xvfb start
 deploy:
   provider: heroku
-  api_key: WYu+lj2W0McGSb3kC6uFWeI3FKj+FSrF6RrdoO5KpLJoz9onFZ3vHcf494m4FpOoBYaxWfd8tAMVrjMl+Is7qzZIv/4/Dj5Ol3+76XT/tql++En7wRZfD8/1pZcCSJSl+AN14humQYDsns5D/NqZOi1tZ8QpYKoVvN8bCChRBYo=
   app: enigmatic-retreat-3175
   on:
     repo: TTL-tests/ShortTermMemoryTest-front
-
+env:
+  global:
+    secure: WYu+lj2W0McGSb3kC6uFWeI3FKj+FSrF6RrdoO5KpLJoz9onFZ3vHcf494m4FpOoBYaxWfd8tAMVrjMl+Is7qzZIv/4/Dj5Ol3+76XT/tql++En7wRZfD8/1pZcCSJSl+AN14humQYDsns5D/NqZOi1tZ8QpYKoVvN8bCChRBYo=
