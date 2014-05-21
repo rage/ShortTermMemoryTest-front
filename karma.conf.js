@@ -14,7 +14,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
+    files: ['test/*.js', ShortTermMemoryTest/js/*.js
       
     ],
 
@@ -65,3 +65,4 @@ module.exports = function(config) {
     singleRun: false
   });
 };
+
