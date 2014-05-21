@@ -1,7 +1,7 @@
 
 var stateMachine = function (){
 	console.log("stateMachine");
-	
+	var l;
 	function start(){
 		console.log("Start");
 		startLogin();
@@ -9,12 +9,15 @@ var stateMachine = function (){
 	
 	function startLogin(){
 		console.log("startLogin");
-		var l = new Login();
+		l = new Login();
 		l.start();
 	}
 	
 	return {
-		start:start
+		start:start, 
+		login:function (){
+			return l
+		}
 	}
 	
 }();
