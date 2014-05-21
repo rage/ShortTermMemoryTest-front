@@ -1,6 +1,42 @@
 
 body{
-background-color:black;
-color:#FFFFFF;
-text-align:center;
+	background-color:black;
+	color:#FFFFFF;
+	text-align:center;
+}
+
+#login{
+	text-align:center;
+	font-size:100%;
+	position: absolute;
+	width: 300px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -150px;
+}
+#createUser{
+
+	text-align:center;
+	font-size:100%;
+	position: absolute;
+	width: 400px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -200px;
+}
+
+#startScreen{
+	text-align:center;
+	font-size:100%;
+	position: absolute;
+	width: 300px;
+	height: 100px;
+	top: 50%;
+	left: 50%;
+	margin-top: -50px;
+	margin-left: -150px;
 }

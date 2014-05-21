@@ -5,20 +5,22 @@ function createUser(){
     }
     
     function createHtml(){
-        document.body.innerHTML = "<form>\
-        Sukupuoli: <input type=\"text\"><br>\
-        Syntymävuosi: <input type=\"text\"><br>\
-        Koulutus: <input type=\"text\"><br>\
+        document.body.innerHTML = "<div id=\"createUser\"><form>\
+        Sukupuoli: <input type=\"text\" id=\"sex\"><br>\
+        Syntymävuosi: <input type=\"text\" id=\"yearofbirth\"><br>\
+        Koulutus: <input type=\"text\" id=\"education\"><br>\
+        Kätisyys: <input type=\"text\" id=\"handedness\"><br>\
         <input type=\"button\" value=\"kirjaudu\" onclick=\"stateMachine.createUser().checkUsername()\" />\
-        </form>";
+        </form></div>";
     }
     
-	
+	function createUser(){
+		
+	}
+		
 	return {
-		start:start, 
-		login:function (){
-			return l
-		}
+		start:start,
+		createUser:createUser
 	}
     
     

@@ -1,9 +1,13 @@
 
 var stateMachine = function (){
 	console.log("stateMachine");
+	
 	var login;
 	var state;
 	var register;
+	
+	
+	
 	function start(){
 		console.log("Start");
 		startLogin();
@@ -24,8 +28,8 @@ var stateMachine = function (){
 	
 	function startGameStartScreen(){
 		state = 3;
-		register = new createUser();
-		register.start();
+		startScreen = new GameStartScreen();
+		startScreen.start();
 	}
 	
 	function startGame(){
@@ -36,6 +40,8 @@ var stateMachine = function (){
 	
 	return {
 		start:start, 
+		startRegister:startRegister, 
+		startGameStartScreen:startGameStartScreen, 
 		login:function (){
 			return login
 		}

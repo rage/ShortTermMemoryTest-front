@@ -10,13 +10,17 @@ function Login(){
     
     function createHtml(){
         console.log("createHtml")
-        document.body.innerHTML = "<form><input type=\"text\"><input type=\"button\" value=\"kirjaudu\" onclick=\"stateMachine.login().checkUsername()\" /></form>";
+        document.body.innerHTML = "<div id=\"login\">\
+        <form>\
+        <input type=\"text\" id=\"username\">\
+        <input type=\"button\" value=\"Aloita\" onclick=\"stateMachine.login().checkUsername(this)\" />\
+        </form>";
     }
     
     function checkUsername(){
         
-        //var url = "http://shorttermmemorytest.herokuapp.com/login";
-        var url = "http://localhost:3000/login";
+        var url = "http://shorttermmemorytest.herokuapp.com/login";
+        //var url = "http://localhost:3000/login";
         var req = createCORSRequest("POST", url);
         console.log(req);
         
@@ -29,7 +33,8 @@ function Login(){
         req.onerror = function() {
             console.log('Kysely ei onnistunut');
         }; 
-        var params = "username=Asd";
+        var params = "username="+document.getElementById("username").value;
+        console.log(params);
         
         req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         req.setRequestHeader("Content-length", params.length);
@@ -39,7 +44,7 @@ function Login(){
         
         if(req.responseText == "true"){
             console.log("true");
-            stateMachine.gameStartScreen();
+            stateMachine.startGameStartScreen();
         }else{
             console.log("false");
             stateMachine.startRegister();
