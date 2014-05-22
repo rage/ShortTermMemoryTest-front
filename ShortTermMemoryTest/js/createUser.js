@@ -12,11 +12,21 @@ function CreateUser(){
     function createHtml(){
         console.log("cu html");
         document.body.innerHTML = "<div id=\"createUser\"><form>\
-        Sukupuoli: <input type=\"text\" id=\"sex\"><br>\
-        Syntymävuosi: <input type=\"text\" id=\"yearofbirth\"><br>\
+        Sukupuoli:\
+        <input type=\"radio\" name=\"sex\" value=\"m\">Mies\
+        <input type=\"radio\" name=\"sex\" value=\"f\">Nainen<br>\
+        Syntymävuosi: \
+        <select name=\"yearofbirth\" id=\"yearofbirth\">\
+        <option value=\"2000\">2000</option>\
+        <option value=\"1999\">1999</option>\
+        <option value=\"1998\">1998</option>\
+        </select>\
+        <br>\
+        Kätisyys: \
+        <input type=\"radio\" name=\"handedness\" value=\"r\">Oikea\
+        <input type=\"radio\" name=\"handedness\" value=\"l\">Vasen<br>\
         Koulutus: <input type=\"text\" id=\"education\"><br>\
-        Kätisyys: <input type=\"text\" id=\"handedness\"><br>\
-        <input type=\"button\" value=\"kirjaudu\" onclick=\"stateMachine.createUser()\" />\
+        <input type=\"button\" value=\"Jatka\" onclick=\"stateMachine.createUser()\" />\
         </form></div>";
     }
     
