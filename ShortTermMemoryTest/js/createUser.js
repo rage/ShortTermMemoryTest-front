@@ -11,7 +11,7 @@ function CreateUser(){
     
     function createHtml(){
         console.log("cu html");
-        document.body.innerHTML = "<div id=\"createUser\"><form>\
+        document.body.innerHTML = "<div id=\"createUser\"><form onSubmit=\"stateMachine.createUser()\">\
         Sukupuoli:\
         <input type=\"radio\" name=\"sex\" value=\"m\">Mies\
         <input type=\"radio\" name=\"sex\" value=\"f\">Nainen<br>\
