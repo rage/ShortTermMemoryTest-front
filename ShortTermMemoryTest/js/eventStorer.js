@@ -4,7 +4,7 @@
 
 function eventStorer() {
 
-    console.log("eventStorer constructor");
+    console.log("eventStorer: constructor");
     var events = [ ];
 
     function event(type, value, timeStamp) {
@@ -20,6 +20,7 @@ function eventStorer() {
     }
 
     function registerEvent(type, value, timeStamp) {
+        console.log("eventStorer: type: " + type + " value: " + value + " timeStamp: " + timeStamp);
         events.push(new event(type, value, timeStamp));
     }
 

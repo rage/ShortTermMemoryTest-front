@@ -7,12 +7,19 @@ var stateMachine = function (){
 	var register;
     var game;
     var username;
-	
-	
+
+    var evStore;
+    var keyHandler;
+
 	
 	function start(){
 		console.log("Start");
+
+        evStore =  new eventStorer();
+        keyHandler = new keyEventHandler(evStore);
+
 		startLogin();
+        //startGame(); //For debugging purposes, skip login
 	}
 	
 	function startLogin(){
@@ -42,6 +49,10 @@ var stateMachine = function (){
 	
 	function startGame(){
 		state = 4;
+
+        evStore.registerEvent("EVENT_START_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
+        keyHandler.activate();
+
         game = new ShowNumbers();
         game.startShowing();
 		console.log("hellowWWW!")
