@@ -43,10 +43,12 @@ function CreateUser(){
         req.onerror = function() {
             console.log('Kysely ei onnistunut');
         }; 
+        
+        var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
         var params = "username="+username+
-        "&sex="+document.getElementById("sex").value+
-        "&yearOfBirth="+document.getElementById("yearofbirth").value+
-        "&handedness="+document.getElementById("handedness").value+
+        "&sex="+document.querySelector('input[name="sex"]:checked').value+
+        "&yearOfBirth="+yearofbirth+
+        "&handedness="+document.querySelector('input[name="handedness"]:checked').value+
         "&education="+document.getElementById("education").value;
         console.log(params);
         
