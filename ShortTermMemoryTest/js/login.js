@@ -11,9 +11,9 @@ function Login(){
     function createHtml(){
         console.log("createHtml")
         document.body.innerHTML = "<div id=\"login\">\
-        <form>\
+        <form onSubmit=\"stateMachine.login().checkUsername()\">\
         <input type=\"text\" id=\"username\">\
-        <input type=\"button\" value=\"Aloita\" onclick=\"stateMachine.login().checkUsername(this)\" />\
+        <input type=\"button\" value=\"Aloita\" onclick=\"stateMachine.login().checkUsername()\" />\
         </form>";
     }
     
