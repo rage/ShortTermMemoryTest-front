@@ -24,7 +24,7 @@ describe("keyEventHandler", function() {
         up2.keyCode = 2; // # Some key code value
     });
 
-    it("storer empty in the beginning", function() {
+    it("eventStorer empty in the beginning", function() {
         expect(storer.getEvents().length).toBe(0);
     });
 
@@ -65,12 +65,16 @@ describe("keyEventHandler", function() {
 
     it("details of the event recorded correctly", function() {
         $(document).trigger(down1);
+        $(document).trigger(up2);
         var time = new Date().getTime();
-        var savedEvent = storer.getEvents()[0];
-        expect(savedEvent.type).toBe("EVENT_TYPE_KEYDOWN");
-        expect(savedEvent.value).toBe(1);
-        expect(savedEvent.timeStamp-time).toBeGreaterThan(-100);
-        expect(savedEvent.timeStamp-time).toBeLessThan(100);
+        var savedEvent1 = storer.getEvents()[0];
+        var savedEvent2 = storer.getEvents()[1];
+        expect(savedEvent1.type).toBe("EVENT_TYPE_KEYDOWN");
+        expect(savedEvent1.value).toBe(1);
+        expect(savedEvent2.type).toBe("EVENT_TYPE_KEYUP");
+        expect(savedEvent2.value).toBe(2);
+        expect(savedEvent1.timeStamp-time).toBeGreaterThan(-100);
+        expect(savedEvent1.timeStamp-time).toBeLessThan(100);
     });
 
 
