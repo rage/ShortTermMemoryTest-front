@@ -11,16 +11,23 @@ function CreateUser(){
     
     function createHtml(){
         console.log("cu html");
+        
+        
+        var vuosi = new Date().getFullYear();
+        var text = ""; 
+         for (var i = 1900; i <= vuosi; i++) {
+            text = "<option value=\""+i+"\">"+i+"</option>"+text;
+        }
+            console.log(text);
+        
         document.body.innerHTML = "<div id=\"createUser\"><form onSubmit=\"stateMachine.createUser()\">\
         Sukupuoli:\
         <input type=\"radio\" name=\"sex\" value=\"m\">Mies\
         <input type=\"radio\" name=\"sex\" value=\"f\">Nainen<br>\
         Syntymävuosi: \
-        <select name=\"yearofbirth\" id=\"yearofbirth\">\
-        <option value=\"2000\">2000</option>\
-        <option value=\"1999\">1999</option>\
-        <option value=\"1998\">1998</option>\
-        </select>\
+        <select name=\"yearofbirth\" id=\"yearofbirth\">"
+        +text+
+        "</select>\
         <br>\
         Kätisyys: \
         <input type=\"radio\" name=\"handedness\" value=\"r\">Oikea\
