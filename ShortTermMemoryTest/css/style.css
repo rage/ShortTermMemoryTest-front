@@ -40,3 +40,14 @@ body{
 	margin-top: -50px;
 	margin-left: -150px;
 }
+#Game{
+    text-align:center;
+    font-size:100%;
+    position: absolute;
+    width: 300px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -150px;
+}

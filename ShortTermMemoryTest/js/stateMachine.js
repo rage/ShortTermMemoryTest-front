@@ -5,7 +5,7 @@ var stateMachine = function (){
 	var login;
 	var state;
 	var register;
-    
+    var game;
     var username;
 	
 	
@@ -42,7 +42,9 @@ var stateMachine = function (){
 	
 	function startGame(){
 		state = 4;
-		
+        game = new ShowNumbers();
+        game.startShowing();
+		console.log("hellowWWW!")
 	}
 	
 	
@@ -50,7 +52,8 @@ var stateMachine = function (){
 		start:start, 
 		startRegister:startRegister, 
 		startGameStartScreen:startGameStartScreen, 
-		createUser:createUser, 
+		createUser:createUser,
+        startGame:startGame,
 		login:function (){
 			return login
 		}

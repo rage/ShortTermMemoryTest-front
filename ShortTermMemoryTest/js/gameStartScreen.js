@@ -9,7 +9,7 @@ function GameStartScreen(){
         document.body.innerHTML = "<div id=\"startScreen\">\
         <ul>\
         <li><a>Harjoittele</a></li>\
-        <li><a>Aloita testi</a></li>\
+        <li><a onclick=\"stateMachine.startGame()\" >Aloita testi</a></li>\
         </ul>\
         </div>\
         ";
