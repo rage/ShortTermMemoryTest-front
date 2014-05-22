@@ -12,7 +12,7 @@ function Login(){
         console.log("createHtml")
         document.body.innerHTML = "<div id=\"login\">\
         <form onSubmit=\"stateMachine.login().checkUsername()\">\
-        <input type=\"text\" id=\"username\" autofocus>\
+        <input type=\"text\" id=\"username\" autofocus required>\
         <input type=\"button\" value=\"Aloita\" onclick=\"stateMachine.login().checkUsername()\" />\
         </form>";
     }
