@@ -17,7 +17,7 @@ var ShowNumbers = (function(evStore) {
     var sarjaLen = ["4","3"];
     var index = 0;
 
-    function startShowing() {
+    function startShowing(listOfNumbers) {
         createHtml();
         showNumber();
         function showNumber() {
