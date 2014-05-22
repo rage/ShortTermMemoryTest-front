@@ -53,7 +53,7 @@ var stateMachine = function (){
         evStore.registerEvent("EVENT_START_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
         keyHandler.activate();
 
-        game = new ShowNumbers();
+        game = new ShowNumbers(evStore);
         game.startShowing();
 		console.log("hellowWWW!")
 	}
