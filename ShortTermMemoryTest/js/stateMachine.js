@@ -5,6 +5,8 @@ var stateMachine = function (){
 	var login;
 	var state;
 	var register;
+    
+    var username;
 	
 	
 	
@@ -20,10 +22,11 @@ var stateMachine = function (){
 		login.start();
 	}
 	
-	function startRegister(){
+	function startRegister(){ 
 		state = 2;
-		register = new createUser();
+		register = new CreateUser();
 		register.start();
+        console.log("cu !!!");
 	}
 	
 	function startGameStartScreen(){
@@ -31,6 +34,11 @@ var stateMachine = function (){
 		startScreen = new GameStartScreen();
 		startScreen.start();
 	}
+    
+    function createUser(){
+        console.log("singup");
+        register.signup();
+    }
 	
 	function startGame(){
 		state = 4;
@@ -42,6 +50,7 @@ var stateMachine = function (){
 		start:start, 
 		startRegister:startRegister, 
 		startGameStartScreen:startGameStartScreen, 
+		createUser:createUser, 
 		login:function (){
 			return login
 		}

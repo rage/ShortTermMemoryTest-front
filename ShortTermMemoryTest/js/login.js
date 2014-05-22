@@ -34,14 +34,14 @@ function Login(){
             console.log('Kysely ei onnistunut');
         }; 
         var params = "username="+document.getElementById("username").value;
+        username = document.getElementById("username").value;
         console.log(params);
         
         req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         req.setRequestHeader("Content-length", params.length);
         req.send(params);
         
-        console.log(req.responseText);
-        
+        console.log(req.responseText); 
         if(req.responseText == "true"){
             console.log("true");
             stateMachine.startGameStartScreen();
