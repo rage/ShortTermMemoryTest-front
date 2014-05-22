@@ -5,12 +5,21 @@ var stateMachine = function (){
 	var login;
 	var state;
 	var register;
-	
-	
+    var game;
+    var username;
+
+    var evStore;
+    var keyHandler;
+
 	
 	function start(){
 		console.log("Start");
+
+        evStore =  new eventStorer();
+        keyHandler = new keyEventHandler(evStore);
+
 		startLogin();
+        //startGame(); //For debugging purposes, skip login
 	}
 	
 	function startLogin(){
@@ -20,10 +29,11 @@ var stateMachine = function (){
 		login.start();
 	}
 	
-	function startRegister(){
+	function startRegister(){ 
 		state = 2;
-		register = new createUser();
+		register = new CreateUser();
 		register.start();
+        console.log("cu !!!");
 	}
 	
 	function startGameStartScreen(){
@@ -31,10 +41,21 @@ var stateMachine = function (){
 		startScreen = new GameStartScreen();
 		startScreen.start();
 	}
+    
+    function createUser(){
+        console.log("singup");
+        register.signup();
+    }
 	
 	function startGame(){
 		state = 4;
-		
+
+        evStore.registerEvent("EVENT_START_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
+        keyHandler.activate();
+
+        game = new ShowNumbers();
+        game.startShowing();
+		console.log("hellowWWW!")
 	}
 	
 	
@@ -42,6 +63,8 @@ var stateMachine = function (){
 		start:start, 
 		startRegister:startRegister, 
 		startGameStartScreen:startGameStartScreen, 
+		createUser:createUser,
+        startGame:startGame,
 		login:function (){
 			return login
 		}

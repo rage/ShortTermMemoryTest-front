@@ -9,6 +9,7 @@ function keyEventHandler(eventStorer) {
     console.log("keyEventHandler: constructor");
     var eventStorer = eventStorer;
 
+    var active = false;
 
     var keyStatus = (function () {
         var keyDown = [256];
@@ -21,11 +22,11 @@ function keyEventHandler(eventStorer) {
         }
 
         function setKeyDown(keyCode) {
-            return keyDown[keyCode] = true;
+            keyDown[keyCode] = true;
         }
 
         function setKeyUp(keyCode) {
-            return keyDown[keyCode] = false;
+            keyDown[keyCode] = false;
         }
 
         return {
@@ -50,10 +51,14 @@ function keyEventHandler(eventStorer) {
 
 
     function processEventKeyDown(eventInformation) {
-        if (keyStatus.isKeyDown(eventInformation.keyCode) == false) {
-            keyStatus.setKeyDown(eventInformation.keyCode);
-            eventStorer.registerEvent("EVENT_TYPE_KEYDOWN", eventInformation.keyCode, eventInformation.timeStamp);
-            console.log("keyEventHandler: EVENT_TYPE_KEYDOWN : keyCode: " + eventInformation.keyCode + " timeStamp: " + eventInformation.timeStamp);
+        if (active == true) {
+            if (keyStatus.isKeyDown(eventInformation.keyCode) == false) {
+                keyStatus.setKeyDown(eventInformation.keyCode);
+                eventStorer.registerEvent("EVENT_TYPE_KEYDOWN", eventInformation.keyCode, eventInformation.timeStamp);
+                //console.log("keyEventHandler: EVENT_TYPE_KEYDOWN : keyCode: " + eventInformation.keyCode + " timeStamp: " + eventInformation.timeStamp);
+
+            }
+
         }
     }
 
@@ -61,10 +66,24 @@ function keyEventHandler(eventStorer) {
 
 
 
-
     function processEventKeyUp(eventInformation) {
-        keyStatus.setKeyUp(eventInformation.keyCode);
-        eventStorer.registerEvent("EVENT_TYPE_KEYUP", eventInformation.keyCode, eventInformation.timeStamp);
-        console.log("keyEventHandler: EVENT_TYPE_KEYUP : keyCode: " + eventInformation.keyCode + " timeStamp: "  + eventInformation.timeStamp);
+        if (active == true) {
+            keyStatus.setKeyUp(eventInformation.keyCode);
+            eventStorer.registerEvent("EVENT_TYPE_KEYUP", eventInformation.keyCode, eventInformation.timeStamp);
+            //console.log("keyEventHandler: EVENT_TYPE_KEYUP : keyCode: " + eventInformation.keyCode + " timeStamp: "  + eventInformation.timeStamp);
+        }
     }
+
+    function activate () {
+        active = true;
+    }
+
+    function deactivate () {
+        active = false;
+    }
+
+    return {
+        activate   : activate,
+        deactivate : deactivate
+    };
 };
