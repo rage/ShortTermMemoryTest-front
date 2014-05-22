@@ -11,6 +11,7 @@ describe("keyEventHandler", function() {
     beforeEach(function() {
         storer = new eventStorer();
         var handler = new keyEventHandler(storer);
+        handler.activate();
 
         down1 = jQuery.Event("keydown");
         down1.keyCode = 1; // # Some key code value
