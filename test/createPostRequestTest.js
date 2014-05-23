@@ -1,0 +1,66 @@
+
+
+describe("createPostRequest (signup)", function() {
+
+    it("return true when user not found ", function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+        var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=r&education=omena';
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("true");
+
+    });
+    it("return false when user found ", function() {
+
+        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+        var params = 'username=olen&sex=f&yearOfBirth=1966&handedness=r&education=omena';
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("false");
+
+    });
+
+
+});
+
+
+describe("createPostRequest (login)", function() {
+
+    it("return false when user not found ", function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        var url = "http://shorttermmemorytest.herokuapp.com/login";
+        var params = 'username='+text;
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("false");
+
+    });
+    it("return true when user found ", function() {
+
+        var url = "http://shorttermmemorytest.herokuapp.com/login";
+        var params = 'username=olen';
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("true");
+
+    });
+
+
+});
