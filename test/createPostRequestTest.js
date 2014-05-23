@@ -28,7 +28,24 @@ describe("createPostRequest (signup)", function() {
         expect(responseText).toBe("false");
 
     });
+    
+/*
+    it("return false when handedness unvalid ", function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+        var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=d&education=omena';
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("true");
+
+    });
+*/
 
 });
 
