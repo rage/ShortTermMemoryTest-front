@@ -67,6 +67,10 @@ var stateMachine = function (){
         show = new showList(evStore,numberList, 100, 50, 1000);
         show.showNext();
 
+        //evStore.registerEvent("EVENT_END_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
+        //var result = calculateResult(evStore);
+        //showResult(result);
+
 	}
 
 	return {
