@@ -11,7 +11,6 @@ var stateMachine = function (){
     var evStore;
     var keyHandler;
 
-	
 	function start(){
 		console.log("Start");
 
@@ -49,7 +48,6 @@ var stateMachine = function (){
 	
 	function startGame(){
 		state = 4;
-
         evStore.registerEvent("EVENT_START_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
         keyHandler.activate();
 
@@ -66,14 +64,12 @@ var stateMachine = function (){
             numberList[i]=numberSeries;
         }
 
-
         show = new showList(evStore,numberList, 1000, 500, 10000);
+
         show.showNext();
 
-		console.log("hellowWWW!")
 	}
-	
-	
+
 	return {
 		start:start, 
 		startRegister:startRegister, 
@@ -84,5 +80,4 @@ var stateMachine = function (){
 			return login
 		}
 	}
-	
 }();

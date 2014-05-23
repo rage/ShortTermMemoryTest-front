@@ -23,7 +23,8 @@ function CreateUser(){
         document.body.innerHTML = "<div id=\"createUser\"><form onSubmit=\"stateMachine.createUser()\">\
         Sukupuoli:\
         <input type=\"radio\" name=\"sex\" value=\"m\">Mies\
-        <input type=\"radio\" name=\"sex\" value=\"f\">Nainen<br>\
+        <input type=\"radio\" name=\"sex\" value=\"f\">Nainen\
+        <input type=\"radio\" name=\"sex\" value=\"o\">Muu<br>\
         Syntymävuosi: \
         <select name=\"yearofbirth\" id=\"yearofbirth\">"
         +text+
