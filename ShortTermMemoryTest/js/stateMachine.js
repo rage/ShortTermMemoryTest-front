@@ -64,7 +64,8 @@ var stateMachine = function (){
             numberList[i]=numberSeries;
         }
 
-        show = new showList(evStore,numberList, 100, 50, 1000);
+        show = new showList(evStore,numberList, 1000, 500, 10000);
+
         show.showNext();
 
         //evStore.registerEvent("EVENT_END_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
