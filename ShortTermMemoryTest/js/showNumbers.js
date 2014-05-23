@@ -6,6 +6,9 @@ function showList(evStore, numberList, timeBetweenTwoNumbers, timeNumberInScreen
             var s = new showNumberSeries(evStore, numberList[i], timeBetweenTwoNumbers, timeNumberInScreen, timeForGuessing);
             s.start();
             i++;
+        } else {
+            var results = calculateResult(evStore);
+            showResult(results);
         }
     }
 
