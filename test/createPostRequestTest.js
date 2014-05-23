@@ -29,15 +29,50 @@ describe("createPostRequest (signup)", function() {
 
     });
     
-/*
-    it("return false when handedness unvalid ", function() {
+
+    it("return false when yearOfBirth unvalid ", function() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=d&education=omena';
+        var params = 'username='+text+'&sex=f&yearOfBirth=1800&handedness=r&education=omena';
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("false");
+
+    });
+
+    it("return false when yearOfBirth unvalid ", function() {
+        var text = "";
+        var year = new Date().getFullYear();
+        year += 1;
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=omena';
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("false");
+
+    });
+    
+    it("return true when yearOfBirth valid ", function() {
+        var text = "";
+        var year = new Date().getFullYear();
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=omena';
         var request = createPostRequest();
         var responseText = request.create(url, params);
 
@@ -45,10 +80,27 @@ describe("createPostRequest (signup)", function() {
         expect(responseText).toBe("true");
 
     });
-*/
+    
+    it("return true when yearOfBirth valid ", function() {
+        var text = "";
+        var year = new Date().getFullYear();
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=omena';
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
+
+        
+        expect(responseText).toBe("true");
+
+    });
+
 
 });
-
+ 
 
 describe("createPostRequest (login)", function() {
 

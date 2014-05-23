@@ -23,7 +23,7 @@ function Login(){
         //var url = "http://localhost:3000/login";
         
         var params = "username="+username;
-        
+        username = username;
         var request = createPostRequest();
         var responseText = request.create(url, params);
         
