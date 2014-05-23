@@ -19,12 +19,12 @@ body{
  
 	font-size:100%;
 	position: absolute;
-	width: 400px;
+	width: 340px;
 	height: 100px;
 	top: 50%;
 	left: 50%;
 	margin-top: -50px;
-	margin-left: -200px;
+	margin-left: -160px;
 }
 
 #startScreen{
@@ -32,12 +32,17 @@ body{
 	font-size:100%;
 	position: absolute;
 	width: 300px;
-	height: 100px;
+	height: 200px;
 	top: 50%;
 	left: 50%;
-	margin-top: -50px;
+	margin-top: -100px;
 	margin-left: -150px;
 }
+ 
+#startScreen #instructions{
+    text-align:left;
+}
+
 #Game{
     text-align:center;
     font-size:100%;
@@ -48,4 +53,8 @@ body{
     left: 50%;
     margin-top: -50px;
     margin-left: -150px;
+}
+
+a{
+cursor:pointer
 }
