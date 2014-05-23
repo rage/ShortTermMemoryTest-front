@@ -20,8 +20,10 @@ function showNumberSeries(evStore, numberSeries, timeBetweenTwoNumbers, timeNumb
     var order = numberSeries.order;
 
     function start(){
+        evStore.registerEvent("EVENT_START_SHOWSERIES", "", Date.now());
         createHtml();
         setTimeout(timeBetweenNumbers, timeBetweenTwoNumbers);
+        evStore.registerEvent("EVENT_END_SHOWSERIES", "", Date.now());
     }
 
     function createHtml(){
@@ -36,7 +38,7 @@ function showNumberSeries(evStore, numberSeries, timeBetweenTwoNumbers, timeNumb
     function showNumber() {
         if(i<numbers.length) {
             $("#num_field").hide();
-            evStore.registerEvent("EVENT_END_NUMBER", numbers[i], Date.now())
+            evStore.registerEvent("EVENT_END_NUMBER", numbers[i], Date.now());
             i++;
             setTimeout(timeBetweenNumbers,timeBetweenTwoNumbers);
         }
