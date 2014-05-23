@@ -67,7 +67,7 @@ var stateMachine = function (){
         }
 
 
-        show = new showList(evStore,numberList);
+        show = new showList(evStore,numberList, 1000, 500, 2000);
         show.showNext();
 
 		console.log("hellowWWW!")
