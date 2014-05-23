@@ -69,6 +69,11 @@ state = 4;
         show.showNext();
 
 }
+        //evStore.registerEvent("EVENT_END_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
+        //var result = calculateResult(evStore);
+        //showResult(result);
+
+	
 
 return {
 start:start,
