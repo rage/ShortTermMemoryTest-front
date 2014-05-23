@@ -43,7 +43,7 @@ startScreen.start();
     
     function createUser(){
         console.log("singup");
-        register.signup();
+        return register.signup();
     }
 
 function startGame(){

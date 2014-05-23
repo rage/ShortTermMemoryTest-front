@@ -22,16 +22,16 @@ function CreateUser(){
         
         document.body.innerHTML = "<div id=\"createUser\"><form onSubmit=\"stateMachine.createUser()\">\
         Sukupuoli:\
-        <input type=\"radio\" name=\"sex\" value=\"m\">Mies\
-        <input type=\"radio\" name=\"sex\" value=\"f\">Nainen\
-        <input type=\"radio\" name=\"sex\" value=\"o\">Muu<br>\
+        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"m\" id=\"m\">Mies\
+        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"f\">Nainen\
+        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"o\">Muu<br>\
         Syntymävuosi: \
         <select name=\"yearofbirth\" id=\"yearofbirth\">"
         +text+
         "</select>\
         <br>\
         Kätisyys: \
-        <input type=\"radio\" name=\"handedness\" value=\"r\">Oikea\
+        <input type=\"radio\" name=\"handedness\" value=\"r\" id=\"r\">Oikea\
         <input type=\"radio\" name=\"handedness\" value=\"l\">Vasen<br>\
         Koulutus: <input type=\"text\" id=\"education\"><br>\
         <input type=\"button\" value=\"Jatka\" onclick=\"stateMachine.createUser()\" />\
@@ -58,9 +58,11 @@ function CreateUser(){
         if(responseText == "true"){
             console.log("true");
             stateMachine.startGameStartScreen();
+            return true;
         }else{
             console.log("false");
             stateMachine.startRegister();
+            return false;
         }
 	}
     
