@@ -52,21 +52,29 @@ var stateMachine = function (){
         keyHandler.activate();
 
         var numberList = [];
-        for(i=0; i<3; i++) {
+        for(var i=0; i<3; i++) {
             var numberSeries = [];
             var numbers = [];
-            for (x = 0; x < 3; x++) {
+            for (var x = 0; x < 3; x++) {
                 var number = x;
                 numbers[x] = x + i + 2;
             }
-            numberSeries.order = "backwards"
+            if(i==1){
+                numberSeries.order = "REVERSE";
+            } else {
+                numberSeries.order = "NORMAL";
+            }
             numberSeries.numbers = numbers;
             numberList[i]=numberSeries;
+
+
         }
 
         show = new showList(evStore,numberList, 1000, 500, 10000);
 
         show.showNext();
+
+
 
         //evStore.registerEvent("EVENT_END_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
         //var result = calculateResult(evStore);

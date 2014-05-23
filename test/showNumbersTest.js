@@ -1,7 +1,7 @@
-/**
- * Created by artokaik on 23.5.2014.
- */
-
+///**
+// * Created by artokaik on 23.5.2014.
+// */
+//
 //describe("showNumbers", function() {
 //    var storer;
 //    var shower
@@ -35,7 +35,7 @@
 //
 //    it("first number in screen ", function() {
 //        shower.showNext();
-//        setTimeout(expect($("#num_field").text()).toBe(0),1500);
+//        setTimeout(expect($("h1").text()).toBe(0),1500);
 //    });
 //
 //});
