@@ -38,18 +38,10 @@ function CreateUser(){
     }
     
 	function signup(){
+         
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
         //var url = "http://localhost:3000/login";
-        var req = createCORSRequest("POST", url);
-        console.log(req);
         
-        req.onload = function() {
-            console.log(text);
-            };
-        console.log(req.response);
-        req.onerror = function() {
-            console.log('Kysely ei onnistunut');
-        }; 
         
         var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
         var params = "username="+username+
@@ -57,15 +49,12 @@ function CreateUser(){
         "&yearOfBirth="+yearofbirth+
         "&handedness="+document.querySelector('input[name="handedness"]:checked').value+
         "&education="+document.getElementById("education").value;
-        console.log(params);
+        var request = createPostRequest();
+        var responseText = request.create(url, params);
         
-        req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        req.setRequestHeader("Content-length", params.length);
-        req.send(params);
         
-        console.log(req.responseText);
         
-        if(req.responseText == "true"){
+        if(responseText == "true"){
             console.log("true");
             stateMachine.startGameStartScreen();
         }else{
@@ -74,20 +63,6 @@ function CreateUser(){
         }
 	}
     
-    function createCORSRequest(method, url) {
-        
-        var req = new XMLHttpRequest();
-        
-        if ("withCredentials" in req) {
-            req.open(method, url, false);
-        } else if (typeof XDomainRequest != "undefined") {
-            req = new XDomainRequest();
-            req.open(method, url);
-        } else {
-            req = null;
-        } 
-        return req;
-    }
 		
 	return {
 		start:start,
