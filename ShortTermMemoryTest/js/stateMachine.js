@@ -1,4 +1,4 @@
-
+var show;
 var stateMachine = function (){
 	console.log("stateMachine");
 	
@@ -53,8 +53,23 @@ var stateMachine = function (){
         evStore.registerEvent("EVENT_START_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
         keyHandler.activate();
 
-        game = new ShowNumbers(evStore);
-        game.startShowing();
+        var numberList = [];
+        for(i=0; i<3; i++) {
+            var numberSeries = [];
+            var numbers = [];
+            for (x = 0; x < 3; x++) {
+                var number = x;
+                numbers[x] = x + i + 2;
+            }
+            numberSeries.order = "backwards"
+            numberSeries.numbers = numbers;
+            numberList[i]=numberSeries;
+        }
+
+
+        show = new showList(evStore,numberList);
+        show.showNext();
+
 		console.log("hellowWWW!")
 	}
 	
