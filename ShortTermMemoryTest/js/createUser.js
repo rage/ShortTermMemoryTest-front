@@ -43,7 +43,7 @@ function CreateUser(){
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
         //var url = "http://localhost:3000/login";
         
-        
+        console.log("signup asdnasd");
         var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
         var params = "username="+username+
         "&sex="+document.querySelector('input[name="sex"]:checked').value+
