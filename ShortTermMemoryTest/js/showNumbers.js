@@ -1,17 +1,12 @@
 
 
-function showList(evStore, numberList) {
+function showList(evStore, numberList, timeBetweenTwoNumbers, timeNumberInScreen, timeForGuessing) {
     var i=0;
     function showNext(){
-        console.log("i: " + i + " length: " + numberList.length);
-
         if(i<numberList.length) {
-            console.log("shownext: " +numberList[i].numbers);
-
-            var s = new showNumberSeries(evStore, numberList[i]);
+            var s = new showNumberSeries(evStore, numberList[i], timeBetweenTwoNumbers, timeNumberInScreen, timeForGuessing);
             s.start();
             i++;
-            console.log("shownext: " +i);
         }
 
     }
@@ -23,57 +18,56 @@ function showList(evStore, numberList) {
 }
 
 
-function showNumberSeries(evStore, numberSeries) {
+function showNumberSeries(evStore, numberSeries, timeBetweenTwoNumbers, timeNumberInScreen, timeForGuessing) {
     var i = 0;
     var numbers = numberSeries.numbers;
     var order = numberSeries.order;
-    console.log(order);
 
     function start(){
         createHtml();
-        showNumber();
+        setTimeout(timeBetweenNumbers, timeBetweenTwoNumbers);
     }
 
     function createHtml(){
         document.body.innerHTML = "<div id=\"Game\">\
         <ul>\
-        <h1></h1>\
+        <h1 id = \"num_field\"></h1>\
         </ul>\
         </div>\
         ";
     }
 
     function showNumber() {
-        if(i<=numbers.length) {
-            $("h1").hide();
-            evStore.registerEvent("EVENT_START_NUMBER", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
-            setTimeout(timeBetweenNumbers,500);
+        if(i<numbers.length) {
+            evStore.registerEvent("EVENT_END_NUMBER", numbers[i], Date.now())
+            $("#num_field").hide();
+            i++;
+            setTimeout(timeBetweenNumbers,timeBetweenTwoNumbers);
         }
         else {
-            $("h1").hide();
-            evStore.registerEvent("EVENT_END_TYPING", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
+            evStore.registerEvent("EVENT_END_TYPING", order, Date.now());
+            $("#num_field").hide();
             show.showNext();
 
         }
     }
     function timeBetweenNumbers() {
         if(i<numbers.length) {
-            $("h1").show();
-            $("h1").html(numbers[i]);
-            i++;
-            setTimeout(showNumber,1000);
+            evStore.registerEvent("EVENT_START_NUMBER", numbers[i], Date.now());
+            $("#num_field").show();
+            $("#num_field").html(numbers[i]);
+
+            setTimeout(showNumber,timeNumberInScreen);
         }
         else if(i==numbers.length) {
-            $("h1").show();
-                $("h1").html(order);
-            i++;
-            evStore.registerEvent("EVENT_START_TYPING", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
-            setTimeout(showNumber, 2000);
-        }
-        evStore.registerEvent("EVENT_END_NUMBER", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
-    }
-    console.log("here");
+            $("#num_field").show();
+            $("#num_field").html(order);
 
+            evStore.registerEvent("EVENT_START_TYPING", order, Date.now());
+            setTimeout(showNumber, timeForGuessing);
+        }
+        ;
+    }
 
 
     return{

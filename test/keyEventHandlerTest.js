@@ -73,8 +73,8 @@ describe("keyEventHandler", function() {
         expect(savedEvent1.value).toBe(1);
         expect(savedEvent2.type).toBe("EVENT_TYPE_KEYUP");
         expect(savedEvent2.value).toBe(2);
-        expect(savedEvent1.timeStamp-time).toBeGreaterThan(-100);
-        expect(savedEvent1.timeStamp-time).toBeLessThan(100);
+        expect(savedEvent1.timeStamp-time).toBeGreaterThan(-10);
+        expect(savedEvent1.timeStamp-time).toBeLessThan(10);
     });
 
 
