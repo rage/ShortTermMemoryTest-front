@@ -9,7 +9,7 @@ describe("createPostRequest (signup)", function() {
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=r&education=omena';
+        var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
         var responseText = request.create(url, params);
 
@@ -20,7 +20,7 @@ describe("createPostRequest (signup)", function() {
     it("return false when user found ", function() {
 
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        var params = 'username=olen&sex=f&yearOfBirth=1966&handedness=r&education=omena';
+        var params = 'username=olen&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
         var responseText = request.create(url, params);
 
@@ -37,7 +37,7 @@ describe("createPostRequest (signup)", function() {
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        var params = 'username='+text+'&sex=f&yearOfBirth=1800&handedness=r&education=omena';
+        var params = 'username='+text+'&sex=f&yearOfBirth=1800&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
         var responseText = request.create(url, params);
 
@@ -55,7 +55,7 @@ describe("createPostRequest (signup)", function() {
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=omena';
+        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
         var responseText = request.create(url, params);
 
@@ -72,7 +72,7 @@ describe("createPostRequest (signup)", function() {
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=omena';
+        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
         var responseText = request.create(url, params);
 
@@ -89,7 +89,7 @@ describe("createPostRequest (signup)", function() {
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=omena';
+        var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
         var responseText = request.create(url, params);
 
