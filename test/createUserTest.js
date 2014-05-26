@@ -9,13 +9,14 @@ describe("login and createUser", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         stateMachine.start();
         document.getElementById('username').value = text;
-        stateMachine.login().checkUsername(document.getElementById('username').value);
-        document.getElementById("education").selectedIndex = "Lukio tai ammattikoulu";
+        stateMachine.login().checkUsername(document.getElementById('username').value); 
         document.getElementById("yearofbirth").selectedIndex = 2000;
         document.getElementById('m').checked = true;
         document.getElementById('r').checked = true;
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
+        var element = document.getElementById('education');
+        element.value = "Peruskoulu"; 
         expect(stateMachine.createUser()).toBe(true);
 
     });
@@ -28,13 +29,13 @@ describe("login and createUser", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         stateMachine.start();
         document.getElementById('username').value = text;
-        stateMachine.login().checkUsername(document.getElementById('username').value);
-        document.getElementById("education").selectedIndex = "Korkeakoulu";
-        document.getElementById("yearofbirth").selectedIndex = 2000;
+        stateMachine.login().checkUsername(document.getElementById('username').value); 
         document.getElementById('m').checked = true;
         document.getElementById('l').checked = true;
-        var element = document.getElementById('yearofbirth');
+        var element = document.getElementById('yearofbirth'); 
         element.value = 2014;
+        var element = document.getElementById('education');
+        element.value = "Lukio tai ammattikoulu"; 
         expect(stateMachine.createUser()).toBe(true);
 
     });
@@ -47,13 +48,14 @@ describe("login and createUser", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
         stateMachine.start();
         document.getElementById('username').value = text;
-        stateMachine.login().checkUsername(document.getElementById('username').value); 
-        document.getElementById("education").selectedIndex = "Peruskoulu";
+        stateMachine.login().checkUsername(document.getElementById('username').value);  
         document.getElementById("yearofbirth").selectedIndex = 2000;
         document.getElementById('f').checked = true;
         document.getElementById('r').checked = true;
         var element = document.getElementById('yearofbirth');
         element.value = 1900;
+        var element = document.getElementById('education');
+        element.value = "Korkeakoulu"; 
         expect(stateMachine.createUser()).toBe(true);
 
     });
@@ -68,11 +70,12 @@ describe("login and createUser", function() {
         stateMachine.start();
         document.getElementById('username').value = text;
         stateMachine.login().checkUsername(document.getElementById('username').value); 
-        document.getElementById("education").selectedIndex = "Peruskoulu";
         document.getElementById("yearofbirth").selectedIndex = 2000;
         document.getElementById('f').checked = true; 
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
+        var element = document.getElementById('education');
+        element.value = "Peruskoulu"; 
         expect(stateMachine.createUser()).toBe(false);
 
     });
@@ -85,11 +88,43 @@ describe("login and createUser", function() {
         stateMachine.start();
         document.getElementById('username').value = text;
         stateMachine.login().checkUsername(document.getElementById('username').value); 
-        document.getElementById("education").selectedIndex = "Peruskoulu";
         document.getElementById("yearofbirth").selectedIndex = 2000;
-        document.getElementById('f').checked = true; 
+        document.getElementById('r').checked = true;
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
+        var element = document.getElementById('education');
+        element.value = "Peruskoulu"; 
+        expect(stateMachine.createUser()).toBe(false);
+
+    });
+    it("should fail when empty education", function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        stateMachine.start(); 
+        document.getElementById('username').value = text;
+        stateMachine.login().checkUsername(document.getElementById('username').value); 
+        document.getElementById('m').checked = true;
+        document.getElementById("yearofbirth").selectedIndex = 2000; 
+        var element = document.getElementById('yearofbirth');
+        element.value = 1999;
+        expect(stateMachine.createUser()).toBe(false);
+
+    });
+    it("should fail when empty yearofbirth", function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        stateMachine.start(); 
+        document.getElementById('username').value = text;
+        stateMachine.login().checkUsername(document.getElementById('username').value); 
+        document.getElementById('f').checked = true; 
+        var element = document.getElementById('education');
+        element.value = "Peruskoulu"; 
         expect(stateMachine.createUser()).toBe(false);
 
     });

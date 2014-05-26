@@ -15,12 +15,13 @@ function CreateUser(){
             text = "<option value=\""+i+"\">"+i+"</option>"+text;
         }
         
-        document.body.innerHTML = "<div id=\"createUser\"><form onSubmit=\"stateMachine.createUser()\">\
+        document.body.innerHTML = "<div id=\"createUser\"><div id=\"varoitus\"></div><form onSubmit=\"stateMachine.createUser()\">\
         Sukupuoli:\
         <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"m\" id=\"m\">Mies\
         <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"f\" id=\"f\">Nainen\
         Syntymävuosi: \
-        <select name=\"yearofbirth\" id=\"yearofbirth\">"
+        <select name=\"yearofbirth\" id=\"yearofbirth\">\
+        <option value=\"valitse\">Valitse</option>"
         +text+
         "</select>\
         <br>\
@@ -29,6 +30,7 @@ function CreateUser(){
         <input type=\"radio\" name=\"handedness\" value=\"l\" id=\"l\">Vasen<br>\
         Koulutus: \
         <select name=\"education\" id=\"education\">\
+        <option value=\"valitse\">Valitse</option>\
         <option value=\"Peruskoulu\">Peruskoulu</option>\
         <option value=\"Lukio tai ammattikoulu\">Lukio tai ammattikoulu</option>\
         <option value=\"Korkeakoulu\">Korkeakoulu</option>\
@@ -44,6 +46,16 @@ function CreateUser(){
         try {
             var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
             var education = document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
+            if(yearofbirth == "valitse"){
+                console.log("yearofbirth valitse");
+                return false;
+            }
+            if(education == "valitse"){
+                console.log(education);
+                return false;
+            }
+            
+            console.log(yearofbirth);
             var params = "username="+username+
             "&sex="+document.querySelector('input[name="sex"]:checked').value+
             "&yearOfBirth="+yearofbirth+
