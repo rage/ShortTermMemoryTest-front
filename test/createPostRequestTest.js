@@ -1,17 +1,16 @@
-
+var url = "http://shorttermmemorytest.herokuapp.com/";
 
 describe("createPostRequest (signup)", function() {
 
     it("return true when user not found ", function() {
         var text = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
+        
         for( var i=0; i < 25; i++ )
-            text += possible.charAt(Math.floor(Math.random() * possible.length));
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+            text += possible.charAt(Math.floor(Math.random() * possible.length)); 
         var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var responseText = request.create(url+"signup", params);
 
         
         expect(responseText).toBe("true");
@@ -36,10 +35,10 @@ describe("createPostRequest (signup)", function() {
 
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+            
         var params = 'username='+text+'&sex=f&yearOfBirth=1800&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var responseText = request.create(url+"signup", params);
 
         
         expect(responseText).toBe("false");
@@ -54,10 +53,10 @@ describe("createPostRequest (signup)", function() {
 
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+            
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var responseText = request.create(url+"signup", params);
 
         
         expect(responseText).toBe("false");
@@ -71,10 +70,10 @@ describe("createPostRequest (signup)", function() {
 
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+            
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var responseText = request.create(url+"signup", params);
 
         
         expect(responseText).toBe("true");
@@ -88,10 +87,10 @@ describe("createPostRequest (signup)", function() {
 
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+            
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
         var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var responseText = request.create(url+"signup", params);
 
         
         expect(responseText).toBe("true");
@@ -110,10 +109,10 @@ describe("createPostRequest (login)", function() {
 
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-        var url = "http://shorttermmemorytest.herokuapp.com/login";
+            
         var params = 'username='+text;
         var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var responseText = request.create(url+"login", params);
 
         
         expect(responseText).toBe("false");
@@ -121,10 +120,10 @@ describe("createPostRequest (login)", function() {
     });
     it("return true when user found ", function() {
 
-        var url = "http://shorttermmemorytest.herokuapp.com/login";
+
         var params = 'username=olen';
         var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var responseText = request.create(url+"login", params);
 
         
         expect(responseText).toBe("true");
