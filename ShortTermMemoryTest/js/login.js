@@ -1,8 +1,6 @@
-
+console.log("login.js");
 function Login(){
-    console.log("login")
     function start(){
-        console.log("loginStart");
         
         createHtml();
         
