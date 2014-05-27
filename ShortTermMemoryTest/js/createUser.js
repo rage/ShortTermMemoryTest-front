@@ -1,39 +1,40 @@
 console.log("createUser.js");
 function CreateUser(){
-    console.log("createUser olio");
     
     function start(){
-        console.log("cu s");
         
         createHtml();
         
     }
     
     function createHtml(){
-        console.log("cu html");
-        
         
         var vuosi = new Date().getFullYear();
         var text = ""; 
          for (var i = 1900; i <= vuosi; i++) {
             text = "<option value=\""+i+"\">"+i+"</option>"+text;
         }
-            console.log(text);
         
-        document.body.innerHTML = "<div id=\"createUser\"><form onSubmit=\"stateMachine.createUser()\">\
+        document.body.innerHTML = "<div id=\"createUser\"><div id=\"varoitus\"></div><form onSubmit=\"stateMachine.createUser()\">\
         Sukupuoli:\
-        <input type=\"radio\" name=\"sex\" value=\"m\">Mies\
-        <input type=\"radio\" name=\"sex\" value=\"f\">Nainen\
-        <input type=\"radio\" name=\"sex\" value=\"o\">Muu<br>\
+        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"m\" id=\"m\">Mies\
+        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"f\" id=\"f\">Nainen\
         Syntymävuosi: \
-        <select name=\"yearofbirth\" id=\"yearofbirth\">"
+        <select name=\"yearofbirth\" id=\"yearofbirth\">\
+        <option value=\"valitse\">Valitse</option>"
         +text+
         "</select>\
         <br>\
         Kätisyys: \
-        <input type=\"radio\" name=\"handedness\" value=\"r\">Oikea\
-        <input type=\"radio\" name=\"handedness\" value=\"l\">Vasen<br>\
-        Koulutus: <input type=\"text\" id=\"education\"><br>\
+        <input type=\"radio\" name=\"handedness\" value=\"r\" id=\"r\">Oikea\
+        <input type=\"radio\" name=\"handedness\" value=\"l\" id=\"l\">Vasen<br>\
+        Koulutus: \
+        <select name=\"education\" id=\"education\">\
+        <option value=\"valitse\">Valitse</option>\
+        <option value=\"Peruskoulu\">Peruskoulu</option>\
+        <option value=\"Lukio tai ammattikoulu\">Lukio tai ammattikoulu</option>\
+        <option value=\"Korkeakoulu\">Korkeakoulu</option>\
+        </select><br>\
         <input type=\"button\" value=\"Jatka\" onclick=\"stateMachine.createUser()\" />\
         </form></div>";
     }
@@ -42,14 +43,27 @@ function CreateUser(){
          
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
         //var url = "http://localhost:3000/login";
-        
-        console.log("signup asdnasd");
-        var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
-        var params = "username="+username+
-        "&sex="+document.querySelector('input[name="sex"]:checked').value+
-        "&yearOfBirth="+yearofbirth+
-        "&handedness="+document.querySelector('input[name="handedness"]:checked').value+
-        "&education="+document.getElementById("education").value;
+        try {
+            var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
+            var education = document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
+            if(yearofbirth == "valitse"){
+                console.log("yearofbirth valitse");
+                return false;
+            }
+            if(education == "valitse"){
+                console.log(education);
+                return false;
+            }
+            
+            console.log(yearofbirth);
+            var params = "username="+username+
+            "&sex="+document.querySelector('input[name="sex"]:checked').value+
+            "&yearOfBirth="+yearofbirth+
+            "&handedness="+document.querySelector('input[name="handedness"]:checked').value+
+            "&education="+document.getElementById("education").value;
+        }catch(err) {
+            return false;
+        }
         var request = createPostRequest();
         var responseText = request.create(url, params);
         
@@ -58,9 +72,11 @@ function CreateUser(){
         if(responseText == "true"){
             console.log("true");
             stateMachine.startGameStartScreen();
+            return true;
         }else{
             console.log("false");
             stateMachine.startRegister();
+            return false;
         }
 	}
     

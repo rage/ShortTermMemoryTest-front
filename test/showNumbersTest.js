@@ -1,3 +1,4 @@
+
 /**
  * Created by artokaik on 23.5.2014.
  */
@@ -70,7 +71,7 @@ describe("showNumbers", function() {
         expect($("#num_field").text()).toBe("2");
         jasmine.Clock.tick(1500);
         expect($("#num_field").text()).toBe("backwards");
-        jasmine.Clock.tick(5000);
+        jasmine.Clock.tick(10000);
         expect($("#num_field").text()).toBe("3");
     });
 });

@@ -16,5 +16,14 @@ describe("LoginTest", function() {
         expect(myfunc.checkUsername("Olen")).toBe(true);
 
     });
+    it("checkUsername return true when user found", function() {
+        stateMachine.start();
+        document.getElementById('username').value = "Olen";
+        
+        var o = stateMachine.login().checkUsername(document.getElementById('username').value);
+        expect(o).toBe(true);
+
+    });
+    
 
 });
