@@ -27,12 +27,12 @@ describe("showNumbers", function() {
 
     beforeEach(function() {
         storer = new eventStorer();
-        shower = new showList(storer, numberList ,1000,500,1000);
+        show = new showList(storer, numberList ,1000,500,10000);
     });
 
     it("first set of numbers in screen ", function() {
         jasmine.Clock.useMock();
-        shower.showNext();
+        show.showNext();
         jasmine.Clock.tick(1100);
         expect($("#num_field").text()).toBe("0");
         jasmine.Clock.tick(500);
@@ -41,14 +41,14 @@ describe("showNumbers", function() {
 
     it("first number in screen ", function() {
         jasmine.Clock.useMock();
-        shower.showNext();
+        show.showNext();
         jasmine.Clock.tick(5600);
         expect($("#num_field").text()).toBe("backwards");
     });
 
     it("first set of numbers in screen ", function() {
         jasmine.Clock.useMock();
-        shower.showNext();
+        show.showNext();
         jasmine.Clock.tick(1100);
         expect($("#num_field").text()).toBe("0");
         jasmine.Clock.tick(1500);
@@ -59,9 +59,9 @@ describe("showNumbers", function() {
         expect($("#num_field").text()).toBe("backwards");
     });
 
-    /*it("two sets of numbers in screen ", function() {
+    it("two sets of numbers in screen ", function() {
         jasmine.Clock.useMock();
-        shower.showNext();
+        show.showNext();
         jasmine.Clock.tick(1100);
         expect($("#num_field").text()).toBe("0");
         jasmine.Clock.tick(1500);
@@ -70,7 +70,7 @@ describe("showNumbers", function() {
         expect($("#num_field").text()).toBe("2");
         jasmine.Clock.tick(1500);
         expect($("#num_field").text()).toBe("backwards");
-        jasmine.Clock.tick(10000);
+        jasmine.Clock.tick(5000);
         expect($("#num_field").text()).toBe("3");
-    });*/
+    });
 });
