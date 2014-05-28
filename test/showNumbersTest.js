@@ -28,7 +28,7 @@ describe("showNumbers", function() {
     numberList[2]=numberSeries2;
 
 
-
+/*
     beforeEach(function() {
         storer = new eventStorer();
         show = new showList(storer, numberList, 1000, 500, 10000);

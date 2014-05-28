@@ -1,35 +1,37 @@
 /**
  * Created by kristiak on 22.5.2014.
  */
-function calculateResult(eventStore) {
+function calculateResult(events, fromTime) {
 
     //console.log("calculateResult : eventStore size: " + eventStore.getEvents().length);
-
-    var events = eventStore.getEvents();
 
     var numbersShown = [];
     var numbersGiven = [];
     var numbersShownOrder;
-    var numberOfShownSets = 0;
-    var numberOfCorrectGivenSets = 0;
+    var numberOfShownSeries = 0;
+    var numberOfCorrectGivenSeries = 0;
+    var lastSeriesCorrectness = false;
 
     for (var i = 0; i < events.length; i++) {
         var event = events[i];
 
-        if (event.type == "EVENT_START_SHOWSERIES") {
+        if (event.timeStamp < fromTime)
+            continue;
+
+        if (event.type == "EVENT_SHOWSERIES_START") {
             numbersShown = [];
         }
 
-        if (event.type == "EVENT_END_SHOWSERIES") {
-            numberOfShownSets++;
+        if (event.type == "EVENT_SHOWSERIES_END") {
+            numberOfShownSeries++;
         }
 
-        if (event.type == "EVENT_START_NUMBER") {
+        if (event.type == "EVENT_SHOWNUMBER_START") {
             numbersShown.push(event.value);
-            //console.log("calculateResult: EVENT_START_NUMBER: " + event.value);
+            //console.log("calculateResult: EVENT_SHOWNUMBER_START: " + event.value);
         }
 
-        if (event.type == "EVENT_START_TYPING") {
+        if (event.type == "EVENT_USERINPUT_START") {
             numbersShownOrder = event.value;
             numbersGiven = [];
         }
@@ -39,7 +41,7 @@ function calculateResult(eventStore) {
             //console.log("calculateResult: EVENT_TYPE_KEYDOWN: " + event.value);
         }
 
-        if (event.type == "EVENT_END_TYPING") {
+        if (event.type == "EVENT_USERINPUT_END") {
             var correctChars = 0;
             if (numbersShown.length == numbersGiven.length) {
                 if (numbersShownOrder == "NORMAL") {
@@ -57,21 +59,24 @@ function calculateResult(eventStore) {
                 }
             }
             if (numbersShown.length == correctChars) {
-                numberOfCorrectGivenSets++;
-                console.log("calculateResult: The user gave a correct set");
+                numberOfCorrectGivenSeries++;
+                lastSeriesCorrectness = true;
+                //console.log("calculateResult: The user gave a correct set");
                 //break;
             } else {
-                console.log("calculateResult: The user gave an incorrect set. correctChars: " + correctChars + " numbersShown: " + numbersShown);
+                lastSeriesCorrectness = false;
+                //console.log("calculateResult: The user gave an incorrect set. correctChars: " + correctChars + " numbersShown: " + numbersShown);
             }
         }
 
-        if (event.type == "EVENT_END_GAME") {
+        if (event.type == "EVENT_GAME_END") {
             break;
         }
     }
 
     return {
-        numberOfShownSets : numberOfShownSets,
-        numberOfCorrectGivenSets : numberOfCorrectGivenSets
+        numberOfShownSeries :           numberOfShownSeries,
+        numberOfCorrectGivenSeries :    numberOfCorrectGivenSeries,
+        lastSeriesCorrectness       :   lastSeriesCorrectness
     };
 }

@@ -1,15 +1,14 @@
-/**
- * Created by kristiak on 22.5.2014.
- */
-/**
- * Created by kristiak on 22.5.2014.
- */
 
-function keyEventHandler(eventStorer) {
-    console.log("keyEventHandler: constructor");
-    var eventStorer = eventStorer;
+
+function keyEventHandler(eventHandler) {
+
+    eventHandler.registerEventHandler("EVENT_GAME_START", activate);
+    eventHandler.registerEventHandler("EVENT_GAME_END", deactivate);
+    eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", activate);
+    eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_END", deactivate);
 
     var active = false;
+    var keyDownHandler;
 
     var keyStatus = (function () {
         var keyDown = [256];
@@ -37,42 +36,22 @@ function keyEventHandler(eventStorer) {
     })();
 
 
-
     $(document).keydown(function(eventInformation) {
-        processEventKeyDown(eventInformation);
-    });
-
-    $(document).keyup(function(eventInformation) {
-        processEventKeyUp(eventInformation);
-    });
-
-
-
-
-
-    function processEventKeyDown(eventInformation) {
         if (active == true) {
             if (keyStatus.isKeyDown(eventInformation.keyCode) == false) {
                 keyStatus.setKeyDown(eventInformation.keyCode);
-                eventStorer.registerEvent("EVENT_TYPE_KEYDOWN", eventInformation.keyCode, eventInformation.timeStamp);
-                //console.log("keyEventHandler: EVENT_TYPE_KEYDOWN : keyCode: " + eventInformation.keyCode + " timeStamp: " + eventInformation.timeStamp);
-
+                eventHandler.triggerEvent("EVENT_TYPE_KEYDOWN", eventInformation.keyCode, 0);
             }
-
         }
-    }
+    });
 
-
-
-
-
-    function processEventKeyUp(eventInformation) {
+    $(document).keyup(function(eventInformation) {
         if (active == true) {
             keyStatus.setKeyUp(eventInformation.keyCode);
-            eventStorer.registerEvent("EVENT_TYPE_KEYUP", eventInformation.keyCode, eventInformation.timeStamp);
-            //console.log("keyEventHandler: EVENT_TYPE_KEYUP : keyCode: " + eventInformation.keyCode + " timeStamp: "  + eventInformation.timeStamp);
+            eventHandler.triggerEvent("EVENT_TYPE_KEYUP", eventInformation.keyCode, 0);
         }
-    }
+    });
+
 
     function activate () {
         active = true;
@@ -82,8 +61,10 @@ function keyEventHandler(eventStorer) {
         active = false;
     }
 
+
+
     return {
         activate   : activate,
         deactivate : deactivate
     };
-};
+}
