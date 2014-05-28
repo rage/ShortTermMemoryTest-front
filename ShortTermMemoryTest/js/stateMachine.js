@@ -50,25 +50,30 @@ var stateMachine = function (){
         state = 4;
         evStore.registerEvent("EVENT_START_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
         keyHandler.activate();
-
+        
+        var list = new GetList(1);
+        
         var numberList = [];
-        for(var i=0; i<3; i++) {
+        for(var i=0; i<list.length; i++) {
             var numberSeries = [];
             var numbers = [];
-            for (var x = 0; x < 3; x++) {
+            for (var x = 0; x < list[i]["numbers"].length; x++) {
                 var number = x;
-                numbers[x] = x + i + 2;
+                numbers[x] = list[i]["numbers"][x]["text"];
             }
-            if(i==1){
-                numberSeries.order = "REVERSE";
-            } else {
-                numberSeries.order = "NORMAL";
-            }
+            
+            numberSeries.order = "NORMAL";
+            
             numberSeries.numbers = numbers;
+            console.log(numbers);
             numberList[i]=numberSeries;
 
 
         }
+        
+        console.log(numberList);
+
+        console.log(numberList[0]);
 
         show = new showList(evStore,numberList, 1000, 500, 10000);
 
