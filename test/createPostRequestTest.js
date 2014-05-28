@@ -9,8 +9,8 @@ describe("createPostRequest (signup)", function() {
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length)); 
         var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
-        var request = createPostRequest();
-        var responseText = request.create(url+"signup", params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url+"signup", params);
 
         
         expect(responseText).toBe("true");
@@ -20,8 +20,8 @@ describe("createPostRequest (signup)", function() {
 
         var url = "http://shorttermmemorytest.herokuapp.com/signup";
         var params = 'username=olen&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
-        var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url, params);
 
         
         expect(responseText).toBe("false");
@@ -37,8 +37,8 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth=1800&handedness=r&education=Peruskoulu';
-        var request = createPostRequest();
-        var responseText = request.create(url+"signup", params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url+"signup", params);
 
         
         expect(responseText).toBe("false");
@@ -55,8 +55,8 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
-        var request = createPostRequest();
-        var responseText = request.create(url+"signup", params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url+"signup", params);
 
         
         expect(responseText).toBe("false");
@@ -72,8 +72,8 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
-        var request = createPostRequest();
-        var responseText = request.create(url+"signup", params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url+"signup", params);
 
         
         expect(responseText).toBe("true");
@@ -89,8 +89,8 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
-        var request = createPostRequest();
-        var responseText = request.create(url+"signup", params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url+"signup", params);
 
         
         expect(responseText).toBe("true");
@@ -111,8 +111,8 @@ describe("createPostRequest (login)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text;
-        var request = createPostRequest();
-        var responseText = request.create(url+"login", params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url+"login", params);
 
         
         expect(responseText).toBe("false");
@@ -122,8 +122,8 @@ describe("createPostRequest (login)", function() {
 
 
         var params = 'username=olen';
-        var request = createPostRequest();
-        var responseText = request.create(url+"login", params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url+"login", params);
 
         
         expect(responseText).toBe("true");
