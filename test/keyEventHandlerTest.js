@@ -2,32 +2,63 @@
 
 describe("keyEventHandler", function() {
 
-    var storer;
-    var down1;
-    var up1;
-    var down2;
-    var up2;
+    var evHandler;
+    var keyHandler;
+    var keyDownEvent;
+    var keyUpEvent;
+    var keyDownCounter;
 
     beforeEach(function() {
-        storer = new eventStorer();
-        var handler = new keyEventHandler(storer);
-        handler.activate();
-
-        down1 = jQuery.Event("keydown");
-        down1.keyCode = 1; // # Some key code value
-        down2 = jQuery.Event("keydown");
-        down2.keyCode = 2; // # Some key code value
-
-        up1 = jQuery.Event("keyup");
-        up1.keyCode = 1; // # Some key code value
-        up2 = jQuery.Event("keyup");
-        up2.keyCode = 2; // # Some key code value
+        evHandler = new eventHandler();
+        keyHandler = new keyEventHandler(evHandler);
+        jasmine.Clock.useMock();
+        keyDownEvent = false;
+        keyUpEvent = false;
+        keyDownCounter = 0;
     });
 
-    it("eventStorer empty in the beginning", function() {
-        expect(storer.getEvents().length).toBe(0);
+    it("keyEventHandler generates an EVENT_TYPE_KEYDOWN event", function() {
+        evHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", function () {
+            keyDownEvent = true;
+        });
+
+        evHandler.triggerEvent("EVENT_GAME_START", "", 0);
+        //keyHandler.activate();
+        jasmine.Clock.tick(100);
+        var e = jQuery.Event("keydown");
+        e.keyCode = 50; // # Some key code value
+        $(document).trigger(e);
+        jasmine.Clock.tick(100);
+        expect(keyDownEvent).toBe(true);
     });
 
+    it("keyEventHandler generates a new EVENT_TYPE_KEYDOWN event only after keyup event", function() {
+        evHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", function () {
+            keyDownCounter++;
+        });
+
+        evHandler.triggerEvent("EVENT_GAME_START", "", 0);
+        jasmine.Clock.tick(100);
+
+        var down = jQuery.Event("keydown");
+        down.keyCode = 50; // # Some key code value
+        var up = jQuery.Event("keyup");
+        up.keyCode = 50; // # Some key code value
+
+        $(document).trigger(down);
+        jasmine.Clock.tick(100);
+        $(document).trigger(down);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        /*
+        $(document).trigger(up);
+        jasmine.Clock.tick(100);
+        $(document).trigger(down);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(2);
+*/
+    });
+    /*
 
     it("two keydown-events for the same key records only one event", function() {
         $(document).trigger(down1);
@@ -76,6 +107,6 @@ describe("keyEventHandler", function() {
         expect(savedEvent1.timeStamp-time).toBeGreaterThan(-10);
         expect(savedEvent1.timeStamp-time).toBeLessThan(10);
     });
-
+*/
 
 });
