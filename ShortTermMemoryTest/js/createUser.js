@@ -64,8 +64,8 @@ function CreateUser(){
         }catch(err) {
             return false;
         }
-        var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url, params);
         
         
         

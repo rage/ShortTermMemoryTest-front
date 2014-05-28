@@ -22,8 +22,8 @@ function Login(){
         
         var params = "username="+user;
         username = user;
-        var request = createPostRequest();
-        var responseText = request.create(url, params);
+        var request = CreateRequest();
+        var responseText = request.createPost(url, params);
         
         console.log(responseText); 
         if(responseText == "true"){

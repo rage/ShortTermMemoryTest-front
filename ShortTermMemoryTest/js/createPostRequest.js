@@ -1,14 +1,22 @@
 
 
-function createPostRequest(){
+function CreateRequest(){
     
-    function create(url, params){
+    function createPost(url, params){
+        return create(url, params, "POST");
+    }
+    
+    function createGet(url, params){
+        return create(url, params, "GET");
+    }
+    
+    function create(url, params, type){
         
         console.log(url);
         
         console.log(params);
         
-        var req = createCORSRequest("POST", url);
+        var req = createCORSRequest(type, url);
         console.log(req);
         
         req.onload = function() {
@@ -42,6 +50,7 @@ function createPostRequest(){
     }
     
     return {
-        create:create
+        createPost:createPost,
+        createGet:createGet
     }
 }
