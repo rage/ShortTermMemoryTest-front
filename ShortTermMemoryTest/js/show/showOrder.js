@@ -15,7 +15,7 @@ function showOrder(order) {
 
     createHTML();
 
-    if (order == "NORMAL") {
+    if (order == "upwards") {
         $("#order_field").html("SAME ORDER");
     } else {
         $("#order_field").html("REVERSE ORDER");

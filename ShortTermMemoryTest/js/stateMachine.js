@@ -48,41 +48,9 @@ var stateMachine = function (){
 
     function startGame(mode) {
         state = 4;
-        /*
-        evStore.registerEvent("EVENT_START_GAME", "GAME_IDENTIFIER_BLAHBLAH", Date.now());
-        keyHandler.activate();
         
-        var list = new GetList(1);
+        var mockNumberList = new GetList(1);
         
-        var numberList = [];
-        for(var i=0; i<list.length; i++) {
-            var numberSeries = [];
-            var numbers = [];
-            for (var x = 0; x < list[i]["numbers"].length; x++) {
-                var number = x;
-                numbers[x] = list[i]["numbers"][x]["text"];
-            }
-            
-            numberSeries.order = "NORMAL";
-            
-            numberSeries.numbers = numbers;
-            console.log(numbers);
-            numberList[i]=numberSeries;
-
-
-        }
-        
-        console.log(numberList);
-
-        console.log(numberList[0]);
-
-        show = new showList(evStore,numberList, 1000, 500, 10000);
-
-        show.showNext();
-        */
-
-        var mockNumberList = createMockNumberList();
-
         var gameData = {
             gameIdentifier      : "ThisGame",
             numberDisplayTime   : 500,
@@ -95,16 +63,12 @@ var stateMachine = function (){
             result              : undefined,
             mode                : mode
         };
-
+        
         game = new gameLogic(gameData);
         game.start();
-
+        
     }
-
-
-
-
-
+    
     function createMockNumberList() {
         var numberList = [ ];
         for(var i = 0; i < 3; i++) {

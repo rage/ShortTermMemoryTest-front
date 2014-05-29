@@ -44,13 +44,13 @@ function calculateResult(events, fromTime) {
         if (event.type == "EVENT_USERINPUT_END") {
             var correctChars = 0;
             if (numbersShown.length == numbersGiven.length) {
-                if (numbersShownOrder == "NORMAL") {
+                if (numbersShownOrder == "upwards") {
                     for (var j = 0; j < numbersShown.length; j++) {
                         if (numbersShown[j] == String.fromCharCode(numbersGiven[j])) {
                             correctChars++;
                         }
                     }
-                } else if (numbersShownOrder == "REVERSE") {
+                } else if (numbersShownOrder == "backwards") {
                     for (var j = 0; j < numbersShown.length; j++) {
                         if (numbersShown[j] == String.fromCharCode(numbersGiven[numbersShown.length - j - 1])) {
                             correctChars++;
