@@ -14,7 +14,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: ['test/*.js', 'ShortTermMemoryTest/js/*.js', 'ShortTermMemoryTest/js/lib/*.js'
+    files: ['test/*.js', 'ShortTermMemoryTest/js/*.js', 'ShortTermMemoryTest/js/lib/*.js', 'ShortTermMemoryTest/js/show/*.js'
       
     ],
 
