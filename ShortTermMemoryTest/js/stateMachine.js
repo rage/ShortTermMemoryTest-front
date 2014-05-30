@@ -1,5 +1,8 @@
 var show;
 var username;
+//        var url = "http://shorttermmemorytest.herokuapp.com/";
+var url = "http://localhost:3000/"
+
 var stateMachine = function (){
     console.log("stateMachine");
 

@@ -1,10 +1,9 @@
 function GetList(){ 
     
     function getNextList(){
-        var req = new CreateRequest(); 
-        var url = "http://shorttermmemorytest.herokuapp.com/lists/1.json";
+        var req = new CreateRequest();
         params = "username="+username
-        var jsonData = req.createGet(url, params);
+        var jsonData = req.createGet(url+"lists/1.json", params);
         return createNumberList(JSON.parse(jsonData));
     }
 

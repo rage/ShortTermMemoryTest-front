@@ -41,8 +41,7 @@ function CreateUser(){
     
 	function signup(){
          
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        //var url = "http://localhost:3000/login";
+
         try {
             var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
             var education = document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
@@ -65,7 +64,7 @@ function CreateUser(){
             return false;
         }
         var request = CreateRequest();
-        var responseText = request.createPost(url, params);
+        var responseText = request.createPost(url+"signup", params);
         
         
         
