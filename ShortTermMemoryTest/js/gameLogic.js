@@ -2,46 +2,48 @@
  * Created by kris on 26.5.2014.
  */
 
-function gameLogic (gameData) {
+function gameLogic (eventHandler) {
 
-    var gameData = gameData;
-    gameData.requestFocus = requestFocus;
+    var gameData;
 
     function requestFocus(focusFunction) {
         $("body").append("<div id='keyDown'></div>");
         $("#keyDown").on("keyDown", focusFunction );
     }
 
-    function setup() {
-        gameData.eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
+    function setup(gameData) {
 
-        gameData.eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", startPracticeGameEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_END", endPracticeGameEventHandler);
-
-
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWLIST_START", showListEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWLIST_END", endShowListEventHandler);
-
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWSERIES_START", showSeriesEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWSERIES_END", endShowSeriesEventHandler);
-
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWNUMBER_START", showNumberEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWNUMBER_END", endShowNumberEventHandler);
-
-        gameData.eventHandler.registerEventHandler("EVENT_USERINPUT_START", startUserInputEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_USERINPUT_END", endUserInputEventHandler);
-
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWRESULT_START", showResultEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
-
-        gameData.eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
-        gameData.eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_END", endShowPracticeResultEventHandler);
-
-
-
-        gameData.eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
+        gameData.requestFocus = requestFocus;
+        gameData.eventHandler = eventHandler;
     }
+
+        eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
+        eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", startPracticeGameEventHandler);
+        eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_END", endPracticeGameEventHandler);
+
+
+        eventHandler.registerEventHandler("EVENT_SHOWLIST_START", showListEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWLIST_END", endShowListEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOWSERIES_START", showSeriesEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWSERIES_END", endShowSeriesEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOWNUMBER_START", showNumberEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWNUMBER_END", endShowNumberEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_USERINPUT_START", startUserInputEventHandler);
+        eventHandler.registerEventHandler("EVENT_USERINPUT_END", endUserInputEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOWRESULT_START", showResultEventHandler);
+        //gameData.eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_END", endShowPracticeResultEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
+
 
 
 
@@ -50,16 +52,8 @@ function gameLogic (gameData) {
     }
 
     function endShowResultEventHandler(event) {
-        if (gameData.mode == "PRACTICE") {
-            gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", gameData.gameIdentifier, 0);
-            if (gameData.practiceRedo == true) {
-                gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
-            }
-
-        } else {
-            gameData.eventHandler.triggerEvent("EVENT_GAME_END", gameData.gameIdentifier, 0);
-        }
     }
+
 
     function startUserInputEventHandler(event) {
         showOrder(gameData.numberList[gameData.numberListIndex].order);
@@ -102,10 +96,9 @@ function gameLogic (gameData) {
 
 
     function startPracticeGameEventHandler() {
-        gameData.gameStartTime = Date.now();
-        //showInstructions(gameData);
         gameData.eventHandler.triggerEvent("EVENT_SHOWLIST_START", "", 0);
     }
+
 
     function endPracticeGameEventHandler(event) {
 
@@ -156,13 +149,30 @@ function gameLogic (gameData) {
     }
 
 
-    function start () {
-        setup();
+    function startPracticeGame() {
+        if (gameData.donePracticeRounds >= gameData.maxPracticeRounds) {
+            showDoneMaxPractice(gameData);
+        } else {
+            gameData.gameStartTime = Date.now();
+            gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
+        }
+    }
+
+    function startGame() {
+        gameData.gameStartTime = Date.now();
+        gameData.eventHandler.triggerEvent("EVENT_GAME_START", gameData.gameIdentifier, 0);
+    }
+
+
+
+    function start (newGameData) {
+        gameData = newGameData;
+        setup(gameData);
         $("body").html("");
         if (gameData.mode == "PRACTICE") {
-            gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
-        } else {
-            gameData.eventHandler.triggerEvent("EVENT_GAME_START", gameData.gameIdentifier, 0);
+            startPracticeGame();
+        } else if (gameData.mode == "GAME") {
+            startGame();
         }
     }
 

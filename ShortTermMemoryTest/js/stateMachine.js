@@ -1,7 +1,7 @@
 var show;
 var username;
-//        var url = "http://shorttermmemorytest.herokuapp.com/";
-var url = "http://localhost:3000/"
+var url = "http://shorttermmemorytest.herokuapp.com/";
+//var url = "http://localhost:3000/"
 
 var stateMachine = function (){
     console.log("stateMachine");
@@ -19,6 +19,7 @@ var stateMachine = function (){
 
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
+        game = new gameLogic(evHandler);
 
         startLogin();
         //startGame(); //For debugging purposes, skip login
@@ -51,26 +52,32 @@ var stateMachine = function (){
 
     function startGame(mode) {
         state = 4;
-        
-        var list = new GetList();
-        
-        var mockNumberList = list.getNextList();
-        
+
+        var theNumberList;
+
+        if (mode == "GAME") {
+            var list = new GetList();
+            theNumberList = list.getNextList();
+        } else if (mode == "PRACTICE") {
+            theNumberList = createMockNumberList();
+        }
+
         var gameData = {
             gameIdentifier      : "ThisGame",
             numberDisplayTime   : 500,
             ISITime             : 1500,
             guessTime           : 5000,
             showResultTime      : 5000,
-            numberList          : mockNumberList,
+            numberList          : theNumberList,
             numberListIndex     : 0,
-            eventHandler        : evHandler,
             result              : undefined,
-            mode                : mode
+            mode                : mode,
+            maxPracticeRounds   : 3,
+            donePracticeRounds  : 0
         };
-        
-        game = new gameLogic(gameData);
-        game.start();
+
+
+        game.start(gameData);
         
     }
     
@@ -83,9 +90,9 @@ var stateMachine = function (){
                 numberSeries.numbers[x] = x + i + 2;
             }
             if (i == 1) {
-                numberSeries.order = "REVERSE";
+                numberSeries.order = "backwards";
             } else {
-                numberSeries.order = "NORMAL";
+                numberSeries.order = "upwards";
             }
             //numberSeries.numbers = numbers;
             numberList[i] = numberSeries;
