@@ -50,19 +50,10 @@ function gameLogic (eventHandler) {
     function showResultEventHandler(event) {
         showResult(gameData);
     }
-/*
-    function endShowResultEventHandler(event) {
-        if (gameData.mode == "PRACTICE") {
-            gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", gameData.gameIdentifier, 0);
-            if (gameData.practiceRedo == true) {
-                gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
-            }
 
-        } else {
-            gameData.eventHandler.triggerEvent("EVENT_GAME_END", gameData.gameIdentifier, 0);
-        }
+    function endShowResultEventHandler(event) {
     }
-*/
+
 
     function startUserInputEventHandler(event) {
         showOrder(gameData.numberList[gameData.numberListIndex].order);
@@ -105,14 +96,9 @@ function gameLogic (eventHandler) {
 
 
     function startPracticeGameEventHandler() {
-        if (gameData.donePracticeRounds >= gameData.maxPracticeRounds) {
-            showDoneMaxPractice(gameData);
-        } else {
-            gameData.gameStartTime = Date.now();
-            //showInstructions(gameData);
-            gameData.eventHandler.triggerEvent("EVENT_SHOWLIST_START", "", 0);
-        }
+        gameData.eventHandler.triggerEvent("EVENT_SHOWLIST_START", "", 0);
     }
+
 
     function endPracticeGameEventHandler(event) {
 
@@ -163,14 +149,30 @@ function gameLogic (eventHandler) {
     }
 
 
+    function startPracticeGame() {
+        if (gameData.donePracticeRounds >= gameData.maxPracticeRounds) {
+            showDoneMaxPractice(gameData);
+        } else {
+            gameData.gameStartTime = Date.now();
+            gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
+        }
+    }
+
+    function startGame() {
+        gameData.gameStartTime = Date.now();
+        gameData.eventHandler.triggerEvent("EVENT_GAME_START", gameData.gameIdentifier, 0);
+    }
+
+
+
     function start (newGameData) {
         gameData = newGameData;
         setup(gameData);
         $("body").html("");
         if (gameData.mode == "PRACTICE") {
-            gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
-        } else {
-            gameData.eventHandler.triggerEvent("EVENT_GAME_START", gameData.gameIdentifier, 0);
+            startPracticeGame();
+        } else if (gameData.mode == "GAME") {
+            startGame();
         }
     }
 
