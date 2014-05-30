@@ -33,6 +33,7 @@ describe("keyEventHandler", function() {
     });
 
     it("keyEventHandler generates a new EVENT_TYPE_KEYDOWN event only after keyup event", function() {
+/*
         evHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", function () {
             keyDownCounter++;
         });
