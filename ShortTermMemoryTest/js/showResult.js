@@ -17,5 +17,4 @@ function showResult(result) {
 
     createHtml();
     $("h1").html("There were " + result.numberOfShownSets + " sets. You inputted " + result.numberOfCorrectGivenSets + " sets correctly.");
-
 }

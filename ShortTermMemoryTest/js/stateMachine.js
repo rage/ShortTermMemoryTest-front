@@ -55,10 +55,10 @@ var stateMachine = function (){
         
         var gameData = {
             gameIdentifier      : "ThisGame",
-            numberDisplayTime   : 500,
-            ISITime             : 1500,
-            guessTime           : 5000,
-            showResultTime      : 5000,
+            numberDisplayTime   : 5,
+            ISITime             : 1,
+            guessTime           : 5,
+            showResultTime      : 5,
             numberList          : mockNumberList,
             numberListIndex     : 0,
             eventHandler        : evHandler,

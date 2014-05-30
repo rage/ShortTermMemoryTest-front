@@ -5,6 +5,7 @@
 function gameLogic (gameData) {
 
     var gameData = gameData;
+    var postResults = new PostResults();
     gameData.requestFocus = requestFocus;
 
     function requestFocus(focusFunction) {
@@ -43,10 +44,10 @@ function gameLogic (gameData) {
         gameData.eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
     }
 
-
-
     function showResultEventHandler(event) {
         showResult(gameData);
+        postResults.post(gameData.eventHandler.getStoredEvents());
+        //console.log(JSON.stringify(gameData.eventHandler.getStoredEvents()));
     }
 
     function endShowResultEventHandler(event) {
