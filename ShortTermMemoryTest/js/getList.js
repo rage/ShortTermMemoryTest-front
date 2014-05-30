@@ -1,11 +1,12 @@
-function GetList(list_id){
-    var req = new CreateRequest(); 
-    var url = "http://shorttermmemorytest.herokuapp.com/lists/"+list_id+".json";
-    var jsonData = req.createGet(url);
-    console.log("dataa") 
-    console.log(jsonData)
-    console.log(JSON.parse(jsonData))
-    return createNumberList(JSON.parse(jsonData));
+function GetList(){ 
+    
+    function getNextList(){
+        var req = new CreateRequest(); 
+        var url = "http://shorttermmemorytest.herokuapp.com/lists/1.json";
+        params = "username="+username
+        var jsonData = req.createGet(url, params);
+        return createNumberList(JSON.parse(jsonData));
+    }
 
     function createNumberList(list) { 
         var numberList = [ ];
@@ -27,6 +28,9 @@ function GetList(list_id){
 
         }
         return numberList;
+    }
+    return {
+        getNextList:getNextList
     }
 
 }

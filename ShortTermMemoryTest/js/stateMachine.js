@@ -49,7 +49,9 @@ var stateMachine = function (){
     function startGame(mode) {
         state = 4;
         
-        var mockNumberList = new GetList(1);
+        var list = new GetList();
+        
+        var mockNumberList = list.getNextList();
         
         var gameData = {
             gameIdentifier      : "ThisGame",
