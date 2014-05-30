@@ -11,28 +11,16 @@ function CreateRequest(){
     }
     
     function create(url, params, type){
-        
-        console.log(url);
-        
-        console.log(params);
-        
         var req = createCORSRequest(type, url);
-        console.log(req);
-        
         req.onload = function() {
             };
-        console.log(req.response);
         req.onerror = function() {
-            console.log('Kysely ei onnistunut'); 
         };  
         if(type == "POST"){
         req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         req.setRequestHeader("Content-length", params.length);
         }
         req.send(params);
-        
-        console.log("d"); 
-        console.log(req.responseText); 
         return req.responseText;
         
     }

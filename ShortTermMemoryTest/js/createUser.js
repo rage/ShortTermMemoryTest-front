@@ -40,41 +40,43 @@ function CreateUser(){
     }
     
 	function signup(){
+        console.log("SIGNUP, username: " +username)
          
 
         try {
             var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
             var education = document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
             if(yearofbirth == "valitse"){
-                console.log("yearofbirth valitse");
+                console.log("YOB")
                 return false;
             }
             if(education == "valitse"){
-                console.log(education);
+                console.log("EDU")
                 return false;
             }
-            
-            console.log(yearofbirth);
+
             var params = "username="+username+
             "&sex="+document.querySelector('input[name="sex"]:checked').value+
             "&yearOfBirth="+yearofbirth+
             "&handedness="+document.querySelector('input[name="handedness"]:checked').value+
             "&education="+document.getElementById("education").value;
         }catch(err) {
+            console.log("ERROR")
             return false;
         }
         var request = CreateRequest();
+
+        console.log("PARAMETRIT: " + params);
         var responseText = request.createPost(url+"signup", params);
         
         
         
         if(responseText == "true"){
-            console.log("true");
             stateMachine.startGameStartScreen();
             return true;
         }else{
-            console.log("false");
             stateMachine.startRegister();
+            console.log("PÄÄSTIIN LOPPUUN")
             return false;
         }
 	}

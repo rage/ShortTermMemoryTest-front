@@ -28,7 +28,6 @@ function calculateResult(events, fromTime) {
 
         if (event.type == "EVENT_SHOWNUMBER_START") {
             numbersShown.push(event.value);
-            //console.log("calculateResult: EVENT_SHOWNUMBER_START: " + event.value);
         }
 
         if (event.type == "EVENT_USERINPUT_START") {
@@ -38,7 +37,6 @@ function calculateResult(events, fromTime) {
 
         if (event.type == "EVENT_TYPE_KEYDOWN") {
             numbersGiven.push(event.value);
-            //console.log("calculateResult: EVENT_TYPE_KEYDOWN: " + event.value);
         }
 
         if (event.type == "EVENT_USERINPUT_END") {
@@ -61,12 +59,9 @@ function calculateResult(events, fromTime) {
             if (numbersShown.length == correctChars) {
                 numberOfCorrectGivenSeries++;
                 lastSeriesCorrectness = true;
-                //console.log("calculateResult: The user gave a correct set");
-                //break;
             } else {
                 lastSeriesCorrectness = false;
-                //console.log("calculateResult: The user gave an incorrect set. correctChars: " + correctChars + " numbersShown: " + numbersShown);
-            }
+              }
         }
 
         if (event.type == "EVENT_GAME_END") {

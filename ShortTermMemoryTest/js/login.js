@@ -20,16 +20,16 @@ function Login(){
 
         var req = new CreateRequest();
         params = "username="+user
+        username = user;
         var jsonData = req.createPost(url+"login", params);
         var response = JSON.parse(jsonData);
-        console.log("isReserved: " + response.isReserved)
         if (response.isReserved) {
             if (response.isTrained) {
                 stateMachine.startGameStartScreen();
                 return true;
             } else {
-                stateMachine.startStartTrainingScreen();
-                return false;
+                stateMachine.startGameStartScreen();
+                return true;
             }
         } else {
                 stateMachine.startRegister();

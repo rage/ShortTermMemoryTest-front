@@ -1,5 +1,6 @@
 var url = "http://shorttermmemorytest.herokuapp.com/";
 
+
 describe("createPostRequest (signup)", function() {
 
     it("return true when user not found ", function() {
@@ -18,10 +19,10 @@ describe("createPostRequest (signup)", function() {
     });
     it("return false when user found ", function() {
 
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
+
         var params = 'username=olen&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
         var request = CreateRequest();
-        var responseText = request.createPost(url, params);
+        var responseText = request.createPost(url+"signup", params);
 
         
         expect(responseText).toBe("false");
@@ -115,7 +116,7 @@ describe("createPostRequest (login)", function() {
         var responseText = request.createPost(url+"login", params);
 
         
-        expect(responseText).toBe("false");
+        expect(responseText).toContain("isReserved\":false");
 
     });
     it("return true when user found ", function() {
@@ -126,7 +127,7 @@ describe("createPostRequest (login)", function() {
         var responseText = request.createPost(url+"login", params);
 
         
-        expect(responseText).toBe("true");
+        expect(responseText).toContain("isReserved\":true");
 
     });
 

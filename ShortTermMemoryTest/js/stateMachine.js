@@ -4,7 +4,7 @@ var url = "http://shorttermmemorytest.herokuapp.com/";
 //var url = "http://localhost:3000/"
 
 var stateMachine = function (){
-    console.log("stateMachine");
+
 
     var login;
     var state;
@@ -15,7 +15,7 @@ var stateMachine = function (){
     var keyHandler;
 
     function start(){
-        console.log("Start");
+
 
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
@@ -27,7 +27,6 @@ var stateMachine = function (){
 
     function startLogin(){
         state = 1;
-        console.log("startLogin");
         login = new Login();
         login.start();
     }
@@ -36,7 +35,7 @@ var stateMachine = function (){
         state = 2;
         register = new CreateUser();
         register.start();
-        console.log("cu !!!");
+
     }
 
     function startGameStartScreen(){
@@ -46,7 +45,7 @@ var stateMachine = function (){
     }
 
     function createUser(){
-        console.log("singup");
+
         return register.signup();
     }
 
