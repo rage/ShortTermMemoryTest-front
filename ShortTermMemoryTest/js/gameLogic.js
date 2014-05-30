@@ -6,44 +6,32 @@ function gameLogic (eventHandler) {
 
     var gameData;
 
-    function requestFocus(focusFunction) {
-        $("body").append("<div id='keyDown'></div>");
-        $("#keyDown").on("keyDown", focusFunction );
-    }
+    eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
+    eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
 
-    function setup(gameData) {
-
-        gameData.requestFocus = requestFocus;
-        gameData.eventHandler = eventHandler;
-    }
-
-        eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
-        eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
-
-        eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", startPracticeGameEventHandler);
-        eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_END", endPracticeGameEventHandler);
+    eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", startPracticeGameEventHandler);
+    eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_END", endPracticeGameEventHandler);
 
 
-        eventHandler.registerEventHandler("EVENT_SHOWLIST_START", showListEventHandler);
-        eventHandler.registerEventHandler("EVENT_SHOWLIST_END", endShowListEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWLIST_START", showListEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWLIST_END", endShowListEventHandler);
 
-        eventHandler.registerEventHandler("EVENT_SHOWSERIES_START", showSeriesEventHandler);
-        eventHandler.registerEventHandler("EVENT_SHOWSERIES_END", endShowSeriesEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWSERIES_START", showSeriesEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWSERIES_END", endShowSeriesEventHandler);
 
-        eventHandler.registerEventHandler("EVENT_SHOWNUMBER_START", showNumberEventHandler);
-        eventHandler.registerEventHandler("EVENT_SHOWNUMBER_END", endShowNumberEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWNUMBER_START", showNumberEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWNUMBER_END", endShowNumberEventHandler);
 
-        eventHandler.registerEventHandler("EVENT_USERINPUT_START", startUserInputEventHandler);
-        eventHandler.registerEventHandler("EVENT_USERINPUT_END", endUserInputEventHandler);
+    eventHandler.registerEventHandler("EVENT_USERINPUT_START", startUserInputEventHandler);
+    eventHandler.registerEventHandler("EVENT_USERINPUT_END", endUserInputEventHandler);
 
-        eventHandler.registerEventHandler("EVENT_SHOWRESULT_START", showResultEventHandler);
-        //gameData.eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWRESULT_START", showResultEventHandler);
+    //gameData.eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
 
-        eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
-        eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_END", endShowPracticeResultEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_END", endShowPracticeResultEventHandler);
 
-        eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
-
+    eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
 
 
 
@@ -148,7 +136,6 @@ function gameLogic (eventHandler) {
         hideNumber();
     }
 
-
     function startPracticeGame() {
         if (gameData.donePracticeRounds >= gameData.maxPracticeRounds) {
             showDoneMaxPractice(gameData);
@@ -163,7 +150,15 @@ function gameLogic (eventHandler) {
         gameData.eventHandler.triggerEvent("EVENT_GAME_START", gameData.gameIdentifier, 0);
     }
 
+    function requestFocus(focusFunction) {
+        $("body").append("<div id='keyDown'></div>");
+        $("#keyDown").on("keyDown", focusFunction );
+    }
 
+    function setup(gameData) {
+        gameData.requestFocus = requestFocus;
+        gameData.eventHandler = eventHandler;
+    }
 
     function start (newGameData) {
         gameData = newGameData;
