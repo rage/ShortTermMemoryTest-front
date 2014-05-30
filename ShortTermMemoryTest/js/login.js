@@ -36,25 +36,6 @@ function Login(){
                 return false;
         }
 
-
-
-
-        
-//        var params = "username="+user;
-//        username = user;
-//        var request = CreateRequest();
-//        var responseText = request.createPost(url, params);
-//
-//        console.log(responseText);
-//        if(responseText == "true"){
-//            console.log("true");
-//            stateMachine.startGameStartScreen();
-//            return true
-//        }else{
-//            console.log("false");
-//            stateMachine.startRegister();
-//            return false
-//        }
         
     }
     
