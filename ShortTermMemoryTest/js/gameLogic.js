@@ -33,6 +33,8 @@ function gameLogic (eventHandler) {
 
     eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
 
+    eventHandler.registerEventHandler("EVENT_SHOWCROSS_START", showCrossEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWCROSS_END", endShowCrossEventHandler);
 
 
     function showResultEventHandler(event) {
@@ -114,12 +116,20 @@ function gameLogic (eventHandler) {
     }
 
     function showSeriesEventHandler() {
-        var delay = 1000;
+        var delay = 0;
+        delay += gameData.showCrossDelay;
+        gameData.eventHandler.triggerEvent("EVENT_SHOWCROSS_START", "", delay);
+        delay += gameData.showCrossTime;
+        gameData.eventHandler.triggerEvent("EVENT_SHOWCROSS_END", "", delay);
+
+        delay += gameData.ISITime - gameData.numberDisplayTime;
+
         var series = gameData.numberList[gameData.numberListIndex];
         for (var i = 0; i < series.numbers.length; i++) {
             gameData.eventHandler.triggerEvent("EVENT_SHOWNUMBER_START", series.numbers[i], delay + gameData.ISITime * i);
             gameData.eventHandler.triggerEvent("EVENT_SHOWNUMBER_END", series.numbers[i], delay + gameData.ISITime * i + gameData.numberDisplayTime);
         }
+
         gameData.eventHandler.triggerEvent("EVENT_SHOWSERIES_END", "", delay + gameData.ISITime * i);
         gameData.eventHandler.triggerEvent("EVENT_USERINPUT_START", gameData.numberList[gameData.numberListIndex].order, delay + gameData.ISITime * i);
     }
@@ -127,6 +137,17 @@ function gameLogic (eventHandler) {
     function endShowSeriesEventHandler(event) {
 
     }
+
+    function showCrossEventHandler(event) {
+        showNumber("+");
+    }
+
+    function endShowCrossEventHandler(event) {
+        hideNumber();
+    }
+
+
+
 
     function showNumberEventHandler(event) {
         var number = event.message;

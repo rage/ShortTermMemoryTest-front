@@ -49,11 +49,22 @@ body{
     position: absolute;
     width: 300px;
     height: 100px;
-    top: 50%;
+    top: 40%;
     left: 50%;
     margin-top: -50px;
     margin-left: -150px;
 }
+
+#num_field{
+    font-size:80px;
+
+}
+
+#order_field{
+    font-size:40px;
+    margin-top: 100px;
+}
+
 
 a{
 cursor:pointer
@@ -65,9 +76,9 @@ cursor:pointer
     position: absolute;
     width: 600px;
     height: 100px;
-    top: 50%;
+    top: 30%;
     left: 50%;
-    margin-top: -50px;
+    margin-top: 0px;
     margin-left: -300px;
 }
 
