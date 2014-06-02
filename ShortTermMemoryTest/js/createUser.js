@@ -61,7 +61,7 @@ function CreateUser(){
 
             return false;
         }
-        var request = CreateRequest();
+        var request = Request();
 
 
         var responseText = request.createPost(url+"signup", params);

@@ -18,7 +18,7 @@ function Login(){
     function checkUsername(user){
 
 
-        var req = new CreateRequest();
+        var req = new Request();
         params = "username="+user
         username = user;
         var jsonData = req.createPost(url+"login", params);
