@@ -84,6 +84,7 @@ function gameLogic (eventHandler) {
 
 
     function startPracticeGameEventHandler() {
+        gameData.gameStartTime = Date.now();
         gameData.eventHandler.triggerEvent("EVENT_SHOWLIST_START", "", 0);
     }
 
@@ -140,7 +141,6 @@ function gameLogic (eventHandler) {
         if (gameData.donePracticeRounds >= gameData.maxPracticeRounds) {
             showDoneMaxPractice(gameData);
         } else {
-            gameData.gameStartTime = Date.now();
             gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
         }
     }
