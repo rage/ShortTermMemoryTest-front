@@ -10,7 +10,7 @@ function Login(){
         console.log("createHtml")
         document.body.innerHTML = "<div id=\"login\">\
         <form onSubmit=\"stateMachine.login().checkUsername(document.getElementById('username').value)\">\
-        <input type=\"text\" id=\"username\" autofocus required>\
+        <input type=\"text\" id=\"username\" autocomplete=\"off\" autofocus required>\
         <input type=\"button\" value=\"Aloita\" onclick=\"stateMachine.login().checkUsername(document.getElementById('username').value)\" />\
         </form>";
     }

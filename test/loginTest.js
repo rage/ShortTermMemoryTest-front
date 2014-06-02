@@ -24,6 +24,13 @@ describe("LoginTest", function() {
         expect(o).toBe(true);
 
     });
+    
+    it("autocomplete off", function() {
+        
+        
+        stateMachine.start();
+        expect(document.getElementById('username').autocomplete).toBe("off");
+    });
 
 
 });
