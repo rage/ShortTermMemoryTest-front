@@ -25,11 +25,15 @@ function Login(){
         var response = JSON.parse(jsonData);
         if (response.isReserved) {
             if (response.isTrained) {
-                stateMachine.startGameStartScreen();
+                userIsTrained = true;
+                stateMachine.startGameStartScreen(); 
                 return true;
+                console.log("asd");
             } else {
-                stateMachine.startGameStartScreen();
+                userIsTrained = false;
+                stateMachine.startGameStartScreen(); 
                 return true;
+                console.log("asd");
             }
         } else {
                 stateMachine.startRegister();

@@ -1,6 +1,6 @@
 
 
-function CreateRequest(){
+function Request(){
     
     function createPost(url, params){
         return create(url, params, "POST");
