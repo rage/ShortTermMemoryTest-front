@@ -22,7 +22,8 @@ var stateMachine = function (){
         game = new gameLogic(evHandler);
 
         startLogin();
-        //startGame(); //For debugging purposes, skip login
+        //startGame();
+        //startGameStartScreen(); //For debugging purposes, skip login
     }
 
     function startLogin(){
@@ -67,6 +68,8 @@ var stateMachine = function (){
             ISITime             : 1500,
             guessTime           : 5000,
             showResultTime      : 5000,
+            showCrossDelay      : 1000,
+            showCrossTime       : 1000,
             numberList          : theNumberList,
             numberListIndex     : 0,
             result              : undefined,
