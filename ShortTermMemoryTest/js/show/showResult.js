@@ -26,22 +26,38 @@ function showResult(gameData) {
     var secondline = " You returned " + gameData.result.numberOfCorrectGivenSeries + " (" + percentCorrect + "%) of these correctly.";
 
     if (gameData.mode == "PRACTICE") {
+        gameData.donePracticeRounds++;
 
-        var thirdline = "Press enter to to stop practicing and start the test";
-        var fourthline = "Press space to do the practice series again.";
+        if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
+            var thirdline = "Press enter to to stop practicing and start the test";
+            var fourthline = "Press space to do the practice series again.";
 
-        gameData.requestFocus(function (event, keyCode) {
-            if (keyCode == 13) {
-                hideResult(event);
-                gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
-                gameData.mode = "GAME";
-                gameData.eventHandler.triggerEvent("EVENT_GAME_START", "", 0);
-                //stateMachine.startGame("GAME");
-            } else if (keyCode == 32) {
-                hideResult(event);
-                gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);
-            }
-        });
+            gameData.requestFocus(function (event, keyCode) {
+                if (keyCode == 13) {
+                    hideResult(event);
+                    gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
+                    stateMachine.startGame("GAME");
+                    //gameData.mode = "GAME";
+                    //gameData.eventHandler.triggerEvent("EVENT_GAME_START", "", 0);
+                } else if (keyCode == 32) {
+                    hideResult(event);
+                    gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);
+                }
+            });
+        } else {
+            var thirdline = "You have now practiced the maximum allowed times.";
+            var fourthline = "Press enter to to stop practicing and start the test";
+
+            gameData.requestFocus(function (event, keyCode) {
+                if (keyCode == 13) {
+                    hideResult(event);
+                    gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
+                    //gameData.mode = "GAME";
+                    //gameData.eventHandler.triggerEvent("EVENT_GAME_START", "", 0);
+                    stateMachine.startGame("GAME");
+                }
+            });
+        }
     } else {
         var thirdline = "Thank you for participating.";
         gameData.requestFocus(function (event, keyCode) {

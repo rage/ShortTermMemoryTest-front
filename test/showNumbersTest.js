@@ -3,76 +3,31 @@
  * Created by artokaik on 23.5.2014.
  */
 
-describe("showNumbers", function() {
-    var storer;
-    var shower
-    var numberList = [];
-    var series0 = [0,1,2];
-    var series1 = [3,7,6,5];
-    var series2 = [9,4,3,6,8];
-    var numberSeries0 = [];
-    numberSeries0.order = "backwards";
-    numberSeries0.numbers= series0;
+describe("showNumbersTest", function() {
 
 
-    var numberSeries1 = [];
-    numberSeries1.order = "upwards";
-    numberSeries1.numbers= series1;
 
-    var numberSeries2 = [];
-    numberSeries2.order = "upwards";
-    numberSeries2.numbers= series2;
-
-    numberList[0]=numberSeries0;
-    numberList[1]=numberSeries1;
-    numberList[2]=numberSeries2;
-
-
-/*
-    beforeEach(function() {
-        storer = new eventStorer();
-        show = new showList(storer, numberList, 1000, 500, 10000);
-        jasmine.Clock.useMock();
+    it("showNumber puts number in #num_field", function() {
+        showNumber("1");
+        expect($("#num_field").text()).toBe("1");
     });
 
+    it("After showNumber puts 2 numbers in #num_field only the latter is visible", function() {
+        showNumber("1");
+        showNumber("2");
+        expect($("#num_field").text()).toBe("2");
+    });
 
-    it("first number in screen ", function() {
-        show.showNext();
-        jasmine.Clock.tick(1100);
-        expect($("#num_field").text()).toBe("0");
-        jasmine.Clock.tick(500);
+    it("hideNumber hides the text in #num_field", function() {
+        showNumber("1");
+        hideNumber();
         expect($("#num_field").text()).hidden;
     });
 
-    it("first command in screen is backwards", function() {
-        show.showNext();
-        jasmine.Clock.tick(5600);
-        expect($("#num_field").text()).toBe("backwards");
+    it("When showNumber is called after hideNumber the number is visible in the #num_field", function() {
+        showNumber("1");
+        hideNumber();
+        showNumber("1");
+        expect($("#num_field").text()).not.hidden;
     });
-
-    it("first set of numbers in screen ", function() {
-        show.showNext();
-        jasmine.Clock.tick(1100);
-        expect($("#num_field").text()).toBe("0");
-        jasmine.Clock.tick(1500);
-        expect($("#num_field").text()).toBe("1");
-        jasmine.Clock.tick(1500);
-        expect($("#num_field").text()).toBe("2");
-        jasmine.Clock.tick(1500);
-        expect($("#num_field").text()).toBe("backwards");
-    });
-
-    /*it("two sets of numbers in screen ", function() {
-        show.showNext();
-        jasmine.Clock.tick(1100);
-        expect($("#num_field").text()).toBe("0");
-        jasmine.Clock.tick(1500);
-        expect($("#num_field").text()).toBe("1");
-        jasmine.Clock.tick(1500);
-        expect($("#num_field").text()).toBe("2");
-        jasmine.Clock.tick(1500);
-        expect($("#num_field").text()).toBe("backwards");
-        jasmine.Clock.tick(10000);
-        expect($("#num_field").text()).toBe("7");
-    });*/
 });

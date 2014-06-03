@@ -41,41 +41,39 @@ function CreateUser(){
     
 	function signup(){
          
-        var url = "http://shorttermmemorytest.herokuapp.com/signup";
-        //var url = "http://localhost:3000/login";
+
         try {
             var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
             var education = document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
             if(yearofbirth == "valitse"){
-                console.log("yearofbirth valitse");
                 return false;
             }
             if(education == "valitse"){
-                console.log(education);
                 return false;
             }
-            
-            console.log(yearofbirth);
+
             var params = "username="+username+
             "&sex="+document.querySelector('input[name="sex"]:checked').value+
             "&yearOfBirth="+yearofbirth+
             "&handedness="+document.querySelector('input[name="handedness"]:checked').value+
             "&education="+document.getElementById("education").value;
         }catch(err) {
+
             return false;
         }
         var request = CreateRequest();
-        var responseText = request.createPost(url, params);
+
+
+        var responseText = request.createPost(url+"signup", params);
         
         
         
         if(responseText == "true"){
-            console.log("true");
             stateMachine.startGameStartScreen();
             return true;
         }else{
-            console.log("false");
             stateMachine.startRegister();
+            console.log("PÄÄSTIIN LOPPUUN")
             return false;
         }
 	}

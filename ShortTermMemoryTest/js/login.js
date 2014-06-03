@@ -16,25 +16,26 @@ function Login(){
     }
     
     function checkUsername(user){
-        
-        var url = "http://shorttermmemorytest.herokuapp.com/login";
-        //var url = "http://localhost:3000/login";
-        
-        var params = "username="+user;
+
+
+        var req = new CreateRequest();
+        params = "username="+user
         username = user;
-        var request = CreateRequest();
-        var responseText = request.createPost(url, params);
-        
-        console.log(responseText); 
-        if(responseText == "true"){
-            console.log("true");
-            stateMachine.startGameStartScreen();
-            return true
-        }else{
-            console.log("false");
-            stateMachine.startRegister();
-            return false
+        var jsonData = req.createPost(url+"login", params);
+        var response = JSON.parse(jsonData);
+        if (response.isReserved) {
+            if (response.isTrained) {
+                stateMachine.startGameStartScreen();
+                return true;
+            } else {
+                stateMachine.startGameStartScreen();
+                return true;
+            }
+        } else {
+                stateMachine.startRegister();
+                return false;
         }
+
         
     }
     

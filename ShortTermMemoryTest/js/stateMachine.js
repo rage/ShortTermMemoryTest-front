@@ -1,7 +1,10 @@
 var show;
 var username;
+var url = "http://shorttermmemorytest.herokuapp.com/";
+//var url = "http://localhost:3000/";
+
 var stateMachine = function (){
-    console.log("stateMachine");
+
 
     var login;
     var state;
@@ -12,10 +15,11 @@ var stateMachine = function (){
     var keyHandler;
 
     function start(){
-        console.log("Start");
+
 
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
+        game = new gameLogic(evHandler);
 
         startLogin();
         //startGame(); //For debugging purposes, skip login
@@ -23,7 +27,6 @@ var stateMachine = function (){
 
     function startLogin(){
         state = 1;
-        console.log("startLogin");
         login = new Login();
         login.start();
     }
@@ -32,7 +35,7 @@ var stateMachine = function (){
         state = 2;
         register = new CreateUser();
         register.start();
-        console.log("cu !!!");
+
     }
 
     function startGameStartScreen(){
@@ -42,32 +45,38 @@ var stateMachine = function (){
     }
 
     function createUser(){
-        console.log("singup");
+
         return register.signup();
     }
 
     function startGame(mode) {
         state = 4;
-        
-        var list = new GetList();
-        
-        var mockNumberList = list.getNextList();
-        
+
+        var theNumberList;
+
+        if (mode == "GAME") {
+            var list = new GetList();
+            theNumberList = list.getNextList();
+        } else if (mode == "PRACTICE") {
+            theNumberList = createMockNumberList();
+        }
+
         var gameData = {
             gameIdentifier      : "ThisGame",
             numberDisplayTime   : 5,
             ISITime             : 1,
             guessTime           : 5,
             showResultTime      : 5,
-            numberList          : mockNumberList,
+            numberList          : theNumberList,
             numberListIndex     : 0,
-            eventHandler        : evHandler,
             result              : undefined,
-            mode                : mode
+            mode                : mode,
+            maxPracticeRounds   : 3,
+            donePracticeRounds  : 0
         };
-        
-        game = new gameLogic(gameData);
-        game.start();
+
+
+        game.start(gameData);
         
     }
     
@@ -80,9 +89,9 @@ var stateMachine = function (){
                 numberSeries.numbers[x] = x + i + 2;
             }
             if (i == 1) {
-                numberSeries.order = "REVERSE";
+                numberSeries.order = "backwards";
             } else {
-                numberSeries.order = "NORMAL";
+                numberSeries.order = "upwards";
             }
             //numberSeries.numbers = numbers;
             numberList[i] = numberSeries;

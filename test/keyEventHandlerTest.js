@@ -4,109 +4,131 @@ describe("keyEventHandler", function() {
 
     var evHandler;
     var keyHandler;
-    var keyDownEvent;
-    var keyUpEvent;
     var keyDownCounter;
 
+    var keyDownEvent;
+    var keyUpEvent;
+
+    var SETUP_DONE = false;
+
     beforeEach(function() {
+        if (SETUP_DONE == true) {
+            jasmine.Clock.useMock();
+            keyDownCounter = 0;
+            evHandler.triggerEvent("EVENT_GAME_START", "", 0);
+            jasmine.Clock.tick(1000);
+            $(document).trigger(keyUpEvent);
+        }
+    });
+
+    it("this sets up the scene for all other tests", function() {
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
-        jasmine.Clock.useMock();
-        keyDownEvent = false;
-        keyUpEvent = false;
         keyDownCounter = 0;
-    });
 
-    it("keyEventHandler generates an EVENT_TYPE_KEYDOWN event", function() {
-        evHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", function () {
-            keyDownEvent = true;
-        });
-
-        evHandler.triggerEvent("EVENT_GAME_START", "", 0);
-        //keyHandler.activate();
-        jasmine.Clock.tick(100);
-        var e = jQuery.Event("keydown");
-        e.keyCode = 50; // # Some key code value
-        $(document).trigger(e);
-        jasmine.Clock.tick(100);
-        expect(keyDownEvent).toBe(true);
-    });
-
-    it("keyEventHandler generates a new EVENT_TYPE_KEYDOWN event only after keyup event", function() {
         evHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", function () {
             keyDownCounter++;
         });
 
-        evHandler.triggerEvent("EVENT_GAME_START", "", 0);
-        jasmine.Clock.tick(100);
+        keyDownEvent = jQuery.Event("keydown");
+        keyDownEvent.keyCode = 50;
 
-        var down = jQuery.Event("keydown");
-        down.keyCode = 50; // # Some key code value
-        var up = jQuery.Event("keyup");
-        up.keyCode = 50; // # Some key code value
+        keyUpEvent = jQuery.Event("keyup");
+        keyUpEvent.keyCode = 50;
 
-        $(document).trigger(down);
-        jasmine.Clock.tick(100);
-        $(document).trigger(down);
+        SETUP_DONE = true;
+    });
+
+
+    it("keyEventHandler generates an EVENT_TYPE_KEYDOWN event on key press", function() {
+        $(document).trigger(keyDownEvent);
         jasmine.Clock.tick(100);
         expect(keyDownCounter).toBe(1);
-        /*
-        $(document).trigger(up);
+        $(document).trigger(keyUpEvent);
+    });
+
+
+    it("keyEventHandler generates only one EVENT_TYPE_KEYDOWN event on two consecutice key down presses with no key up in between", function() {
+        $(document).trigger(keyDownEvent);
         jasmine.Clock.tick(100);
-        $(document).trigger(down);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+    });
+
+
+    it("keyEventHandler generates a new EVENT_TYPE_KEYDOWN event only after keyup event", function() {
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
         jasmine.Clock.tick(100);
         expect(keyDownCounter).toBe(2);
-*/
-    });
-    /*
-
-    it("two keydown-events for the same key records only one event", function() {
-        $(document).trigger(down1);
-        $(document).trigger(down1);
-        expect(storer.getEvents().length).toBe(1);
     });
 
-    it("two keydown-events for different keys records two events", function() {
-        $(document).trigger(down1);
-        $(document).trigger(down2);
-        expect(storer.getEvents().length).toBe(2);
+    it("keyEventHandler stops sending EVENT_TYPE_KEYDOWN events after receiving EVENT_GAME_END event", function() {
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+        evHandler.triggerEvent("EVENT_GAME_END", "", 0);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
     });
 
-    it("down-up for one key records two events", function() {
-        $(document).trigger(down1);
-        $(document).trigger(up1);
-        expect(storer.getEvents().length).toBe(2);
+    it("keyEventHandler stops sending EVENT_TYPE_KEYDOWN events after receiving EVENT_PRACTICE_GAME_END event", function() {
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+        evHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
     });
 
-    it("down1-down2-up1-up2 records 4 events", function() {
-        $(document).trigger(down1);
-        $(document).trigger(down2);
-        $(document).trigger(up1);
-        $(document).trigger(up2);
-        expect(storer.getEvents().length).toBe(4);
+    it("keyEventHandler restarts sending EVENT_TYPE_KEYDOWN events after receiving EVENT_GAME_START event", function() {
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+        evHandler.triggerEvent("EVENT_GAME_END", "", 0);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+        evHandler.triggerEvent("EVENT_GAME_START", "", 0);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(2);
     });
 
-    it("down1-down2-up2-down1 records 3 events", function() {
-        $(document).trigger(down1);
-        $(document).trigger(down2);
-        $(document).trigger(up2);
-        $(document).trigger(down1);
-        expect(storer.getEvents().length).toBe(3);
+    it("keyEventHandler restarts sending EVENT_TYPE_KEYDOWN events after receiving EVENT_PRACTICE_GAME_START event", function() {
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+        evHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(1);
+        $(document).trigger(keyUpEvent);
+        evHandler.triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);
+        jasmine.Clock.tick(100);
+        $(document).trigger(keyDownEvent);
+        jasmine.Clock.tick(100);
+        expect(keyDownCounter).toBe(2);
     });
-
-    it("details of the event recorded correctly", function() {
-        $(document).trigger(down1);
-        $(document).trigger(up2);
-        var time = new Date().getTime();
-        var savedEvent1 = storer.getEvents()[0];
-        var savedEvent2 = storer.getEvents()[1];
-        expect(savedEvent1.type).toBe("EVENT_TYPE_KEYDOWN");
-        expect(savedEvent1.value).toBe(1);
-        expect(savedEvent2.type).toBe("EVENT_TYPE_KEYUP");
-        expect(savedEvent2.value).toBe(2);
-        expect(savedEvent1.timeStamp-time).toBeGreaterThan(-10);
-        expect(savedEvent1.timeStamp-time).toBeLessThan(10);
-    });
-*/
 
 });
