@@ -7,7 +7,6 @@ function Login(){
     }
     
     function createHtml(){
-        console.log("createHtml")
         document.body.innerHTML = "<div id=\"login\">\
         <form onSubmit=\"stateMachine.login().checkUsername(document.getElementById('username').value)\">\
         <input type=\"text\" id=\"username\" autocomplete=\"off\" autofocus required>\
@@ -28,12 +27,10 @@ function Login(){
                 userIsTrained = true;
                 stateMachine.startGameStartScreen(); 
                 return true;
-                console.log("asd");
             } else {
                 userIsTrained = false;
                 stateMachine.startGameStartScreen(); 
                 return true;
-                console.log("asd");
             }
         } else {
                 stateMachine.startRegister();
