@@ -8,12 +8,12 @@ body{
 	text-align:center;
 	font-size:100%;
 	position: absolute;
-	width: 300px;
+	width: 310px;
 	height: 100px;
 	top: 50%;
 	left: 50%;
 	margin-top: -50px;
-	margin-left: -150px;
+	margin-left: -155px;
 }
 #createUser{
  
@@ -31,16 +31,31 @@ body{
 	text-align:center;
 	font-size:100%;
 	position: absolute;
-	width: 300px;
+	width: 600px;
 	height: 200px;
 	top: 50%;
 	left: 50%;
 	margin-top: -100px;
-	margin-left: -150px;
+	margin-left: -300px;
 }
  
 #startScreen #instructions{
     text-align:left;
+}
+
+#startScreen ul {
+    display: inline-block;
+}
+
+#startScreen li {
+    padding:10px 30px;
+    font-size: 150%;
+    list-style-type: none;
+    display: inline-block;
+}
+
+#startScreen .startpractise {
+    font-size:200%;
 }
 
 #Game{
@@ -89,8 +104,4 @@ body{
     left: 50%;
     margin-top: -50px;
     margin-left: -400px;
-}
-
-ul {
-    list-style-type: none;
 }

@@ -10,7 +10,6 @@ var stateMachine = function (){
 
     function start(){
 
-
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
@@ -21,21 +20,27 @@ var stateMachine = function (){
     }
 
     function startLogin(){
+
         state = 1;
         login = new Login();
         login.start();
+
     }
 
     function startRegister(){
+
         state = 2;
         register = new CreateUser();
         register.start();
+
     }
 
     function startGameStartScreen(){
+
         state = 3;
         startScreen = new GameStartScreen();
         startScreen.start();
+
     }
 
     function createUser(){
@@ -43,6 +48,7 @@ var stateMachine = function (){
     }
 
     function startGame(mode) {
+
         state = 4;
 
         var theNumberList;

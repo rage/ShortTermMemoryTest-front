@@ -1,6 +1,7 @@
 function GameStartScreen(){
     var selected = "startpractise";
-    var selectedColor = "green";
+    var selectedbackgroundColor = "white";
+    var selectedColor = "black";
     //userIsTrained = true;
 	
 	function start(){
@@ -37,13 +38,17 @@ function GameStartScreen(){
 
             selected = "starttest"
             document.getElementById("startpractise").style.backgroundColor = "black";
-            document.getElementById("starttest").style.backgroundColor = selectedColor;
+            document.getElementById("startpractise").style.color = "white";
+            document.getElementById("starttest").style.backgroundColor = selectedbackgroundColor;
+            document.getElementById("starttest").style.color = selectedColor;
 
         }else{
 
             selected = "startpractise"
-            document.getElementById("startpractise").style.backgroundColor = selectedColor;
+            document.getElementById("startpractise").style.color = selectedColor;
+            document.getElementById("startpractise").style.backgroundColor = selectedbackgroundColor;
             document.getElementById("starttest").style.backgroundColor = "black";
+            document.getElementById("starttest").style.color = "white";
 
         }
 
@@ -54,23 +59,21 @@ function GameStartScreen(){
         var startTest = "";
 
         if(userIsTrained){
-            startTest = '<li id="starttest">Aloita testi</li>'
+            startTest = '<ul><li id="startpractise">Harjoittele</li><li id="starttest">Aloita testi</li></ul>';
+        }else{
+            startTest = '<p id="startpractise" class="startpractise">'+text["ekaHarjoittelu"]+'</p>'
         }
 
-        var teksti = "Testissä satunnainen numerosarja tulee näytölle numero kerrallaan. " +
-            "Kun viimeinen numero on näytetty, ilmestyy näyttöön teksti, joka kertoo missä järjestyksessä numerot tulee palauttaa. " +
-            "Paina näppäimistön numeronappuloita ohjeen mukaisessa järjestyksessä. aikaa tähän on 10 sekuntia " +
-            "Harjoittelu koostuu kolmesta numerosarjasta - kunkin numerosarjan jälkeen saat palautetta onnistumisestasi.";
 
         document.body.innerHTML = '<div id="startScreen">\
-        <p id="instructions">' + teksti + '</p>\
-        <ul>\
-        <li id="startpractise">Harjoittele</li>'
-        +startTest+
-        '</ul>\
+        <p id="instructions">' + text["ohje"] + '</p>\
+        '+startTest+'\
         </div>';
-        document.getElementById("startpractise").style.backgroundColor="green";
 
+        if(userIsTrained){
+            document.getElementById("startpractise").style.color = selectedColor;
+            document.getElementById("startpractise").style.backgroundColor = selectedbackgroundColor;
+        }
 	}
 	
 	return {
