@@ -27,6 +27,7 @@ var stateMachine = function (){
 
     }
 
+
     function startRegister(){
 
         state = 2;
@@ -35,9 +36,13 @@ var stateMachine = function (){
 
     }
 
+    function startNotification(){
+        state = 3;
+    }
+
     function startGameStartScreen(){
 
-        state = 3;
+        state = 4;
         startScreen = new GameStartScreen();
         startScreen.start();
 

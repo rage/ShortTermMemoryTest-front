@@ -15,3 +15,7 @@ text["ohje"]= "<p>Sinulle näytetään yksitellen numeroita 0-9 väliltä ruudul
     "<p>Palauta numerot niin nopeasti ja virheettömästi kuin pystyt käyttäen näppäimistön numeroita.</p>" +
     "<p>Saat harjoitella tehtävää, jos haluat. Pääset harjoitukseen VÄLILYÖNNILLÄ. </p>" +
     "<p>Jos haluat mennä suoraan tehtävään, paina ENTER.</p>";
+
+text["tiedoite"] = "<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p>" +
+    "<p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat. </p>" +
+    "<p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>";
