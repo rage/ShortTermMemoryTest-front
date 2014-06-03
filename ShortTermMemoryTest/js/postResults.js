@@ -13,7 +13,6 @@ function PostResults() {
             type: 'POST',
             url: url+"testlogs",
             data: resultsJSON,
-            //processData: false,
             dataType: 'json',
             success: function(){console.log("success");},
             failure: function(errMsg){console.log(errMsg);}

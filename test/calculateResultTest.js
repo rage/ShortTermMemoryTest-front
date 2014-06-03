@@ -95,7 +95,7 @@ describe("calculateResult ", function() {
         expect(calculator.lastSeriesCorrectness).toBe(true)
     });
 
-    it("incorrect answer when one 3-number set and one the last number is typed after deadline ", function() {
+    /*it("incorrect answer when one 3-number set and one the last number is typed after deadline ", function() {
         storer = new eventStorer();
         storer.registerEvent(1,startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -105,7 +105,6 @@ describe("calculateResult ", function() {
         storer.registerEvent(1,endTyping, orderNormal, 777);
         typeNumbers(n5);
         var calculator = new calculateResult(storer.getEvents(),199);
-        console.log(storer.getEvents());
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -123,7 +122,7 @@ describe("calculateResult ", function() {
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
-    });
+    });*/
 
     it("correct answer when one 3-number set and one extra number is given after deadline ", function() {
         storer = new eventStorer();
@@ -139,7 +138,7 @@ describe("calculateResult ", function() {
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
     });
-
+/*
     it("incorrect answer when one 3-number set and the first number is missing from answer ", function() {
         storer = new eventStorer();
         storer.registerEvent(1,startSeries, orderNormal, 777);
@@ -154,6 +153,7 @@ describe("calculateResult ", function() {
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
     });
+    */
 
     it("correct answers when two 3-number sets and both answers are correct", function() {
         storer = new eventStorer();
@@ -176,7 +176,7 @@ describe("calculateResult ", function() {
         expect(calculator.numberOfCorrectGivenSeries).toBe(2);
         expect(calculator.lastSeriesCorrectness).toBe(true)
     });
-
+/*
     it("one correct and one incorrect answer when two 3-number sets and the first answer is correct", function() {
         storer = new eventStorer();
         storer.registerEvent(1,startSeries, orderNormal, 777);
@@ -220,7 +220,7 @@ describe("calculateResult ", function() {
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
     });
-
+*/
 
 
 
