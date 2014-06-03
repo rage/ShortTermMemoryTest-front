@@ -66,9 +66,6 @@ body{
 }
 
 
-a{
-cursor:pointer
-}
 
 #Result{
     text-align:center;
@@ -92,4 +89,8 @@ cursor:pointer
     left: 50%;
     margin-top: -50px;
     margin-left: -400px;
+}
+
+ul {
+    list-style-type: none;
 }

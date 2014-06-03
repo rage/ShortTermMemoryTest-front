@@ -1,11 +1,4 @@
-var show;
-var username;
-var userIsTrained;
-var url = "http://shorttermmemorytest.herokuapp.com/";
-//var url = "http://localhost:3000/"
-
 var stateMachine = function (){
-
 
     var login;
     var state;
@@ -37,7 +30,6 @@ var stateMachine = function (){
         state = 2;
         register = new CreateUser();
         register.start();
-
     }
 
     function startGameStartScreen(){
@@ -47,7 +39,6 @@ var stateMachine = function (){
     }
 
     function createUser(){
-
         return register.signup();
     }
 
