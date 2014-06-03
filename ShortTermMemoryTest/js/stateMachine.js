@@ -1,10 +1,4 @@
-var show;
-var username;
-var url = "http://shorttermmemorytest.herokuapp.com/";
-//var url = "http://localhost:3000/";
-
 var stateMachine = function (){
-
 
     var login;
     var state;
@@ -16,40 +10,50 @@ var stateMachine = function (){
 
     function start(){
 
-
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
 
         startLogin();
-        //startGame(); //For debugging purposes, skip login
+        //startGame();
+        //startGameStartScreen(); //For debugging purposes, skip login
     }
 
     function startLogin(){
+
         state = 1;
         login = new Login();
         login.start();
+
     }
 
+
     function startRegister(){
+
         state = 2;
         register = new CreateUser();
         register.start();
 
     }
 
-    function startGameStartScreen(){
+    function startNotification(){
         state = 3;
+    }
+
+    function startGameStartScreen(){
+
+        state = 4;
         startScreen = new GameStartScreen();
         startScreen.start();
+
     }
 
     function createUser(){
-
         return register.signup();
     }
 
     function startGame(mode) {
+
         state = 4;
 
         var theNumberList;
@@ -63,10 +67,12 @@ var stateMachine = function (){
 
         var gameData = {
             gameIdentifier      : "ThisGame",
-            numberDisplayTime   : 5,
-            ISITime             : 1,
-            guessTime           : 5,
-            showResultTime      : 5,
+            numberDisplayTime   : 500,
+            ISITime             : 1500,
+            guessTime           : 5000,
+            showResultTime      : 5000,
+            showCrossDelay      : 1000,
+            showCrossTime       : 1000,
             numberList          : theNumberList,
             numberListIndex     : 0,
             result              : undefined,

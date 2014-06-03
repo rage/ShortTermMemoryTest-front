@@ -7,7 +7,7 @@ function showOrder(order) {
     function createHTML() {
         $("body").html("<div id=\"Game\">\
         <ul>\
-        <h1 id = \"order_field\"></h1>\
+        <p id = \"order_field\"></p>\
         </ul>\
         </div>\
         ");

@@ -9,7 +9,7 @@ function CreateRandomTestUser(params){
         var params = 'username='+username+'&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
     }
 
-    var request = CreateRequest();
+    var request = Request();
     var responseText = request.createPost(url+"signup", params);
 
     return username
@@ -22,7 +22,7 @@ function CreateTestUser(username){
         var params = 'username='+username+'&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
     }
 
-    var request = CreateRequest();
+    var request = Request();
     var responseText = request.createPost(url+"signup", params);
 
     return username

@@ -10,7 +10,7 @@ describe("createPostRequest (signup)", function() {
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length)); 
         var params = 'username='+text+'&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
         
@@ -21,7 +21,7 @@ describe("createPostRequest (signup)", function() {
 
 
         var params = 'username=olen&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
         
@@ -38,7 +38,7 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth=1800&handedness=r&education=Peruskoulu';
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
         
@@ -56,7 +56,7 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
         
@@ -73,7 +73,7 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
         
@@ -90,7 +90,7 @@ describe("createPostRequest (signup)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text+'&sex=f&yearOfBirth='+year+'&handedness=r&education=Peruskoulu';
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
         
@@ -112,7 +112,7 @@ describe("createPostRequest (login)", function() {
             text += possible.charAt(Math.floor(Math.random() * possible.length));
             
         var params = 'username='+text;
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"login", params);
 
         
@@ -123,7 +123,7 @@ describe("createPostRequest (login)", function() {
 
 
         var params = 'username=olen';
-        var request = CreateRequest();
+        var request = Request();
         var responseText = request.createPost(url+"login", params);
 
         

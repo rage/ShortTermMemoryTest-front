@@ -2,7 +2,7 @@ function GetList(){
     
     function getNextList(){
 
-        var req = new CreateRequest();
+        var req = new Request();
         params = "username="+username
         var urlEnd = "lists/1.json"
         var jsonData = req.createGet(url+urlEnd, params);

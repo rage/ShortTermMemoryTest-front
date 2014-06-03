@@ -7,7 +7,7 @@ function showNumber(number) {
     function createHTML() {
         $("body").html("<div id=\"Game\">\
         <ul>\
-        <h1 id = \"num_field\"></h1>\
+        <p id = \"num_field\"></p>\
         </ul>\
         </div>\
         ");

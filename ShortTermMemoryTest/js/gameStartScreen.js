@@ -1,21 +1,42 @@
-var teksti = "Testissä satunnainen numerosarja tulee näytölle numero kerrallaan. Kun viimeinen numero on näytetty, ilmestyy näyttöön teksti, joka kertoo missä järjestyksessä numerot tulee palauttaa. Paina näppäimistön numeronappuloita ohjeen mukaisessa järjestyksessä. aikaa tähän on 10 sekuntia.";
-teksti += " Harjoittelu koostuu kolmesta numerosarjasta - kunkin numerosarjan jälkeen saat palautetta onnistumisestasi.";
-
 function GameStartScreen(){
+    var selected = "startpractise";
+    var selectedbackgroundColor = "white";
+    var selectedColor = "black";
+    //userIsTrained = true;
 	
 	function start(){
 		createHtml();
 	}
-	
+
+    window.onkeypress = function(e) {
+
+        var key = e.keyCode ? e.keyCode : e.which;
+        console.log(key)
+        if(key == 32) {
+            stateMachine.startGame('PRACTICE');
+        }else if(key == 13 && userIsTrained) {
+            stateMachine.startGame('GAME');
+        }
+        window.onkeypress = "";
+
+    }
+
+
 	function createHtml(){
-        document.body.innerHTML = "<div id=\"startScreen\">\
-        <p id=\"instructions\">" + teksti + "</p>\
-        <ul>\
-        <li><a onclick=\"stateMachine.startGame('PRACTICE')\"<a>Harjoittele</a></li>\
-        <li><a onclick=\"stateMachine.startGame('GAME')\" >Aloita testi</a></li>\
-        </ul>\
-        </div>\
-        ";
+
+
+        if(userIsTrained){
+            document.body.innerHTML = '<div id="startScreen"><div id="instructions">' + text["ohje"] + '</div></div>';
+        }else{
+            document.body.innerHTML = '<div id="startScreen"><div id="instructions">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>'+text["ekaHarjoittelu"]+'</div>';
+        }
+
+
+
+        if(userIsTrained){
+            document.getElementById("startpractise").style.color = selectedColor;
+            document.getElementById("startpractise").style.backgroundColor = selectedbackgroundColor;
+        }
 	}
 	
 	return {

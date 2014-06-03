@@ -18,7 +18,7 @@ function CreateUser(){
         document.body.innerHTML = "<div id=\"createUser\"><div id=\"varoitus\"></div><form onSubmit=\"stateMachine.createUser()\">\
         Sukupuoli:\
         <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"m\" id=\"m\">Mies\
-        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"f\" id=\"f\">Nainen\
+        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"f\" id=\"f\">Nainen<br>\
         Syntymävuosi: \
         <select name=\"yearofbirth\" id=\"yearofbirth\">\
         <option value=\"valitse\">Valitse</option>"
@@ -61,7 +61,7 @@ function CreateUser(){
 
             return false;
         }
-        var request = CreateRequest();
+        var request = Request();
 
 
         var responseText = request.createPost(url+"signup", params);

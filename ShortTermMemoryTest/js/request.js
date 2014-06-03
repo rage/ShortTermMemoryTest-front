@@ -1,6 +1,4 @@
-
-
-function CreateRequest(){
+function Request(){
     
     function createPost(url, params){
         return create(url, params, "POST");
@@ -11,16 +9,15 @@ function CreateRequest(){
     }
     
     function create(url, params, type){
-
+        
         var req = createCORSRequest(type, url);
-
-
+        
         if(type == "POST"){
             req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         }
         
         req.send(params);
-
+        
         return req.responseText;
         
     }
