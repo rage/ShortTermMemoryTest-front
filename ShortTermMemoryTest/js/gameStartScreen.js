@@ -11,64 +11,27 @@ function GameStartScreen(){
     window.onkeypress = function(e) {
 
         var key = e.keyCode ? e.keyCode : e.which;
-
-        if(key == 13) {
-            startSelectedType();
-        }else if(key >= 37 && key <= 40 && userIsTrained){
-            reverseSelected();
-        }
-
-    }
-
-    function startSelectedType(){
-
-        if(selected == "startpractise"){
+        console.log(key)
+        if(key == 32) {
             stateMachine.startGame('PRACTICE');
-        }else{
+        }else if(key == 13 && userIsTrained) {
             stateMachine.startGame('GAME');
         }
-
         window.onkeypress = "";
 
     }
 
-    function reverseSelected(){
-
-        if(selected == "startpractise"){
-
-            selected = "starttest"
-            document.getElementById("startpractise").style.backgroundColor = "black";
-            document.getElementById("startpractise").style.color = "white";
-            document.getElementById("starttest").style.backgroundColor = selectedbackgroundColor;
-            document.getElementById("starttest").style.color = selectedColor;
-
-        }else{
-
-            selected = "startpractise"
-            document.getElementById("startpractise").style.color = selectedColor;
-            document.getElementById("startpractise").style.backgroundColor = selectedbackgroundColor;
-            document.getElementById("starttest").style.backgroundColor = "black";
-            document.getElementById("starttest").style.color = "white";
-
-        }
-
-    }
 
 	function createHtml(){
 
-        var startTest = "";
 
         if(userIsTrained){
-            startTest = '<ul><li id="startpractise">Harjoittele</li><li id="starttest">Aloita testi</li></ul>';
+            document.body.innerHTML = '<div id="startScreen"><div id="instructions">' + text["ohje"] + '</div></div>';
         }else{
-            startTest = '<p id="startpractise" class="startpractise">'+text["ekaHarjoittelu"]+'</p>'
+            document.body.innerHTML = '<div id="startScreen"><div id="instructions">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>'+text["ekaHarjoittelu"]+'</div>';
         }
 
 
-        document.body.innerHTML = '<div id="startScreen">\
-        <p id="instructions">' + text["ohje"] + '</p>\
-        '+startTest+'\
-        </div>';
 
         if(userIsTrained){
             document.getElementById("startpractise").style.color = selectedColor;
