@@ -4,10 +4,15 @@ function GetList(){
 
         var req = new Request();
         params = "username="+username
-        var urlEnd = "lists/1.json"
-        var jsonData = req.createGet(url+urlEnd, params);
+        var urlEnd = "nextList"
+        var jsonData = req.createPost(url+urlEnd, params);
 
-        return createNumberList(JSON.parse(jsonData));
+        var jsonParsed = JSON.parse(jsonData);
+        var numberSets = jsonParsed["list"]["numbersets"]
+
+        testcase_id = jsonParsed["id"];
+
+        return createNumberList(numberSets);
         
     }
 
