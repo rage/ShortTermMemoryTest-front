@@ -10,6 +10,7 @@ function WaitPractiseStart(){
         console.log(key);
         if(key == 32) {
             stateMachine.startGame('PRACTICE');
+            window.onkeypress = "";
         }
 
     };
