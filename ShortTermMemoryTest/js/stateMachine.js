@@ -111,11 +111,10 @@ var stateMachine = function (){
                 donePracticeRounds: 0
             };
 
-
             game.start(gameData);
 
         }
-        
+
     }
     
     function createMockNumberList() {

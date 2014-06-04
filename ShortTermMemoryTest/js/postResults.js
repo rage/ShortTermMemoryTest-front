@@ -2,13 +2,11 @@ function PostResults() {
 
     function post(results) {
 
-        var resultsJSON = {"testlog" : results};
-
-
-        /*var testJSON = {"testlog" : [{"testcase_id":"1", "eventtype":"dgffdsfdg", "value":"4", "timestamp":"122334223"},
-                       {"testcase_id":"1", "eventtype":"dgsfdg", "value":"4", "timestamp":"1223343"}]};
-        console.log(resultsJSON);
-        console.log(testJSON);*/
+        var resultsJSON
+        for(var i=0;i<results.length;i++) {
+            results[i]["testcase_id"]=testcase_id;
+        }
+        resultsJSON = {"testlog" : results};
         $.ajax({
             type: 'POST',
             url: url+"testlogs",
