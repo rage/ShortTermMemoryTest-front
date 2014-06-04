@@ -18,3 +18,7 @@ text["ohje"]= "<p>Sinulle näytetään yksitellen numeroita 0-9 väliltä ruudul
 text["tiedoite"] = "<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p>" +
     "<p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat. </p>" +
     "<p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>";
+
+text["testinTarkoitus"] = "<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p>" +
+    "<p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p>" +
+    "<p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>";
