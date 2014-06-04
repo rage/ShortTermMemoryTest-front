@@ -1,4 +1,4 @@
-function Notification(){
+function WaitPractiseStart(){
 
     function start(){
         createHtml();
@@ -7,18 +7,19 @@ function Notification(){
     window.onkeypress = function(e) {
 
         var key = e.keyCode ? e.keyCode : e.which;
-
+        console.log(key);
         if(key == 32) {
-            stateMachine.startGameStartScreen();
+            stateMachine.startGame('PRACTICE');
         }
 
     };
 
     function createHtml(){
-        document.body.innerHTML = '<div id="Notification">'+text["testinTarkoitus"]+'</div>';
+        document.body.innerHTML = '<div id="PracticeStart">'+text["harjoittelunAloitushje"]+'</div>';
     }
 
     return {
         start:start
     }
+
 }

@@ -29,12 +29,28 @@ var stateMachine = function (){
 
     }
 
+    function checkUsername(user){
+
+        if(state.is(1)) {
+            return login.checkUsername(user);
+        }
+
+    }
+
 
     function startRegister(){
 
         if(state.set(2)) {
             register = new CreateUser();
             register.start();
+        }
+
+    }
+
+    function createUser(){
+
+        if(state.is(2)) {
+            return register.signup();
         }
 
     }
@@ -57,17 +73,18 @@ var stateMachine = function (){
 
     }
 
-    function createUser(){
+    function startWaitPractice(){
 
-        if(state.is(2)) {
-            return register.signup();
+        if(state.set(5)) {
+            var waitPractice = new WaitPractiseStart();
+            waitPractice.start();
         }
 
     }
 
     function startGame(mode) {
 
-        if(state.set(5)) {
+        if(state.set(6)) {
 
             var theNumberList;
 
@@ -96,6 +113,7 @@ var stateMachine = function (){
 
 
             game.start(gameData);
+
         }
         
     }
@@ -126,8 +144,7 @@ var stateMachine = function (){
         createUser:createUser,
         startGame:startGame,
         startNotification:startNotification,
-        login:function (){
-            return login
-        }
+        checkUsername:checkUsername,
+        startWaitPractice:startWaitPractice
     }
 }();

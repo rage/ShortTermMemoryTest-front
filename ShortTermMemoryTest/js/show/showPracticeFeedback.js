@@ -21,11 +21,11 @@ function showPracticeFeedback(gameData) {
     createHTML();
 
     if (gameData.result.lastSeriesCorrectness == true) {
-        $("#firstline").html("CORRECT");
-        $("#secondline").html("You entered the correct numbers in the correct order.");
+        $("#firstline").html(text["oikein"]);
+        $("#secondline").html(text["oikeinIlmoitus"]);
     } else {
-        $("#firstline").html("INCORRECT");
-        $("#secondline").html("The numbers you entered were either not correct or not in the correct order.");
+        $("#firstline").html(text["vaarin"]);
+        $("#secondline").html(text["vaarinIlmoitus"]);
     }
 
     if (gameData.numberList.length == gameData.numberListIndex) {
@@ -39,7 +39,6 @@ function showPracticeFeedback(gameData) {
             }
         });
     } else {
-        $("#thirdline").html("Press enter to attempt the next practice series.");
 
         gameData.requestFocus(function (event, keyCode) {
             if (keyCode == 13) {
