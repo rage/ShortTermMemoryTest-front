@@ -1,12 +1,13 @@
+
 var show;
 var username;
 var userIsTrained;
 var testcase_id;
-//var url = "http://shorttermmemorytest.herokuapp.com/";
-var url = "http://localhost:3000/"
+var url = "http://shorttermmemorytest.herokuapp.com/";
+//var url = "http://localhost:3000/"
+
 
 var stateMachine = function (){
-
 
     var login;
     var state;
@@ -18,10 +19,10 @@ var stateMachine = function (){
 
     function start(){
 
-
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
+        state = new State();
 
         startLogin();
         //startGame();
@@ -29,60 +30,82 @@ var stateMachine = function (){
     }
 
     function startLogin(){
-        state = 1;
-        login = new Login();
-        login.start();
+
+        if(state.set(1)){
+            login = new Login();
+            login.start();
+        }
+
     }
 
+
     function startRegister(){
-        state = 2;
-        register = new CreateUser();
-        register.start();
+
+        if(state.set(2)) {
+            register = new CreateUser();
+            register.start();
+        }
+
+    }
+
+    function startNotification(){
+
+        if(state.set(3)) {
+            var notification = new Notification();
+            notification.start();
+        }
 
     }
 
     function startGameStartScreen(){
-        state = 3;
-        startScreen = new GameStartScreen();
-        startScreen.start();
+
+        if(state.set(4)) {
+            var startScreen = new GameStartScreen();
+            startScreen.start();
+        }
+
     }
 
     function createUser(){
 
-        return register.signup();
+        if(state.is(2)) {
+            return register.signup();
+        }
+
     }
 
     function startGame(mode) {
-        state = 4;
 
-        var theNumberList;
+        if(state.set(5)) {
 
-        if (mode == "GAME") {
+            var theNumberList;
             var list = new GetList();
-            theNumberList = list.getNextList();
-        } else if (mode == "PRACTICE") {
-            theNumberList = createMockNumberList();
+            if (mode == "GAME") {
+
+                theNumberList = list.getNextList();
+            } else if (mode == "PRACTICE") {
+                theNumberList = createMockNumberList();
+            }
+
+            var gameData = {
+                gameIdentifier: "ThisGame",
+                numberDisplayTime: 500,
+                ISITime: 1500,
+                guessTime: 5000,
+                showResultTime: 5000,
+                showCrossDelay: 1000,
+                showCrossTime: 1000,
+                numberList: theNumberList,
+                numberListIndex: 0,
+                result: undefined,
+                mode: mode,
+                maxPracticeRounds: 3,
+                donePracticeRounds: 0
+            };
+
+            game.start(gameData);
         }
 
-        var gameData = {
-            gameIdentifier      : "ThisGame",
-            numberDisplayTime   : 500,
-            ISITime             : 1500,
-            guessTime           : 5000,
-            showResultTime      : 5000,
-            showCrossDelay      : 1000,
-            showCrossTime       : 1000,
-            numberList          : theNumberList,
-            numberListIndex     : 0,
-            result              : undefined,
-            mode                : mode,
-            maxPracticeRounds   : 3,
-            donePracticeRounds  : 0
-        };
-
-
-        game.start(gameData);
-        
     }
     
     function createMockNumberList() {
@@ -110,6 +133,7 @@ var stateMachine = function (){
         startGameStartScreen:startGameStartScreen,
         createUser:createUser,
         startGame:startGame,
+        startNotification:startNotification,
         login:function (){
             return login
         }

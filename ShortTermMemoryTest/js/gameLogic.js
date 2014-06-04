@@ -4,7 +4,9 @@
 
 function gameLogic (eventHandler) {
 
+
     var gameData;
+    var postResults = new PostResults();
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
     eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
@@ -33,12 +35,15 @@ function gameLogic (eventHandler) {
 
     eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
 
+
     eventHandler.registerEventHandler("EVENT_SHOWCROSS_START", showCrossEventHandler);
     eventHandler.registerEventHandler("EVENT_SHOWCROSS_END", endShowCrossEventHandler);
 
 
+
     function showResultEventHandler(event) {
         showResult(gameData);
+        postResults.post(gameData.eventHandler.getStoredEvents());
     }
 
     function endShowResultEventHandler(event) {

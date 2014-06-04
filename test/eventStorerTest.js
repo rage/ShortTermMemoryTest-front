@@ -13,9 +13,9 @@ describe("eventStorerTest", function() {
         myfunc.registerEvent("EVENT_TYPE_KEYDOWN", 2, 3);
         var events = myfunc.getEvents()
         var event = myfunc.getEvents()[0];
-        expect(event.type).toBe("EVENT_TYPE_KEYDOWN");
+        expect(event.eventtype).toBe("EVENT_TYPE_KEYDOWN");
         expect(event.value).toBe(2);
-        expect(event.timeStamp).toBe(3);
+        expect(event.timestamp).toBe(3);
         expect(events.length).toBe(1);
     });
 
@@ -26,10 +26,10 @@ describe("eventStorerTest", function() {
         var events = myfunc.getEvents();
         var event0 = myfunc.getEvents()[0];
         var event1 = myfunc.getEvents()[1];
-        expect(event0.type).toBe("EVENT_TYPE_KEYDOWN");
-        expect(event1.type).toBe("EVENT_TYPE_KEYUP");
+        expect(event0.eventtype).toBe("EVENT_TYPE_KEYDOWN");
+        expect(event1.eventtype).toBe("EVENT_TYPE_KEYUP");
         expect(event1.value).toBe(4);
-        expect(event1.timeStamp).toBe(5);
+        expect(event1.timestamp).toBe(5);
         expect(events.length).toBe(2);
     });
 

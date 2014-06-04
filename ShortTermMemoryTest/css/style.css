@@ -8,12 +8,12 @@ body{
 	text-align:center;
 	font-size:100%;
 	position: absolute;
-	width: 300px;
+	width: 310px;
 	height: 100px;
 	top: 50%;
 	left: 50%;
 	margin-top: -50px;
-	margin-left: -150px;
+	margin-left: -155px;
 }
 #createUser{
  
@@ -28,19 +28,14 @@ body{
 }
 
 #startScreen{
-	text-align:center;
 	font-size:100%;
 	position: absolute;
-	width: 300px;
+	width: 600px;
 	height: 200px;
 	top: 50%;
 	left: 50%;
 	margin-top: -100px;
-	margin-left: -150px;
-}
- 
-#startScreen #instructions{
-    text-align:left;
+	margin-left: -300px;
 }
 
 #Game{
@@ -65,11 +60,6 @@ body{
     margin-top: 100px;
 }
 
-
-a{
-cursor:pointer
-}
-
 #Result{
     text-align:center;
     font-size:100%;
@@ -92,4 +82,15 @@ cursor:pointer
     left: 50%;
     margin-top: -50px;
     margin-left: -400px;
+}
+
+#Notification{
+    font-size:100%;
+    position: absolute;
+    width: 310px;
+    height: 100px;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -155px;
 }

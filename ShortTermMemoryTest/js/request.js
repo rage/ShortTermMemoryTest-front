@@ -1,5 +1,3 @@
-
-
 function Request(){
     
     function createPost(url, params){

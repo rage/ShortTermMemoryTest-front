@@ -15,7 +15,7 @@ function eventHandler() {
     function triggerEvent(eventType, eventValue, delay) {
         setTimeout(function () {
                 evStore.registerEvent(eventType, eventValue, Date.now());
-                $.event.trigger({ type: eventType, message: eventValue, time: Date.now()})
+                $.event.trigger({type: eventType, message: eventValue, time: Date.now()})
             }
             , delay);
     }

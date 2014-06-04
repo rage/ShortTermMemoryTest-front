@@ -1,29 +1,33 @@
 function GameStartScreen(){
-    var selected;
+    var selected = "startpractise";
 	
 	function start(){
 		createHtml();
 	}
-    
-	function createHtml(){
-        var startTest = "";
-        selected = "test"
-        if(userIsTrained){
-            startTest = '<li>\
-            <a onclick="stateMachine.startGame(\'GAME\')" id="starttest">Aloita testi</a></li>'
 
+    window.onkeypress = function(e) {
+
+        var key = e.keyCode ? e.keyCode : e.which;
+        console.log(key);
+        if(key == 32) {
+            stateMachine.startGame('PRACTICE');
+            window.onkeypress = "";
+        }else if(key == 13 && userIsTrained) {
+            stateMachine.startGame('GAME');
+            window.onkeypress = "";
         }
-        var teksti = "Testissä satunnainen numerosarja tulee näytölle numero kerrallaan. Kun viimeinen numero on näytetty, ilmestyy näyttöön teksti, joka kertoo missä järjestyksessä numerot tulee palauttaa. Paina näppäimistön numeronappuloita ohjeen mukaisessa järjestyksessä. aikaa tähän on 10 sekuntia.";
-        teksti += " Harjoittelu koostuu kolmesta numerosarjasta - kunkin numerosarjan jälkeen saat palautetta onnistumisestasi.";
 
-        document.body.innerHTML = "<div id=\"startScreen\">\
-        <p id=\"instructions\">" + teksti + "</p>\
-        <ul>\
-        <li><a onclick=\"stateMachine.startGame('PRACTICE')\" id=\"startpractise\"a>Harjoittele</a></li>"
-        +startTest+
-        "</ul>\
-        </div>\
-        ";
+    }
+
+
+	function createHtml(){
+
+        if(userIsTrained){
+            document.body.innerHTML = '<div id="startScreen">' + text["ohje"] + '</div>';
+        }else{
+            document.body.innerHTML = '<div id="startScreen">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>';
+        }
+
 	}
 	
 	return {

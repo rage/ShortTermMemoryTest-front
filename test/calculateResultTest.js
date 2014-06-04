@@ -42,7 +42,7 @@ describe("calculateResult ", function() {
         expect(calculator.numberOfShownSeries).toBe(1);
     });
 
-    it("numberOfShownSets correct when two sets are shown ", function() {
+   it("numberOfShownSets correct when two sets are shown ", function() {
         storer = new eventStorer();
         storer.registerEvent(startSeries, orderNormal, 777);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -153,6 +153,7 @@ describe("calculateResult ", function() {
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
     });
+
 
     it("correct answers when two 3-number sets and both answers are correct", function() {
         storer = new eventStorer();
