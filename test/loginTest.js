@@ -20,7 +20,7 @@ describe("LoginTest", function() {
         stateMachine.start();
         document.getElementById('username').value = "Olen";
 
-        var o = stateMachine.login().checkUsername(document.getElementById('username').value);
+        var o = stateMachine.checkUsername(document.getElementById('username').value);
         expect(o).toBe(true);
 
     });

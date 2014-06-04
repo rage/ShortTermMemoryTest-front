@@ -33,8 +33,10 @@ function Request(){
             req.open(method, url);
         } else {
             req = null;
-        } 
+        }
+
         return req;
+
     }
     
     return {

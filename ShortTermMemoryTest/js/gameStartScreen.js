@@ -8,13 +8,11 @@ function GameStartScreen(){
     window.onkeypress = function(e) {
 
         var key = e.keyCode ? e.keyCode : e.which;
-        console.log(key);
+
         if(key == 32) {
-            stateMachine.startGame('PRACTICE');
-            window.onkeypress = "";
+            stateMachine.startWaitPractice();
         }else if(key == 13 && userIsTrained) {
             stateMachine.startGame('GAME');
-            window.onkeypress = "";
         }
 
     }

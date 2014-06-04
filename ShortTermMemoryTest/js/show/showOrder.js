@@ -6,9 +6,7 @@ function showOrder(order) {
 
     function createHTML() {
         $("body").html("<div id=\"Game\">\
-        <ul>\
-        <p id = \"order_field\"></p>\
-        </ul>\
+        <div id = \"order_field\"></div>\
         </div>\
         ");
     }
@@ -16,9 +14,9 @@ function showOrder(order) {
     createHTML();
 
     if (order == "upwards") {
-        $("#order_field").html("SAME ORDER");
+        $("#order_field").html(text["palautaEsitys"]);
     } else {
-        $("#order_field").html("REVERSE ORDER");
+        $("#order_field").html(text["palautaKaantainen"]);
     }
     $("#order_field").show();
 }

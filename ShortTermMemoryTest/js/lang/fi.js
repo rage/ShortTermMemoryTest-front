@@ -22,3 +22,24 @@ text["tiedoite"] = "<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia
 text["testinTarkoitus"] = "<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p>" +
     "<p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p>" +
     "<p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>";
+
+text["kirjoitaTunnus"] = "Kirjoita alla olevaan kenttään käyttäjätunnuksesi:";
+
+text["palautaEsitys"] = "Palauta sanat nyt ESITYSJÄRJESTYKSESSÄ.";
+
+text["palautaKaantainen"] = "Palauta sanat nyt KÄÄNTEISESSÄ JÄRJESTYKSESSÄ.";
+
+
+text["kiitos"] = "Kiitos osallistumisesta tutkimukseen! " +
+    "Sait tehtävästä xx % oikein. " +
+    "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
+
+text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaaruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
+
+text["oikein"] = "OIKEIN!";
+text["oikeinIlmoitus"] = "<p>Palautit numerot oikein ja oikeassa järjestyksessä.</p>" +
+    "<p>Siirry seuraavaan harjoitukseen painamalla VÄLILYÖNTIÄ.</p>";
+
+text["vaarin"] = "VÄÄRIN!";
+text["vaarinIlmoitus"] = "<p>Palautit numerot joko väärin tai väärässä järjestyksessä.</p>" +
+    "<p>Siirry seuraavaan harjoitukseen painamalla VÄLILYÖNTIÄ.</p>";

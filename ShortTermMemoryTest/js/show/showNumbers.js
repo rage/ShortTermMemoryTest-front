@@ -6,11 +6,8 @@ function showNumber(number) {
 
     function createHTML() {
         $("body").html("<div id=\"Game\">\
-        <ul>\
-        <p id = \"num_field\"></p>\
-        </ul>\
-        </div>\
-        ");
+        <div id = \"num_field\"></div>\
+        </div>");
     }
 
     createHTML();
