@@ -60,19 +60,20 @@ var stateMachine = function (){
 
         if (mode == "GAME") {
             var list = new GetList();
-            theNumberList = list.getNextList();
+            //theNumberList = list.getNextList();
+            theNumberList = createMockNumberList();
         } else if (mode == "PRACTICE") {
             theNumberList = createMockNumberList();
         }
 
         var gameData = {
             gameIdentifier      : "ThisGame",
-            numberDisplayTime   : 500,
-            ISITime             : 1500,
-            guessTime           : 5000,
-            showResultTime      : 5000,
-            showCrossDelay      : 1000,
-            showCrossTime       : 1000,
+            numberDisplayTime   : 5,
+            ISITime             : 1,
+            guessTime           : 5,
+            showResultTime      : 5,
+            showCrossDelay      : 1,
+            showCrossTime       : 1,
             numberList          : theNumberList,
             numberListIndex     : 0,
             result              : undefined,

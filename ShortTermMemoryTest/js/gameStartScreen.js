@@ -31,12 +31,10 @@ function GameStartScreen(){
             document.body.innerHTML = '<div id="startScreen"><div id="instructions">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>'+text["ekaHarjoittelu"]+'</div>';
         }
 
-
-
-        if(userIsTrained){
-            document.getElementById("startpractise").style.color = selectedColor;
-            document.getElementById("startpractise").style.backgroundColor = selectedbackgroundColor;
-        }
+        /*if(userIsTrained){
+            document.getElementById("selected").style.color = selectedColor;
+            document.getElementById("selected").style.backgroundColor = selectedbackgroundColor;
+        }*/
 	}
 	
 	return {
