@@ -33,16 +33,16 @@ function Login(){
             if (response.isTrained) {
 
                 userIsTrained = true;
-                stateMachine.startGameStartScreen();
-                return true;
+                stateMachine.startNotification();
 
             } else {
 
                 userIsTrained = false;
-                stateMachine.startGameStartScreen();
-                return true;
+                stateMachine.startNotification();
 
             }
+
+            return true;
 
         } else {
 

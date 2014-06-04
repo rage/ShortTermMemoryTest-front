@@ -10,33 +10,33 @@ function CreateUser(){
     function createHtml(){
         
         var vuosi = new Date().getFullYear();
-        var text = ""; 
-         for (var i = 1900; i <= vuosi; i++) {
+        var text = "";
+        for (var i = 1900; i <= vuosi; i++) {
             text = "<option value=\""+i+"\">"+i+"</option>"+text;
         }
         
-        document.body.innerHTML = "<div id=\"createUser\"><div id=\"varoitus\"></div><form onSubmit=\"stateMachine.createUser()\">\
+        document.body.innerHTML = '<div id="createUser"><div id="varoitus"></div><form onSubmit="stateMachine.createUser()">\
         Sukupuoli:\
-        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"m\" id=\"m\">Mies\
-        <input type=\"radio\" name=\"sex\" class=\"sex\" value=\"f\" id=\"f\">Nainen<br>\
+        <input type="radio" name="sex" class="sex" value="m" id="m">Mies\
+        <input type="radio" name="sex" class="sex" value="f" id="f">Nainen<br>\
         Syntymävuosi: \
-        <select name=\"yearofbirth\" id=\"yearofbirth\">\
-        <option value=\"valitse\">Valitse</option>"
+        <select name="yearofbirth" id="yearofbirth">\
+        <option value="valitse">Valitse</option>'
         +text+
-        "</select>\
+        '</select>\
         <br>\
         Kätisyys: \
-        <input type=\"radio\" name=\"handedness\" value=\"r\" id=\"r\">Oikea\
-        <input type=\"radio\" name=\"handedness\" value=\"l\" id=\"l\">Vasen<br>\
+        <input type="radio" name="handedness" value="r" id="r">Oikea\
+        <input type="radio" name="handedness" value="l" id="l">Vasen<br>\
         Koulutus: \
-        <select name=\"education\" id=\"education\">\
-        <option value=\"valitse\">Valitse</option>\
-        <option value=\"Peruskoulu\">Peruskoulu</option>\
-        <option value=\"Lukio tai ammattikoulu\">Lukio tai ammattikoulu</option>\
-        <option value=\"Korkeakoulu\">Korkeakoulu</option>\
+        <select name="education" id="education">\
+        <option value="valitse">Valitse</option>\
+        <option value="Peruskoulu">Peruskoulu</option>\
+        <option value="Lukio tai ammattikoulu">Lukio tai ammattikoulu</option>\
+        <option value="Korkeakoulu">Korkeakoulu</option>\
         </select><br>\
-        <input type=\"button\" value=\"Jatka\" onclick=\"stateMachine.createUser()\" />\
-        </form></div>";
+        <input type="button" value="Jatka" onclick="stateMachine.createUser()" />\
+        </form></div>';
     }
     
 	function signup(){
@@ -69,11 +69,10 @@ function CreateUser(){
         
         
         if(responseText == "true"){
-            stateMachine.startGameStartScreen();
+            stateMachine.startNotification();
             return true;
         }else{
             stateMachine.startRegister();
-            console.log("PÄÄSTIIN LOPPUUN")
             return false;
         }
 	}
