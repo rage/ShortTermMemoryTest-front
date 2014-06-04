@@ -1,8 +1,5 @@
 function GameStartScreen(){
     var selected = "startpractise";
-    var selectedbackgroundColor = "white";
-    var selectedColor = "black";
-    //userIsTrained = true;
 	
 	function start(){
 		createHtml();
@@ -11,32 +8,26 @@ function GameStartScreen(){
     window.onkeypress = function(e) {
 
         var key = e.keyCode ? e.keyCode : e.which;
-        console.log(key)
+
         if(key == 32) {
             stateMachine.startGame('PRACTICE');
+            window.onkeypress = "";
         }else if(key == 13 && userIsTrained) {
             stateMachine.startGame('GAME');
+            window.onkeypress = "";
         }
-        window.onkeypress = "";
 
     }
 
 
 	function createHtml(){
 
-
         if(userIsTrained){
-            document.body.innerHTML = '<div id="startScreen"><div id="instructions">' + text["ohje"] + '</div></div>';
+            document.body.innerHTML = '<div id="startScreen">' + text["ohje"] + '</div>';
         }else{
-            document.body.innerHTML = '<div id="startScreen"><div id="instructions">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>'+text["ekaHarjoittelu"]+'</div>';
+            document.body.innerHTML = '<div id="startScreen">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>';
         }
 
-
-
-        if(userIsTrained){
-            document.getElementById("startpractise").style.color = selectedColor;
-            document.getElementById("startpractise").style.backgroundColor = selectedbackgroundColor;
-        }
 	}
 	
 	return {
