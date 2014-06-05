@@ -22,8 +22,8 @@ function showResult(gameData) {
 
     var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
 
-    var firstline = "You were shown " + gameData.result.numberOfShownSeries + " sets of numbers.";
-    var secondline = " You returned " + gameData.result.numberOfCorrectGivenSeries + " (" + percentCorrect + "%) of these correctly.";
+    var secondline = " Sait tehtävästä " + percentCorrect + "% oikein.";
+
 
     if (gameData.mode == "PRACTICE") {
         gameData.donePracticeRounds++;
@@ -59,7 +59,8 @@ function showResult(gameData) {
             });
         }
     } else {
-        var thirdline = "Thank you for participating.";
+        var firsline = text["kiitos"];
+        var thirdline = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
         gameData.requestFocus(function (event, keyCode) {
             if (keyCode == 13) {
                 hideResult(event);

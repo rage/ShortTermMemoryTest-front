@@ -23,17 +23,18 @@ function showPracticeFeedback(gameData) {
     if (gameData.result.lastSeriesCorrectness == true) {
         $("#firstline").html(text["oikein"]);
         $("#secondline").html(text["oikeinIlmoitus"]);
+        $("#thirdline").html(text["seuraava"]);
     } else {
         $("#firstline").html(text["vaarin"]);
         $("#secondline").html(text["vaarinIlmoitus"]);
+        $("#thirdline").html(text["seuraava"]);
     }
 
     if (gameData.numberList.length == gameData.numberListIndex) {
-        $("#thirdline").html("This concludes your practice.");
-        $("#sixthline").html("Press enter to see your overall result.");
+        $("#thirdline").html(text["harjoitusValmis"]);
 
         gameData.requestFocus(function (event, keyCode) {
-            if (keyCode == 13) {
+            if (keyCode == 32) {
                 hidePracticeFeedback(event);
                 gameData.eventHandler.triggerEvent("EVENT_SHOWRESULT_START", "", 0);
             }
@@ -41,7 +42,7 @@ function showPracticeFeedback(gameData) {
     } else {
 
         gameData.requestFocus(function (event, keyCode) {
-            if (keyCode == 13) {
+            if (keyCode == 32) {
                 hidePracticeFeedback(event);
                 gameData.eventHandler.triggerEvent("EVENT_SHOWSERIES_START", "", 0);
             }

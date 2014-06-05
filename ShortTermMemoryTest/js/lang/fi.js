@@ -23,6 +23,8 @@ text["testinTarkoitus"] = "<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista 
     "<p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p>" +
     "<p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>";
 
+text["seuraava"] =  "<p>Siirry seuraavaan harjoitukseen painamalla VÄLILYÖNTIÄ.</p>";
+
 text["kirjoitaTunnus"] = "Kirjoita alla olevaan kenttään käyttäjätunnuksesi:";
 
 text["palautaEsitys"] = "Palauta sanat nyt ESITYSJÄRJESTYKSESSÄ.";
@@ -37,9 +39,12 @@ text["kiitos"] = "Kiitos osallistumisesta tutkimukseen! " +
 text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaaruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
 
 text["oikein"] = "OIKEIN!";
-text["oikeinIlmoitus"] = "<p>Palautit numerot oikein ja oikeassa järjestyksessä.</p>" +
-    "<p>Siirry seuraavaan harjoitukseen painamalla VÄLILYÖNTIÄ.</p>";
+text["oikeinIlmoitus"] = "<p>Palautit numerot oikein ja oikeassa järjestyksessä.</p>";
 
 text["vaarin"] = "VÄÄRIN!";
-text["vaarinIlmoitus"] = "<p>Palautit numerot joko väärin tai väärässä järjestyksessä.</p>" +
-    "<p>Siirry seuraavaan harjoitukseen painamalla VÄLILYÖNTIÄ.</p>";
+text["vaarinIlmoitus"] = "<p>Palautit numerot joko väärin tai väärässä järjestyksessä.</p>";
+
+
+text["harjoitusValmis"] = "<p>Jos haluat, saat vielä jatkaa harjoittelua. Saat harjoitella tehtävän tekemistä maksimissaan kolme kertaa. </p>" +
+    "<p>Pääset harjoitukseen VÄLILYÖNNILLÄ.</p>" +
+    "<p>Jos haluat jatkaa suoraan tehtävään, paina ENTER.</p>";
