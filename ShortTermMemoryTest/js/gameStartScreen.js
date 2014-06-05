@@ -1,5 +1,6 @@
 function GameStartScreen(){
     var selected = "startpractise";
+    var userIsTrained = true
 	
 	function start(){
 		createHtml();

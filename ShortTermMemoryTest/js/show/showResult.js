@@ -22,11 +22,11 @@ function showResult(gameData) {
 
     var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
 
-    var secondline = " Sait tehtävästä " + percentCorrect + "% oikein.";
+    var firstline = text["kiitos"]
+    var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
 
 
     if (gameData.mode == "PRACTICE") {
-        gameData.donePracticeRounds++;
 
         if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
             var thirdline = "Press enter to to stop practicing and start the test";

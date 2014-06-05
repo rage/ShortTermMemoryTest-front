@@ -32,9 +32,9 @@ text["palautaEsitys"] = "Palauta sanat nyt ESITYSJÄRJESTYKSESSÄ.";
 text["palautaKaantainen"] = "Palauta sanat nyt KÄÄNTEISESSÄ JÄRJESTYKSESSÄ.";
 
 
-text["kiitos"] = "Kiitos osallistumisesta tutkimukseen! " +
-    "Sait tehtävästä xx % oikein. " +
-    "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
+text["kiitos"] = "Kiitos osallistumisesta tutkimukseen! ";
+text["sait"] = "Sait tehtävästä ";
+text["oikein"] = "oikein";
 
 text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaaruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
 
@@ -48,3 +48,5 @@ text["vaarinIlmoitus"] = "<p>Palautit numerot joko väärin tai väärässä jä
 text["harjoitusValmis"] = "<p>Jos haluat, saat vielä jatkaa harjoittelua. Saat harjoitella tehtävän tekemistä maksimissaan kolme kertaa. </p>" +
     "<p>Pääset harjoitukseen VÄLILYÖNNILLÄ.</p>" +
     "<p>Jos haluat jatkaa suoraan tehtävään, paina ENTER.</p>";
+
+text["tehtavaAlkaa"] = "Tehtävä alkaa, kun painat ENTER.";

@@ -31,12 +31,23 @@ function showPracticeFeedback(gameData) {
     }
 
     if (gameData.numberList.length == gameData.numberListIndex) {
-        $("#thirdline").html(text["harjoitusValmis"]);
-
+        if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
+            $("#thirdline").html(text["harjoitusValmis"]);
+        }else{
+            $("#thirdline").html(text["tehtavaAlkaa"]);
+        }
         gameData.requestFocus(function (event, keyCode) {
-            if (keyCode == 32) {
+            if (keyCode == 13) {
                 hidePracticeFeedback(event);
-                gameData.eventHandler.triggerEvent("EVENT_SHOWRESULT_START", "", 0);
+                stateMachine.startGame("GAME");
+            }
+            if (keyCode == 32) {
+                if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
+                    gameData.donePracticeRounds++;
+                    hidePracticeFeedback(event);
+                    gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);
+
+                }
             }
         });
     } else {
