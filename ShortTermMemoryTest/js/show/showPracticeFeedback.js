@@ -31,6 +31,7 @@ function showPracticeFeedback(gameData) {
     }
 
     if (gameData.numberList.length == gameData.numberListIndex) {
+        gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
         if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
             $("#thirdline").html(text["harjoitusValmis"]);
         }else{

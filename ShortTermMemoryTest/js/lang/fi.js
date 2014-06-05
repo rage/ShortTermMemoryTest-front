@@ -1,6 +1,6 @@
 var text = [];
 
-text["ohjeHarjoitteluSuorittamatta"] =  "<p>Sinulle näytetään yksitellen numeroita 0-9 väliltä ruudulla. Numerot esitetään 2-7 numeron mittaisissa sarjoissa. " +
+text["ohjeHarjoitteluSuorittamatta"] = "<p>Sinulle näytetään yksitellen numeroita 0-9 väliltä ruudulla. Numerot esitetään 2-7 numeron mittaisissa sarjoissa. " +
     "Ennen jokaisen sarjan alkamista, kohdista katseesi ruudulle ilmestyvään kohdistusristiin.</p>" +
     "<p>Sinun tulee painaa numerot ja niiden järjestys mieleesi ja palauttaa ne ruudulle tulevan ohjeen mukaisesti joko esitysjärjestyksessä tai käänteisessä järjestyksessä. " +
     "Sanojen palauttamisen jälkeen tehtävä siirtyy itsestään eteenpäin.</p>" +
