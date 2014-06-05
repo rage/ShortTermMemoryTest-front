@@ -15,9 +15,8 @@ function Request(){
         if(type == "POST"){
             req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         }
-        
+
         req.send(params);
-        
         return req.responseText;
         
     }

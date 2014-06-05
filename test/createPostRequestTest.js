@@ -20,7 +20,7 @@ describe("createPostRequest (signup)", function() {
     it("return false when user found ", function() {
 
 
-        var params = 'username=olen&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
+        var params = 'username=Olen&sex=f&yearOfBirth=1966&handedness=r&education=Peruskoulu';
         var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
@@ -122,7 +122,7 @@ describe("createPostRequest (login)", function() {
     it("return true when user found ", function() {
 
 
-        var params = 'username=olen';
+        var params = 'username=Olen';
         var request = Request();
         var responseText = request.createPost(url+"login", params);
 

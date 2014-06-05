@@ -1,3 +1,12 @@
+
+var show;
+var username;
+var userIsTrained;
+var testcase_id;
+var url = "http://shorttermmemorytest.herokuapp.com/";
+//var url = "http://localhost:3000/"
+
+
 var stateMachine = function (){
 
     var login;
@@ -87,12 +96,12 @@ var stateMachine = function (){
         if(state.set(6)) {
 
             var theNumberList;
-
+            var list = new GetList();
             if (mode == "GAME") {
-                var list = new GetList();
+
                 theNumberList = list.getNextList();
             } else if (mode == "PRACTICE") {
-                theNumberList = createMockNumberList();
+                theNumberList = list.getTrainingList();
             }
 
             var gameData = {
