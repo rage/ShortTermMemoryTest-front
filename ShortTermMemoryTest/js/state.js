@@ -7,9 +7,14 @@ function State(){
         [2, 3],
         [3, 4],
         [4, 5],
+        [4, 6],
         [5, 6],
         [6, 6]
     ];
+
+    function get(){
+        return state;
+    }
 
     function is(stateIs){
         return stateIs == state;
@@ -46,6 +51,7 @@ function State(){
 
     return {
         set:set,
-        is:is
+        is:is,
+        get:get
     }
 }

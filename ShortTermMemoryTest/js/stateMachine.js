@@ -101,7 +101,7 @@ var stateMachine = function (){
 
                 theNumberList = list.getNextList();
             } else if (mode == "PRACTICE") {
-                theNumberList = createMockNumberList();
+                theNumberList = list.getTrainingList();
             }
 
             var gameData = {

@@ -2,7 +2,8 @@ var username;
 describe("getList", function() { 
     
     beforeEach(function() {
-        username = new CreateRandomTestUser();
+        username = "arto";
+//        username = new CreateRandomTestUser();
     });
     
     it("right order type", function() { 
