@@ -1,8 +1,8 @@
 function PostResults() {
-
+    var i;
     function post(results) {
-        for(var i=0;i<results.length;i++) {
-            results[i]["testcase_id"]=testcase_id;
+        for (i=0;i<results.length;i++) {
+            results[i].testcase_id=testcase_id;
         }
         var resultsJSON = {"testlog" : results};
         $.ajax({

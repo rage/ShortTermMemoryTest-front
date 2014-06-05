@@ -68,6 +68,7 @@ function gameLogic (eventHandler) {
         } else if (gameData.mode == "PRACTICE") {
             gameData.eventHandler.triggerEvent("EVENT_SHOW_PRACTICE_RESULT_START", "", numberBlankTime);
         }
+        postResults.post(gameData.eventHandler.getStoredEvents());
     }
 
     function showPracticeResultEventHandler(event) {
