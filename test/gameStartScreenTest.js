@@ -38,4 +38,21 @@ describe("StartScreenTest", function() {
         expect(document.getElementById("startScreen").innerHTML).toBe(text["ohje"]);
     });
 
+
+    it("use startscreen in keyboard", function() {
+        stateMachine.start();
+        document.getElementById('username').value = "Omena";
+        stateMachine.checkUsername(document.getElementById('username').value);
+        stateMachine.startGameStartScreen();
+        function simulateKeyPress(c) {
+            jQuery.event.trigger({ type : 'keypress', which : c });
+        }
+        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohje"]);
+        simulateKeyPress(32);
+        expect(document.getElementById("startScreen")).toBe(null);
+        expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
+    });
+
+
 });
+
