@@ -29,9 +29,12 @@ function showPracticeFeedback(gameData) {
         $("#secondline").html(text["vaarinIlmoitus"]);
         $("#thirdline").html(text["seuraava"]);
     }
+    console.log("asd");
+    console.log(gameData.numberList.length);
+    console.log(gameData.numberListIndex);
 
     if (gameData.numberList.length == gameData.numberListIndex) {
-        gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
+        console.log("asd2");
         if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
             $("#thirdline").html(text["harjoitusValmis"]);
         }else{
@@ -39,11 +42,13 @@ function showPracticeFeedback(gameData) {
         }
         gameData.requestFocus(function (event, keyCode) {
             if (keyCode == 13) {
+                gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
                 hidePracticeFeedback(event);
                 stateMachine.startGame("GAME");
             }
             if (keyCode == 32) {
                 if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
+                    gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
                     gameData.donePracticeRounds++;
                     hidePracticeFeedback(event);
                     gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);
