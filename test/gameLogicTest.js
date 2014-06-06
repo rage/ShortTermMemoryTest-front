@@ -1,8 +1,10 @@
 /**
  * Created by kristiak on 30.5.2014.
  */
+var username;
 
 describe("gameLogicTest", function() {
+
 
 
     var evHandler;
@@ -11,12 +13,16 @@ describe("gameLogicTest", function() {
 
     var gameData;
 
+    var spaceKeyDownEvent;
+    var spaceKeyUpEvent;
 
     beforeEach(function() {
         $(document).off();
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
+
+        username = CreateRandomTestUser();
 
         gameData = {
             gameIdentifier: "ThisGame",
@@ -32,142 +38,141 @@ describe("gameLogicTest", function() {
             donePracticeRounds: 0,
             gameStartTime : 0
         };
-        gameData.numberList = createMockNumberList();
 
-            jasmine.clock().install();
+        jasmine.clock().install();
+
+        spaceKeyDownEvent = jQuery.Event("keydown");
+        spaceKeyDownEvent.keyCode = 32;
+        spaceKeyUpEvent = jQuery.Event("keyup");
+        spaceKeyUpEvent.keyCode = 32;
+
+        enterKeyDownEvent = jQuery.Event("keydown");
+        enterKeyDownEvent.keyCode = 13;
+        enterKeyUpEvent = jQuery.Event("keyup");
+        enterKeyUpEvent.keyCode = 13;
 
     });
 
-    it("KKK", function() {
+    it("starts the practice game and the correct events are triggered", function() {
 
-        game.start(gameData);
-        jasmine.clock().tick(10);
-        var events = evHandler.getStoredEvents();
-        expect(events[0].eventtype).toBe("EVENT_PRACTICE_GAME_START");
-        expect(events[1].eventtype).toBe("EVENT_SHOWLIST_START");
-        expect(events[2].eventtype).toBe("EVENT_SHOWSERIES_START");
-        jasmine.clock().tick(100000000000000000);
-        events = evHandler.getStoredEvents();
-        //console.log(events);
+        var list = new GetList();
+        var list = list.getNextList();
+        var testList = [];
+        for (i = 0; i < 3; i++) {
+            testList[i] = list[i];
+        }
+        gameData.numberList = testList;
 
-
-        /*
-        runs(function() {
-            game.start(gameData);
-        }, "an asynchronous method");
-
-
-        waitsFor(function() {
-            events = evHandler.getStoredEvents();
-            if (events[2].eventtype == "EVENT_SHOWCROSS_START") {
-                return true;
-            } else {
-                return false;
-            }
-
-        }, "waiting for event", 5000);
-
-        runs(function() {
-            var events = evHandler.getStoredEvents();
-            console.log(events);
-            expect(events[3].eventtype).toBe("EVENT_SHOWCROSS_START");
-        });
-
-
-
-
-
-
-    /*
-      runs (function() {
-          game.start(gameData);
-      });
-      waitsFor(function() {
-          var events = evHandler.getStoredEvents();
-          if (events.length > 0) return true;
-          return false;
-      }, "The Value should be incremented", 100);
-
-      runs(function() {
-          var events = evHandler.getStoredEvents();
-          console.log(events);
-          expect(events.length).toBeGreaterThan(0);
-      });
-     */
-    });
-
-
-
-
-/*
-    it("this sets up the scene for all other tests", function() {
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
-        game = new gameLogic(evHandler);
-        keyDownCounter = 0;
-        counter_EVENT_PRACTICE_GAME_START = 0;
-
-        evHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", function () {
-            keyDownCounter++;
-        });
-
-        evHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", function () {
-            counter_EVENT_PRACTICE_GAME_START++;
-        });
-
-        evHandler.registerEventHandler("EVENT_GAME_START", function () {
-            counter_EVENT_GAME_START++;
-        });
-
-        keyDownEvent = jQuery.Event("keydown");
-        keyDownEvent.keyCode = 50;
-
-        keyUpEvent = jQuery.Event("keyup");
-        keyUpEvent.keyCode = 50;
-
-        SETUP_DONE = true;
-    });
-
-
-    it("tmp", function() {
-        expect(keyDownCounter).toBe(0);
-        evHandler.triggerEvent("EVENT_TYPE_KEYDOWN", 50, 0);
-        jasmine.Clock.tick(1000);
-        expect(keyDownCounter).toBe(1);
-    });
-
-
-    it("EVENT_PRACTICE_GAME_START is generated when practice game starts ", function() {
-        expect(counter_EVENT_PRACTICE_GAME_START).toBe(0);
         gameData.mode = "PRACTICE";
         game.start(gameData);
-        jasmine.Clock.tick(1000);
+        jasmine.clock().tick(10000);
 
-        expect(counter_EVENT_PRACTICE_GAME_START).toBe(1);
+        var events = evHandler.getStoredEvents();
+        var index = 0;
+        expect(events[index++].eventtype).toBe("EVENT_PRACTICE_GAME_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWLIST_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWSERIES_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWCROSS_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWCROSS_END");
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index].value).toBe(5);
+        index++;
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index].value).toBe(5);
+        index++;
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index].value).toBe(7);
+        index++;
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index].value).toBe(7);
+        index++;
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index].value).toBe(3);
+        index++;
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index].value).toBe(3);
+        index++;
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index].value).toBe(8);
+        index++;
+
+        expect(events[index].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index].value).toBe(8);
+        index++;
+
+        expect(events[index++].eventtype).toBe("EVENT_SHOWSERIES_END");
+        expect(events[index++].eventtype).toBe("EVENT_USERINPUT_START");
+        expect(events[index++].eventtype).toBe("EVENT_USERINPUT_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOW_PRACTICE_RESULT_START");
+
+        expect(index).toBe(events.length);
+
+        $(document).trigger(spaceKeyDownEvent);
+        jasmine.clock().tick(10000);
+
+        events = evHandler.getStoredEvents();
+        expect(events[index++].eventtype).toBe("EVENT_TYPE_KEYDOWN");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWSERIES_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWCROSS_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWCROSS_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWSERIES_END");
+        expect(events[index++].eventtype).toBe("EVENT_USERINPUT_START");
+        expect(events[index++].eventtype).toBe("EVENT_USERINPUT_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOW_PRACTICE_RESULT_START");
+        expect(index).toBe(events.length);
+
+
+        $(document).trigger(spaceKeyUpEvent);
+        events = evHandler.getStoredEvents();
+        expect(events[index++].eventtype).toBe("EVENT_TYPE_KEYUP");
+
+        expect(index).toBe(events.length);
+
+        $(document).trigger(spaceKeyDownEvent);
+        jasmine.clock().tick(10000);
+
+        events = evHandler.getStoredEvents();
+        expect(events[index++].eventtype).toBe("EVENT_TYPE_KEYDOWN");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWSERIES_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWCROSS_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWCROSS_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWNUMBER_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOWSERIES_END");
+        expect(events[index++].eventtype).toBe("EVENT_USERINPUT_START");
+        expect(events[index++].eventtype).toBe("EVENT_USERINPUT_END");
+        expect(events[index++].eventtype).toBe("EVENT_SHOW_PRACTICE_RESULT_START");
+        expect(index).toBe(events.length);
+
+        $(document).trigger(spaceKeyUpEvent);
+        events = evHandler.getStoredEvents();
+        expect(events[index++].eventtype).toBe("EVENT_TYPE_KEYUP");
+
+        $(document).trigger(spaceKeyDownEvent);
+        jasmine.clock().tick(10000);
+        events = evHandler.getStoredEvents();
+        expect(events[index++].eventtype).toBe("EVENT_TYPE_KEYDOWN");
+        expect(events[index++].eventtype).toBe("EVENT_PRACTICE_GAME_END");
+        expect(events[index++].eventtype).toBe("EVENT_PRACTICE_GAME_START");
+        expect(gameData.donePracticeRounds).toBe(1);
+
+
     });
 
 
-
-*/
-
-
-
-    function createMockNumberList() {
-        var numberList = [ ];
-        for(var i = 0; i < 3; i++) {
-            var numberSeries = {};
-            numberSeries.numbers = [ ];
-            for (var x = 0; x < 3; x++) {
-                numberSeries.numbers[x] = x + i + 2;
-            }
-            if (i == 1) {
-                numberSeries.order = "backwards";
-            } else {
-                numberSeries.order = "upwards";
-            }
-            //numberSeries.numbers = numbers;
-            numberList[i] = numberSeries;
-        }
-        return numberList;
-    }
 });
