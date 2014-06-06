@@ -21,9 +21,9 @@ function GameStartScreen(){
 	function createHtml(){
 
         if(userIsTrained){
-            document.body.innerHTML = '<div id="startscreen">' + text["ohje"] + '</div>';
+            document.body.innerHTML = '<div id="startScreen">' + text["ohje"] + '</div>';
         }else{
-            document.body.innerHTML = '<div id="startscreen">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>';
+            document.body.innerHTML = '<div id="startScreen">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>';
         }
 
 	}

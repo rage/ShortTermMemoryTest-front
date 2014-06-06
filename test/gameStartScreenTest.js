@@ -20,14 +20,14 @@ describe("StartScreenTest", function() {
         element.value = "Peruskoulu";
         stateMachine.createUser();
         stateMachine.startGameStartScreen();
-        expect(document.getElementById("startscreen").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta"]);
+        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta"]);
 
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
         simulateKeyPress(13);
 
-        expect(document.getElementById("startscreen").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta"]);
+        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta"]);
     });
 
     it("check start screen text when user is trained", function() {
@@ -35,7 +35,7 @@ describe("StartScreenTest", function() {
         document.getElementById('username').value = "Omena";
         stateMachine.checkUsername(document.getElementById('username').value);
         stateMachine.startGameStartScreen();
-        expect(document.getElementById("startscreen").innerHTML).toBe(text["ohje"]);
+        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohje"]);
     });
 
 });
