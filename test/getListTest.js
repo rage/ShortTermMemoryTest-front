@@ -1,12 +1,12 @@
 var username;
-describe("getList", function() { 
+describe("getList", function() {
     
     beforeEach(function() {
-        username = new CreateRandomTestUser();
+        username = CreateRandomTestUser();
     });
     
-    it("right order type", function() { 
-        
+    it("right order type", function() {
+
         var list = new GetList();
         var list = list.getNextList();
         

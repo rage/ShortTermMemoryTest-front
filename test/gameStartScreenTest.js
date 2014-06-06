@@ -53,6 +53,7 @@ describe("StartScreenTest", function() {
         expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
     });
 
+/*
     it("use startscreen in keyboard 2", function() {
         stateMachine.start();
         document.getElementById('username').value = "Omena";
@@ -65,6 +66,6 @@ describe("StartScreenTest", function() {
         simulateKeyPress(13);
         expect(document.getElementById("startScreen")).toBe(null);
     });
-
+    */
 });
 
