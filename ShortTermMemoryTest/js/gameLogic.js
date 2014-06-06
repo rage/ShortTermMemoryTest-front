@@ -44,6 +44,7 @@ function gameLogic (eventHandler) {
     function showResultEventHandler(event) {
         showResult(gameData);
         postResults.post(gameData.eventHandler.getStoredEvents());
+        new Request().createPost(url+"finish", "id=" + testcase_id);
     }
 
     function endShowResultEventHandler(event) {
@@ -73,7 +74,14 @@ function gameLogic (eventHandler) {
 
     function showPracticeResultEventHandler(event) {
         gameData.result = calculateResult(gameData.eventHandler.getStoredEvents(), gameData.gameStartTime);
-        showPracticeFeedback(gameData);
+        if (gameData.numberList.length == gameData.numberListIndex) {
+            console.log("gameEnd")
+            console.log(new Request().createPost(url+"finish", "id=" + testcase_id));
+            showPracticeFeedbackEnd(gameData);
+        }else{
+            showPracticeFeedback(gameData);
+        }
+
     }
 
     function endShowPracticeResultEventHandler(event) {
