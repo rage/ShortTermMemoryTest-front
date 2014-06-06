@@ -8,7 +8,7 @@ describe("eventHandlerTest", function() {
 
     beforeEach(function() {
         handler = new eventHandler();
-        jasmine.Clock.useMock();
+        jasmine.clock().install();
         beenHere = false;
         beenHereToo = false;
     });
@@ -26,7 +26,7 @@ describe("eventHandlerTest", function() {
         });
 
         handler.triggerEvent("TEST_EVENT", 10, 0);
-        jasmine.Clock.tick(10);
+        jasmine.clock().tick(10);
         expect(beenHere).toBe(true);
         expect(handler.getStoredEvents().length).toBe(1);
     });
@@ -40,7 +40,7 @@ describe("eventHandlerTest", function() {
             beenHereToo = true;
         });
         handler.triggerEvent("TEST_EVENT", 10, 0);
-        jasmine.Clock.tick(10);
+        jasmine.clock().tick(10);
         expect(beenHere).toBe(true);
         expect(beenHereToo).toBe(true);
         expect(handler.getStoredEvents().length).toBe(1);
@@ -55,7 +55,7 @@ describe("eventHandlerTest", function() {
         });
         handler.triggerEvent("TEST_EVENT", 10, 0);
         handler.triggerEvent("TEST_EVENT2", 10, 0);
-        jasmine.Clock.tick(10);
+        jasmine.clock().tick(10);
         expect(beenHere).toBe(true);
         expect(beenHereToo).toBe(true);
         expect(handler.getStoredEvents().length).toBe(2);
