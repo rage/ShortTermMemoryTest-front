@@ -1,5 +1,4 @@
 function GameStartScreen(){
-    var selected = "startpractise";
     var page = 1;
 	
 	function start(){
@@ -30,9 +29,15 @@ function GameStartScreen(){
 	function createHtml(){
 
         if(userIsTrained){
-            document.body.innerHTML = '<div id="startScreen"><div id="startScreenP1">' + text["ohje1"] + '</div><div id="startScreenP2">' + text["ohje2"] + '</div><div id="startScreenP3">' + text["ohje3"] + '</div></div>';
+            document.body.innerHTML = '<div id="startScreen">' +
+                '<div id="startScreenP1">' + text["ohje1"] + '</div>' +
+                '<div id="startScreenP2">' + text["ohje2"] + '</div>' +
+                '<div id="startScreenP3">' + text["ohje3"] + '</div></div>';
         }else{
-            document.body.innerHTML = '<div id="startScreen">' + text["ohjeHarjoitteluSuorittamatta"] + '</div>';
+            document.body.innerHTML = '<div id="startScreen">' +
+                '<div id="startScreenP1">' + text["ohjeHarjoitteluSuorittamatta1"] + '</div>' +
+                '<div id="startScreenP2">' + text["ohjeHarjoitteluSuorittamatta2"] + '</div>' +
+                '<div id="startScreenP3">' + text["ohjeHarjoitteluSuorittamatta3"] + '</div></div>';
         }
 
 	}

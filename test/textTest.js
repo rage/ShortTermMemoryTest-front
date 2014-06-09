@@ -59,7 +59,11 @@ describe("As a new User, I want to see instructions", function() {
 
     });
     it("instructions3", function(done) {
-        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohje"]);
+        expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
+        simulateKeyPress(32);
+        expect(document.getElementById("startScreenP2").innerHTML).toBe(text["ohje2"]);
+        simulateKeyPress(32);
+        expect(document.getElementById("startScreenP3").innerHTML).toBe(text["ohje3"]);
 
         simulateKeyPress(32);
         done();
