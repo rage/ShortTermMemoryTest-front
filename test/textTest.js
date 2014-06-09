@@ -71,7 +71,7 @@ describe("As a new User, I want to see instructions", function() {
 
 
     });
-
+/*
     it("instructions5", function() {
         jasmine.clock().tick(20000);
 
@@ -83,6 +83,7 @@ describe("As a new User, I want to see instructions", function() {
 
 
     });
+    */
  
 
 
