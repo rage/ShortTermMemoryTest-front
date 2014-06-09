@@ -7,7 +7,7 @@ describe("As a new User, I want to see instructions", function() {
     });
     
     function simulateKeyPress(c) {
-        console.log(c)
+        console.log(c);
         jQuery.event.trigger({ type : 'keypress', which : c });
     }
 
@@ -50,6 +50,6 @@ describe("As a new User, I want to see instructions", function() {
 
     });
  
-    
+
 
 });
