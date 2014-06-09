@@ -71,7 +71,7 @@ describe("gameLogicTest", function() {
 
         var events = evHandler.getStoredEvents();
         var index = 0;
-        index = checkPracticeGameEvents(events, index, gameData);
+        index = checkPracticeGameEvents(events, index, gameData, true);
 
         //index = checkForEvent(events, index, "EVENT_GAME_START");
     });
@@ -102,7 +102,7 @@ describe("gameLogicTest", function() {
         var events = evHandler.getStoredEvents();
         var index = 0;
         for (var round = 0; round < gameData.maxPracticeRounds; round++) {
-            index = checkPracticeGameEvents(events, index, gameData);
+            index = checkPracticeGameEvents(events, index, gameData, true);
         }
 
        // index = checkForEvent(events, index, "EVENT_GAME_START");
@@ -110,6 +110,40 @@ describe("gameLogicTest", function() {
     });
 
 
+    it("does not let user play more practice rounds than is allowed", function() {
+
+        gameData.numberList = createMockList(3);
+
+        gameData.mode = "PRACTICE";
+
+        game.start(gameData);
+        jasmine.clock().tick(10000);
+
+        for (var round = 0; round < gameData.maxPracticeRounds; round++) {
+            mockSpaceKeyDownAndUpEvent();
+            jasmine.clock().tick(10000);
+            mockSpaceKeyDownAndUpEvent();
+            jasmine.clock().tick(10000);
+            mockSpaceKeyDownAndUpEvent();
+            jasmine.clock().tick(10000);
+            expect(gameData.donePracticeRounds).toBe(round + 1);
+        }
+        mockSpaceKeyDownAndUpEvent();
+        jasmine.clock().tick(10000);
+        expect(gameData.donePracticeRounds).toBe(gameData.maxPracticeRounds);
+
+
+        var events = evHandler.getStoredEvents();
+        var index = 0;
+        for (var round = 0; round < gameData.maxPracticeRounds - 1; round++) {
+            index = checkPracticeGameEvents(events, index, gameData, true);
+        }
+        index = checkPracticeGameEvents(events, index, gameData, false);
+        index = skipKeyEvents(events, index);
+        expect(index).toBe(events.length);
+
+
+    });
 
 
 
@@ -140,7 +174,7 @@ describe("gameLogicTest", function() {
     }
 
 
-    function checkPracticeGameEvents(events, index, gameData) {
+    function checkPracticeGameEvents(events, index, gameData, checkEnd) {
         index = checkForEvent(events, index, "EVENT_PRACTICE_GAME_START");
         index = checkForEvent(events, index, "EVENT_SHOWLIST_START");
 
@@ -149,7 +183,9 @@ describe("gameLogicTest", function() {
             index = checkForPracticeSeriesEvents(events, index, series);
         }
 
-        index = checkForEvent(events, index, "EVENT_PRACTICE_GAME_END");
+        if (checkEnd == true) {
+            index = checkForEvent(events, index, "EVENT_PRACTICE_GAME_END");
+        }
 
         return index;
     }
@@ -211,7 +247,7 @@ describe("gameLogicTest", function() {
 
         index = skipKeyEvents(events, index);
 
-        //console.log(events[index].eventtype);
+        console.log(events[index].eventtype);
         expect(index).toBeLessThan(events.length);
         expect(events[index].eventtype).toBe(eventType);
 
@@ -223,7 +259,7 @@ describe("gameLogicTest", function() {
 
         index = skipKeyEvents(events, index);
 
-        //console.log(events[index].eventtype);
+        console.log(events[index].eventtype);
         expect(index).toBeLessThan(events.length);
         expect(events[index].eventtype).toBe(eventType);
         expect(events[index].value).toBe(value);
