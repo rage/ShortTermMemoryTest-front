@@ -48,7 +48,6 @@ function showPracticeFeedbackEnd(gameData) {
         if (keyCode == 32) {
             if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
                 gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
-                gameData.donePracticeRounds++;
                 hidePracticeFeedback(event);
                 gameData.eventHandler.triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);
 
