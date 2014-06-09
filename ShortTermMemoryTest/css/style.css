@@ -28,13 +28,24 @@ body{
 }
 
 #startScreen{
-	position: absolute;
-	width: 1000px;
-	height: 600px;
-	top: 50%;
-	left: 50%;
-	margin-top: -300px;
-	margin-left: -500px;
+    position: absolute;
+    width: 1000px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin-top: -300px;
+    margin-left: -500px;
+}
+#startScreenP1{
+
+}
+#startScreenP2{
+    display: none;
+
+}
+#startScreenP3{
+    display: none;
+
 }
 
 #Game{
