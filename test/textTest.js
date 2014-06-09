@@ -1,9 +1,38 @@
 
 describe("As a new User, I want to see instructions", function() {
   
-    beforeEach(function() {  
-        jasmine.clock().install();    
+    beforeEach(function() {
+
+        $(document).off();
+        evHandler = new eventHandler();
+        keyHandler = new keyEventHandler(evHandler);
+        game = new gameLogic(evHandler);
+
+        jasmine.clock().install();
         jasmine.clock().tick(200);
+        spaceKeyDownEvent = jQuery.Event("keydown");
+        spaceKeyDownEvent.keyCode = 32;
+        spaceKeyUpEvent = jQuery.Event("keyup");
+        spaceKeyUpEvent.keyCode = 32;
+
+        enterKeyDownEvent = jQuery.Event("keydown");
+        enterKeyDownEvent.keyCode = 13;
+        enterKeyUpEvent = jQuery.Event("keyup");
+        enterKeyUpEvent.keyCode = 13;
+        gameData = {
+            gameIdentifier: "ThisGame",
+            numberDisplayTime: 500,
+            ISITime: 1500,
+            guessTime: 5000,
+            showResultTime: 5000,
+            numberList: undefined,
+            numberListIndex: 0,
+            result: undefined,
+            mode: "PRACTICE",
+            maxPracticeRounds: 3,
+            donePracticeRounds: 0,
+            gameStartTime : 0
+        };
     });
     
     function simulateKeyPress(c) {
@@ -18,7 +47,7 @@ describe("As a new User, I want to see instructions", function() {
 
 
         document.getElementById('username').value = "Omena";
-        stateMachine.checkUsername("Omena") 
+        stateMachine.checkUsername("Omena")
 		done();
 
     });
@@ -37,16 +66,21 @@ describe("As a new User, I want to see instructions", function() {
 
     });
 
-    it("instructions4", function(done) {
+    it("instructions4", function() {
         expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
-        done();
+
 
     });
 
-    it("instructions5", function(done) {
+    it("instructions5", function() {
+        jasmine.clock().tick(20000);
 
-        //simulateKeyPress(32); 
-        done();
+        simulateKeyPress(32);
+        jasmine.clock().tick(20000);
+
+
+        expect(document.body.innerHTML).toBe(text["harjoittelunAloitushje"]);
+
 
     });
  
