@@ -1,7 +1,3 @@
-/**
- * Created by kristiak on 23.5.2014.
- */
-
 function showNumber(number) {
 
     function createHTML() {

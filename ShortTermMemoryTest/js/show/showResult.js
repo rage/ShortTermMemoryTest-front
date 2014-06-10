@@ -1,8 +1,3 @@
-
-/**
- * Created by kristiak on 23.5.2014.
- */
-
 function showResult(gameData) {
 
     function createHTML() {
@@ -25,10 +20,10 @@ function showResult(gameData) {
     var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
     var thirdline = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
 
-
     $("#firstline").html(firstline);
     $("#secondline").html(secondline);
     $("#thirdline").html(thirdline);
+
 }
 
 function hideResult() {

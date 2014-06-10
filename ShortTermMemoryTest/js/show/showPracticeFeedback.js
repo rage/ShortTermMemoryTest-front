@@ -1,7 +1,3 @@
-/**
- * Created by kristiak on 23.5.2014.
- */
-
 function showPracticeFeedback(gameData) {
 
     var gameData = gameData;
@@ -17,13 +13,17 @@ function showPracticeFeedback(gameData) {
 
     createHTML();
 
-    if (gameData.result.lastSeriesCorrectness == true) {
-        $("#secondline").html(text["oikeinIlmoitus"]);
-        $("#thirdline").html(text["seuraava"]);
-    } else {
-        $("#secondline").html(text["vaarinIlmoitus"]);
-        $("#thirdline").html(text["seuraava"]);
+    function WrongRightFeedback() {
+        if (gameData.result.lastSeriesCorrectness == true) {
+            $("#secondline").html(text["oikeinIlmoitus"]);
+            $("#thirdline").html(text["seuraava"]);
+        } else {
+            $("#secondline").html(text["vaarinIlmoitus"]);
+            $("#thirdline").html(text["seuraava"]);
+        }
     }
+
+    WrongRightFeedback();
 
     gameData.requestFocus(function (event, keyCode) {
         if (keyCode == 32) {
