@@ -36,7 +36,8 @@ describe("gameLogicTest", function() {
             mode: "PRACTICE",
             maxPracticeRounds: 3,
             donePracticeRounds: 0,
-            gameStartTime : 0
+            gameStartTime : 0,
+            fails : []
         };
 
         jasmine.clock().install();
@@ -62,6 +63,7 @@ describe("gameLogicTest", function() {
             testList[i] = list[i];
         }
         gameData.numberList = testList;
+
 
         gameData.mode = "PRACTICE";
         game.start(gameData);

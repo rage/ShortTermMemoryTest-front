@@ -59,7 +59,8 @@ function gameLogic (eventHandler) {
     function endUserInputEventHandler(event) {
         hideOrder();
         var numberBlankTime = gameData.ISITime - gameData.numberDisplayTime;
-        gameData.numberListIndex++;
+        gameData.updateFails(eventHandler);
+        gameData.updateNumberListIndex();
         if (gameData.mode == "GAME") {
             if (gameData.numberListIndex < gameData.numberList.length) {
                 gameData.eventHandler.triggerEvent("EVENT_SHOWSERIES_START", "", 0);
@@ -70,6 +71,26 @@ function gameLogic (eventHandler) {
             gameData.eventHandler.triggerEvent("EVENT_SHOW_PRACTICE_RESULT_START", "", numberBlankTime);
         }
         postResults.post(gameData.eventHandler.getStoredEvents());
+
+//
+//
+//        function updateFails() {
+//            var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
+//            var seriesLength = gameData.numberList[gameData.numberListIndex].numbers.length;
+//            if (fail && seriesLength >= droppedSeriesMinLength) {
+//                gameData.fails[seriesLength]++;
+//            } else {
+//                gameData.fails[seriesLength]=0;
+//            }
+//            console.log(gameData.fails);
+//        }
+//        function updateNumberListIndex() {
+//            gameData.numberListIndex++;
+//            while (gameData.numberListIndex < gameData.numberList.length && gameData.fails[gameData.numberList[gameData.numberListIndex].numbers.length] > maxFails) {
+//                gameData.numberListIndex++;
+//            }
+//            console.log(gameData.numberListIndex);
+//        }
     }
 
     function showPracticeResultEventHandler(event) {

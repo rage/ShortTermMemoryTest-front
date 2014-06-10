@@ -11,6 +11,7 @@ function calculateResult(events, fromTime) {
     var numberOfShownSeries = 0;
     var numberOfCorrectGivenSeries = 0;
     var lastSeriesCorrectness = false;
+    var lastSeriesFailed = false;
 
     for (var i = 0; i < events.length; i++) {
         var event = events[i];
@@ -41,22 +42,40 @@ function calculateResult(events, fromTime) {
 
         if (event.eventtype == "EVENT_USERINPUT_END") {
             var correctChars = 0;
-            if (numbersShown.length == numbersGiven.length) {
-                if (numbersShownOrder == "upwards") {
-                    for (var j = 0; j < numbersShown.length; j++) {
-                        if (numbersShown[j] == String.fromCharCode(numbersGiven[j])) {
-                            correctChars++;
-                        }
-                    }
-                } else if (numbersShownOrder == "backwards") {
-                    for (var j = 0; j < numbersShown.length; j++) {
-                        if (numbersShown[j] == String.fromCharCode(numbersGiven[numbersShown.length - j - 1])) {
-                            correctChars++;
-                        }
-                    }
+            var j=0;
+            if (numbersShownOrder == "upwards") {
+                while (j < numbersGiven.length && j < numbersShown.length && numbersShown[j] == String.fromCharCode(numbersGiven[j])) {
+                    correctChars++;
+                    j++;
                 }
             }
-            if (numbersShown.length == correctChars) {
+            if (numbersShownOrder == "backwards") {
+                while (j < numbersGiven.length && j < numbersShown.length && numbersShown[numbersShown.length - j - 1] == String.fromCharCode(numbersGiven[j])) {
+                    correctChars++;
+                    j++;
+                }
+            }
+//            if (numbersShown.length == numbersGiven.length) {
+
+
+//                if (numbersShownOrder == "upwards") {
+//                    for (var j = 0; j < numbersShown.length; j++) {
+//                        if (numbersShown[j] == String.fromCharCode(numbersGiven[j])) {
+//                            correctChars++;
+//                        }
+//                    }
+//                } else if (numbersShownOrder == "backwards") {
+//                    for (var j = 0; j < numbersShown.length; j++) {
+//                        if (numbersShown[j] == String.fromCharCode(numbersGiven[numbersShown.length - j - 1])) {
+//                            correctChars++;
+//                        }
+//                    }
+//                }
+//            }
+            if(correctChars<failLimit){
+                lastSeriesFailed = true;
+            }
+            if (numbersShown.length == correctChars && numbersShown.length == numbersGiven.length) {
                 numberOfCorrectGivenSeries++;
                 lastSeriesCorrectness = true;
             } else {
@@ -72,6 +91,7 @@ function calculateResult(events, fromTime) {
     return {
         numberOfShownSeries :           numberOfShownSeries,
         numberOfCorrectGivenSeries :    numberOfCorrectGivenSeries,
-        lastSeriesCorrectness       :   lastSeriesCorrectness
+        lastSeriesCorrectness       :   lastSeriesCorrectness,
+        lastSeriesFailed:               lastSeriesFailed
     };
 }

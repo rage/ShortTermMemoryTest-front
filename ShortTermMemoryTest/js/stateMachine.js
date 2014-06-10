@@ -3,8 +3,6 @@ var show;
 var username;
 var userIsTrained;
 var testcase_id;
-var url = "http://shorttermmemorytest.herokuapp.com/";
-//var url = "http://localhost:3000/"
 
 
 var stateMachine = function (){
@@ -106,9 +104,9 @@ var stateMachine = function (){
 
             var gameData = {
                 gameIdentifier: "ThisGame",
-                numberDisplayTime: 500,
-                ISITime: 1500,
-                guessTime: 5000,
+                numberDisplayTime: 400,
+                ISITime: 650,
+                guessTime: 3000,
                 showResultTime: 5000,
                 showCrossDelay: 1000,
                 showCrossTime: 1000,
@@ -117,7 +115,25 @@ var stateMachine = function (){
                 result: undefined,
                 mode: mode,
                 maxPracticeRounds: 3,
-                donePracticeRounds: 0
+                donePracticeRounds: 0,
+                fails: [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+                updateFails: function(eventHandler){
+                    var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
+                    var seriesLength = this.numberList[this.numberListIndex].numbers.length;
+                    if (fail && seriesLength >= droppedSeriesMinLength) {
+                        this.fails[seriesLength]++;
+                    } else {
+                        this.fails[seriesLength]=0;
+                    }
+                    console.log(this.fails);
+                },
+                updateNumberListIndex: function() {
+                    this.numberListIndex++;
+                    while (this.numberListIndex < this.numberList.length && this.fails[this.numberList[this.numberListIndex].numbers.length] > maxFails) {
+                        this.numberListIndex++;
+                }
+                console.log(this.numberListIndex);
+            }
             };
 
             game.start(gameData);

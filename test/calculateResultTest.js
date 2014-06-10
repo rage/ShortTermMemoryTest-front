@@ -4,17 +4,6 @@ describe("calculateResult ", function() {
 
 
 
-    var n1 = 49;
-    var n2 = 50;
-    var n3 = 51;
-    var n4 = 52;
-    var n5 = 53;
-    var n6 = 54;
-    var n7 = 55;
-    var n8 = 56;
-    var n9 = 57;
-    var n0 = 48;
-    var nx = 88;
     var startSeries = "EVENT_SHOWSERIES_START";
     var endSeries = "EVENT_SHOWSERIES_END";
     var gameEnd = "EVENT_GAME_END";
@@ -58,7 +47,7 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n7,n8,n5);
+        typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
         var calculator = new calculateResult(storer.getEvents(),199);
         expect(calculator.numberOfShownSeries).toBe(1);
@@ -73,7 +62,7 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
-        typeNumbers(n5,n8,n7);
+        typeNumbers(5,8,7);
         storer.registerEvent(endTyping, orderReversed, 777);
         var calculator = new calculateResult(storer.getEvents(),199);
         expect(calculator.numberOfShownSeries).toBe(1);
@@ -87,7 +76,7 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5,6,4,2);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
-        typeNumbers(n2, n4, n6, n5, n8, n7);
+        typeNumbers(2, 4, 6, 5, 8, 7);
         storer.registerEvent(endTyping, orderReversed, 777);
         var calculator = new calculateResult(storer.getEvents(),199);
         expect(calculator.numberOfShownSeries).toBe(1);
@@ -101,9 +90,9 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n7,n8);
+        typeNumbers(7,8);
         storer.registerEvent(endTyping, orderNormal, 777);
-        typeNumbers(n5);
+        typeNumbers(5);
         var calculator = new calculateResult(storer.getEvents(),199);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
@@ -116,7 +105,7 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n7,n8,n5, n5);
+        typeNumbers(7,8,5,5);
         storer.registerEvent(endTyping, orderNormal, 777);
         var calculator = new calculateResult(storer.getEvents(),199);
         expect(calculator.numberOfShownSeries).toBe(1);
@@ -130,9 +119,9 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n7,n8,n5);
+        typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        typeNumbers(n5);
+        typeNumbers(5);
         var calculator = new calculateResult(storer.getEvents(),199);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
@@ -145,9 +134,9 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n8,n5);
+        typeNumbers(8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        typeNumbers(n5);
+        typeNumbers(5);
         var calculator = new calculateResult(storer.getEvents(),199);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
@@ -161,14 +150,14 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n7,n8,n5);
+        typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
 
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(1,2,3);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n1,n2,n3);
+        typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderNormal, 777);
 
         var calculator = new calculateResult(storer.getEvents(),199);
@@ -183,14 +172,14 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n7,n8,n5);
+        typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
 
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(1,2,3);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n1,n2,n4);
+        typeNumbers(1,3,2);
         storer.registerEvent(endTyping, orderNormal, 777);
 
         var calculator = new calculateResult(storer.getEvents(),199);
@@ -205,14 +194,14 @@ describe("calculateResult ", function() {
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n7,n8,n2);
+        typeNumbers(7,8,2);
         storer.registerEvent(endTyping, orderNormal, 777);
 
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(1,2,3);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
-        typeNumbers(n1,n2,n3);
+        typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderNormal, 777);
 
         var calculator = new calculateResult(storer.getEvents(),199);
@@ -221,7 +210,174 @@ describe("calculateResult ", function() {
         expect(calculator.lastSeriesCorrectness).toBe(true)
     });
 
+    it("failLimit = 2, order = normal, numbers entered = 7, series length = 7, first 2 numbers are correct and the rest incorrect => series is not considered a fail  ", function() {
+        failLimit = 2;
 
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderNormal, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderNormal, 777);
+        storer.registerEvent(startTyping, orderNormal, 777);
+        typeNumbers(7,6,1,2,4,3,2);
+        storer.registerEvent(endTyping, orderNormal, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(false)
+    });
+
+    it("failLimit = 3, order = normal, numbers entered = 7, series length = 7, first 2 numbers are correct and the rest incorrect => series is considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderNormal, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderNormal, 777);
+        storer.registerEvent(startTyping, orderNormal, 777);
+        typeNumbers(7,6,2,5,8,7,9);
+        storer.registerEvent(endTyping, orderNormal, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(true)
+    });
+
+    it("failLimit = 3, order = normal, numbers entered = 3, series length = 7, all 3 numbers are correct => series is not considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderNormal, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderNormal, 777);
+        storer.registerEvent(startTyping, orderNormal, 777);
+        typeNumbers(7,6,5);
+        storer.registerEvent(endTyping, orderNormal, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(false)
+    });
+
+    it("failLimit = 3, order = normal, numbers entered = 8, series length = 7, first 3 numbers are correct and the rest incorrect => series is not considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderNormal, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderNormal, 777);
+        storer.registerEvent(startTyping, orderNormal, 777);
+        typeNumbers(7,6,5,6,8,7,9,8);
+        storer.registerEvent(endTyping, orderNormal, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(false)
+    });
+
+    it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, numbers entered as order was normal => series is considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderReversed, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderReversed, 777);
+        storer.registerEvent(startTyping, orderReversed, 777);
+        typeNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endTyping, orderReversed, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(true)
+    });
+    it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, first three numbers correct => series is not considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderReversed, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderReversed, 777);
+        storer.registerEvent(startTyping, orderReversed, 777);
+        typeNumbers(1,2,3,9,8,9,8);
+        storer.registerEvent(endTyping, orderReversed, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(false)
+    });
+
+    it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, all numbers correct => series is not considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderReversed, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderReversed, 777);
+        storer.registerEvent(startTyping, orderReversed, 777);
+        typeNumbers(1,2,3,4,5,6,7);
+        storer.registerEvent(endTyping, orderReversed, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(1);
+        expect(calculator.lastSeriesCorrectness).toBe(true)
+        expect(calculator.lastSeriesFailed).toBe(false)
+    });
+
+    it("failLimit = 3, order = backwards, numbers entered = 3, series length = 7, all three numbers correct => series is not considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderReversed, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderReversed, 777);
+        storer.registerEvent(startTyping, orderReversed, 777);
+        typeNumbers(1,2,3);
+        storer.registerEvent(endTyping, orderReversed, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(false)
+    });
+
+    it("failLimit = 3, order = backwards, numbers entered = 9, series length = 7, first seven numbers correct => series is not considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderReversed, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderReversed, 777);
+        storer.registerEvent(startTyping, orderReversed, 777);
+        typeNumbers(1,2,3,4,5,6,7,8,9);
+        storer.registerEvent(endTyping, orderReversed, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(false)
+    });
+
+    it("failLimit = 3, order = backwards, numbers entered = 9, series length = 7, first two numbers correct => series is considered a fail  ", function() {
+        failLimit = 3;
+
+        storer = new eventStorer();
+        storer.registerEvent(startSeries, orderReversed, 777);
+        showNumbers(7,6,5,4,3,2,1);
+        storer.registerEvent(endSeries, orderReversed, 777);
+        storer.registerEvent(startTyping, orderReversed, 777);
+        typeNumbers(1,2,4,5,6,7,8,9,0);
+        storer.registerEvent(endTyping, orderReversed, 777);
+        var calculator = new calculateResult(storer.getEvents(),199);
+        expect(calculator.numberOfShownSeries).toBe(1);
+        expect(calculator.numberOfCorrectGivenSeries).toBe(0);
+        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesFailed).toBe(true)
+    });
 
 
     function showNumbers(){
@@ -233,8 +389,8 @@ describe("calculateResult ", function() {
 
     function typeNumbers(){
         for(var i=0; i<arguments.length; i++){
-            storer.registerEvent(keyDown, arguments[i], 777);
-            storer.registerEvent(keyUp, arguments[i], 777);
+            storer.registerEvent(keyDown, arguments[i]+48, 777);
+            storer.registerEvent(keyUp, arguments[i]+48, 777);
         }
 
     }
