@@ -3,12 +3,12 @@ function GetList(){
     function getNextList(){
 
         var req = new Request();
-        params = "username="+username
-        var urlEnd = "nextList"
+        var params = "username="+username;
+        var urlEnd = "nextList";
         var jsonData = req.createPost(url+urlEnd, params);
 
         var jsonParsed = JSON.parse(jsonData);
-        var numberSets = jsonParsed["list"]["numbersets"]
+        var numberSets = jsonParsed["list"]["numbersets"];
         testcase_id = jsonParsed["id"];
 
         return createNumberList(numberSets);
@@ -19,12 +19,12 @@ function GetList(){
     function getTrainingList(){
 
         var req = new Request();
-        params = "username="+username
-        var urlEnd = "trainingList"
+        var params = "username="+username;
+        var urlEnd = "trainingList";
         var jsonData = req.createPost(url+urlEnd, params);
 
         var jsonParsed = JSON.parse(jsonData);
-        var numberSets = jsonParsed["list"]["numbersets"]
+        var numberSets = jsonParsed["list"]["numbersets"];
 
         testcase_id = jsonParsed["id"];
 
@@ -52,7 +52,7 @@ function GetList(){
             numberList[i]=numberSeries;
             
         }
-        konsoli.log("createNumberlist")
+
         return numberList;
         
     }

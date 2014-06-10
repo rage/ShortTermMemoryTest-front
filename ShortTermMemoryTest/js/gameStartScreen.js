@@ -17,13 +17,13 @@ function GameStartScreen(){
             changePage();
         }
 
-    }
+    };
 
     function changePage(){
         document.getElementById("startScreenP"+page).style.display = "none";
         page = page+1;
         document.getElementById("startScreenP"+page).style.display = "inline";
-    };
+    }
 
 
     function createHtml(){

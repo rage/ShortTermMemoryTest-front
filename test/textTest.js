@@ -46,7 +46,7 @@ describe("As a new User, I want to see instructions", function() {
 
 
         document.getElementById('username').value = "Omena";
-        stateMachine.checkUsername("Omena")
+        stateMachine.checkUsername("Omena");
 		done();
 
     });
