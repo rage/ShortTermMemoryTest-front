@@ -1,6 +1,6 @@
 function calculateResult(events, fromTime) {
 
-    //console.log("calculateResult : eventStore size: " + eventStore.getEvents().length);
+    //konsoli.log("calculateResult : eventStore size: " + eventStore.getEvents().length);
 
     var numbersShown = [];
     var numbersGiven = [];

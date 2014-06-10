@@ -52,7 +52,7 @@ function GetList(){
             numberList[i]=numberSeries;
             
         }
-        console.log("createNumberlist")
+        konsoli.log("createNumberlist")
         return numberList;
         
     }

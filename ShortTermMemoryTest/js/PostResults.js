@@ -10,8 +10,8 @@ function PostResults() {
             url: url+"testlogs",
             data: resultsJSON,
             dataType: 'json',
-            success: function(){console.log("success");},
-            failure: function(errMsg){console.log(errMsg);}
+            success: function(){konsoli.log("success");},
+            failure: function(errMsg){konsoli.log(errMsg);}
         });
     }
     return {
