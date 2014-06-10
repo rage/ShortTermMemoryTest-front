@@ -67,6 +67,8 @@ function calculateResult(events, fromTime) {
             var correctChars = countCorrectChars();
             if(correctChars<failLimit){
                 lastSeriesFailed = true;
+            } else {
+                lastSeriesFailed = false;
             }
             updateLastSeriesCorrectness();
         }

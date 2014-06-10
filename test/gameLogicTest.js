@@ -2,7 +2,7 @@
  * Created by kristiak on 30.5.2014.
  */
 
-describe("gameLogicTest works if", function() {
+describe("gameLogicTest", function() {
 
 
 
@@ -18,9 +18,9 @@ describe("gameLogicTest works if", function() {
     var enterKeyUpEvent;
 
     beforeEach(function() {
-        maxFails = 5555; //Number of failed series allowed before the series of that length are dropped out
-        failLimit = 2; //Correct numbers required in a series for series not to be considered a major fail
-        droppedSeriesMinLength = 99;
+        maxFails = 999; //Number of failed series allowed before the series of that length are dropped out
+        failLimit = 0; //Correct numbers required in a series for series not to be considered a major fail
+        droppedSeriesMinLength = 999;
 
         $(document).off();
         evHandler = new eventHandler();
@@ -40,7 +40,7 @@ describe("gameLogicTest works if", function() {
             maxPracticeRounds: 3,
             donePracticeRounds: 0,
             gameStartTime : 0,
-            fails: [0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+            fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
             updateFails: function(eventHandler){
                 var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
                 var seriesLength = this.numberList[this.numberListIndex].numbers.length;
