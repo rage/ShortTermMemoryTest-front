@@ -48,11 +48,9 @@ text["oikein"] = "oikein";
 
 text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaaruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
 
-text["oikein"] = "OIKEIN!";
-text["oikeinIlmoitus"] = "<p>Palautit numerot oikein ja oikeassa järjestyksessä.</p>";
+text["oikeinIlmoitus"] = "<p>OIKEIN!</p><p>Palautit numerot oikein ja oikeassa järjestyksessä.</p>";
 
-text["vaarin"] = "VÄÄRIN!";
-text["vaarinIlmoitus"] = "<p>Palautit numerot joko väärin tai väärässä järjestyksessä.</p>";
+text["vaarinIlmoitus"] = "<p>VÄÄRIN!</p><p>Palautit numerot joko väärin tai väärässä järjestyksessä.</p>";
 
 
 text["harjoitusValmis"] = "<p>Jos haluat, saat vielä jatkaa harjoittelua. Saat harjoitella tehtävän tekemistä maksimissaan kolme kertaa. </p>" +

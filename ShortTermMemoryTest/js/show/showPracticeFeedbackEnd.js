@@ -7,37 +7,27 @@ function showPracticeFeedbackEnd(gameData) {
     var gameData = gameData;
 
     function createHTML() {
-        var htmlStructure = "<div id=\"Result\">\
-                                <h1 id=\"firstline\"></h1>\
-                                <h1 id=\"secondline\"></h1>\
-                                <h1 id=\"thirdline\"></h1>\
-                             </div>";
+        var htmlStructure = "<div id=\"ResultEnd\"></div>";
         $("body").html(htmlStructure);
     }
 
     createHTML();
 
+    var results;
+
     if (gameData.result.lastSeriesCorrectness == true) {
-        $("#firstline").html(text["oikein"]);
-        $("#secondline").html(text["oikeinIlmoitus"]);
+        results += text["oikeinIlmoitus"];
     } else {
-        $("#firstline").html(text["vaarin"]);
-        $("#secondline").html(text["vaarinIlmoitus"]);
+        results += text["vaarinIlmoitus"];
 
     }
     if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
-        $("#thirdline").html(text["harjoitusValmis"]);
+        results += text["harjoitusValmis"];
     }else{
-        $("#thirdline").html(text["tehtavaAlkaa"]);
+        results += text["tehtavaAlkaa"];
     }
 
-
-
-    console.log("asd");
-    console.log(gameData.numberList.length);
-    console.log(gameData.numberListIndex);
-
-
+    $("#ResultEnd").html(results);
 
     gameData.requestFocus(function (event, keyCode) {
         if (keyCode == 13) {
