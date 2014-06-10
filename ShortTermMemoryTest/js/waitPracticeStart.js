@@ -7,7 +7,7 @@ function WaitPractiseStart(){
     window.onkeypress = function(e) {
 
         var key = e.keyCode ? e.keyCode : e.which;
-        console.log(key);
+        konsoli.log(key);
         if(key == 32) {
             stateMachine.startGame('PRACTICE');
             window.onkeypress = "";

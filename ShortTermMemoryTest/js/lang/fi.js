@@ -21,7 +21,7 @@ text["ohje2"]= "<p>Sinun tulee painaa numerot ja niiden järjestys mieleesi ja p
     "<p>Voit jatkaa painamalla VÄLILYÖNTIÄ.</p>";
 
 
-text["ohje3"]= "<p>Palauta numerot niin nopeasti ja virheettömästi kuin pystyt käyttäen näppäimistön numeroita.</p>" +
+text["ohje3"]= "<p>Palauta numerot niin nopeasti ja virheettömästi kuin pystyt käyttäen näppäimistön yläreunan numeroita.</p>" +
     "<p>Saat harjoitella tehtävää, jos haluat. Pääset harjoitukseen VÄLILYÖNNILLÄ. </p>" +
     "<p>Jos haluat mennä suoraan tehtävään, paina ENTER.</p>";
 
@@ -46,15 +46,15 @@ text["kiitos"] = "Kiitos osallistumisesta tutkimukseen! ";
 text["sait"] = "Sait tehtävästä ";
 text["oikein"] = "oikein";
 
-text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaaruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
+text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaa ruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
 
-text["oikeinIlmoitus"] = "<p>OIKEIN!</p><p>Palautit numerot oikein ja oikeassa järjestyksessä.</p>";
+text["oikeinIlmoitus"] = "<p class=\"oikein\">OIKEIN!</p><p class=\"oikein\">Palautit numerot oikein ja oikeassa järjestyksessä.</p>";
 
-text["vaarinIlmoitus"] = "<p>VÄÄRIN!</p><p>Palautit numerot joko väärin tai väärässä järjestyksessä.</p>";
+text["vaarinIlmoitus"] = "<p class=\"vaarin\">VÄÄRIN!</p><p class=\"vaarin\">Palautit numerot joko väärin tai väärässä järjestyksessä.</p>";
 
 
 text["harjoitusValmis"] = "<p>Jos haluat, saat vielä jatkaa harjoittelua. Saat harjoitella tehtävän tekemistä maksimissaan kolme kertaa. </p>" +
     "<p>Pääset harjoitukseen VÄLILYÖNNILLÄ.</p>" +
     "<p>Jos haluat jatkaa suoraan tehtävään, paina ENTER.</p>";
 
-text["tehtavaAlkaa"] = "Tehtävä alkaa, kun painat ENTER.";
+text["tehtavaAlkaa"] = "<p>Tehtävä alkaa, kun painat ENTER.</p>";

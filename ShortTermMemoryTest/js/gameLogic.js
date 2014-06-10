@@ -96,8 +96,8 @@ function gameLogic (eventHandler) {
     function showPracticeResultEventHandler(event) {
         gameData.result = calculateResult(gameData.eventHandler.getStoredEvents(), gameData.gameStartTime);
         if (gameData.numberList.length == gameData.numberListIndex) {
-            console.log("gameEnd")
-            console.log(new Request().createPost(url+"finish", "id=" + testcase_id));
+            konsoli.log("gameEnd")
+            konsoli.log(new Request().createPost(url+"finish", "id=" + testcase_id));
             gameData.donePracticeRounds++;
             showPracticeFeedbackEnd(gameData);
         }else{
