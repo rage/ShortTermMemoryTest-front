@@ -1,7 +1,3 @@
-/**
- * Created by kristiak on 22.5.2014.
- */
-//(:testcase_id, :eventtype, :value, :timestamp)
 function eventStorer() {
 
     var events = [ ];
@@ -32,4 +28,4 @@ function eventStorer() {
         registerEvent   : registerEvent,
         getEvents       : getEvents
     };
-};
+}
