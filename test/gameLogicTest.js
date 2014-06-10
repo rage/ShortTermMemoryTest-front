@@ -23,8 +23,6 @@ describe("gameLogicTest", function() {
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
 
-        //username = CreateRandomTestUser();
-
         gameData = {
             gameIdentifier: "ThisGame",
             numberDisplayTime: 500,
@@ -53,6 +51,13 @@ describe("gameLogicTest", function() {
         enterKeyUpEvent.keyCode = 13;
 
     });
+
+    afterEach(function() {
+        var events = evHandler.getStoredEvents();
+        checkEventTimings(events);
+    });
+
+
 
     it("correct events in correct order are generated when playing one round of practice and then starting the actual game", function() {
 
@@ -146,11 +151,93 @@ describe("gameLogicTest", function() {
     });
 
 
+    it("correct events in correct order are generated when playing game in game mode", function() {
+
+        gameData.numberList = createMockList(15);
+        gameData.mode = "GAME";
+        game.start(gameData);
+        jasmine.clock().tick(100000);
+
+        var events = evHandler.getStoredEvents();
+        //console.log(events);
+        var index = 0;
+        index = checkGameEvents(events, index, gameData, false);
+
+    });
+
+    function checkShowCrossTiming(event1, event2) {
+        expect(event1.eventtype).toBe("EVENT_SHOWCROSS_START");
+        expect(event2.eventtype).toBe("EVENT_SHOWCROSS_END");
+        var showCrossTime = event2.timestamp - event1.timestamp;
+        expect(showCrossTime).toBe(gameData.showCrossTime);
+    }
+
+    function checkShowNumberTiming(event1, event2) {
+        expect(event1.eventtype).toBe("EVENT_SHOWNUMBER_START");
+        expect(event2.eventtype).toBe("EVENT_SHOWNUMBER_END");
+        var showNumberTime = event2.timestamp - event1.timestamp;
+        expect(showNumberTime).toBe(gameData.numberDisplayTime);
+    }
+
+    function checkUserInputTiming(event1, event2) {
+        expect(event1.eventtype).toBe("EVENT_USERINPUT_START");
+        expect(event2.eventtype).toBe("EVENT_USERINPUT_END");
+        var guessTime = event2.timestamp - event1.timestamp;
+        expect(guessTime).toBe(gameData.guessTime);
+    }
+
+    function checkUserInputTiming(event1, event2) {
+        expect(event1.eventtype).toBe("EVENT_SHOWCROSS_END");
+        expect(event2.eventtype).toBe("EVENT_SHOWNUMBER_START");
+        var delay = event2.timestamp - event1.timestamp;
+        expect(delay).toBe(gameData.ISITime - gameData.numberDisplayTime);
+    }
+
+    function checkBetweenNumbersDelay(event1, event2) {
+        if (event1.eventtype == "EVENT_SHOWNUMBER_END" && event1.eventtype == "EVENT_SHOWNUMBER_START") {
+            var delay = event2.timestamp - event1.timestamp;
+            expect(delay).toBe(gameData.ISITime - gameData.numberDisplayTime);
+        } else if (event1.eventtype == "EVENT_SHOWNUMBER_END" && event1.eventtype == "EVENT_SHOWSERIES_END") {
+            var delay = event2.timestamp - event1.timestamp;
+            expect(delay).toBe(gameData.ISITime - gameData.numberDisplayTime);
+        }
+    }
 
 
+    function checkTiming(event1, event2) {
+        switch (event1.eventtype) {
+            case "EVENT_SHOWCROSS_START":
+                checkShowCrossTiming(event1, event2);
+                break;
+            case "EVENT_SHOWNUMBER_START":
+                checkShowNumberTiming(event1, event2);
+                break;
+            case "EVENT_USERINPUT_START":
+                checkUserInputTiming(event1, event2);
+                break;
+            case "EVENT_SHOWCROSS_END":
+                checkShowCrossEndDelay(event1, event2);
+                break;
+            case "EVENT_SHOWNUMBER_END":
+                checkBetweenNumbersDelay(event1, event2);
+                break;
+        }
+    }
 
 
-
+    function checkEventTimings(events) {
+        var index = 0;
+        while (index < events.length) {
+            var index1 = skipKeyEvents(events, index);
+            var event1 = events[index1];
+            var index2 = skipKeyEvents(events, index1);
+            var event2 = events[index2];
+            if (index1 != index2) {
+                checkTiming(event1, event2);
+            }
+            index = index1 + 1;
+        }
+    }
 
 
     function checkForPracticeSeriesEvents(events, index, series) {
@@ -191,6 +278,48 @@ describe("gameLogicTest", function() {
     }
 
 
+
+    function checkForGameSeriesEvents(events, index, series) {
+
+        index = checkForEvent(events, index, "EVENT_SHOWSERIES_START");
+        index = checkForEvent(events, index, "EVENT_SHOWCROSS_START");
+        index = checkForEvent(events, index, "EVENT_SHOWCROSS_END");
+
+        for (var i = 0; i < series.numbers.length; i++) {
+            var number = series.numbers[i];
+            index = checkForEvent(events, index, "EVENT_SHOWNUMBER_START", number);
+            index = checkForEvent(events, index, "EVENT_SHOWNUMBER_END", number);
+        }
+        index = checkForEvent(events, index, "EVENT_SHOWSERIES_END");
+        index = checkForEvent(events, index, "EVENT_USERINPUT_START");
+        index = checkForEvent(events, index, "EVENT_USERINPUT_END");
+        //index = checkForEvent(events, index, "EVENT_SHOW_PRACTICE_RESULT_START")
+
+        return index;
+
+    }
+
+
+    function checkGameEvents(events, index, gameData, checkEnd) {
+        index = checkForEvent(events, index, "EVENT_GAME_START");
+        index = checkForEvent(events, index, "EVENT_SHOWLIST_START");
+
+        for (var i = 0; i < gameData.numberList.length; i++) {
+            var series = gameData.numberList[i];
+            index = checkForGameSeriesEvents(events, index, series);
+        }
+
+        index = checkForEvent(events, index, "EVENT_SHOWLIST_END")
+        index = checkForEvent(events, index, "EVENT_SHOWRESULT_START");
+
+
+
+        if (checkEnd == true) {
+            index = checkForEvent(events, index, "EVENT_GAME_END");
+        }
+
+        return index;
+    }
 
 
 
@@ -247,7 +376,7 @@ describe("gameLogicTest", function() {
 
         index = skipKeyEvents(events, index);
 
-        console.log(events[index].eventtype);
+        //console.log(events[index].eventtype);
         expect(index).toBeLessThan(events.length);
         expect(events[index].eventtype).toBe(eventType);
 
@@ -259,7 +388,7 @@ describe("gameLogicTest", function() {
 
         index = skipKeyEvents(events, index);
 
-        console.log(events[index].eventtype);
+        //console.log(events[index].eventtype);
         expect(index).toBeLessThan(events.length);
         expect(events[index].eventtype).toBe(eventType);
         expect(events[index].value).toBe(value);
