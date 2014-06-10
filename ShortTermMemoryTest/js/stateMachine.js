@@ -132,7 +132,6 @@ var stateMachine = function (){
                     while (this.numberListIndex < this.numberList.length && this.fails[this.numberList[this.numberListIndex].numbers.length] > maxFails) {
                         this.numberListIndex++;
                 }
-                console.log(this.numberListIndex);
             }
             };
 

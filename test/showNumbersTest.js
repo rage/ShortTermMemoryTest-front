@@ -34,7 +34,7 @@ describe("showNumbersTest", function() {
     it("also shows the + sign instead of a number", function() {
         showNumber("+");
         expect($("#num_field").text()).toBe("+");
-        expect($("#num_field").text()).not.hidden
+        expect($("#num_field").text()).not.hidden;
         hideNumber();
         expect($("#num_field").text()).hidden;
     });

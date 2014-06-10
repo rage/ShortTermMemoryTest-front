@@ -53,7 +53,7 @@ function CreateUser(){
 
     }
     
-	function signup(){
+	function signUp(){
 
         try {
 
@@ -94,7 +94,7 @@ function CreateUser(){
 		
 	return {
 		start:start,
-        signup:signup
+        signup:signUp
 	}
     
     

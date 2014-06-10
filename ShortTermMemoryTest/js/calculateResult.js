@@ -1,6 +1,3 @@
-/**
- * Created by kristiak on 22.5.2014.
- */
 function calculateResult(events, fromTime) {
 
     //console.log("calculateResult : eventStore size: " + eventStore.getEvents().length);
@@ -12,6 +9,32 @@ function calculateResult(events, fromTime) {
     var numberOfCorrectGivenSeries = 0;
     var lastSeriesCorrectness = false;
     var lastSeriesFailed = false;
+
+
+    function countCorrectChars() {
+        var n = 0;
+        if (numbersShownOrder == "upwards") {
+            while (n < numbersGiven.length && n < numbersShown.length && numbersShown[n] == String.fromCharCode(numbersGiven[n])) {
+                n++;
+            }
+        }
+
+        if (numbersShownOrder == "backwards") {
+            while (n < numbersGiven.length && n < numbersShown.length && numbersShown[numbersShown.length - n - 1] == String.fromCharCode(numbersGiven[n])) {
+                n++;
+            }
+        }
+        return n;
+    }
+
+    function updateLastSeriesCorrectness() {
+        if (numbersShown.length == correctChars && numbersShown.length == numbersGiven.length) {
+            numberOfCorrectGivenSeries++;
+            lastSeriesCorrectness = true;
+        } else {
+            lastSeriesCorrectness = false;
+        }
+    }
 
     for (var i = 0; i < events.length; i++) {
         var event = events[i];
@@ -41,46 +64,11 @@ function calculateResult(events, fromTime) {
         }
 
         if (event.eventtype == "EVENT_USERINPUT_END") {
-            var correctChars = 0;
-            var j=0;
-            if (numbersShownOrder == "upwards") {
-                while (j < numbersGiven.length && j < numbersShown.length && numbersShown[j] == String.fromCharCode(numbersGiven[j])) {
-                    correctChars++;
-                    j++;
-                }
-            }
-            if (numbersShownOrder == "backwards") {
-                while (j < numbersGiven.length && j < numbersShown.length && numbersShown[numbersShown.length - j - 1] == String.fromCharCode(numbersGiven[j])) {
-                    correctChars++;
-                    j++;
-                }
-            }
-//            if (numbersShown.length == numbersGiven.length) {
-
-
-//                if (numbersShownOrder == "upwards") {
-//                    for (var j = 0; j < numbersShown.length; j++) {
-//                        if (numbersShown[j] == String.fromCharCode(numbersGiven[j])) {
-//                            correctChars++;
-//                        }
-//                    }
-//                } else if (numbersShownOrder == "backwards") {
-//                    for (var j = 0; j < numbersShown.length; j++) {
-//                        if (numbersShown[j] == String.fromCharCode(numbersGiven[numbersShown.length - j - 1])) {
-//                            correctChars++;
-//                        }
-//                    }
-//                }
-//            }
+            var correctChars = countCorrectChars();
             if(correctChars<failLimit){
                 lastSeriesFailed = true;
             }
-            if (numbersShown.length == correctChars && numbersShown.length == numbersGiven.length) {
-                numberOfCorrectGivenSeries++;
-                lastSeriesCorrectness = true;
-            } else {
-                lastSeriesCorrectness = false;
-              }
+            updateLastSeriesCorrectness();
         }
 
         if (event.eventtype == "EVENT_GAME_END") {

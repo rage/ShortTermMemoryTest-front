@@ -20,14 +20,19 @@ describe("StartScreenTest", function() {
         element.value = "Peruskoulu";
         stateMachine.createUser();
         stateMachine.startGameStartScreen();
-        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta"]);
+        expect(document.getElementById("startScreenP3").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta3"]);
 
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
+        expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta1"]);
+        simulateKeyPress(32);
+        expect(document.getElementById("startScreenP2").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta2"]);
+        simulateKeyPress(32);
+        expect(document.getElementById("startScreenP3").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta3"]);
         simulateKeyPress(13);
 
-        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta"]);
+        expect(document.getElementById("startScreenP3").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta3"]);
     });
 
     it("check start screen text when user is trained", function() {
@@ -35,7 +40,7 @@ describe("StartScreenTest", function() {
         document.getElementById('username').value = "Omena";
         stateMachine.checkUsername(document.getElementById('username').value);
         stateMachine.startGameStartScreen();
-        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohje"]);
+        expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
     });
 
 
@@ -47,7 +52,9 @@ describe("StartScreenTest", function() {
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
-        expect(document.getElementById("startScreen").innerHTML).toBe(text["ohje"]);
+        expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
+        simulateKeyPress(32);
+        simulateKeyPress(32);
         simulateKeyPress(32);
         expect(document.getElementById("startScreen")).toBe(null);
         expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
