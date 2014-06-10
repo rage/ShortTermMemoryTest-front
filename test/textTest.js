@@ -62,8 +62,13 @@ describe("As a new User, I want to see instructions", function() {
         expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
         simulateKeyPress(32);
         expect(document.getElementById("startScreenP2").innerHTML).toBe(text["ohje2"]);
+        expect(document.getElementById("startScreenP1").style.display).toBe("none");
+        expect(document.getElementById("startScreenP2").style.display).toBe("inline");
         simulateKeyPress(32);
         expect(document.getElementById("startScreenP3").innerHTML).toBe(text["ohje3"]);
+        expect(document.getElementById("startScreenP1").style.display).toBe("none");
+        expect(document.getElementById("startScreenP2").style.display).toBe("none");
+        expect(document.getElementById("startScreenP3").style.display).toBe("inline");
 
         simulateKeyPress(32);
         done();
