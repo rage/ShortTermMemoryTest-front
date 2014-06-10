@@ -21,7 +21,7 @@ text["ohje2"]= "<p>Sinun tulee painaa numerot ja niiden järjestys mieleesi ja p
     "<p>Voit jatkaa painamalla VÄLILYÖNTIÄ.</p>";
 
 
-text["ohje3"]= "<p>Palauta numerot niin nopeasti ja virheettömästi kuin pystyt käyttäen näppäimistön numeroita.</p>" +
+text["ohje3"]= "<p>Palauta numerot niin nopeasti ja virheettömästi kuin pystyt käyttäen näppäimistön yläreunan numeroita.</p>" +
     "<p>Saat harjoitella tehtävää, jos haluat. Pääset harjoitukseen VÄLILYÖNNILLÄ. </p>" +
     "<p>Jos haluat mennä suoraan tehtävään, paina ENTER.</p>";
 
@@ -46,7 +46,7 @@ text["kiitos"] = "Kiitos osallistumisesta tutkimukseen! ";
 text["sait"] = "Sait tehtävästä ";
 text["oikein"] = "oikein";
 
-text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaaruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
+text["harjoittelunAloitushje"] = "<p>Olet aloittamassa tehtävän harjoittelun. Harjoitus koostuu kolmesta sarjasta, \njotka sinun tulee palauttaa ruudun ohjeiden mukaisesti \njoko esitysjärjestyksessä tai käänteisessä järjestyksessä.</p>\n<p>Aloita harjoittelu painamalla VÄLILYÖNTIÄ.</p>";
 
 text["oikeinIlmoitus"] = "<p class=\"oikein\">OIKEIN!</p><p class=\"oikein\">Palautit numerot oikein ja oikeassa järjestyksessä.</p>";
 
