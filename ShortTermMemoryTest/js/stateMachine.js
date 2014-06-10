@@ -97,8 +97,8 @@ var stateMachine = function (){
 
             var theNumberList;
             var list = new GetList();
-            if (mode == "GAME") {
 
+            if (mode == "GAME") {
                 theNumberList = list.getNextList();
             } else if (mode == "PRACTICE") {
                 theNumberList = list.getTrainingList();
@@ -124,25 +124,6 @@ var stateMachine = function (){
 
         }
 
-    }
-    
-    function createMockNumberList() {
-        var numberList = [ ];
-        for(var i = 0; i < 3; i++) {
-            var numberSeries = {};
-            numberSeries.numbers = [ ];
-            for (var x = 0; x < 3; x++) {
-                numberSeries.numbers[x] = x + i + 2;
-            }
-            if (i == 1) {
-                numberSeries.order = "backwards";
-            } else {
-                numberSeries.order = "upwards";
-            }
-            //numberSeries.numbers = numbers;
-            numberList[i] = numberSeries;
-        }
-        return numberList;
     }
 
     return {
