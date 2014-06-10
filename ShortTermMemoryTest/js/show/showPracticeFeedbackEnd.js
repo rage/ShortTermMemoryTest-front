@@ -20,6 +20,7 @@ function showPracticeFeedbackEnd(gameData) {
         }
 
     }
+    
     setWrongOrRightText();
 
     if (gameData.donePracticeRounds < gameData.maxPracticeRounds) {
