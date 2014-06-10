@@ -10,7 +10,6 @@ function showResult(gameData) {
                                 <h1 id=\"firstline\"></h1>\
                                 <h1 id=\"secondline\"></h1>\
                                 <h1 id=\"thirdline\"></h1>\
-                                 <h1 id=\"fourthline\"></h1>\
                              </div>";
         $("body").html(htmlStructure);
     }
@@ -24,15 +23,12 @@ function showResult(gameData) {
 
     var firstline = text["kiitos"];
     var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
-    var firsline = text["kiitos"];
     var thirdline = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
 
 
     $("#firstline").html(firstline);
     $("#secondline").html(secondline);
     $("#thirdline").html(thirdline);
-    $("#fourthline").html(fourthline);
-
 }
 
 function hideResult() {

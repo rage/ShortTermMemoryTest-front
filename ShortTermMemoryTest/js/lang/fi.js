@@ -5,10 +5,10 @@ text["ohjeHarjoitteluSuorittamatta1"] = "<p>Sinulle näytetään yksitellen nume
     "<p>Voit jatkaa painamalla VÄLILYÖNTIÄ.</p>";
 
 text["ohjeHarjoitteluSuorittamatta2"] = "<p>Sinun tulee painaa numerot ja niiden järjestys mieleesi ja palauttaa ne ruudulle tulevan ohjeen mukaisesti joko esitysjärjestyksessä tai käänteisessä järjestyksessä. " +
-    "Sanojen palauttamisen jälkeen tehtävä siirtyy itsestään eteenpäin.</p>" +
+    "Numeroiden palauttamisen jälkeen tehtävä siirtyy itsestään eteenpäin.</p>" +
     "<p>Voit jatkaa painamalla VÄLILYÖNTIÄ.</p>";
 
-text["ohjeHarjoitteluSuorittamatta3"] = "<p>Palauta numerot niin nopeasti ja virheettömästi kuin pystyt käyttäen näppäimistön numeroita.</p>" +
+text["ohjeHarjoitteluSuorittamatta3"] = "<p>Palauta numerot niin nopeasti ja virheettömästi kuin pystyt käyttäen näppäimistön yläreunan numeroita.</p>" +
     "<p>Pääset harjoittelemaan tehtävää painamalla VÄLILYÖNTIÄ.</p>";
 
 text["ohje1"]= "<p>Sinulle näytetään yksitellen numeroita 0-9 väliltä ruudulla. Numerot esitetään 2-7 numeron mittaisissa sarjoissa. " +
@@ -37,9 +37,9 @@ text["seuraava"] =  "<p>Siirry seuraavaan harjoitukseen painamalla VÄLILYÖNTI�
 
 text["kirjoitaTunnus"] = "Kirjoita alla olevaan kenttään käyttäjätunnuksesi:";
 
-text["palautaEsitys"] = "Palauta sanat nyt ESITYSJÄRJESTYKSESSÄ.";
+text["palautaEsitys"] = "Palauta numerot nyt ESITYSJÄRJESTYKSESSÄ.";
 
-text["palautaKaantainen"] = "Palauta sanat nyt KÄÄNTEISESSÄ JÄRJESTYKSESSÄ.";
+text["palautaKaantainen"] = "Palauta numerot nyt KÄÄNTEISESSÄ JÄRJESTYKSESSÄ.";
 
 
 text["kiitos"] = "Kiitos osallistumisesta tutkimukseen! ";

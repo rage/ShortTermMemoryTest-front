@@ -13,7 +13,7 @@ function showPracticeFeedbackEnd(gameData) {
 
     createHTML();
 
-    var results;
+    var results = "";
 
     if (gameData.result.lastSeriesCorrectness == true) {
         results += text["oikeinIlmoitus"];
