@@ -53,7 +53,7 @@ function CreateUser(){
 
     }
     
-	function signUp(){
+    function signUp(){
 
         try {
 
@@ -89,13 +89,13 @@ function CreateUser(){
             return false;
         }
 
-	}
+    }
     
-		
-	return {
-		start:start,
+
+    return {
+        start:start,
         signup:signUp
-	}
+    }
     
     
 }

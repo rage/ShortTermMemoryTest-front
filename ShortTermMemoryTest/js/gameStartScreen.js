@@ -1,9 +1,9 @@
 function GameStartScreen(){
     var page = 1;
-	
-	function start(){
-		createHtml();
-	}
+
+    function start(){
+        createHtml();
+    }
 
     window.onkeypress = function(e) {
 
@@ -26,7 +26,7 @@ function GameStartScreen(){
     };
 
 
-	function createHtml(){
+    function createHtml(){
 
         if(userIsTrained){
             document.body.innerHTML = '<div id="startScreen">' +
@@ -40,9 +40,9 @@ function GameStartScreen(){
                 '<div id="startScreenP3">' + text["ohjeHarjoitteluSuorittamatta3"] + '</div></div>';
         }
 
-	}
-	
-	return {
-		start:start
-	}
+    }
+
+    return {
+        start:start
+    }
 }
