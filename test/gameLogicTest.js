@@ -55,6 +55,7 @@ describe("gameLogicTest", function() {
     afterEach(function() {
         var events = evHandler.getStoredEvents();
         checkEventTimings(events);
+        $(document).off();
     });
 
 
@@ -164,6 +165,195 @@ describe("gameLogicTest", function() {
         index = checkGameEvents(events, index, gameData, false);
 
     });
+
+    it("numbers are shown on screen correctly in game mode", function() {
+
+        gameData.numberList = createMockList(15);
+        gameData.mode = "GAME";
+
+        game.start(gameData);
+        do {
+            jasmine.clock().tick(10);
+            var events = evHandler.getStoredEvents();
+            lastEvent = events[events.length-1];
+            if (lastEvent.eventtype == "EVENT_SHOWNUMBER_START") {
+                expect($("#num_field").text()).toBe(lastEvent.value);
+                expect($("#num_field").text()).not.hidden;
+            } else if (lastEvent.eventtype == "EVENT_SHOWNUMBER_END") {
+                expect($("#num_field").text()).hidden;
+            }
+        } while (lastEvent.eventtype != "EVENT_SHOWRESULT_START")
+
+    });
+
+    it("cross is shown on screen correctly in game mode", function() {
+
+        gameData.numberList = createMockList(15);
+        gameData.mode = "GAME";
+
+        game.start(gameData);
+        do {
+            jasmine.clock().tick(10);
+            var events = evHandler.getStoredEvents();
+            lastEvent = events[events.length-1];
+            if (lastEvent.eventtype == "EVENT_SHOWCROSS_START") {
+                expect($("#num_field").text()).toBe("+");
+                expect($("#num_field").text()).not.hidden;
+            } else if (lastEvent.eventtype == "EVENT_SHOWCROSS_END") {
+                expect($("#num_field").text()).hidden;
+            }
+        } while (lastEvent.eventtype != "EVENT_SHOWRESULT_START");
+
+    });
+
+
+    it("a correct result is generated from correct mock input", function() {
+        evHandler.registerEventHandler("EVENT_USERINPUT_START", function () {
+            var keyDownEvent = jQuery.Event("keydown");
+            var keyUpEvent = jQuery.Event("keyup");
+            var series = gameData.numberList[gameData.numberListIndex];
+            for (var i = 0; i < series.numbers.length; i++) {
+                if (series.order == "upwards") {
+                    keyDownEvent.keyCode = parseInt(series.numbers[i]) + 48;
+                    keyUpEvent.keyCode = parseInt(series.numbers[i]) + 48;
+                } else {
+                    keyDownEvent.keyCode = parseInt(series.numbers[series.numbers.length - i - 1]) + 48;
+                    keyUpEvent.keyCode = parseInt(series.numbers[series.numbers.length - i - 1]) + 48;
+                }
+                $(document).trigger(keyDownEvent);
+                jasmine.clock().tick(10);
+                $(document).trigger(keyUpEvent);
+                jasmine.clock().tick(10);
+            }
+        });
+
+        gameData.numberList = createMockList(15);
+        gameData.mode = "GAME";
+
+        game.start(gameData);
+        jasmine.clock().tick(100000);
+        var events = evHandler.getStoredEvents();
+        var result = calculateResult(events, 0);
+        expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
+
+    });
+
+
+    it("a correct result is generated from correct mock input and not affected by user input outside the guess time", function() {
+        evHandler.registerEventHandler("EVENT_USERINPUT_START", function () {
+            var keyDownEvent = jQuery.Event("keydown");
+            var keyUpEvent = jQuery.Event("keyup");
+            var series = gameData.numberList[gameData.numberListIndex];
+            for (var i = 0; i < series.numbers.length; i++) {
+                if (series.order == "upwards") {
+                    keyDownEvent.keyCode = parseInt(series.numbers[i]) + 48;
+                    keyUpEvent.keyCode = parseInt(series.numbers[i]) + 48;
+                } else {
+                    keyDownEvent.keyCode = parseInt(series.numbers[series.numbers.length - i - 1]) + 48;
+                    keyUpEvent.keyCode = parseInt(series.numbers[series.numbers.length - i - 1]) + 48;
+                }
+                $(document).trigger(keyDownEvent);
+                jasmine.clock().tick(10);
+                $(document).trigger(keyUpEvent);
+                jasmine.clock().tick(10);
+            }
+        });
+
+
+        evHandler.registerEventHandler("EVENT_SHOWCROSS_START", function () {
+            var keyDownEvent = jQuery.Event("keydown");
+            var keyUpEvent = jQuery.Event("keyup");
+            var additionalInput =  Math.floor(Math.random() * 10);
+            if (additionalInput == 1) {
+                keyDownEvent.keyCode = Math.floor(Math.random() * 100) + 1;
+                keyUpEvent.keyCode = keyDownEvent.keyCode
+            }
+
+            $(document).trigger(keyDownEvent);
+            jasmine.clock().tick(10);
+            $(document).trigger(keyUpEvent);
+            jasmine.clock().tick(10);
+
+        });
+
+        evHandler.registerEventHandler("EVENT_SHOWNUMBER_START", function () {
+            var keyDownEvent = jQuery.Event("keydown");
+            var keyUpEvent = jQuery.Event("keyup");
+            var additionalInput =  Math.floor(Math.random() * 10);
+            if (additionalInput == 1) {
+                keyDownEvent.keyCode = Math.floor(Math.random() * 100) + 1;
+                keyUpEvent.keyCode = keyDownEvent.keyCode
+            }
+
+            $(document).trigger(keyDownEvent);
+            jasmine.clock().tick(10);
+            $(document).trigger(keyUpEvent);
+            jasmine.clock().tick(10);
+
+        });
+
+        gameData.numberList = createMockList(1);
+        gameData.mode = "GAME";
+
+        game.start(gameData);
+        jasmine.clock().tick(100000);
+        var events = evHandler.getStoredEvents();
+        //console.log(events);
+        var result = calculateResult(events, 0);
+        expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    it("an incorrect result is generated from incorrect mock input", function() {
+        evHandler.registerEventHandler("EVENT_USERINPUT_START", function () {
+            var keyDownEvent = jQuery.Event("keydown");
+            var keyUpEvent = jQuery.Event("keyup");
+            var series = gameData.numberList[gameData.numberListIndex];
+            for (var i = 0; i < series.numbers.length; i++) {
+                if (series.order == "upwards") {
+                    keyDownEvent.keyCode = parseInt(series.numbers[i]) + 48;
+                    keyUpEvent.keyCode = parseInt(series.numbers[i]) + 48;
+                } else {
+                    keyDownEvent.keyCode = parseInt(series.numbers[series.numbers.length - i - 1]) + 48;
+                    keyUpEvent.keyCode = parseInt(series.numbers[series.numbers.length - i - 1]) + 48;
+                }
+                var messWithInput =  Math.floor(Math.random() * 2);
+                if (messWithInput == 1) {
+                    keyDownEvent.keyCode = Math.floor(Math.random() * 9) + 1 + 48;
+                    keyUpEvent.keyCode = Math.floor(Math.random() * 9) + 1 + 48;
+                }
+
+                $(document).trigger(keyDownEvent);
+                jasmine.clock().tick(10);
+                $(document).trigger(keyUpEvent);
+                jasmine.clock().tick(10);
+            }
+        });
+
+        gameData.numberList = createMockList(15);
+        gameData.mode = "GAME";
+
+        game.start(gameData);
+        jasmine.clock().tick(100000);
+        var events = evHandler.getStoredEvents();
+        var result = calculateResult(events, 0);
+        expect(result.numberOfCorrectGivenSeries).not.toBe(result.numberOfShownSeries);
+
+    });
+
 
     function checkShowCrossTiming(event1, event2) {
         expect(event1.eventtype).toBe("EVENT_SHOWCROSS_START");
