@@ -356,7 +356,7 @@ describe("gameLogicTest", function() {
 
     });
 
- 
+
 
 
     function checkShowCrossTiming(event1, event2) {
