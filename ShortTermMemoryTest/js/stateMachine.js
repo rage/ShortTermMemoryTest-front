@@ -117,7 +117,7 @@ var stateMachine = function (){
                 maxPracticeRounds: 3,
                 donePracticeRounds: 0,
                 fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]], //index [7][0] refers to the normal 7 number series and [6][1] to the reversed 6 number series
-                shownSeries: theNumberList,
+                shownSeries: theNumberList.clone,
                 updateFails: function(eventHandler){
                     var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
                     var seriesLength = this.numberList[this.numberListIndex].numbers.length;
