@@ -137,6 +137,7 @@ describe("gameLogicTest", function() {
     });
 
 
+
     it("does not let user play more practice rounds than is allowed", function() {
 
         gameData.numberList = createMockList(3);
@@ -186,6 +187,7 @@ describe("gameLogicTest", function() {
         index = checkGameEvents(events, index, gameData, false);
 
     });
+
 
     it("numbers are shown on screen correctly in game mode", function() {
 
@@ -374,6 +376,8 @@ describe("gameLogicTest", function() {
         expect(result.numberOfCorrectGivenSeries).not.toBe(result.numberOfShownSeries);
 
     });
+
+
 
 
     function checkShowCrossTiming(event1, event2) {

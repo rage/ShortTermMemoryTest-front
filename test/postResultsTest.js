@@ -2,6 +2,7 @@
  * Created by mhaanran on 4.6.2014.
  */
 
+/*
 describe("PostResultsTest", function() {
 
     beforeEach(function() {
@@ -44,3 +45,4 @@ describe("PostResultsTest", function() {
 
 
 });
+*/
