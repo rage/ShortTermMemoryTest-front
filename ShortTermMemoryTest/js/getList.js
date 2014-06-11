@@ -28,7 +28,6 @@ function GetList(){
 
         testcase_id = jsonParsed["id"];
 
-
         return createNumberList(numberSets);
 
     }
@@ -43,7 +42,6 @@ function GetList(){
             var numbers = [];
             
             for (var x = 0; x < list[i]["numbers"].length; x++) {
-                var number = x;
                 numbers[x] = list[i]["numbers"][x]["text"];
             }
             
