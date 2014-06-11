@@ -46,7 +46,6 @@ function PostResults() {
         var resultsJSON = {"result" : resultData};
         $.ajax({
             type: 'POST',
-            url: url+"testlogs",
             url: url+"results",
             data: resultsJSON,
             dataType: 'json',

@@ -44,7 +44,7 @@ function gameLogic (eventHandler) {
 
     function showResultEventHandler(event) {
         showResult(gameData);
-        postResults.post(gameData.eventHandler.getStoredEvents());
+        var events = gameData.eventHandler.getStoredEvents();
         postResults.post(events);
         postTestLog.post(events);
         new Request().createPost(url+"finish", "id=" + testcase_id);
@@ -80,7 +80,7 @@ function gameLogic (eventHandler) {
     function showPracticeResultEventHandler(event) {
         gameData.result = calculateResult(gameData.eventHandler.getStoredEvents(), gameData.gameStartTime);
         if (gameData.numberList.length == gameData.numberListIndex) {
-            konsoli.log("gameEnd")
+            konsoli.log("gameEnd");
             konsoli.log(new Request().createPost(url+"finish", "id=" + testcase_id));
             gameData.donePracticeRounds++;
             showPracticeFeedbackEnd(gameData);
