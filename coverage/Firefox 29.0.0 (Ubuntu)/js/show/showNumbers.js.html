@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for js/waitPracticeStart.js</title>
+    <title>Code coverage report for js/show/showNumbers.js</title>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../../prettify.css">
 
     <style>
         body, html {
@@ -195,24 +195,24 @@
     </style>
 </head>
 <body>
-<div class="header medium">
-    <h1>Code coverage report for <span class="entity">js/waitPracticeStart.js</span></h1>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">js/show/showNumbers.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">100% <small>(8 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">75% <small>(3 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">100% <small>(3 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">100% <small>(8 / 8)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">js/</a> &#187; waitPracticeStart.js</div>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">js/show/</a> &#187; showNumbers.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -233,65 +233,41 @@
 15
 16
 17
-18
-19
-20
-21
-22
-23
-24
-25
-26</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+18</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">475</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">475</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">475</span>
+<span class="cline-any cline-yes">475</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">471</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function WaitPractiseStart(){
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function showNumber(number) {
 &nbsp;
-    function start(){
-        createHtml();
+    function createHTML() {
+        $("body").html("&lt;div id=\"Game\"&gt;\
+        &lt;div id = \"num_field\"&gt;&lt;/div&gt;\
+        &lt;/div&gt;");
     }
 &nbsp;
-    window.onkeypress = <span class="fstat-no" title="function not covered" >function(e) {</span>
+    createHTML();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        var key = e.keyCode ? e.keyCode : e.which;</span>
-<span class="cstat-no" title="statement not covered" >        konsoli.log(key);</span>
-<span class="cstat-no" title="statement not covered" >        if(key == 32) {</span>
-<span class="cstat-no" title="statement not covered" >            stateMachine.startGame('PRACTICE');</span>
-<span class="cstat-no" title="statement not covered" >            window.onkeypress = "";</span>
-        }
+    $("#num_field").show();
+    $("#num_field").html(number);
+}
 &nbsp;
-    };
-&nbsp;
-    function createHtml(){
-        document.body.innerHTML = '&lt;div id="PracticeStart"&gt;'+text["harjoittelunAloitushje"]+'&lt;/div&gt;';
-    }
-&nbsp;
-    return {
-        start:start
-    }
-&nbsp;
-}</pre></td></tr>
+function hideNumber() {
+    $("#num_field").hide();
+}
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
@@ -299,7 +275,7 @@
     <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 11 2014 10:57:36 GMT+0300 (EEST)</div>
 </div>
 
-<script src="../prettify.js"></script>
+<script src="../../prettify.js"></script>
 
 <script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
 <script>

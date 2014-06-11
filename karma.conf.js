@@ -32,7 +32,9 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'ShortTermMemoryTest/js/*.js':'coverage'
+        'ShortTermMemoryTest/js/*.js':'coverage',
+        'ShortTermMemoryTest/js/lang/*.js':'coverage',
+        'ShortTermMemoryTest/js/show/*.js':'coverage'
     
     },
 
@@ -72,6 +74,6 @@ module.exports = function(config) {
   });
 };
 coverageReporter = {
-    type : 'html',
+    type : 'lcov',
     dir : 'coverage/'
 }

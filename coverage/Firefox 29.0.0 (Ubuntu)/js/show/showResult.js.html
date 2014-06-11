@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for js/waitPracticeStart.js</title>
+    <title>Code coverage report for js/show/showResult.js</title>
     <meta charset="utf-8">
 
-    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../../prettify.css">
 
     <style>
         body, html {
@@ -195,24 +195,24 @@
     </style>
 </head>
 <body>
-<div class="header medium">
-    <h1>Code coverage report for <span class="entity">js/waitPracticeStart.js</span></h1>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">js/show/showResult.js</span></h1>
     <h2>
         
-        Statements: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Statements: <span class="metric">93.33% <small>(14 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Branches: <span class="metric">0% <small>(0 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">100% <small>(0 / 0)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Functions: <span class="metric">75% <small>(3 / 4)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">66.67% <small>(2 / 3)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         
-        Lines: <span class="metric">58.33% <small>(7 / 12)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">93.33% <small>(14 / 15)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
         
         Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
     </h2>
-    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">js/</a> &#187; waitPracticeStart.js</div>
+    <div class="path"><a href="../../index.html">All files</a> &#187; <a href="index.html">js/show/</a> &#187; showResult.js</div>
 </div>
 <div class="body">
 <pre><table class="coverage">
@@ -241,57 +241,78 @@
 23
 24
 25
-26</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
+26
+27
+28
+29
+30
+31
+32
+33</td><td class="line-coverage"><span class="cline-any cline-yes">1</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
+<span class="cline-any cline-yes">6</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1</span>
-<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function WaitPractiseStart(){
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">function showResult(gameData) {
 &nbsp;
-    function start(){
-        createHtml();
+    function createHTML() {
+        var htmlStructure = "&lt;div id=\"Result\"&gt;\
+                                &lt;h1 id=\"firstline\"&gt;&lt;/h1&gt;\
+                                &lt;h1 id=\"secondline\"&gt;&lt;/h1&gt;\
+                                &lt;h1 id=\"thirdline\"&gt;&lt;/h1&gt;\
+                             &lt;/div&gt;";
+        $("body").html(htmlStructure);
     }
 &nbsp;
-    window.onkeypress = <span class="fstat-no" title="function not covered" >function(e) {</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        var key = e.keyCode ? e.keyCode : e.which;</span>
-<span class="cstat-no" title="statement not covered" >        konsoli.log(key);</span>
-<span class="cstat-no" title="statement not covered" >        if(key == 32) {</span>
-<span class="cstat-no" title="statement not covered" >            stateMachine.startGame('PRACTICE');</span>
-<span class="cstat-no" title="statement not covered" >            window.onkeypress = "";</span>
-        }
+    createHTML();
 &nbsp;
-    };
+    gameData.result = calculateResult(gameData.eventHandler.getStoredEvents(), gameData.gameStartTime);
 &nbsp;
-    function createHtml(){
-        document.body.innerHTML = '&lt;div id="PracticeStart"&gt;'+text["harjoittelunAloitushje"]+'&lt;/div&gt;';
-    }
+    var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
 &nbsp;
-    return {
-        start:start
-    }
+    var firstline = text["kiitos"];
+    var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
+    var thirdline = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
 &nbsp;
-}</pre></td></tr>
+    $("#firstline").html(firstline);
+    $("#secondline").html(secondline);
+    $("#thirdline").html(thirdline);
+&nbsp;
+}
+&nbsp;
+<span class="fstat-no" title="function not covered" >function hideResult() {</span>
+<span class="cstat-no" title="statement not covered" >    $("#Result").html("");</span>
+}
+&nbsp;
+&nbsp;</pre></td></tr>
 </table></pre>
 
 </div>
@@ -299,7 +320,7 @@
     <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Jun 11 2014 10:57:36 GMT+0300 (EEST)</div>
 </div>
 
-<script src="../prettify.js"></script>
+<script src="../../prettify.js"></script>
 
 <script src="http://yui.yahooapis.com/3.6.0/build/yui/yui-min.js"></script>
 <script>
