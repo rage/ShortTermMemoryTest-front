@@ -69,11 +69,20 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false
+    singleRun: false,
+
+    coverageReporter: {
+        reporters:[
+            {
+                type: 'lcov',
+                dir:'coverage/'
+            },
+            {
+
+                type : 'text'
+            }
+        ]
+    }
 
   });
 };
-coverageReporter = {
-    type : 'lcov',
-    dir : 'coverage/'
-}
