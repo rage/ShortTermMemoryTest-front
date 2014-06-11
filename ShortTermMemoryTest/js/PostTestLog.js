@@ -7,8 +7,8 @@ function PostTestLog() {
     }
 
     function post(events) {
-        var testLogEvents = prepareTestLog(events);
-        var eventsJSON = {"testlog" : testLogEvents};
+        prepareTestLog(events);
+        var eventsJSON = {"testlog" : events};
 
         $.ajax({
             type: 'POST',
