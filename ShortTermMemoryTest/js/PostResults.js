@@ -2,10 +2,13 @@ function PostResults() {
 
     function createResultTableData(events) {
         var userInputStart = false;
-        var keypressindex = 1;
+
         var last_series = 0;
         var this_series = 0;
         var resultTableData = [];
+
+        var keypressindexStartFrom = 1;
+        var keypressindex = keypressindexStartFrom;
 
         for (var i = 0; i < events.length; i++) {
             var event = events[i];
@@ -22,7 +25,7 @@ function PostResults() {
                 userInputStart = false;
                 last_series = this_series;
                 this_series = 0;
-                keypressindex = 1;
+                keypressindex = keypressindexStartFrom;
             }
 
             if (event.eventtype == "EVENT_TYPE_KEYDOWN") {
