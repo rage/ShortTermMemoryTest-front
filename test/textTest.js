@@ -53,9 +53,8 @@ describe("As a old User, I want to see instructions", function() {
 
     it("instructions4", function() {
         expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
-
-
     });
+
     /*
     it("instructions5", function() {
         jasmine.clock().tick(20000);
@@ -130,6 +129,9 @@ describe("As a new User, I want to see instructions", function() {
         expect(document.getElementById("startScreenP1").style.display).toBe("none");
         expect(document.getElementById("startScreenP2").style.display).toBe("none");
         expect(document.getElementById("startScreenP3").style.display).toBe("inline");
+ 
+        simulateKeyPress(32);
+        expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]); 
  
         done();
 
