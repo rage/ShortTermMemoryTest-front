@@ -25,8 +25,3 @@ function showResult(gameData) {
     $("#thirdline").html(thirdline);
 
 }
-
-function hideResult() {
-    $("#Result").html("");
-}
-
