@@ -17,7 +17,7 @@ text["ohje1"]= "<p>Sinulle näytetään yksitellen numeroita 0-9 väliltä ruudu
 
 
 text["ohje2"]= "<p>Sinun tulee painaa numerot ja niiden järjestys mieleesi ja palauttaa ne ruudulle tulevan ohjeen mukaisesti joko esitysjärjestyksessä tai käänteisessä järjestyksessä. " +
-    "Sanojen palauttamisen jälkeen tehtävä siirtyy itsestään eteenpäin.</p>" +
+    "Numeroiden palauttamisen jälkeen tehtävä siirtyy itsestään eteenpäin.</p>" +
     "<p>Voit jatkaa painamalla VÄLILYÖNTIÄ.</p>";
 
 
