@@ -7,6 +7,7 @@ function gameLogic (eventHandler) {
 
     var gameData;
     var postResults = new PostResults();
+    var postTestLog = new PostTestLog();
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
     eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
@@ -44,6 +45,8 @@ function gameLogic (eventHandler) {
     function showResultEventHandler(event) {
         showResult(gameData);
         postResults.post(gameData.eventHandler.getStoredEvents());
+        postResults.post(events);
+        postTestLog.post(events);
         new Request().createPost(url+"finish", "id=" + testcase_id);
     }
 
@@ -69,7 +72,9 @@ function gameLogic (eventHandler) {
         } else if (gameData.mode == "PRACTICE") {
             gameData.eventHandler.triggerEvent("EVENT_SHOW_PRACTICE_RESULT_START", "", numberBlankTime);
         }
-        postResults.post(gameData.eventHandler.getStoredEvents());
+        var events = gameData.eventHandler.getStoredEvents();
+        postResults.post(events);
+        postTestLog.post(events);
     }
 
     function showPracticeResultEventHandler(event) {
