@@ -47,14 +47,14 @@ function PostResults() {
     function post(events) {
         var resultData = createResultTableData(events);
         var resultsJSON = {"result" : resultData};
-        console.log(resultsJSON);
+        konsoli.log(resultsJSON);
         $.ajax({
             type: 'POST',
             url: url+"results",
             data: resultsJSON,
             dataType: 'json',
-            success: function(){console.log("PostResults success");},
-            failure: function(errMsg){console.log(errMsg);}
+            success: function(){konsoli.log("PostResults success");},
+            failure: function(errMsg){konsoli.log(errMsg);}
         });
     }
 
