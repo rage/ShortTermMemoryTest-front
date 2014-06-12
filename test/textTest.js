@@ -1,4 +1,4 @@
-
+jasmine.getEnv().defaultTimeoutInterval = 1000000000000000000000
 describe("As a old User, I want to see instructions", function() {
 
     beforeEach(function() {
@@ -55,19 +55,185 @@ describe("As a old User, I want to see instructions", function() {
         expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
     });
 
-    /*
+
     it("instructions5", function() {
-        jasmine.clock().tick(20000);
 
         simulateKeyPress(32);
-        //jasmine.clock().tick(20000);
+        jasmine.clock().tick(20000);
+        expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
+
+        simulateKeyPress(32);
+        jasmine.clock().tick(20000);
+        expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
+        new simulateKeyPress(32);
+        expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
+        new simulateKeyPress(32);
+        jasmine.clock().tick(20000);
+
+    });
 
 
-        // expect(document.body.innerHTML).toBe(text["harjoittelunAloitushje"]);
+
+});
+
+
+describe("As a old User, I want to see instructions 2", function() {
+
+    beforeEach(function() {
+
+        $(document).off();
+        evHandler = new eventHandler();
+        keyHandler = new keyEventHandler(evHandler);
+        game = new gameLogic(evHandler);
+
+        jasmine.clock().install();
+        jasmine.clock().tick(200);
+    });
+
+    function simulateKeyPress(c) {
+        jQuery.event.trigger({ type : 'keypress', which : c });
+    }
+
+
+    it("instructions", function(done) {
+
+        stateMachine.start();
+
+
+        document.getElementById('username').value = "Omena";
+        stateMachine.checkUsername("Omena");
+        done();
+
+    });
+    it("instructions2", function(done) {
+
+        simulateKeyPress(32);
+        done();
+
+    });
+    it("instructions3", function(done) {
+        simulateKeyPress(32);
+        simulateKeyPress(32);
+        simulateKeyPress(32);
+        done();
+
+    });
+
+    it("instructions4", function() {
+    });
+
+
+    it("instructions5", function() {
+
+        function simulateKeyDown(c) {
+            keyDownEvent = jQuery.Event("keydown");
+            keyDownEvent.keyCode = c;
+            $(document).trigger(keyDownEvent);
+        }
+
+        function simulateKeyUp(c) {
+            keyUpEvent = jQuery.Event("keyup");
+            keyUpEvent.keyCode = c;
+            $(document).trigger(keyUpEvent);
+        }
+
+        simulateKeyPress(32);
+        jasmine.clock().tick(20000);
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+
+
+
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+        expect(document.getElementById('ResultEnd').innerHTML).toBe(text["vaarinIlmoitus"]+""+text["harjoitusValmis"]);
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+        simulateKeyDown(32);
+        jasmine.clock().tick(100);
+        simulateKeyUp(32);
+        jasmine.clock().tick(20000);
+
+
+        expect(document.getElementById('ResultEnd').innerHTML).toBe(text["vaarinIlmoitus"]+""+text["tehtavaAlkaa"]);
+
+        simulateKeyDown(13);
+        jasmine.clock().tick(100);
+        simulateKeyUp(13);
+        jasmine.clock().tick(200000);
+        jasmine.clock().tick(200000);
+
+
+        expect(document.getElementById('firstline').innerHTML).toBe(text["kiitos"]);
+        expect(document.getElementById('secondline').innerHTML).toBe("Sait tehtävästä 0% oikein");
+        expect(document.getElementById('thirdline').innerHTML).toBe("Sivusto ohjaa sinut hetken kuluttua aloitussivulle.");
 
 
     });
-*/
+
+    /*
+
+     new simulateKeyPress(32);
+     jasmine.clock().tick(14000);
+
+     expect(document.body.innerHTML).toBe(null);
+     new simulateKeyPress(51);
+     jasmine.clock().tick(100);
+     new simulateKeyPress(50);
+     jasmine.clock().tick(100);
+     new simulateKeyPress(49);
+     jasmine.clock().tick(100);
+     new simulateKeyPress(48);
+     expect(document.body.innerHTML).toBe(null);
+     jasmine.clock().tick(20000);
+
+
+     simulateKeyPress(32);
+     jasmine.clock().tick(20000);
+     expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
+
+     simulateKeyPress(32);
+     jasmine.clock().tick(20000);
+     expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
+     new simulateKeyPress(32);
+     expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
+     new simulateKeyPress(32);
+     jasmine.clock().tick(20000);
+     */
+
 
 
 });
@@ -103,7 +269,6 @@ describe("As a new User, I want to see instructions", function() {
 
         document.getElementById('username').value = randomUser;
         username = randomUser;
-        userIsTrained = false;
         stateMachine.checkUsername(randomUser);
 
         document.getElementById("yearofbirth").selectedIndex = 2000;
@@ -114,6 +279,8 @@ describe("As a new User, I want to see instructions", function() {
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
         expect(stateMachine.createUser()).toBe(true);
+
+        userIsTrained = false;
 
         expect(document.getElementById("Notification").innerHTML).toBe(text["testinTarkoitus"]);
 
@@ -129,33 +296,14 @@ describe("As a new User, I want to see instructions", function() {
         expect(document.getElementById("startScreenP1").style.display).toBe("none");
         expect(document.getElementById("startScreenP2").style.display).toBe("none");
         expect(document.getElementById("startScreenP3").style.display).toBe("inline");
- 
+
+        jasmine.clock().tick(2000);
+
         simulateKeyPress(32);
-        expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]); 
- 
+        expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
+
         done();
-
     });
-
-    it("instructions5", function() { 
-
-
-    });
-
-    /*
-    it("instructions6", function() {
-        jasmine.clock().tick(20000);
-
-        simulateKeyPress(32);
-        //jasmine.clock().tick(20000);
-
-
-        // expect(document.body.innerHTML).toBe(text["harjoittelunAloitushje"]);
-
-
-    });
-    */
-
 
 
 });

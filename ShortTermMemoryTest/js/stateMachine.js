@@ -16,13 +16,15 @@ var stateMachine = function (){
     var keyHandler;
 
     var kList;
+
     function start(){
 
         kList = new KeyListener();
+        state = new State(kList);
+
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
-        state = new State();
 
         startLogin();
         //startGame();
@@ -41,7 +43,11 @@ var stateMachine = function (){
     function checkUsername(user){
 
         if(state.is(1)) {
-            return login.checkUsername(user);
+            if(login.checkUsername(user)){
+                stateMachine.startNotification();
+            }else{
+                stateMachine.startRegister();
+            }
         }
 
     }
@@ -98,8 +104,6 @@ var stateMachine = function (){
 
         if(state.set(6)) {
 
-            kList.set(null);
-
             var theNumberList;
             var list = new GetList();
 
@@ -113,7 +117,8 @@ var stateMachine = function (){
             var gameData = new GameData(mode,theNumberList, gameSettings);
 
 
-//          var gameData = {
+
+//            var gameData = {
 //                gameIdentifier: "ThisGame",
 //                numberDisplayTime: 500,
 //                ISITime: 1500,
@@ -128,7 +133,7 @@ var stateMachine = function (){
 //                maxPracticeRounds: 3,
 //                donePracticeRounds: 0,
 //                fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]], //index [7][0] refers to the normal 7 number series and [6][1] to the reversed 6 number series
-//                shownSeries: theNumberList.clone,
+//                shownSeries: theNumberList,
 //                updateFails: function(eventHandler){
 //                    var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
 //                    var seriesLength = this.numberList[this.numberListIndex].numbers.length;
@@ -164,6 +169,7 @@ var stateMachine = function (){
 //
 //                }
 //            };
+
 
             game.start(gameData);
 

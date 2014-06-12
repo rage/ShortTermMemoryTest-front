@@ -21,7 +21,7 @@ describe("LoginTest", function() {
         document.getElementById('username').value = "Olen";
 
         var o = stateMachine.checkUsername(document.getElementById('username').value);
-        expect(o).toBe(true);
+        expect(document.getElementById("Notification").innerHTML).toBe(text["testinTarkoitus"]);
 
     });
     
