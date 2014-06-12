@@ -12,7 +12,7 @@ function showResult(gameData) {
 
     createHTML();
 
-    gameData.result = calculateResult(gameData.eventHandler.getStoredEvents(), gameData.gameStartTime);
+    gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime);
 
     var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
 

@@ -28,7 +28,7 @@ function showPracticeFeedback(gameData) {
     gameData.requestFocus(function (event, keyCode) {
         if (keyCode == 32) {
             hidePracticeFeedback(event);
-            gameData.eventHandler.triggerEvent("EVENT_SHOWSERIES_START", "", 0);
+            gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_START", "", 0);
         }
     });
 

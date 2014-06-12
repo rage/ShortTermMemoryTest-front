@@ -65,7 +65,7 @@ function calculateResult(events, fromTime) {
 
         if (event.eventtype == "EVENT_USERINPUT_END") {
             var correctChars = countCorrectChars();
-            if(correctChars<failLimit){
+            if(correctChars<gameSettings.failLimit){
                 lastSeriesFailed = true;
             } else {
                 lastSeriesFailed = false;
