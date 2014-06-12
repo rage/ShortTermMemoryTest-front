@@ -13,10 +13,6 @@ function State(kList){
         [6, 1]
     ];
 
-    function get(){
-        return state;
-    }
-
     function is(stateIs){
         return stateIs == state;
     }
@@ -54,7 +50,6 @@ function State(kList){
 
     return {
         set:set,
-        is:is,
-        get:get
+        is:is
     }
 }
