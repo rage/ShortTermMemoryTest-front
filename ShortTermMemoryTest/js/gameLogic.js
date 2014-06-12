@@ -5,7 +5,6 @@
 function gameLogic (eventHandler) {
 
 
-    var gameData;
     var postResults = new PostResults();
     var postTestLog = new PostTestLog();
 

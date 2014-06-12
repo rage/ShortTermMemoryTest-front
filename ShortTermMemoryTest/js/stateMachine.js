@@ -15,8 +15,10 @@ var stateMachine = function (){
     var evHandler;
     var keyHandler;
 
+    var kList;
     function start(){
 
+        kList = new KeyListener();
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
@@ -66,6 +68,7 @@ var stateMachine = function (){
 
         if(state.set(3)) {
             var notification = new Notification();
+            kList.set(notification.keyPress);
             notification.start();
         }
 
@@ -75,6 +78,7 @@ var stateMachine = function (){
 
         if(state.set(4)) {
             var startScreen = new GameStartScreen();
+            kList.set(startScreen.keyPress);
             startScreen.start();
         }
 
@@ -84,6 +88,7 @@ var stateMachine = function (){
 
         if(state.set(5)) {
             var waitPractice = new WaitPractiseStart();
+            kList.set(waitPractice.keyPress);
             waitPractice.start();
         }
 
@@ -92,6 +97,8 @@ var stateMachine = function (){
     function startGame(mode) {
 
         if(state.set(6)) {
+
+            kList.set(null);
 
             var theNumberList;
             var list = new GetList();
@@ -102,12 +109,15 @@ var stateMachine = function (){
                 theNumberList = list.getTrainingList();
             }
 
+
             var gameData = new GameData(mode,theNumberList, gameSettings);
-//            {
+
+
+//          var gameData = {
 //                gameIdentifier: "ThisGame",
-//                numberDisplayTime: 400,
-//                ISITime: 650,
-//                guessTime: 2000,
+//                numberDisplayTime: 500,
+//                ISITime: 1500,
+//                guessTime: 10000,
 //                showResultTime: 5000,
 //                showCrossDelay: 1000,
 //                showCrossTime: 500,

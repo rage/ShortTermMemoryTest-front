@@ -5,10 +5,7 @@ function GameStartScreen(){
         createHtml();
     }
 
-    window.onkeypress = function(e) {
-
-        var key = e.keyCode ? e.keyCode : e.which;
-
+    function keyPress(key){
         if(key == 32 && page == 3) {
             stateMachine.startWaitPractice();
         }else if(key == 13 && userIsTrained && page == 3) {
@@ -16,8 +13,7 @@ function GameStartScreen(){
         }else if(key == 32) {
             changePage();
         }
-
-    };
+    }
 
     function changePage(){
         document.getElementById("startScreenP"+page).style.display = "none";
@@ -43,6 +39,7 @@ function GameStartScreen(){
     }
 
     return {
-        start:start
+        start:start,
+        keyPress:keyPress
     }
 }

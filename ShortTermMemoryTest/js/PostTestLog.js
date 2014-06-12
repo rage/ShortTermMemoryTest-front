@@ -15,8 +15,10 @@ function PostTestLog() {
             url: url+"testlogs",
             data: eventsJSON,
             dataType: 'json',
-//            success: function(){console.log("PostTestLog success");},
-//            failure: function(errMsg){console.log(errMsg);}
+
+            success: function(){konsoli.log("PostTestLog success");},
+            failure: function(errMsg){konsoli.log(errMsg);}
+
         });
 
     }

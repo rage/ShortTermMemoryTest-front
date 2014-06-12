@@ -4,10 +4,6 @@ function Request(){
         return create(url, params, "POST");
     }
     
-    function createGet(url, params){
-        return create(url, params, "GET");
-    }
-    
     function create(url, params, type){
         
         var req = createCORSRequest(type, url);
@@ -39,7 +35,6 @@ function Request(){
     }
     
     return {
-        createPost:createPost,
-        createGet:createGet
+        createPost:createPost
     }
 }
