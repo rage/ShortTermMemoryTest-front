@@ -16,13 +16,15 @@ var stateMachine = function (){
     var keyHandler;
 
     var kList;
+
     function start(){
 
         kList = new KeyListener();
+        state = new State(kList);
+
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
-        state = new State();
 
         startLogin();
         //startGame();
@@ -41,7 +43,11 @@ var stateMachine = function (){
     function checkUsername(user){
 
         if(state.is(1)) {
-            return login.checkUsername(user);
+            if(login.checkUsername(user)){
+                stateMachine.startNotification();
+            }else{
+                stateMachine.startRegister();
+            }
         }
 
     }
@@ -97,8 +103,6 @@ var stateMachine = function (){
     function startGame(mode) {
 
         if(state.set(6)) {
-
-            kList.set(null);
 
             var theNumberList;
             var list = new GetList();

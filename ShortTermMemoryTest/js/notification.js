@@ -9,7 +9,6 @@ function Notification(){
     }
 
     function keyPress(key){
-        console.log(key);
         if(key == 32) {
             stateMachine.startGameStartScreen();
         }

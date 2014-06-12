@@ -31,21 +31,11 @@ function Login(){
 
         if (response.isReserved) {
 
-            if (response.isTrained) {
-                userIsTrained = true;
-            } else {
-                userIsTrained = false;
-            }
-
-            stateMachine.startNotification();
+            userIsTrained = response.isTrained;
             return true;
 
-
         } else {
-
-            stateMachine.startRegister();
             return false;
-
         }
 
     }

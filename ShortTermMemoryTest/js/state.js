@@ -1,4 +1,4 @@
-function State(){
+function State(kList){
     var state = 0;
     var allowedStateChanges = [
         [0, 1],
@@ -9,7 +9,8 @@ function State(){
         [4, 5],
         [4, 6],
         [5, 6],
-        [6, 6]
+        [6, 6],
+        [6, 1]
     ];
 
     function get(){
@@ -21,6 +22,8 @@ function State(){
     }
 
     function set(newState){
+
+        kList.set(null);
 
         if(isAllowedStateChange(newState)){
             state = newState;
