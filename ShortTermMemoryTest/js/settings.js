@@ -6,7 +6,7 @@ var failLimit = 2; //Correct numbers required in a series for series not to be c
 var droppedSeriesMinLength = 6;
 
 var testcase_id;
-var debug = false;
+var debug = true;
 
 var konsoli = function (){
     function log(logi){

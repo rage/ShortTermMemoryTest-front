@@ -17,46 +17,66 @@ describe("gameLogicTest", function() {
     var enterKeyDownEvent;
     var enterKeyUpEvent;
 
+    var PracticeTotalTime;
+
     beforeEach(function() {
-        maxFails = 999; //Number of failed series allowed before the series of that length are dropped out
-        failLimit = 0; //Correct numbers required in a series for series not to be considered a major fail
-        droppedSeriesMinLength = 999;
+
+        var settings = {
+            numberDisplayTime: 500,
+            ISITime: 1500,
+            guessTime: 5000,
+            showResultTime: 5000,
+            showCrossDelay: 1000,
+            showCrossTime: 500,
+            maxPracticeRounds: 3,
+            maxFails : 999, //Number of failed series allowed before the series of that length are dropped out
+            failLimit : 0, //Correct numbers required in a series for series not to be considered a major fail
+            droppedSeriesMinLength : 999
+        }
+        PracticeTotalTime = 10*settings.ISITime+settings.guessTime+settings.showCrossDelay+settings.showCrossTime+1000;
+
+
+//        maxFails = 999; //Number of failed series allowed before the series of that length are dropped out
+//        failLimit = 0; //Correct numbers required in a series for series not to be considered a major fail
+//        droppedSeriesMinLength = 999;
 
         $(document).off();
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
 
-        gameData = {
-            gameIdentifier: "ThisGame",
-            numberDisplayTime: 500,
-            ISITime: 1500,
-            guessTime: 5000,
-            showResultTime: 5000,
-            numberList: undefined,
-            numberListIndex: 0,
-            result: undefined,
-            mode: "PRACTICE",
-            maxPracticeRounds: 3,
-            donePracticeRounds: 0,
-            gameStartTime : 0,
-            fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
-            updateFails: function(eventHandler){
-                var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
-                var seriesLength = this.numberList[this.numberListIndex].numbers.length;
-                if (fail && seriesLength >= droppedSeriesMinLength) {
-                    this.fails[seriesLength]++;
-                } else {
-                    this.fails[seriesLength]=0;
-                }
-            },
-            updateNumberListIndex: function() {
-                this.numberListIndex++;
-                while (this.numberListIndex < this.numberList.length && this.fails[this.numberList[this.numberListIndex].numbers.length] > maxFails) {
-                    this.numberListIndex++;
-                }
-            }
-        };
+        gameData = new GameData("PRACTICE", undefined, settings)
+
+//        {
+//            gameIdentifier: "ThisGame",
+//            numberDisplayTime: 500,
+//            ISITime: 1500,
+//            guessTime: 5000,
+//            showResultTime: 5000,
+//            numberList: undefined,
+//            numberListIndex: 0,
+//            result: undefined,
+//            mode: "PRACTICE",
+//            maxPracticeRounds: 3,
+//            donePracticeRounds: 0,
+//            gameStartTime : 0,
+//            fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
+//            updateFails: function(eventHandler){
+//                var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
+//                var seriesLength = this.numberList[this.numberListIndex].numbers.length;
+//                if (fail && seriesLength >= droppedSeriesMinLength) {
+//                    this.fails[seriesLength]++;
+//                } else {
+//                    this.fails[seriesLength]=0;
+//                }
+//            },
+//            updateNumberListIndex: function() {
+//                this.numberListIndex++;
+//                while (this.numberListIndex < this.numberList.length && this.fails[this.numberList[this.numberListIndex].numbers.length] > maxFails) {
+//                    this.numberListIndex++;
+//                }
+//            }
+//        };
 
         jasmine.clock().install();
 
@@ -81,20 +101,19 @@ describe("gameLogicTest", function() {
 
 
     it("correct events in correct order are generated when playing one round of practice and then starting the actual game", function() {
-
-        gameData.numberList = createMockList(3);
-
-        gameData.mode = "PRACTICE";
+        gameData.tag="testi1"
+        gameData.setNumberList(createMockList(3));
+        gameData.setMode("PRACTICE");
         game.start(gameData);
-        jasmine.clock().tick(10000);
+        jasmine.clock().tick(PracticeTotalTime);
         mockSpaceKeyDownAndUpEvent();
-        jasmine.clock().tick(10000);
+        jasmine.clock().tick(PracticeTotalTime);
         mockSpaceKeyDownAndUpEvent();
-        jasmine.clock().tick(10000);
+        jasmine.clock().tick(PracticeTotalTime);
         mockEnterKeyDownAndUpEvent();
-        jasmine.clock().tick(10000);
+        jasmine.clock().tick(PracticeTotalTime);
 
-        expect(gameData.donePracticeRounds).toBe(1);
+        expect(gameData.getdonePracticeRounds()).toBe(1);
 
         var events = evHandler.getStoredEvents();
         var index = 0;
@@ -105,29 +124,30 @@ describe("gameLogicTest", function() {
 
 
     it("correct events in correct order are generated when playing max rounds of practice and then starting the actual game", function() {
+        gameData.tag="testi2"
+        gameData.setNumberList(createMockList(3));
 
-        gameData.numberList = createMockList(3);
-
-        gameData.mode = "PRACTICE";
+        gameData.setMode("PRACTICE");
 
         game.start(gameData);
-        jasmine.clock().tick(10000);
+        jasmine.clock().tick(PracticeTotalTime);
 
         for (var round = 0; round < gameData.maxPracticeRounds; round++) {
             mockSpaceKeyDownAndUpEvent();
-            jasmine.clock().tick(10000);
+            jasmine.clock().tick(PracticeTotalTime);
             mockSpaceKeyDownAndUpEvent();
-            jasmine.clock().tick(10000);
+            jasmine.clock().tick(PracticeTotalTime);
             mockSpaceKeyDownAndUpEvent();
-            jasmine.clock().tick(10000);
-            expect(gameData.donePracticeRounds).toBe(round + 1);
+            jasmine.clock().tick(PracticeTotalTime);
+            expect(gameData.getdonePracticeRounds()).toBe(round + 1);
         }
         mockEnterKeyDownAndUpEvent();
-        jasmine.clock().tick(10000);
+        jasmine.clock().tick(PracticeTotalTime);
 
 
         var events = evHandler.getStoredEvents();
         var index = 0;
+
         for (var round = 0; round < gameData.maxPracticeRounds; round++) {
             index = checkPracticeGameEvents(events, index, gameData, true);
         }
@@ -139,26 +159,26 @@ describe("gameLogicTest", function() {
 
 
     it("does not let user play more practice rounds than is allowed", function() {
+        gameData.tag="testi3"
+        gameData.setNumberList(createMockList(3));
 
-        gameData.numberList = createMockList(3);
-
-        gameData.mode = "PRACTICE";
+        gameData.setMode("PRACTICE");
 
         game.start(gameData);
-        jasmine.clock().tick(10000);
+        jasmine.clock().tick(PracticeTotalTime);
 
         for (var round = 0; round < gameData.maxPracticeRounds; round++) {
             mockSpaceKeyDownAndUpEvent();
-            jasmine.clock().tick(10000);
+            jasmine.clock().tick(PracticeTotalTime);
             mockSpaceKeyDownAndUpEvent();
-            jasmine.clock().tick(10000);
+            jasmine.clock().tick(PracticeTotalTime);
             mockSpaceKeyDownAndUpEvent();
-            jasmine.clock().tick(10000);
-            expect(gameData.donePracticeRounds).toBe(round + 1);
+            jasmine.clock().tick(PracticeTotalTime);
+            expect(gameData.getdonePracticeRounds()).toBe(round + 1);
         }
         mockSpaceKeyDownAndUpEvent();
-        jasmine.clock().tick(10000);
-        expect(gameData.donePracticeRounds).toBe(gameData.maxPracticeRounds);
+        jasmine.clock().tick(PracticeTotalTime);
+        expect(gameData.getdonePracticeRounds()).toBe(gameData.maxPracticeRounds);
 
 
         var events = evHandler.getStoredEvents();
@@ -176,13 +196,25 @@ describe("gameLogicTest", function() {
 
     it("correct events in correct order are generated when playing game in game mode", function() {
 
-        gameData.numberList = createMockList(15);
-        gameData.mode = "GAME";
+        gameData.setNumberList(createMockList(15));
+
+        gameData.setMode("GAME");
         game.start(gameData);
-        jasmine.clock().tick(100000);
+        jasmine.clock().tick(15*(10*gameData.ISITime+gameData.guessTime));
 
         var events = evHandler.getStoredEvents();
         //console.log(events);
+        for(var i=0; i<events.length; i++){
+            console.log(events[i].eventtype)
+        }
+
+        for(var i=0; i<gameData.getNumberList().length; i++){
+            var numbers = gameData.getNumberList()[i].numbers;
+            console.log("uusi")
+            for(var j=0; j<numbers.length; j++){
+                console.log(numbers[j]);
+            }
+        }
         var index = 0;
         index = checkGameEvents(events, index, gameData, false);
 
@@ -191,8 +223,8 @@ describe("gameLogicTest", function() {
 
     it("numbers are shown on screen correctly in game mode", function() {
 
-        gameData.numberList = createMockList(15);
-        gameData.mode = "GAME";
+        gameData.setNumberList(createMockList(15));
+        gameData.setMode("GAME");
 
         game.start(gameData);
         do {
@@ -200,7 +232,7 @@ describe("gameLogicTest", function() {
             var events = evHandler.getStoredEvents();
             lastEvent = events[events.length-1];
             if (lastEvent.eventtype == "EVENT_SHOWNUMBER_START") {
-                expect($("#num_field").text()).toBe(lastEvent.value);
+                expect($("#num_field").text()).toBe(lastEvent.value.toString());
                 expect($("#num_field").text()).not.hidden;
             } else if (lastEvent.eventtype == "EVENT_SHOWNUMBER_END") {
                 expect($("#num_field").text()).hidden;
@@ -211,8 +243,8 @@ describe("gameLogicTest", function() {
 
     it("cross is shown on screen correctly in game mode", function() {
 
-        gameData.numberList = createMockList(15);
-        gameData.mode = "GAME";
+        gameData.setNumberList(createMockList(15));
+        gameData.setMode("GAME");
 
         game.start(gameData);
         do {
@@ -234,7 +266,7 @@ describe("gameLogicTest", function() {
         evHandler.registerEventHandler("EVENT_USERINPUT_START", function () {
             var keyDownEvent = jQuery.Event("keydown");
             var keyUpEvent = jQuery.Event("keyup");
-            var series = gameData.numberList[gameData.numberListIndex];
+            var series = gameData.getCurrentSeries();
             for (var i = 0; i < series.numbers.length; i++) {
                 if (series.order == "upwards") {
                     keyDownEvent.keyCode = parseInt(series.numbers[i]) + 48;
@@ -250,11 +282,11 @@ describe("gameLogicTest", function() {
             }
         });
 
-        gameData.numberList = createMockList(15);
-        gameData.mode = "GAME";
+        gameData.setNumberList(createMockList(15));
+        gameData.setMode("GAME");
 
         game.start(gameData);
-        jasmine.clock().tick(100000);
+        jasmine.clock().tick(15*(10*gameData.ISITime+gameData.guessTime));
         var events = evHandler.getStoredEvents();
         var result = calculateResult(events, 0);
         expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
@@ -266,7 +298,7 @@ describe("gameLogicTest", function() {
         evHandler.registerEventHandler("EVENT_USERINPUT_START", function () {
             var keyDownEvent = jQuery.Event("keydown");
             var keyUpEvent = jQuery.Event("keyup");
-            var series = gameData.numberList[gameData.numberListIndex];
+            var series = gameData.getCurrentSeries();
             for (var i = 0; i < series.numbers.length; i++) {
                 if (series.order == "upwards") {
                     keyDownEvent.keyCode = parseInt(series.numbers[i]) + 48;
@@ -315,8 +347,8 @@ describe("gameLogicTest", function() {
 
         });
 
-        gameData.numberList = createMockList(1);
-        gameData.mode = "GAME";
+        gameData.setNumberList(createMockList(1));
+        gameData.setMode("GAME");
 
         game.start(gameData);
         jasmine.clock().tick(100000);
@@ -344,7 +376,7 @@ describe("gameLogicTest", function() {
         evHandler.registerEventHandler("EVENT_USERINPUT_START", function () {
             var keyDownEvent = jQuery.Event("keydown");
             var keyUpEvent = jQuery.Event("keyup");
-            var series = gameData.numberList[gameData.numberListIndex];
+            var series = gameData.getCurrentSeries();
             for (var i = 0; i < series.numbers.length; i++) {
                 if (series.order == "upwards") {
                     keyDownEvent.keyCode = parseInt(series.numbers[i]) + 48;
@@ -366,11 +398,11 @@ describe("gameLogicTest", function() {
             }
         });
 
-        gameData.numberList = createMockList(15);
-        gameData.mode = "GAME";
+        gameData.setNumberList(createMockList(15));
+        gameData.setMode("GAME");
 
         game.start(gameData);
-        jasmine.clock().tick(100000);
+        jasmine.clock().tick(15*(10*gameData.ISITime+gameData.guessTime));
         var events = evHandler.getStoredEvents();
         var result = calculateResult(events, 0);
         expect(result.numberOfCorrectGivenSeries).not.toBe(result.numberOfShownSeries);
@@ -480,8 +512,8 @@ describe("gameLogicTest", function() {
         index = checkForEvent(events, index, "EVENT_PRACTICE_GAME_START");
         index = checkForEvent(events, index, "EVENT_SHOWLIST_START");
 
-        for (var i = 0; i < gameData.numberList.length; i++) {
-            var series = gameData.numberList[i];
+        for (var i = 0; i < gameData.getNumberList().length; i++) {
+            var series = gameData.getNumberList()[i];
             index = checkForPracticeSeriesEvents(events, index, series);
         }
 
@@ -519,8 +551,8 @@ describe("gameLogicTest", function() {
         index = checkForEvent(events, index, "EVENT_GAME_START");
         index = checkForEvent(events, index, "EVENT_SHOWLIST_START");
 
-        for (var i = 0; i < gameData.numberList.length; i++) {
-            var series = gameData.numberList[i];
+        for (var i = 0; i < gameData.getNumberList().length; i++) {
+            var series = gameData.getNumberList()[i];
             index = checkForGameSeriesEvents(events, index, series);
         }
 

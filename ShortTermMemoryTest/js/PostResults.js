@@ -47,7 +47,7 @@ function PostResults() {
     function post(events) {
         var resultData = createResultTableData(events);
         var resultsJSON = {"result" : resultData};
-        console.log(resultsJSON);
+//        console.log(resultsJSON);
         $.ajax({
             type: 'POST',
             url: url+"results",
