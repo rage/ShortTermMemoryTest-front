@@ -203,18 +203,7 @@ describe("gameLogicTest", function() {
         jasmine.clock().tick(15*(10*gameData.ISITime+gameData.guessTime));
 
         var events = evHandler.getStoredEvents();
-        //console.log(events);
-        for(var i=0; i<events.length; i++){
-            console.log(events[i].eventtype)
-        }
 
-        for(var i=0; i<gameData.getNumberList().length; i++){
-            var numbers = gameData.getNumberList()[i].numbers;
-            console.log("uusi")
-            for(var j=0; j<numbers.length; j++){
-                console.log(numbers[j]);
-            }
-        }
         var index = 0;
         index = checkGameEvents(events, index, gameData, false);
 
@@ -353,7 +342,6 @@ describe("gameLogicTest", function() {
         game.start(gameData);
         jasmine.clock().tick(100000);
         var events = evHandler.getStoredEvents();
-        //console.log(events);
         var result = calculateResult(events, 0);
         expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
 
@@ -623,7 +611,6 @@ describe("gameLogicTest", function() {
 
         index = skipKeyEvents(events, index);
 
-        //console.log(events[index].eventtype);
         expect(index).toBeLessThan(events.length);
         expect(events[index].eventtype).toBe(eventType);
 
@@ -635,7 +622,6 @@ describe("gameLogicTest", function() {
 
         index = skipKeyEvents(events, index);
 
-        //console.log(events[index].eventtype);
         expect(index).toBeLessThan(events.length);
         expect(events[index].eventtype).toBe(eventType);
         expect(events[index].value).toBe(value);

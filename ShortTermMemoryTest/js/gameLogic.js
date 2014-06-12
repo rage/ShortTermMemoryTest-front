@@ -81,11 +81,7 @@ function gameLogic (eventHandler) {
 
     function showPracticeResultEventHandler(event) {
         gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime);
-        konsoli.log(gameData.tag);
-        konsoli.log("finished: "+gameData.isFinished())
         if (gameData.isFinished()) {
-            konsoli.log("gameEnd");
-            konsoli.log(new Request().createPost(url+"finish", "id=" + testcase_id));
             gameData.addDonePracticeRounds();
             showPracticeFeedbackEnd(gameData);
         }else{
@@ -122,7 +118,6 @@ function gameLogic (eventHandler) {
     function startGameEventHandler(event) {
 
         gameData.gameStartTime = Date.now();
-        konsoli.log("startGameEventHandler")
         gameData.getEventHandler().triggerEvent("EVENT_SHOWLIST_START", "", 0);
     }
 
@@ -131,7 +126,6 @@ function gameLogic (eventHandler) {
 
     function showListEventHandler() {
         gameData.numberListIndexToZero();
-        konsoli.log("showListEventHandler")
         gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_START", "", 0);
     }
 
@@ -191,7 +185,6 @@ function gameLogic (eventHandler) {
 
     function startGame() {
         gameData.gameStartTime = Date.now();
-        konsoli.log(gameData.gameIdentifier)
         gameData.getEventHandler().triggerEvent("EVENT_GAME_START", gameData.gameIdentifier, 0);
     }
 

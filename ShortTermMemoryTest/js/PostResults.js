@@ -47,7 +47,6 @@ function PostResults() {
     function post(events) {
         var resultData = createResultTableData(events);
         var resultsJSON = {"result" : resultData};
-        konsoli.log(resultsJSON);
         $.ajax({
             type: 'POST',
             url: url+"results",
