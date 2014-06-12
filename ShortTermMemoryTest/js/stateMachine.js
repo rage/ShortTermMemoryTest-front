@@ -65,7 +65,11 @@ var stateMachine = function (){
     function createUser(){
 
         if(state.is(2)) {
-            return register.signup();
+            if(register.signup()){
+                stateMachine.startNotification();
+            }else{
+                stateMachine.startRegister();
+            }
         }
 
     }

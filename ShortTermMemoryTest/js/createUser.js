@@ -81,13 +81,7 @@ function CreateUser(){
         var request = Request();
         var responseText = request.createPost(url+"signup", params);
 
-        if(responseText == "true"){
-            stateMachine.startNotification();
-            return true;
-        }else{
-            stateMachine.startRegister();
-            return false;
-        }
+        return responseText == "true";
 
     }
     

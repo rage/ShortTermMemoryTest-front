@@ -16,9 +16,9 @@ describe("login and createUser", function() {
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
         var element = document.getElementById('education');
-        element.value = "Peruskoulu"; 
-        expect(stateMachine.createUser()).toBe(true);
-
+        element.value = "Peruskoulu";
+        stateMachine.createUser();
+        expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
     });
     
     it("when user not found start createUser (2)", function() {
@@ -35,8 +35,9 @@ describe("login and createUser", function() {
         var element = document.getElementById('yearofbirth'); 
         element.value = 2014;
         var element = document.getElementById('education');
-        element.value = "Lukio tai ammattikoulu"; 
-        expect(stateMachine.createUser()).toBe(true);
+        element.value = "Lukio tai ammattikoulu";
+        stateMachine.createUser();
+        expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
 
     });
     
@@ -55,8 +56,9 @@ describe("login and createUser", function() {
         var element = document.getElementById('yearofbirth');
         element.value = 1900;
         var element = document.getElementById('education');
-        element.value = "Korkeakoulu"; 
-        expect(stateMachine.createUser()).toBe(true);
+        element.value = "Korkeakoulu";
+        stateMachine.createUser();
+        expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
 
     });
 
@@ -75,8 +77,9 @@ describe("login and createUser", function() {
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
         var element = document.getElementById('education');
-        element.value = "Peruskoulu"; 
-        expect(stateMachine.createUser()).toBe(false);
+        element.value = "Peruskoulu";
+        stateMachine.createUser();
+        expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
     it("should fail when empty gender", function() {
@@ -93,8 +96,9 @@ describe("login and createUser", function() {
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
         var element = document.getElementById('education');
-        element.value = "Peruskoulu"; 
-        expect(stateMachine.createUser()).toBe(false);
+        element.value = "Peruskoulu";
+        stateMachine.createUser();
+        expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
     it("should fail when empty education", function() {
@@ -110,7 +114,8 @@ describe("login and createUser", function() {
         document.getElementById("yearofbirth").selectedIndex = 2000; 
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
-        expect(stateMachine.createUser()).toBe(false);
+        stateMachine.createUser();
+        expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
     it("should fail when empty yearofbirth", function() {
@@ -124,8 +129,9 @@ describe("login and createUser", function() {
         stateMachine.checkUsername(document.getElementById('username').value);
         document.getElementById('f').checked = true; 
         var element = document.getElementById('education');
-        element.value = "Peruskoulu"; 
-        expect(stateMachine.createUser()).toBe(false);
+        element.value = "Peruskoulu";
+        stateMachine.createUser();
+        expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
 });
