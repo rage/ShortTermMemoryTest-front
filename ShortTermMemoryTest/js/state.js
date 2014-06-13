@@ -32,7 +32,7 @@ function State(kList){
 
     function isAllowedStateChange(newState){
 
-        for(var i=0; i<allowedStateChanges.length; i++) {
+        for(var i = 0; i < allowedStateChanges.length; i++) {
 
             if (allowedStateChanges[i][0] === state){
 
