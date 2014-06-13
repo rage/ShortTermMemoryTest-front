@@ -1,6 +1,5 @@
 
 var show;
-var username;
 var testcase_id;
 
 
@@ -110,7 +109,7 @@ var stateMachine = function (){
         if(state.set(6)) {
 
             var theNumberList;
-            var list = new GetList();
+            var list = new GetList(user);
 
             if (mode == "GAME") {
                 theNumberList = list.getNextList();
