@@ -1,13 +1,13 @@
-var username;
 describe("getList", function() {
     
     beforeEach(function() {
-        username = CreateRandomTestUser();
     });
     
     it("right order type", function() {
 
-        var list = new GetList();
+        var us = new User();
+        us.set(CreateRandomTestUser());
+        var list = new GetList(us);
         var list = list.getNextList();
         
         expect(list.length).toBe(12);
@@ -28,7 +28,9 @@ describe("getList", function() {
     });
     
     it("correct numbers", function() {
-        var list = new GetList();
+        var us = new User();
+        us.set(CreateRandomTestUser());
+        var list = new GetList(us);
         var list = list.getNextList();
         
         expect(list[0]["numbers"]).toEqual([5,7,3,8]);

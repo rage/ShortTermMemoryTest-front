@@ -1,4 +1,4 @@
-function GetList(){
+function GetList(user){
 
     function getNextList(){
         return getList("nextList");
@@ -12,7 +12,7 @@ function GetList(){
     function getList(listType){
 
         var req = new Request();
-        var params = "username="+username;
+        var params = "username="+user.name();
         var jsonData = req.createPost(url+listType, params);
 
         var jsonParsed = JSON.parse(jsonData);
