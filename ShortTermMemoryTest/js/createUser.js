@@ -53,7 +53,7 @@ function CreateUser(){
 
     }
     
-    function signUp(){
+    function signUp(user){
 
         try {
 
@@ -68,7 +68,7 @@ function CreateUser(){
                 return false;
             }
 
-            var params = "username=" + username +
+            var params = "username=" + user.name() +
                 "&sex=" + document.querySelector('input[name="sex"]:checked').value +
                 "&yearOfBirth=" + yearOfBirth +
                 "&handedness=" + document.querySelector('input[name="handedness"]:checked').value +

@@ -5,15 +5,17 @@ describe("LoginTest", function() {
     it("checkUsername return false when user not found ", function() {
 
         var myfunc = new Login();
+        var us = new User();
 
-        expect(myfunc.checkUsername("asdasdofiafjpioasdfsdfsdfufi")).toBe(false);
+        expect(myfunc.checkUsername("asdasdofiafjpioasdfsdfsdfufi", us)).toBe(false);
 
     });
     it("checkUsername return true when user found", function() {
 
         var myfunc = new Login();
+        var us = new User();
 
-        expect(myfunc.checkUsername("Olen")).toBe(true);
+        expect(myfunc.checkUsername("Olen", us)).toBe(true);
 
     });
     it("checkUsername return true when user found", function() {

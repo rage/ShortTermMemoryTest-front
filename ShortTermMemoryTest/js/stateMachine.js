@@ -1,7 +1,6 @@
 
 var show;
 var username;
-var userIsTrained;
 var testcase_id;
 
 
@@ -11,6 +10,7 @@ var stateMachine = function (){
     var state;
     var register;
     var game;
+    var user;
 
     var evHandler;
     var keyHandler;
@@ -25,6 +25,7 @@ var stateMachine = function (){
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         game = new gameLogic(evHandler);
+        user = new User();
 
         startLogin();
         //startGame();
@@ -40,10 +41,10 @@ var stateMachine = function (){
 
     }
 
-    function checkUsername(user){
+    function checkUsername(checkName){
 
         if(state.is(1)) {
-            if(login.checkUsername(user)){
+            if(login.checkUsername(checkName, user)){
                 stateMachine.startNotification();
             }else{
                 stateMachine.startRegister();
@@ -65,7 +66,7 @@ var stateMachine = function (){
     function createUser(){
 
         if(state.is(2)) {
-            if(register.signup()){
+            if(register.signup(user)){
                 stateMachine.startNotification();
             }else{
                 stateMachine.startRegister();
@@ -87,7 +88,7 @@ var stateMachine = function (){
     function startGameStartScreen(){
 
         if(state.set(4)) {
-            var startScreen = new GameStartScreen();
+            var startScreen = new GameStartScreen(user);
             kList.set(startScreen.keyPress);
             startScreen.start();
         }
@@ -117,63 +118,7 @@ var stateMachine = function (){
                 theNumberList = list.getTrainingList();
             }
 
-
             var gameData = new GameData(mode,theNumberList, gameSettings);
-
-
-
-//            var gameData = {
-//                gameIdentifier: "ThisGame",
-//                numberDisplayTime: 500,
-//                ISITime: 1500,
-//                guessTime: 10000,
-//                showResultTime: 5000,
-//                showCrossDelay: 1000,
-//                showCrossTime: 500,
-//                numberList: theNumberList,
-//                numberListIndex: 0,
-//                result: undefined,
-//                mode: mode,
-//                maxPracticeRounds: 3,
-//                donePracticeRounds: 0,
-//                fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]], //index [7][0] refers to the normal 7 number series and [6][1] to the reversed 6 number series
-//                shownSeries: theNumberList,
-//                updateFails: function(eventHandler){
-//                    var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
-//                    var seriesLength = this.numberList[this.numberListIndex].numbers.length;
-//                    var a=this.currentListDirection();
-//                    if (fail && seriesLength >= droppedSeriesMinLength) {
-//                        this.fails[seriesLength][a]++;
-//                    } else {
-//                        this.fails[seriesLength][a]=0;
-//                    }
-//                },
-//                updateNumberListIndex: function() {
-//                    this.numberListIndex++;
-//                    var a=this.currentListDirection();
-//                    while (this.numberListIndex < this.numberList.length && this.fails[this.numberList[this.numberListIndex].numbers.length][a] > maxFails) {
-//                        this.shownSeries[this.numberListIndex]=false;
-//                        this.numberListIndex++;
-//                        a = this.currentListDirection();
-//
-//                    }
-//                },
-//                currentListDirection: function(){ //0 = upwards, 1=backwards
-//
-//                    var a;
-//                    var i = this.numberListIndex;
-//                    if(i<this.numberList.length){
-//                        if(this.numberList[i].order == "upwards"){
-//                            a=0;
-//                        } else if(this.numberList[i].order == "backwards"){
-//                            a=1;
-//                        }
-//                    }
-//                    return a;
-//
-//                }
-//            };
-
 
             game.start(gameData);
 
