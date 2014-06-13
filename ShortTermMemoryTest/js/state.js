@@ -14,7 +14,7 @@ function State(kList){
     ];
 
     function is(stateIs){
-        return stateIs == state;
+        return stateIs === state;
     }
 
     function set(newState){
@@ -23,10 +23,10 @@ function State(kList){
 
         if(isAllowedStateChange(newState)){
             state = newState;
-            return true
+            return true;
         }
 
-        return false
+        return false;
 
     }
 
@@ -34,17 +34,17 @@ function State(kList){
 
         for(var i=0; i<allowedStateChanges.length; i++) {
 
-            if (allowedStateChanges[i][0] == state){
+            if (allowedStateChanges[i][0] === state){
 
-                if (allowedStateChanges[i][1] == newState){
-                    return true
+                if (allowedStateChanges[i][1] === newState){
+                    return true;
                 }
 
             }
 
         }
 
-        return false
+        return false;
 
     }
 
