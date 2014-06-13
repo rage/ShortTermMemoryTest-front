@@ -13,23 +13,23 @@ function PostResults() {
         for (var i = 0; i < events.length; i++) {
             var event = events[i];
 
-            if (event.eventtype == "EVENT_SHOWNUMBER_START") {
+            if (event.eventtype === "EVENT_SHOWNUMBER_START") {
                 this_series++;
             }
 
-            if (event.eventtype == "EVENT_USERINPUT_START") {
+            if (event.eventtype === "EVENT_USERINPUT_START") {
                 userInputStart = true;
             }
 
-            if (event.eventtype == "EVENT_USERINPUT_END") {
+            if (event.eventtype === "EVENT_USERINPUT_END") {
                 userInputStart = false;
                 last_series = this_series;
                 this_series = 0;
                 keypressindex = keypressindexStartFrom;
             }
 
-            if (event.eventtype == "EVENT_TYPE_KEYDOWN") {
-                if (userInputStart == true) {
+            if (event.eventtype === "EVENT_TYPE_KEYDOWN") {
+                if (userInputStart) {
                     var result = {};
                     result.testcase_id = testcase_id;
                     result.keypressed = String.fromCharCode(event.value);
