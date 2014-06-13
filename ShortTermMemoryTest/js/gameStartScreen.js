@@ -6,11 +6,11 @@ function GameStartScreen(user){
     }
 
     function keyPress(key){
-        if(key == 32 && page == 3) {
+        if(key === 32 && page === 3) {
             stateMachine.startWaitPractice();
-        }else if(key == 13 && user.isTrained() && page == 3) {
+        }else if(key === 13 && user.isTrained() && page === 3) {
             stateMachine.startGame('GAME');
-        }else if(key == 32) {
+        }else if(key === 32) {
             changePage();
         }
     }
