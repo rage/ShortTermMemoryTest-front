@@ -82,8 +82,10 @@ function gameLogic (eventHandler) {
     }
 
     function showPracticeResultEventHandler(event) {
+
         gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime);
         if (gameData.isFinished()) {
+            new Request().createPost(url+"finish", "id=" + testcase_id);
             gameData.addDonePracticeRounds();
             showPracticeFeedbackEnd(gameData);
         }else{
