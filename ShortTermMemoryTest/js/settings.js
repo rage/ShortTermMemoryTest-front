@@ -3,7 +3,7 @@ var url = "http://shorttermmemorytest.herokuapp.com/";
 
 //var maxFails = 1; //Number of failed series allowed before the series of that length are dropped out
 //var failLimit = 2; //Correct numbers required in a series for series not to be considered a major fail
-var droppedSeriesMinLength = 6;
+//var droppedSeriesMinLength = 6;
 
 var testcase_id;
 var debug = false;
@@ -22,9 +22,9 @@ var konsoli = function (){
 }();
 
 var gameSettings = {
-    numberDisplayTime: 400,
-    ISITime: 650,
-    guessTime: 2000,
+    numberDisplayTime: 100,
+    ISITime: 250,
+    guessTime: 500,
     showResultTime: 5000,
     showCrossDelay: 1000,
     showCrossTime: 500,

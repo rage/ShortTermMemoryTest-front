@@ -57,7 +57,7 @@ function GameData(gameMode, theNumberList, settings){
         var seriesLength = numberList[numberListIndex].numbers.length;
         var a= currentListDirection();
 //        konsoli.log("fail: " + fail);
-        if (fail && seriesLength >= droppedSeriesMinLength) {
+        if (fail && seriesLength >= this.droppedSeriesMinLength) {
             fails[seriesLength][a]++;
         } else {
             fails[seriesLength][a] = 0;

@@ -28,7 +28,7 @@ function gameLogic (eventHandler) {
     eventHandler.registerEventHandler("EVENT_USERINPUT_END", endUserInputEventHandler);
 
     eventHandler.registerEventHandler("EVENT_SHOWRESULT_START", showResultEventHandler);
-    //gameData.eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
+    eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
 
     eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
     eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_END", endShowPracticeResultEventHandler);
@@ -47,9 +47,11 @@ function gameLogic (eventHandler) {
         postResults.post(events);
         postTestLog.post(events);
         new Request().createPost(url+"finish", "id=" + testcase_id);
+        gameData.getEventHandler().triggerEvent("EVENT_SHOWRESULT_END", "", gameData.showResultTime);
     }
 
     function endShowResultEventHandler(event) {
+        stateMachine.start();
     }
 
 

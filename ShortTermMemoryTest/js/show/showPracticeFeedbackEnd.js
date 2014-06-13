@@ -33,12 +33,10 @@ function showPracticeFeedbackEnd(gameData) {
 
     gameData.requestFocus(function (event, keyCode) {
         if (keyCode == 13) {
-            konsoli.log("keycode13")
             gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
             stateMachine.startGame("GAME");
         }
         if (keyCode == 32) {
-            konsoli.log("keycode32")
             if (gameData.getdonePracticeRounds() < gameData.maxPracticeRounds) {
                 gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
                 gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);

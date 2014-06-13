@@ -25,7 +25,7 @@ describe("gameLogicTest", function() {
             numberDisplayTime: 500,
             ISITime: 1500,
             guessTime: 5000,
-            showResultTime: 5000,
+            showResultTime: 5000000,
             showCrossDelay: 1000,
             showCrossTime: 500,
             maxPracticeRounds: 3,

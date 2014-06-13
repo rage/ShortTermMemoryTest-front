@@ -95,27 +95,26 @@ describe("As a old User, I want to see instructions 2", function() {
     }
 
 
-    it("instructions", function(done) {
+    it("instructions", function() {
 
         stateMachine.start();
 
 
         document.getElementById('username').value = "Omena";
         stateMachine.checkUsername("Omena");
-        done();
 
     });
-    it("instructions2", function(done) {
+    it("instructions2", function() {
 
         simulateKeyPress(32);
-        done();
+
 
     });
-    it("instructions3", function(done) {
+    it("instructions3", function() {
         simulateKeyPress(32);
         simulateKeyPress(32);
         simulateKeyPress(32);
-        done();
+
 
     });
 
@@ -193,14 +192,18 @@ describe("As a old User, I want to see instructions 2", function() {
         simulateKeyDown(13);
         jasmine.clock().tick(100);
         simulateKeyUp(13);
-        jasmine.clock().tick(200000);
-        jasmine.clock().tick(200000);
-
-
+        while(document.getElementById('firstline')==null || document.getElementById('firstline').innerHTML!=text["kiitos"]){
+            jasmine.clock().tick(gameSettings.showResultTime/2);
+        }
         expect(document.getElementById('firstline').innerHTML).toBe(text["kiitos"]);
         expect(document.getElementById('secondline').innerHTML).toBe("Sait tehtävästä 0% oikein");
         expect(document.getElementById('thirdline').innerHTML).toBe("Sivusto ohjaa sinut hetken kuluttua aloitussivulle.");
 
+//        while(document.getElementById('firstline')!=null){
+//            jasmine.clock().tick(2000);
+//        }
+        jasmine.clock().tick(gameSettings.showResultTime+2000);
+        expect(document.body.innerHTML).toContain(text["kirjoitaTunnus"]);
 
     });
 
