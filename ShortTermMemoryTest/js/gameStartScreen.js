@@ -1,4 +1,4 @@
-function GameStartScreen(){
+function GameStartScreen(user){
     var page = 1;
 
     function start(){
@@ -8,7 +8,7 @@ function GameStartScreen(){
     function keyPress(key){
         if(key == 32 && page == 3) {
             stateMachine.startWaitPractice();
-        }else if(key == 13 && userIsTrained && page == 3) {
+        }else if(key == 13 && user.isTrained() && page == 3) {
             stateMachine.startGame('GAME');
         }else if(key == 32) {
             changePage();
@@ -24,7 +24,7 @@ function GameStartScreen(){
 
     function createHtml(){
 
-        if(userIsTrained){
+        if(user.isTrained()){
             document.body.innerHTML = '<div id="startScreen">' +
                 '<div id="startScreenP1">' + text["ohje1"] + '</div>' +
                 '<div id="startScreenP2">' + text["ohje2"] + '</div>' +

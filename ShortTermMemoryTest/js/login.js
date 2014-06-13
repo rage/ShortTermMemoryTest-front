@@ -13,25 +13,26 @@ function Login(){
         </form>';
     }
     
-    function checkUsername(user){
+    function checkUsername(checkName, user){
 
         var req = new Request();
-        var params = "username="+user;
+        var params = "username="+checkName;
 
-        username = user;
+        username = checkName;
+        user.set(checkName);
 
         var jsonData = req.createPost(url+"login", params);
         var response = JSON.parse(jsonData);
 
-        return checkResponse(response);
+        return checkResponse(response, user);
 
     }
 
-    function checkResponse(response){
+    function checkResponse(response, user){
 
         if (response.isReserved) {
 
-            userIsTrained = response.isTrained;
+            user.setTrained(response.isTrained);
             return true;
 
         } else {

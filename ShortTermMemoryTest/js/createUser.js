@@ -10,7 +10,7 @@ function CreateUser(){
         var years = "";
 
         for (var i = 1900; i <= year; i++) {
-            years = "<option value=\""+i+"\">"+i+"</option>"+years;
+            years = "<option value=\"" + i + "\">" + i + "</option>" + years;
         }
         
         document.body.innerHTML = '<div id="createUser"><div id="varoitus"></div><form onSubmit="stateMachine.createUser()">\
@@ -53,35 +53,35 @@ function CreateUser(){
 
     }
     
-    function signUp(){
+    function signUp(user){
 
         try {
 
-            var yearofbirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
+            var yearOfBirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
             var education = document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
 
-            if(yearofbirth == "valitse"){
+            if(yearOfBirth === "valitse"){
                 return false;
             }
 
-            if(education == "valitse"){
+            if(education === "valitse"){
                 return false;
             }
 
-            var params = "username="+username+
-                "&sex="+document.querySelector('input[name="sex"]:checked').value+
-                "&yearOfBirth="+yearofbirth+
-                "&handedness="+document.querySelector('input[name="handedness"]:checked').value+
-                "&education="+document.getElementById("education").value;
+            var params = "username=" + user.name() +
+                "&sex=" + document.querySelector('input[name="sex"]:checked').value +
+                "&yearOfBirth=" + yearOfBirth +
+                "&handedness=" + document.querySelector('input[name="handedness"]:checked').value +
+                "&education=" + document.getElementById("education").value;
 
         }catch(err) {
             return false;
         }
 
         var request = Request();
-        var responseText = request.createPost(url+"signup", params);
+        var responseText = request.createPost(url + "signup", params);
 
-        return responseText == "true";
+        return responseText === "true";
 
     }
     
