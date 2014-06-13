@@ -390,7 +390,8 @@ describe("gameLogicTest", function() {
         gameData.setMode("GAME");
 
         game.start(gameData);
-        jasmine.clock().tick(15*(10*gameData.ISITime+gameData.guessTime));
+        var timecounter = new countTimes(gameData);
+        jasmine.clock().tick(timecounter.totalListShowTime()+gameData.showResultTime/2);
         var events = evHandler.getStoredEvents();
         var result = calculateResult(events, 0);
         expect(result.numberOfCorrectGivenSeries).not.toBe(result.numberOfShownSeries);
@@ -627,6 +628,38 @@ describe("gameLogicTest", function() {
         expect(events[index].value).toBe(value);
 
         return index + 1;
+
+    }
+
+    function countTimes(gameData) {
+
+        var list = gameData.getNumberList();
+        function seriesShowTime(index){
+            console.log("index: " + index + "time: ")
+            var n=list[index].numbers.length;
+            var numbersTime= n*gameData.ISITime;
+            var crossTime = gameData.showCrossDelay+gameData.showCrossDelay;
+            console.log("index: " + index + "time: "+ numbersTime)
+            return numbersTime+crossTime;
+        }
+
+
+        function totalListShowTime(){
+            var totalTime = 0;
+            console.log(list)
+            for(var i= 0; i<list.length; i++){
+                console.log(i);
+                totalTime = totalTime+seriesShowTime(i);
+                totalTime = totalTime+gameData.guessTime;
+            }
+            console.log(list.length)
+            return totalTime;
+        }
+
+        return{
+            seriesShowTime: seriesShowTime,
+            totalListShowTime: totalListShowTime
+        }
 
     }
 
