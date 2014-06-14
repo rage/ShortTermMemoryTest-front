@@ -11,4 +11,7 @@ deploy:
     repo: TTL-tests/ShortTermMemoryTest-front
   api_key:
     secure: p3fIqme4FPifUBI1fDssjYLOy0M50dZjRv5+gsA2xcyODcx0FGaq34B5SYQNVH+lO1Q/IdsyTZip/ysXoYo2fOvkGgohiv15tCWKSrq80nTb5NpS7IKMDs179VZy7CQNPthzrY0Wj5cpeMcJbvi8XPvwpuHrMTEZezyljnAgmaU=
-
+env:
+  global:
+  - secure: CgAt5f+i2D8g/8aoUMQctHlWqjxvvgPSlWlEdHVw5nLpqGcF9A6EHXgL3VrgLf8YmVP2FwFplnPD50re6nbKq6M12dtePyM/zpZuCwum8bEgmykL9f6UlUV63F7ybinqhDlaIwGxERj3GuHStAzWh2jHUGijCrUDCURotIeJvU0=
+  - secure: ay/f5+tqGSVAMZ6/6cKjDtxvl1/0WvxSA0mu0KrCp7IEchSuKxOEDEdR+tcNoHKlt5rcn7ckm5Fw7fOA6GRYzcSaC9gMnuugcrVB7ced0zHuBHWDB5557pGaicqLLSP2jTnsAkuhZ+MwDEM9LVaVKvJJfOTCT6FzlY0Q/Uy0TsQ=
