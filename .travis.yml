@@ -4,6 +4,8 @@ node_js:
 before_script:
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
+after_script:
+- ./node_modules/.bin/codeclimate < coverage/*/lcov.info
 deploy:
   provider: heroku
   app: enigmatic-retreat-3175
@@ -14,4 +16,3 @@ deploy:
 env:
   global:
   - secure: CgAt5f+i2D8g/8aoUMQctHlWqjxvvgPSlWlEdHVw5nLpqGcF9A6EHXgL3VrgLf8YmVP2FwFplnPD50re6nbKq6M12dtePyM/zpZuCwum8bEgmykL9f6UlUV63F7ybinqhDlaIwGxERj3GuHStAzWh2jHUGijCrUDCURotIeJvU0=
-  - secure: ay/f5+tqGSVAMZ6/6cKjDtxvl1/0WvxSA0mu0KrCp7IEchSuKxOEDEdR+tcNoHKlt5rcn7ckm5Fw7fOA6GRYzcSaC9gMnuugcrVB7ced0zHuBHWDB5557pGaicqLLSP2jTnsAkuhZ+MwDEM9LVaVKvJJfOTCT6FzlY0Q/Uy0TsQ=
