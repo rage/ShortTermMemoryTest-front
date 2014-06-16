@@ -109,7 +109,8 @@ describe("GameDataTest", function() {
         expect(gameData.getCurrentSeries()).toEqual(series)
     });
 
-    it(" 7 number lists are skipped if maksimum number of fails is done", function() {
+    it(" 7 number lists are skipped if maksimum number of fails is done and dropping series is possible", function() {
+        settings.droppingSeriesPossible = true;
         var list = createNewList(   "u",1,2,3,4,5,6,7,
                                     "u",2,2,3,4,5,6,7,
                                     "u",3,2,3,4,5,6,7,
@@ -139,6 +140,36 @@ describe("GameDataTest", function() {
         expect(gameData.getCurrentSeries()).toEqual(series)
     });
 
+    it(" 7 number lists are not skipped if maksimum number of fails is done and dropping series is not possible", function() {
+        settings.droppingSeriesPossible = false;
+        var list = createNewList(   "u",1,2,3,4,5,6,7,
+            "u",2,2,3,4,5,6,7,
+            "u",3,2,3,4,5,6,7,
+            "u",4,2,3,4,5,6,7,
+            "u",5,2,3,4,5,6,7,
+            "u",6,2,3,4,5,6,7,
+            "u",9,8,7,6,5,4);
+        gameData = new GameData("GAME",list,settings)
+        gameData.droppedSeriesMinLength=6;
+        gameData.maxFails=2;
+        gameData.failLimit = 2;
+
+        gameData.setEventHandler(mockEventHandlerLastFail(7));
+        var series = {
+            numbers: [1,2,3,4,5,6,7],
+            order: "upwards"
+        };
+        expect(gameData.getCurrentSeries()).toEqual(series)
+
+        for(var i = 0; i<settings.maxFails;i++){
+            gameData.updateFails();
+        }
+
+        gameData.updateNumberListIndex();
+        series.order = "upwards";
+        series.numbers = [2,2,3,4,5,6,7];
+        expect(gameData.getCurrentSeries()).toEqual(series)
+    });
 
     function createNewList(){
         var list = [];

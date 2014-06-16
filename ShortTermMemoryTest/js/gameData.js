@@ -34,18 +34,20 @@ function GameData(gameMode, theNumberList, settings){
     function updateNumberListIndex() {
         numberListIndex++;
         shownSeries[numberListIndex] = true
-        if(mode=="GAME") {
-            var a = currentListDirection();
-            var loop = true;
-            while (true) {
-                if (numberListIndex >= numberList.length){
-                    break;
-                } else if (fails[numberList[numberListIndex].numbers.length][a] < this.maxFails){
-                    break;
-                } else {
-                    shownSeries[numberListIndex] = false;
-                    numberListIndex++;
-                    a = currentListDirection();
+        if(settings.droppingSeriesPossible) {
+            if (mode == "GAME") {
+                var a = currentListDirection();
+                var loop = true;
+                while (true) {
+                    if (numberListIndex >= numberList.length) {
+                        break;
+                    } else if (fails[numberList[numberListIndex].numbers.length][a] < this.maxFails) {
+                        break;
+                    } else {
+                        shownSeries[numberListIndex] = false;
+                        numberListIndex++;
+                        a = currentListDirection();
+                    }
                 }
             }
         }
@@ -53,20 +55,16 @@ function GameData(gameMode, theNumberList, settings){
     }
 
     function updateFails(){
-        var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
-        var seriesLength = numberList[numberListIndex].numbers.length;
-        var a= currentListDirection();
-//        konsoli.log("fail: " + fail);
-        if (fail && seriesLength >= this.droppedSeriesMinLength) {
-            fails[seriesLength][a]++;
-        } else {
-            fails[seriesLength][a] = 0;
+        if(settings.droppingSeriesPossible) {
+            var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
+            var seriesLength = numberList[numberListIndex].numbers.length;
+            var a = currentListDirection();
+            if (fail && seriesLength >= settings.droppedSeriesMinLength) {
+                fails[seriesLength][a]++;
+            } else {
+                fails[seriesLength][a] = 0;
+            }
         }
-//        if (importantTest) {
-//            console.log("fail: " +fail)
-//            console.log("6: " + fails[6][0] + "" + fails[6][1]);
-//            console.log("7: " + fails[7][0] + "" + fails[7][1]);
-//        }
     }
 
     function changeResult(newResult){

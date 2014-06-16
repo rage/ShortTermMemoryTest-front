@@ -42,10 +42,10 @@ function Settings(){
 }
 
 var gameSettings = {
-    numberDisplayTime: 100,
-    ISITime: 250,
-    guessTime: 500,
-    showResultTime: 5000,
+    numberDisplayTime: 1000,
+    ISITime: 1500,
+    guessTime: 10000,
+    showResultTime: 10000,
     showCrossDelay: 1000,
     showCrossTime: 500,
     maxPracticeRounds: 3,
