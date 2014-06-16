@@ -7,7 +7,8 @@ describe("getList", function() {
 
         var us = new User();
         us.set(CreateRandomTestUser());
-        var list = new GetList(us);
+        var settings = new Settings();
+        var list = new GetList(us,settings);
         var list = list.getNextList();
         
         expect(list.length).toBe(12);
@@ -30,7 +31,8 @@ describe("getList", function() {
     it("correct numbers", function() {
         var us = new User();
         us.set(CreateRandomTestUser());
-        var list = new GetList(us);
+        var settings = new Settings();
+        var list = new GetList(us,settings);
         var list = list.getNextList();
         
         expect(list[0]["numbers"]).toEqual([5,7,3,8]);

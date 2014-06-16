@@ -1,8 +1,8 @@
-function PostTestLog() {
+function PostTestLog(user) {
 
     function prepareTestLog(events) {
         for (var i=0;i<events.length;i++) {
-            events[i].testcase_id=testcase_id;
+            events[i].testcase_id=user.testCase();
         }
     }
 

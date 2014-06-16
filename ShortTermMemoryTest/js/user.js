@@ -1,13 +1,14 @@
 function User(){
-    var name;
+    var username;
     var trained;
+    var testCaseId;
 
     function set(newName){
-        name = newName;
+        username = newName;
     }
 
     function name(){
-        return name;
+        return username;
     }
 
     function isTrained(){
@@ -18,10 +19,19 @@ function User(){
         trained = is;
     }
 
+    function testCase(){
+        return testCaseId;
+    }
+    function setTestCase(caseId){
+        testCaseId = caseId;
+    }
+
     return {
         set:set,
         name:name,
         setTrained:setTrained,
-        isTrained:isTrained
+        isTrained:isTrained,
+        testCase:testCase,
+        setTestCase:setTestCase
     }
 }

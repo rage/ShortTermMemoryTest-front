@@ -9,7 +9,7 @@ describe("gameLogicTest", function() {
     var evHandler;
     var keyHandler;
     var game;
-
+    var user
     var gameData;
 
     var spaceKeyDownEvent;
@@ -43,7 +43,8 @@ describe("gameLogicTest", function() {
         $(document).off();
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
-        game = new gameLogic(evHandler);
+        user = new User();
+        game = new gameLogic(evHandler, user);
 
         gameData = new GameData("PRACTICE", undefined, settings)
 

@@ -1,4 +1,4 @@
-function GetList(user){
+function GetList(user, settings){
 
     function getNextList(){
         return getList("nextList");
@@ -13,11 +13,11 @@ function GetList(user){
 
         var req = new Request();
         var params = "username="+user.name();
-        var jsonData = req.createPost(url+listType, params);
+        var jsonData = req.createPost(settings.url+listType, params);
 
         var jsonParsed = JSON.parse(jsonData);
         var numberSets = jsonParsed["list"]["numbersets"];
-        testcase_id = jsonParsed["id"];
+        user.setTestCase(jsonParsed["id"]);
 
         return createNumberList(numberSets);
 

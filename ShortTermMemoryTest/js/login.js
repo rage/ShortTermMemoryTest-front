@@ -1,4 +1,4 @@
-function Login(){
+function Login(settings){
 
     function start(){
         createHtml();
@@ -18,10 +18,9 @@ function Login(){
         var req = new Request();
         var params = "username="+checkName;
 
-        username = checkName;
         user.set(checkName);
 
-        var jsonData = req.createPost(url+"login", params);
+        var jsonData = req.createPost(settings.url+"login", params);
         var response = JSON.parse(jsonData);
 
         return checkResponse(response, user);

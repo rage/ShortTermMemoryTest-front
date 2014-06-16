@@ -1,4 +1,4 @@
-function PostResults() {
+function PostResults(user) {
 
     function createResultTableData(events) {
         var userInputStart = false;
@@ -31,7 +31,7 @@ function PostResults() {
             if (event.eventtype === "EVENT_TYPE_KEYDOWN") {
                 if (userInputStart) {
                     var result = {};
-                    result.testcase_id = testcase_id;
+                    result.testcase_id = user.testCase();
                     result.keypressed = String.fromCharCode(event.value);
                     //result.keypressed = event.value;
                     result.keypressindex = keypressindex++;

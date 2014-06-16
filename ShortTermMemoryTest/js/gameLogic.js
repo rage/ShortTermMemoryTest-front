@@ -2,11 +2,11 @@
  * Created by kris on 26.5.2014.
  */
 
-function gameLogic (eventHandler) {
+function gameLogic (eventHandler, user) {
 
 
-    var postResults = new PostResults();
-    var postTestLog = new PostTestLog();
+    var postResults = new PostResults(user);
+    var postTestLog = new PostTestLog(user);
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
     eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
@@ -46,7 +46,7 @@ function gameLogic (eventHandler) {
         var events = gameData.getEventHandler().getStoredEvents();
         postResults.post(events);
         postTestLog.post(events);
-        new Request().createPost(url+"finish", "id=" + testcase_id);
+        new Request().createPost(url+"finish", "id=" + user.testCase());
         gameData.getEventHandler().triggerEvent("EVENT_SHOWRESULT_END", "", gameData.showResultTime);
     }
 
@@ -85,7 +85,7 @@ function gameLogic (eventHandler) {
 
         gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime);
         if (gameData.isFinished()) {
-            new Request().createPost(url+"finish", "id=" + testcase_id);
+            new Request().createPost(url+"finish", "id=" + user.testCase());
             gameData.addDonePracticeRounds();
             showPracticeFeedbackEnd(gameData);
         }else{

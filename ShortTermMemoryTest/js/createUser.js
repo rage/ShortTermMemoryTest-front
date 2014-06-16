@@ -1,4 +1,4 @@
-function CreateUser(){
+function CreateUser(settings){
     
     function start(){
         createHtml();
@@ -79,7 +79,7 @@ function CreateUser(){
         }
 
         var request = Request();
-        var responseText = request.createPost(url + "signup", params);
+        var responseText = request.createPost(settings.url + "signup", params);
 
         return responseText === "true";
 

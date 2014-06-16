@@ -1,6 +1,5 @@
 
 var show;
-var testcase_id;
 
 
 var stateMachine = function (){
@@ -10,6 +9,7 @@ var stateMachine = function (){
     var register;
     var game;
     var user;
+    var settings;
 
     var evHandler;
     var keyHandler;
@@ -20,11 +20,12 @@ var stateMachine = function (){
 
         kList = new KeyListener();
         state = new State(kList);
+        user = new User();
+        settings = new Settings();
 
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
-        game = new gameLogic(evHandler);
-        user = new User();
+        game = new gameLogic(evHandler, user);
 
         startLogin();
         //startGame();
@@ -34,7 +35,7 @@ var stateMachine = function (){
     function startLogin(){
 
         if(state.set(1)){
-            login = new Login();
+            login = new Login(settings);
             login.start();
         }
 
@@ -43,10 +44,10 @@ var stateMachine = function (){
     function checkUsername(checkName){
 
         if(state.is(1)) {
-            if(login.checkUsername(checkName, user)){
-                stateMachine.startNotification();
+            if(login.checkUsername(checkName, user, settings)){
+                startNotification();
             }else{
-                stateMachine.startRegister();
+                startRegister();
             }
         }
 
@@ -56,7 +57,7 @@ var stateMachine = function (){
     function startRegister(){
 
         if(state.set(2)) {
-            register = new CreateUser();
+            register = new CreateUser(settings);
             register.start();
         }
 
@@ -66,9 +67,9 @@ var stateMachine = function (){
 
         if(state.is(2)) {
             if(register.signup(user)){
-                stateMachine.startNotification();
+                startNotification();
             }else{
-                stateMachine.startRegister();
+                startRegister();
             }
         }
 
@@ -109,7 +110,7 @@ var stateMachine = function (){
         if(state.set(6)) {
 
             var theNumberList;
-            var list = new GetList(user);
+            var list = new GetList(user, settings);
 
             if (mode == "GAME") {
                 theNumberList = list.getNextList();
@@ -127,7 +128,6 @@ var stateMachine = function (){
 
     return {
         start:start,
-        startRegister:startRegister,
         startGameStartScreen:startGameStartScreen,
         createUser:createUser,
         startGame:startGame,
