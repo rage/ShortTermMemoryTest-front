@@ -91,12 +91,6 @@ function GameLogic (eventHandler, user, settings) {
     }
 
     function endShowPracticeResultEventHandler(event) {
-        var numberBlankTime = gameData.ISITime - gameData.numberDisplayTime;
-        if (gameData.isFinished()) {
-            gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_START", "", numberBlankTime);
-        } else {
-            gameData.getEventHandler().triggerEvent("EVENT_SHOWLIST_END", "", numberBlankTime);
-        }
     }
 
 

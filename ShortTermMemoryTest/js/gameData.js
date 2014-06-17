@@ -58,9 +58,6 @@ function GameData(gameMode, theNumberList, settings){
         }
     }
 
-    function changeResult(newResult){
-        result = newResult;
-    }
     function setEventHandler(newEventHandler){
         eventHandler=newEventHandler;
     }
@@ -113,7 +110,6 @@ function GameData(gameMode, theNumberList, settings){
         getEventHandler: getEventHandler,
         updateFails: updateFails,
         updateNumberListIndex: updateNumberListIndex,
-        changeResult: changeResult,
         setEventHandler: setEventHandler,
         getCurrentSeries: getCurrentSeries,
         isFinished: isFinished,
