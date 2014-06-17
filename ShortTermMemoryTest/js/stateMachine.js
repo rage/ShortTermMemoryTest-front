@@ -112,9 +112,9 @@ var stateMachine = function (){
             var theNumberList;
             var list = new GetList(user, settings);
 
-            if (mode == "GAME") {
+            if (mode === "GAME") {
                 theNumberList = list.getNextList();
-            } else if (mode == "PRACTICE") {
+            } else if (mode === "PRACTICE") {
                 theNumberList = list.getTrainingList();
             }
             var gameData = new GameData(mode, theNumberList, settings);
