@@ -1,4 +1,4 @@
-function gameLogic (eventHandler, user, settings) {
+function GameLogic (eventHandler, user, settings) {
 
 
     var postResults = new PostResults(user, settings);
@@ -61,13 +61,13 @@ function gameLogic (eventHandler, user, settings) {
         var numberBlankTime = gameData.ISITime - gameData.numberDisplayTime;
         gameData.updateFails(eventHandler);
         gameData.updateNumberListIndex();
-        if (gameData.getMode() == "GAME") {
+        if (gameData.getMode() === "GAME") {
             if (!gameData.isFinished()) {
                 gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_START", "", 0);
             } else {
                 gameData.getEventHandler().triggerEvent("EVENT_SHOWLIST_END", "", numberBlankTime);
             }
-        } else if (gameData.getMode() == "PRACTICE") {
+        } else if (gameData.getMode() === "PRACTICE") {
             gameData.getEventHandler().triggerEvent("EVENT_SHOW_PRACTICE_RESULT_START", "", numberBlankTime);
         }
         var events = gameData.getEventHandler().getStoredEvents();
@@ -203,9 +203,9 @@ function gameLogic (eventHandler, user, settings) {
         gameData = newGameData;
         setup(gameData);
         $("body").html("");
-        if (gameData.getMode() == "PRACTICE") {
+        if (gameData.getMode() === "PRACTICE") {
             startPracticeGame();
-        } else if (gameData.getMode() == "GAME") {
+        } else if (gameData.getMode() === "GAME") {
             startGame();
         }
     }

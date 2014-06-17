@@ -25,7 +25,7 @@ var stateMachine = function (){
 
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
-        game = new gameLogic(evHandler, user, settings);
+        game = new GameLogic(evHandler, user, settings);
 
         startLogin();
         //startGame();

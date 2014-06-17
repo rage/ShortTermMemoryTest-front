@@ -51,9 +51,7 @@ function PostResults(user, settings) {
             type: 'POST',
             url: settings.url+"results",
             data: resultsJSON,
-            dataType: 'json',
-            success: function(){konsoli.log("PostResults success");},
-            failure: function(errMsg){konsoli.log(errMsg);}
+            dataType: 'json'
         });
     }
 

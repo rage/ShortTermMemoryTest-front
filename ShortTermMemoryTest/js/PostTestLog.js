@@ -14,11 +14,7 @@ function PostTestLog(user, settings) {
             type: 'POST',
             url: settings.url+"testlogs",
             data: eventsJSON,
-            dataType: 'json',
-
-            success: function(){konsoli.log("PostTestLog success");},
-            failure: function(errMsg){konsoli.log(errMsg);}
-
+            dataType: 'json'
         });
 
     }

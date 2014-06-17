@@ -44,7 +44,7 @@ describe("gameLogicTest", function() {
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         user = new User();
-        game = new gameLogic(evHandler, user, settings);
+        game = new GameLogic(evHandler, user, settings);
 
         gameData = new GameData("PRACTICE", undefined, settings);
 
