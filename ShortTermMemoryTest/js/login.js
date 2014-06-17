@@ -9,7 +9,7 @@ function Login(settings){
         ' + text["kirjoitaTunnus"] + '\
         <form onSubmit="stateMachine.checkUsername(document.getElementById(\'username\').value)">\
         <input type="text" id="username" autocomplete="off" autofocus required>\
-        <input type="button" value="Aloita" onclick="stateMachine.checkUsername(document.getElementById(\'username\').value)" />\
+        <input type="button" value="'+text['start']+'" onclick="stateMachine.checkUsername(document.getElementById(\'username\').value)" />\
         </form>';
     }
     

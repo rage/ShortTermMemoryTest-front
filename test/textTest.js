@@ -196,8 +196,9 @@ describe("As a old User, I want to see instructions 2", function() {
         simulateKeyDown(13);
         jasmine.clock().tick(100);
         simulateKeyUp(13);
+        var settings = new Settings();
         while(document.getElementById('firstline')==null || document.getElementById('firstline').innerHTML!=text["kiitos"]){
-            jasmine.clock().tick(gameSettings.showResultTime/2);
+            jasmine.clock().tick(settings.game.showResultTime/2);
         }
         expect(document.getElementById('firstline').innerHTML).toBe(text["kiitos"]);
         expect(document.getElementById('secondline').innerHTML).toBe("Sait tehtävästä 0% oikein");
@@ -206,7 +207,7 @@ describe("As a old User, I want to see instructions 2", function() {
 //        while(document.getElementById('firstline')!=null){
 //            jasmine.clock().tick(2000);
 //        }
-        jasmine.clock().tick(gameSettings.showResultTime+2000);
+        jasmine.clock().tick(settings.game.showResultTime+2000);
         expect(document.body.innerHTML).toContain(text["kirjoitaTunnus"]);
 
     });

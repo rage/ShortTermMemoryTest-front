@@ -223,7 +223,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 2, order = normal, numbers entered = 7, series length = 7, first 2 numbers are correct and the rest incorrect => series is not considered a fail  ", function() {
-        gameSettings.failLimit = 2;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -241,7 +240,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = normal, numbers entered = 7, series length = 7, first 2 numbers are correct and the rest incorrect => series is considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -260,7 +258,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = normal, numbers entered = 3, series length = 7, all 3 numbers are correct => series is not considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -279,7 +276,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = normal, numbers entered = 8, series length = 7, first 3 numbers are correct and the rest incorrect => series is not considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -298,7 +294,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, numbers entered as order was normal => series is considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -316,7 +311,6 @@ describe("calculateResult ", function() {
         expect(calculator.lastSeriesFailed).toBe(true)
     });
     it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, first three numbers correct => series is not considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -335,7 +329,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, all numbers correct => series is not considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -354,7 +347,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = backwards, numbers entered = 3, series length = 7, all three numbers correct => series is not considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -373,7 +365,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = backwards, numbers entered = 9, series length = 7, first seven numbers correct => series is not considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
@@ -392,7 +383,6 @@ describe("calculateResult ", function() {
     });
 
     it("failLimit = 3, order = backwards, numbers entered = 9, series length = 7, first two numbers correct => series is considered a fail  ", function() {
-        gameSettings.failLimit = 3;
 
         storer = new eventStorer();
         var settings = new Settings();
