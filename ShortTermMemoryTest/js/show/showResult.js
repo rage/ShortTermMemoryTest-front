@@ -1,11 +1,11 @@
 function ShowResult(gameData, settings) {
 
     function createHTML() {
-        var htmlStructure = "<div id=\"Result\">\
-                                <h1 id=\"firstline\"></h1>\
-                                <h1 id=\"secondline\"></h1>\
-                                <h1 id=\"thirdline\"></h1>\
-                             </div>";
+        var htmlStructure = '<div id="Result">\
+                                <h1 id="firstline\"></h1>\
+                                <h1 id="secondline"></h1>\
+                                <h1 id="thirdline"></h1>\
+                             </div>';
         $("body").html(htmlStructure);
     }
 
@@ -18,7 +18,7 @@ function ShowResult(gameData, settings) {
 
     var firstline = text["kiitos"];
     var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
-    var thirdline = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
+    var thirdline = text['testiOnValmis'];
 
     $("#firstline").html(firstline);
     $("#secondline").html(secondline);

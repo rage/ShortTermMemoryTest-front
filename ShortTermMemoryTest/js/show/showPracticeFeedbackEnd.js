@@ -1,7 +1,5 @@
 function ShowPracticeFeedbackEnd(gameData) {
 
-    var gameData = gameData;
-
     function createHTML() {
         var htmlStructure = "<div id=\"ResultEnd\"></div>";
         $("body").html(htmlStructure);

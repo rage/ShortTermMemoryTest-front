@@ -1,12 +1,8 @@
-//var maxFails = 1; //Number of failed series allowed before the series of that length are dropped out
-//var failLimit = 2; //Correct numbers required in a series for series not to be considered a major fail
-//var droppedSeriesMinLength = 6;
-
 function Settings(){
     var url = "http://shorttermmemorytest.herokuapp.com/";
     //var url = "http://localhost:3000/"
-    var game = {
 
+    var game = {
         numberDisplayTime: 1000,
         ISITime: 1500,
         guessTime: 10000,
@@ -18,7 +14,7 @@ function Settings(){
         failLimit : 2, //Correct numbers required in a series for series not to be considered a major fail
         droppedSeriesMinLength : 6,
         droppingSeriesPossible: true
-    }
+    };
 
     return {
         url:url,

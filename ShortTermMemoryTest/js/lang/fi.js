@@ -57,5 +57,7 @@ text["harjoitusValmis"] = "<p>Jos haluat, saat vielä jatkaa harjoittelua. Saat 
     "<p>Pääset harjoitukseen VÄLILYÖNNILLÄ.</p>" +
     "<p>Jos haluat jatkaa suoraan tehtävään, paina ENTER.</p>";
 
-text["tehtavaAlkaa"] = "<p>Tehtävä alkaa, kun painat ENTER.</p>";
+text[ "tehtavaAlkaa"] = "<p>Tehtävä alkaa, kun painat ENTER.</p>";
 text['start'] = "Aloita";
+
+text['testiOnValmis'] = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";

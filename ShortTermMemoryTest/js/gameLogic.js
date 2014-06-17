@@ -58,7 +58,7 @@ function GameLogic (eventHandler, user, settings) {
 
     function endUserInputEventHandler(event) {
         hideOrder();
-        var numberBlankTime = gameData.ISITime - gameData.numberDisplayTime;
+        var numberBlankTime = settings.game.ISITime - settings.game.numberDisplayTime;
         gameData.updateFails(eventHandler);
         gameData.updateNumberListIndex();
         if (gameData.getMode() === "GAME") {
@@ -134,7 +134,7 @@ function GameLogic (eventHandler, user, settings) {
         delay += gameData.showCrossDelay;
         gameData.getEventHandler().triggerEvent("EVENT_SHOWCROSS_START", "", delay);
         delay += gameData.showCrossTime;
-        gameData.getEventHandler().triggerEvent("EVENT_SHOWCROSS_END", "", delay)
+        gameData.getEventHandler().triggerEvent("EVENT_SHOWCROSS_END", "", delay);
 
         delay += gameData.ISITime - gameData.numberDisplayTime;
         var series = gameData.getCurrentSeries();

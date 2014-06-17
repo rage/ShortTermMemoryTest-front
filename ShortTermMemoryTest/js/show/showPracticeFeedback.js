@@ -1,7 +1,5 @@
 function ShowPracticeFeedback(gameData) {
 
-    var gameData = gameData;
-
     function createHTML() {
         var htmlStructure = "<div id=\"Result\">\
                                 <h1 id=\"firstline\"></h1>\
