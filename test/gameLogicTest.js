@@ -9,7 +9,7 @@ describe("gameLogicTest", function() {
     var evHandler;
     var keyHandler;
     var game;
-    var user
+    var user;
     var gameData;
 
     var spaceKeyDownEvent;
@@ -21,19 +21,19 @@ describe("gameLogicTest", function() {
 
     beforeEach(function() {
 
-        var settings = {
-            numberDisplayTime: 500,
-            ISITime: 1500,
-            guessTime: 5000,
-            showResultTime: 5000000,
-            showCrossDelay: 1000,
-            showCrossTime: 500,
-            maxPracticeRounds: 3,
-            maxFails : 999, //Number of failed series allowed before the series of that length are dropped out
-            failLimit : 0, //Correct numbers required in a series for series not to be considered a major fail
-            droppedSeriesMinLength : 999
-        }
-        PracticeTotalTime = 10*settings.ISITime+settings.guessTime+settings.showCrossDelay+settings.showCrossTime+1000;
+        var settings = new Settings();
+        settings.game.numberDisplayTime = 500;
+        settings.game.ISITime = 1500;
+        settings.game.guessTime = 5000;
+        settings.game.showResultTime = 5000000;
+        settings.game.showCrossDelay = 1000;
+        settings.game.showCrossTime = 500;
+        settings.game.maxPracticeRounds = 3;
+        settings.game.maxFails = 999; //Number of failed series allowed before the series of that length are dropped out
+        settings.game.failLimit = 0; //Correct numbers required in a series for series not to be considered a major fail
+        settings.game.droppedSeriesMinLength = 999;
+
+        PracticeTotalTime = 10*settings.game.ISITime+settings.game.guessTime+settings.game.showCrossDelay+settings.game.showCrossTime+1000;
 
 
 //        maxFails = 999; //Number of failed series allowed before the series of that length are dropped out
@@ -44,9 +44,9 @@ describe("gameLogicTest", function() {
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         user = new User();
-        game = new gameLogic(evHandler, user);
+        game = new gameLogic(evHandler, user, settings);
 
-        gameData = new GameData("PRACTICE", undefined, settings)
+        gameData = new GameData("PRACTICE", undefined, settings);
 
 //        {
 //            gameIdentifier: "ThisGame",
@@ -278,7 +278,8 @@ describe("gameLogicTest", function() {
         game.start(gameData);
         jasmine.clock().tick(15*(10*gameData.ISITime+gameData.guessTime));
         var events = evHandler.getStoredEvents();
-        var result = calculateResult(events, 0);
+        var settings = new Settings();
+        var result = calculateResult(events, 0, settings);
         expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
 
     });
@@ -343,7 +344,8 @@ describe("gameLogicTest", function() {
         game.start(gameData);
         jasmine.clock().tick(100000);
         var events = evHandler.getStoredEvents();
-        var result = calculateResult(events, 0);
+        var settings = new Settings();
+        var result = calculateResult(events, 0, settings);
         expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
 
     });
@@ -394,7 +396,8 @@ describe("gameLogicTest", function() {
         var timecounter = new countTimes(gameData);
         jasmine.clock().tick(timecounter.totalListShowTime()+gameData.showResultTime/2);
         var events = evHandler.getStoredEvents();
-        var result = calculateResult(events, 0);
+        var settings = new Settings();
+        var result = calculateResult(events, 0, settings);
         expect(result.numberOfCorrectGivenSeries).not.toBe(result.numberOfShownSeries);
 
     });

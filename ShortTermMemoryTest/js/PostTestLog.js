@@ -1,7 +1,7 @@
-function PostTestLog(user) {
+function PostTestLog(user, settings) {
 
     function prepareTestLog(events) {
-        for (var i=0;i<events.length;i++) {
+        for (var i = 0; i < events.length; i++) {
             events[i].testcase_id=user.testCase();
         }
     }
@@ -12,7 +12,7 @@ function PostTestLog(user) {
 
         $.ajax({
             type: 'POST',
-            url: url+"testlogs",
+            url: settings.url+"testlogs",
             data: eventsJSON,
             dataType: 'json',
 

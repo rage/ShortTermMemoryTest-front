@@ -1,4 +1,4 @@
-function calculateResult(events, fromTime) {
+function calculateResult(events, fromTime, settings) {
 
     //konsoli.log("calculateResult : eventStore size: " + eventStore.getEvents().length);
 
@@ -77,7 +77,7 @@ function calculateResult(events, fromTime) {
         if (event.eventtype === "EVENT_USERINPUT_END") {
 
             var correctChars = countCorrectChars();
-            lastSeriesFailed = correctChars < gameSettings.failLimit;
+            lastSeriesFailed = correctChars < settings.game.failLimit;
             updateLastSeriesCorrectness();
 
         }

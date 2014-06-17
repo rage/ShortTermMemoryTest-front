@@ -4,10 +4,11 @@ describe("As a old User, I want to see instructions", function() {
     beforeEach(function() {
 
         $(document).off();
+        settings = new Settings();
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         user = new User();
-        game = new gameLogic(evHandler, user);
+        game = new gameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
         jasmine.clock().tick(200);
@@ -83,10 +84,11 @@ describe("As a old User, I want to see instructions 2", function() {
     beforeEach(function() {
 
         $(document).off();
+        settings = new Settings();
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         user = new User();
-        game = new gameLogic(evHandler, user);
+        game = new gameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
         jasmine.clock().tick(200);
@@ -249,10 +251,11 @@ describe("As a new User, I want to see instructions", function() {
     beforeEach(function() {
 
         $(document).off();
+        settings = new Settings();
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
         user = new User();
-        game = new gameLogic(evHandler, user);
+        game = new gameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
         jasmine.clock().tick(200);

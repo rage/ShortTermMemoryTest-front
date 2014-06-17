@@ -20,7 +20,7 @@ var konsoli = function (){
 function Settings(){
     var url = "http://shorttermmemorytest.herokuapp.com/";
     //var url = "http://localhost:3000/"
-    var gameSettings = {
+    var game = {
         numberDisplayTime: 100,
         ISITime: 250,
         guessTime: 500,
@@ -36,7 +36,7 @@ function Settings(){
 
     return {
         url:url,
-        game:gameSettings
+        game:game
     }
 
 }

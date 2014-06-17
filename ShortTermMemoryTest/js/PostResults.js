@@ -1,4 +1,4 @@
-function PostResults(user) {
+function PostResults(user, settings) {
 
     function createResultTableData(events) {
         var userInputStart = false;
@@ -49,7 +49,7 @@ function PostResults(user) {
         var resultsJSON = {"result" : resultData};
         $.ajax({
             type: 'POST',
-            url: url+"results",
+            url: settings.url+"results",
             data: resultsJSON,
             dataType: 'json',
             success: function(){konsoli.log("PostResults success");},

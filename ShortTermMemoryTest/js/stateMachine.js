@@ -25,7 +25,7 @@ var stateMachine = function (){
 
         evHandler = new eventHandler();
         keyHandler = new keyEventHandler(evHandler);
-        game = new gameLogic(evHandler, user);
+        game = new gameLogic(evHandler, user, settings);
 
         startLogin();
         //startGame();
@@ -117,8 +117,7 @@ var stateMachine = function (){
             } else if (mode == "PRACTICE") {
                 theNumberList = list.getTrainingList();
             }
-
-            var gameData = new GameData(mode,theNumberList, gameSettings);
+            var gameData = new GameData(mode, theNumberList, settings);
 
             game.start(gameData);
 

@@ -25,31 +25,34 @@ describe("calculateResult ", function() {
 
     it("numberOfShownSets correct when one set is shown ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         storer.registerEvent(endSeries, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
     });
 
    it("numberOfShownSets correct when two sets are shown ", function() {
-        storer = new eventStorer();
-        storer.registerEvent(startSeries, orderNormal, 777);
-        storer.registerEvent(endSeries, orderNormal, 777);
-        storer.registerEvent(startSeries, orderNormal, 777);
-        storer.registerEvent(endSeries, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
-        expect(calculator.numberOfShownSeries).toBe(2);
+       storer = new eventStorer();
+       var settings = new Settings();
+       storer.registerEvent(startSeries, orderNormal, 777);
+       storer.registerEvent(endSeries, orderNormal, 777);
+       storer.registerEvent(startSeries, orderNormal, 777);
+       storer.registerEvent(endSeries, orderNormal, 777);
+       var calculator = new calculateResult(storer.getEvents(), 199, settings);
+       expect(calculator.numberOfShownSeries).toBe(2);
     });
 
     it("correct result when one 3-number set and correct answer is given ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -58,13 +61,14 @@ describe("calculateResult ", function() {
 
     it("correct result when one 3-number backwards-set and correct answer is given ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(5,8,7);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -72,13 +76,14 @@ describe("calculateResult ", function() {
 
     it("correct result when one 6-number backwards-set and correct answer is given ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,8,5,6,4,2);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(2, 4, 6, 5, 8, 7);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -86,6 +91,7 @@ describe("calculateResult ", function() {
 
     it("incorrect answer when one 3-number set and one the last number is typed after deadline ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -93,7 +99,7 @@ describe("calculateResult ", function() {
         typeNumbers(7,8);
         storer.registerEvent(endTyping, orderNormal, 777);
         typeNumbers(5);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -101,13 +107,14 @@ describe("calculateResult ", function() {
 
     it("incorrect answer when one 3-number set and one extra number is given ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,8,5,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -115,6 +122,7 @@ describe("calculateResult ", function() {
 
     it("correct answer when one 3-number set and one extra number is given after deadline ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -122,7 +130,7 @@ describe("calculateResult ", function() {
         typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
         typeNumbers(5);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -130,6 +138,7 @@ describe("calculateResult ", function() {
 
     it("incorrect answer when one 3-number set and the first number is missing from answer ", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -137,7 +146,7 @@ describe("calculateResult ", function() {
         typeNumbers(8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
         typeNumbers(5);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -146,6 +155,7 @@ describe("calculateResult ", function() {
 
     it("correct answers when two 3-number sets and both answers are correct", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -160,7 +170,7 @@ describe("calculateResult ", function() {
         typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderNormal, 777);
 
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(2);
         expect(calculator.numberOfCorrectGivenSeries).toBe(2);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -168,6 +178,7 @@ describe("calculateResult ", function() {
 
     it("one correct and one incorrect answer when two 3-number sets and the first answer is correct", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -182,7 +193,7 @@ describe("calculateResult ", function() {
         typeNumbers(1,3,2);
         storer.registerEvent(endTyping, orderNormal, 777);
 
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(2);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -190,6 +201,7 @@ describe("calculateResult ", function() {
 
     it("one correct and one incorrect answer when two 3-number sets and the second answer is correct", function() {
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -204,7 +216,7 @@ describe("calculateResult ", function() {
         typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderNormal, 777);
 
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(2);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -214,13 +226,14 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 2;
 
         storer = new eventStorer();
+        var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,1,2,4,3,2);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -231,33 +244,37 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,2,5,8,7,9);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
-        expect(calculator.lastSeriesFailed).toBe(true)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
+        expect(calculator.lastSeriesFailed).toBe(true);
     });
 
     it("failLimit = 3, order = normal, numbers entered = 3, series length = 7, all 3 numbers are correct => series is not considered a fail  ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
         expect(calculator.lastSeriesFailed).toBe(false)
     });
 
@@ -265,16 +282,18 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderNormal, 777);
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,5,6,8,7,9,8);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
         expect(calculator.lastSeriesFailed).toBe(false)
     });
 
@@ -282,32 +301,36 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
         expect(calculator.lastSeriesFailed).toBe(true)
     });
     it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, first three numbers correct => series is not considered a fail  ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3,9,8,9,8);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
         expect(calculator.lastSeriesFailed).toBe(false)
     });
 
@@ -315,16 +338,18 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3,4,5,6,7);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
-        expect(calculator.lastSeriesCorrectness).toBe(true)
+        expect(calculator.lastSeriesCorrectness).toBe(true);
         expect(calculator.lastSeriesFailed).toBe(false)
     });
 
@@ -332,16 +357,18 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
         expect(calculator.lastSeriesFailed).toBe(false)
     });
 
@@ -349,16 +376,18 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3,4,5,6,7,8,9);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
         expect(calculator.lastSeriesFailed).toBe(false)
     });
 
@@ -366,16 +395,18 @@ describe("calculateResult ", function() {
         gameSettings.failLimit = 3;
 
         storer = new eventStorer();
+        var settings = new Settings();
+        settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endSeries, orderReversed, 777);
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,4,5,6,7,8,9,0);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199);
+        var calculator = new calculateResult(storer.getEvents(),199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
-        expect(calculator.lastSeriesCorrectness).toBe(false)
+        expect(calculator.lastSeriesCorrectness).toBe(false);
         expect(calculator.lastSeriesFailed).toBe(true)
     });
 

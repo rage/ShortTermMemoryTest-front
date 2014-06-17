@@ -1,12 +1,8 @@
-/**
- * Created by kris on 26.5.2014.
- */
-
-function gameLogic (eventHandler, user) {
+function gameLogic (eventHandler, user, settings) {
 
 
-    var postResults = new PostResults(user);
-    var postTestLog = new PostTestLog(user);
+    var postResults = new PostResults(user, settings);
+    var postTestLog = new PostTestLog(user, settings);
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
     eventHandler.registerEventHandler("EVENT_GAME_END", endGameEventHandler);
@@ -42,11 +38,11 @@ function gameLogic (eventHandler, user) {
 
 
     function showResultEventHandler(event) {
-        showResult(gameData);
+        showResult(gameData, settings);
         var events = gameData.getEventHandler().getStoredEvents();
         postResults.post(events);
         postTestLog.post(events);
-        new Request().createPost(url+"finish", "id=" + user.testCase());
+        new Request().createPost(settings.url+"finish", "id=" + user.testCase());
         gameData.getEventHandler().triggerEvent("EVENT_SHOWRESULT_END", "", gameData.showResultTime);
     }
 
@@ -83,9 +79,9 @@ function gameLogic (eventHandler, user) {
 
     function showPracticeResultEventHandler(event) {
 
-        gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime);
+        gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
         if (gameData.isFinished()) {
-            new Request().createPost(url+"finish", "id=" + user.testCase());
+            new Request().createPost(settings.url+"finish", "id=" + user.testCase());
             gameData.addDonePracticeRounds();
             showPracticeFeedbackEnd(gameData);
         }else{
