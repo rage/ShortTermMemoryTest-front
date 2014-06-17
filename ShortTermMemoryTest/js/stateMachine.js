@@ -23,8 +23,8 @@ var stateMachine = function (){
         user = new User();
         settings = new Settings();
 
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
+        evHandler = new EventHandler();
+        keyHandler = new KeyEventHandler(evHandler);
         game = new GameLogic(evHandler, user, settings);
 
         startLogin();

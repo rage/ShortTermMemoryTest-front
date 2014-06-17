@@ -2,14 +2,14 @@
 
 describe("eventStorerTest", function() {
 
-    it("eventStorer is defined and is empty ", function() {
-        var myfunc = new eventStorer();
+    it("EventStorer is defined and is empty ", function() {
+        var myfunc = new EventStorer();
         expect(myfunc.getEvents().length).toBe(0);
 
     });
 
-    it("eventStorer saves and returns one event", function() {
-        var myfunc = new eventStorer();
+    it("EventStorer saves and returns one event", function() {
+        var myfunc = new EventStorer();
         myfunc.registerEvent("EVENT_TYPE_KEYDOWN", 2, 3);
         var events = myfunc.getEvents()
         var event = myfunc.getEvents()[0];
@@ -19,8 +19,8 @@ describe("eventStorerTest", function() {
         expect(events.length).toBe(1);
     });
 
-    it("eventStorer saves and returns two events", function() {
-        var myfunc = new eventStorer();
+    it("EventStorer saves and returns two events", function() {
+        var myfunc = new EventStorer();
         myfunc.registerEvent("EVENT_TYPE_KEYDOWN", 2, 3);
         myfunc.registerEvent("EVENT_TYPE_KEYUP", 4, 5);
         var events = myfunc.getEvents();

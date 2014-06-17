@@ -1,6 +1,6 @@
 
 
-describe("keyEventHandler", function() {
+describe("KeyEventHandler", function() {
 
     var evHandler;
     var keyHandler;
@@ -24,8 +24,8 @@ describe("keyEventHandler", function() {
     it("this sets up the scene for all other tests", function() {
         $(document).off();
 
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
+        evHandler = new EventHandler();
+        keyHandler = new KeyEventHandler(evHandler);
         keyDownCounter = 0;
 
         evHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", function () {
@@ -42,7 +42,7 @@ describe("keyEventHandler", function() {
     });
 
 
-    it("keyEventHandler generates an EVENT_TYPE_KEYDOWN event on key press", function() {
+    it("KeyEventHandler generates an EVENT_TYPE_KEYDOWN event on key press", function() {
         $(document).trigger(keyDownEvent);
         jasmine.clock().tick(100);
         expect(keyDownCounter).toBe(1);
@@ -50,7 +50,7 @@ describe("keyEventHandler", function() {
     });
 
 
-    it("keyEventHandler generates only one EVENT_TYPE_KEYDOWN event on two consecutice key down presses with no key up in between", function() {
+    it("KeyEventHandler generates only one EVENT_TYPE_KEYDOWN event on two consecutice key down presses with no key up in between", function() {
         $(document).trigger(keyDownEvent);
         jasmine.clock().tick(100);
         $(document).trigger(keyDownEvent);
@@ -60,7 +60,7 @@ describe("keyEventHandler", function() {
     });
 
 
-    it("keyEventHandler generates a new EVENT_TYPE_KEYDOWN event only after keyup event", function() {
+    it("KeyEventHandler generates a new EVENT_TYPE_KEYDOWN event only after keyup event", function() {
         $(document).trigger(keyDownEvent);
         jasmine.clock().tick(100);
         $(document).trigger(keyDownEvent);
@@ -73,7 +73,7 @@ describe("keyEventHandler", function() {
         expect(keyDownCounter).toBe(2);
     });
 
-    it("keyEventHandler stops sending EVENT_TYPE_KEYDOWN events after receiving EVENT_GAME_END event", function() {
+    it("KeyEventHandler stops sending EVENT_TYPE_KEYDOWN events after receiving EVENT_GAME_END event", function() {
         $(document).trigger(keyDownEvent);
         jasmine.clock().tick(100);
         expect(keyDownCounter).toBe(1);
@@ -85,7 +85,7 @@ describe("keyEventHandler", function() {
         expect(keyDownCounter).toBe(1);
     });
 
-    it("keyEventHandler stops sending EVENT_TYPE_KEYDOWN events after receiving EVENT_PRACTICE_GAME_END event", function() {
+    it("KeyEventHandler stops sending EVENT_TYPE_KEYDOWN events after receiving EVENT_PRACTICE_GAME_END event", function() {
         $(document).trigger(keyDownEvent);
         jasmine.clock().tick(100);
         expect(keyDownCounter).toBe(1);
@@ -97,7 +97,7 @@ describe("keyEventHandler", function() {
         expect(keyDownCounter).toBe(1);
     });
 
-    it("keyEventHandler restarts sending EVENT_TYPE_KEYDOWN events after receiving EVENT_GAME_START event", function() {
+    it("KeyEventHandler restarts sending EVENT_TYPE_KEYDOWN events after receiving EVENT_GAME_START event", function() {
         $(document).trigger(keyDownEvent);
         jasmine.clock().tick(100);
         expect(keyDownCounter).toBe(1);
@@ -115,7 +115,7 @@ describe("keyEventHandler", function() {
         expect(keyDownCounter).toBe(2);
     });
 
-    it("keyEventHandler restarts sending EVENT_TYPE_KEYDOWN events after receiving EVENT_PRACTICE_GAME_START event", function() {
+    it("KeyEventHandler restarts sending EVENT_TYPE_KEYDOWN events after receiving EVENT_PRACTICE_GAME_START event", function() {
         $(document).trigger(keyDownEvent);
         jasmine.clock().tick(100);
         expect(keyDownCounter).toBe(1);

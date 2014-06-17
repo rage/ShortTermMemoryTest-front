@@ -1,6 +1,6 @@
 
 
-function keyEventHandler(eventHandler) {
+function KeyEventHandler(eventHandler) {
 
     eventHandler.registerEventHandler("EVENT_GAME_START", activate);
     eventHandler.registerEventHandler("EVENT_GAME_END", deactivate);

@@ -24,7 +24,7 @@ describe("calculateResult ", function() {
 
 
     it("numberOfShownSets correct when one set is shown ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         storer.registerEvent(endSeries, orderNormal, 777);
@@ -33,7 +33,7 @@ describe("calculateResult ", function() {
     });
 
    it("numberOfShownSets correct when two sets are shown ", function() {
-       storer = new eventStorer();
+       storer = new EventStorer();
        var settings = new Settings();
        storer.registerEvent(startSeries, orderNormal, 777);
        storer.registerEvent(endSeries, orderNormal, 777);
@@ -44,7 +44,7 @@ describe("calculateResult ", function() {
     });
 
     it("correct result when one 3-number set and correct answer is given ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -60,7 +60,7 @@ describe("calculateResult ", function() {
 
 
     it("correct result when one 3-number backwards-set and correct answer is given ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,8,5);
@@ -75,7 +75,7 @@ describe("calculateResult ", function() {
     });
 
     it("correct result when one 6-number backwards-set and correct answer is given ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderReversed, 777);
         showNumbers(7,8,5,6,4,2);
@@ -90,7 +90,7 @@ describe("calculateResult ", function() {
     });
 
     it("incorrect answer when one 3-number set and one the last number is typed after deadline ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -106,7 +106,7 @@ describe("calculateResult ", function() {
     });
 
     it("incorrect answer when one 3-number set and one extra number is given ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -121,7 +121,7 @@ describe("calculateResult ", function() {
     });
 
     it("correct answer when one 3-number set and one extra number is given after deadline ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -137,7 +137,7 @@ describe("calculateResult ", function() {
     });
 
     it("incorrect answer when one 3-number set and the first number is missing from answer ", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -154,7 +154,7 @@ describe("calculateResult ", function() {
 
 
     it("correct answers when two 3-number sets and both answers are correct", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -177,7 +177,7 @@ describe("calculateResult ", function() {
     });
 
     it("one correct and one incorrect answer when two 3-number sets and the first answer is correct", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -200,7 +200,7 @@ describe("calculateResult ", function() {
     });
 
     it("one correct and one incorrect answer when two 3-number sets and the second answer is correct", function() {
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,8,5);
@@ -224,7 +224,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 2, order = normal, numbers entered = 7, series length = 7, first 2 numbers are correct and the rest incorrect => series is not considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         showNumbers(7,6,5,4,3,2,1);
@@ -241,7 +241,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = normal, numbers entered = 7, series length = 7, first 2 numbers are correct and the rest incorrect => series is considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderNormal, 777);
@@ -259,7 +259,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = normal, numbers entered = 3, series length = 7, all 3 numbers are correct => series is not considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderNormal, 777);
@@ -277,7 +277,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = normal, numbers entered = 8, series length = 7, first 3 numbers are correct and the rest incorrect => series is not considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderNormal, 777);
@@ -295,7 +295,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, numbers entered as order was normal => series is considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
@@ -312,7 +312,7 @@ describe("calculateResult ", function() {
     });
     it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, first three numbers correct => series is not considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
@@ -330,7 +330,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = backwards, numbers entered = 7, series length = 7, all numbers correct => series is not considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
@@ -348,7 +348,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = backwards, numbers entered = 3, series length = 7, all three numbers correct => series is not considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
@@ -366,7 +366,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = backwards, numbers entered = 9, series length = 7, first seven numbers correct => series is not considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);
@@ -384,7 +384,7 @@ describe("calculateResult ", function() {
 
     it("failLimit = 3, order = backwards, numbers entered = 9, series length = 7, first two numbers correct => series is considered a fail  ", function() {
 
-        storer = new eventStorer();
+        storer = new EventStorer();
         var settings = new Settings();
         settings.game.failLimit = 3;
         storer.registerEvent(startSeries, orderReversed, 777);

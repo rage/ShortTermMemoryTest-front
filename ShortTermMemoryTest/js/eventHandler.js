@@ -1,6 +1,6 @@
-function eventHandler() {
+function EventHandler() {
 
-    var evStore = new eventStorer();
+    var evStore = new EventStorer();
 
     function registerEventHandler(eventType, handlerFunction) {
         $(document).on(eventType, handlerFunction);

@@ -1,4 +1,4 @@
-function eventStorer() {
+function EventStorer() {
 
     var events = [ ];
 

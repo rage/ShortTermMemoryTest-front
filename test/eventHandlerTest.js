@@ -7,19 +7,19 @@ describe("eventHandlerTest", function() {
     var beenHereToo;
 
     beforeEach(function() {
-        handler = new eventHandler();
+        handler = new EventHandler();
         jasmine.clock().install();
         beenHere = false;
         beenHereToo = false;
     });
 
 
-    it("eventHandler is defined and is empty ", function() {
+    it("EventHandler is defined and is empty ", function() {
         expect(handler.getStoredEvents().length).toBe(0);
     });
 
 
-    it("eventHandler registers event handler and triggers an event", function() {
+    it("EventHandler registers event handler and triggers an event", function() {
 
         handler.registerEventHandler("TEST_EVENT", function() {
             beenHere = true;
@@ -32,7 +32,7 @@ describe("eventHandlerTest", function() {
     });
 
 
-    it("eventHandler registers two event handlers and triggers an event on both", function() {
+    it("EventHandler registers two event handlers and triggers an event on both", function() {
         handler.registerEventHandler("TEST_EVENT", function() {
             beenHere = true;
         });
@@ -46,7 +46,7 @@ describe("eventHandlerTest", function() {
         expect(handler.getStoredEvents().length).toBe(1);
     });
 
-    it("eventHandler registers two event handlers and triggers a different event on each", function() {
+    it("EventHandler registers two event handlers and triggers a different event on each", function() {
         handler.registerEventHandler("TEST_EVENT", function() {
             beenHere = true;
         });

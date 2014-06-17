@@ -34,8 +34,8 @@ describe("GameDataTest", function() {
         settings.game.droppedSeriesMinLength = 6;
 
 
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
+        evHandler = new EventHandler();
+        keyHandler = new KeyEventHandler(evHandler);
 
 
 

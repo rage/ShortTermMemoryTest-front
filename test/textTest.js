@@ -5,8 +5,8 @@ describe("As a old User, I want to see instructions", function() {
 
         $(document).off();
         settings = new Settings();
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
+        evHandler = new EventHandler();
+        keyHandler = new KeyEventHandler(evHandler);
         user = new User();
         game = new GameLogic(evHandler, user, settings);
 
@@ -85,8 +85,8 @@ describe("As a old User, I want to see instructions 2", function() {
 
         $(document).off();
         settings = new Settings();
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
+        evHandler = new EventHandler();
+        keyHandler = new KeyEventHandler(evHandler);
         user = new User();
         game = new GameLogic(evHandler, user, settings);
 
@@ -253,8 +253,8 @@ describe("As a new User, I want to see instructions", function() {
 
         $(document).off();
         settings = new Settings();
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
+        evHandler = new EventHandler();
+        keyHandler = new KeyEventHandler(evHandler);
         user = new User();
         game = new GameLogic(evHandler, user, settings);
 

@@ -41,8 +41,8 @@ describe("gameLogicTest", function() {
 //        droppedSeriesMinLength = 999;
 
         $(document).off();
-        evHandler = new eventHandler();
-        keyHandler = new keyEventHandler(evHandler);
+        evHandler = new EventHandler();
+        keyHandler = new KeyEventHandler(evHandler);
         user = new User();
         game = new GameLogic(evHandler, user, settings);
 
@@ -62,8 +62,8 @@ describe("gameLogicTest", function() {
 //            donePracticeRounds: 0,
 //            gameStartTime : 0,
 //            fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
-//            updateFails: function(eventHandler){
-//                var fail = new calculateResult(eventHandler.getStoredEvents(), 0).lastSeriesFailed;
+//            updateFails: function(EventHandler){
+//                var fail = new calculateResult(EventHandler.getStoredEvents(), 0).lastSeriesFailed;
 //                var seriesLength = this.numberList[this.numberListIndex].numbers.length;
 //                if (fail && seriesLength >= droppedSeriesMinLength) {
 //                    this.fails[seriesLength]++;
