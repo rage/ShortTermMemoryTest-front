@@ -12,7 +12,7 @@ function ShowPracticeFeedback(gameData) {
     createHTML();
 
     function WrongRightFeedback() {
-        if (gameData.result.lastSeriesCorrectness == true) {
+        if (gameData.result.lastSeriesCorrectness === true) {
             $("#secondline").html(text["oikeinIlmoitus"]);
             $("#thirdline").html(text["seuraava"]);
         } else {
@@ -24,7 +24,7 @@ function ShowPracticeFeedback(gameData) {
     WrongRightFeedback();
 
     gameData.requestFocus(function (event, keyCode) {
-        if (keyCode == 32) {
+        if (keyCode === 32) {
             hidePracticeFeedback(event);
             gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_START", "", 0);
         }
