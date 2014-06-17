@@ -1,6 +1,6 @@
 
 
-describe("calculateResult ", function() {
+describe("CalculateResult ", function() {
 
 
 
@@ -28,7 +28,7 @@ describe("calculateResult ", function() {
         var settings = new Settings();
         storer.registerEvent(startSeries, orderNormal, 777);
         storer.registerEvent(endSeries, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
     });
 
@@ -39,7 +39,7 @@ describe("calculateResult ", function() {
        storer.registerEvent(endSeries, orderNormal, 777);
        storer.registerEvent(startSeries, orderNormal, 777);
        storer.registerEvent(endSeries, orderNormal, 777);
-       var calculator = new calculateResult(storer.getEvents(), 199, settings);
+       var calculator = new CalculateResult(storer.getEvents(), 199, settings);
        expect(calculator.numberOfShownSeries).toBe(2);
     });
 
@@ -52,7 +52,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199, settings);
+        var calculator = new CalculateResult(storer.getEvents(),199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -68,7 +68,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(5,8,7);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199,settings);
+        var calculator = new CalculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -83,7 +83,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(2, 4, 6, 5, 8, 7);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -99,7 +99,7 @@ describe("calculateResult ", function() {
         typeNumbers(7,8);
         storer.registerEvent(endTyping, orderNormal, 777);
         typeNumbers(5);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -114,7 +114,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,8,5,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(),199,settings);
+        var calculator = new CalculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -130,7 +130,7 @@ describe("calculateResult ", function() {
         typeNumbers(7,8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
         typeNumbers(5);
-        var calculator = new calculateResult(storer.getEvents(),199,settings);
+        var calculator = new CalculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -146,7 +146,7 @@ describe("calculateResult ", function() {
         typeNumbers(8,5);
         storer.registerEvent(endTyping, orderNormal, 777);
         typeNumbers(5);
-        var calculator = new calculateResult(storer.getEvents(),199,settings);
+        var calculator = new CalculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -170,7 +170,7 @@ describe("calculateResult ", function() {
         typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderNormal, 777);
 
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(2);
         expect(calculator.numberOfCorrectGivenSeries).toBe(2);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -193,7 +193,7 @@ describe("calculateResult ", function() {
         typeNumbers(1,3,2);
         storer.registerEvent(endTyping, orderNormal, 777);
 
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(2);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -216,7 +216,7 @@ describe("calculateResult ", function() {
         typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderNormal, 777);
 
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(2);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true)
@@ -232,7 +232,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,1,2,4,3,2);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false)
@@ -250,7 +250,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,2,5,8,7,9);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);
@@ -268,7 +268,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,5);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);
@@ -286,7 +286,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderNormal, 777);
         typeNumbers(7,6,5,6,8,7,9,8);
         storer.registerEvent(endTyping, orderNormal, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);
@@ -304,7 +304,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(7,6,5,4,3,2,1);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);
@@ -321,7 +321,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3,9,8,9,8);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);
@@ -339,7 +339,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3,4,5,6,7);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(), 199, settings);
+        var calculator = new CalculateResult(storer.getEvents(), 199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(1);
         expect(calculator.lastSeriesCorrectness).toBe(true);
@@ -357,7 +357,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199, settings);
+        var calculator = new CalculateResult(storer.getEvents(),199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);
@@ -375,7 +375,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,3,4,5,6,7,8,9);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199,settings);
+        var calculator = new CalculateResult(storer.getEvents(),199,settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);
@@ -393,7 +393,7 @@ describe("calculateResult ", function() {
         storer.registerEvent(startTyping, orderReversed, 777);
         typeNumbers(1,2,4,5,6,7,8,9,0);
         storer.registerEvent(endTyping, orderReversed, 777);
-        var calculator = new calculateResult(storer.getEvents(),199, settings);
+        var calculator = new CalculateResult(storer.getEvents(),199, settings);
         expect(calculator.numberOfShownSeries).toBe(1);
         expect(calculator.numberOfCorrectGivenSeries).toBe(0);
         expect(calculator.lastSeriesCorrectness).toBe(false);

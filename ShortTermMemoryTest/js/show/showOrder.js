@@ -1,4 +1,4 @@
-function showOrder(order) {
+function ShowOrder(order) {
 
     function createHTML() {
         $("body").html("<div id=\"Game\">\

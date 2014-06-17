@@ -1,4 +1,4 @@
-function showNumber(number) {
+function ShowNumber(number) {
 
     function createHTML() {
         $("body").html("<div id=\"Game\">\

@@ -38,7 +38,7 @@ function GameLogic (eventHandler, user, settings) {
 
 
     function showResultEventHandler(event) {
-        showResult(gameData, settings);
+        ShowResult(gameData, settings);
         var events = gameData.getEventHandler().getStoredEvents();
         postResults.post(events);
         postTestLog.post(events);
@@ -52,7 +52,7 @@ function GameLogic (eventHandler, user, settings) {
 
 
     function startUserInputEventHandler(event) {
-        showOrder(gameData.getCurrentSeries().order);
+        ShowOrder(gameData.getCurrentSeries().order);
         gameData.getEventHandler().triggerEvent("EVENT_USERINPUT_END", "", gameData.guessTime);
     }
 
@@ -79,13 +79,13 @@ function GameLogic (eventHandler, user, settings) {
 
     function showPracticeResultEventHandler(event) {
 
-        gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
+        gameData.result = CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
         if (gameData.isFinished()) {
             new Request().createPost(settings.url+"finish", "id=" + user.testCase());
             gameData.addDonePracticeRounds();
-            showPracticeFeedbackEnd(gameData);
+            ShowPracticeFeedbackEnd(gameData);
         }else{
-            showPracticeFeedback(gameData);
+            ShowPracticeFeedback(gameData);
         }
 
     }
@@ -158,7 +158,7 @@ function GameLogic (eventHandler, user, settings) {
     }
 
     function showCrossEventHandler(event) {
-        showNumber("+");
+        ShowNumber("+");
     }
 
     function endShowCrossEventHandler(event) {
@@ -168,7 +168,7 @@ function GameLogic (eventHandler, user, settings) {
 
     function showNumberEventHandler(event) {
         var number = event.message;
-        showNumber(number);
+        ShowNumber(number);
     }
 
     function endShowNumberEventHandler(event) {

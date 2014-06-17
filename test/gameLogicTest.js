@@ -63,7 +63,7 @@ describe("gameLogicTest", function() {
 //            gameStartTime : 0,
 //            fails: [[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]],
 //            updateFails: function(EventHandler){
-//                var fail = new calculateResult(EventHandler.getStoredEvents(), 0).lastSeriesFailed;
+//                var fail = new CalculateResult(EventHandler.getStoredEvents(), 0).lastSeriesFailed;
 //                var seriesLength = this.numberList[this.numberListIndex].numbers.length;
 //                if (fail && seriesLength >= droppedSeriesMinLength) {
 //                    this.fails[seriesLength]++;
@@ -279,7 +279,7 @@ describe("gameLogicTest", function() {
         jasmine.clock().tick(15*(10*gameData.ISITime+gameData.guessTime));
         var events = evHandler.getStoredEvents();
         var settings = new Settings();
-        var result = calculateResult(events, 0, settings);
+        var result = CalculateResult(events, 0, settings);
         expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
 
     });
@@ -345,7 +345,7 @@ describe("gameLogicTest", function() {
         jasmine.clock().tick(100000);
         var events = evHandler.getStoredEvents();
         var settings = new Settings();
-        var result = calculateResult(events, 0, settings);
+        var result = CalculateResult(events, 0, settings);
         expect(result.numberOfCorrectGivenSeries).toBe(result.numberOfShownSeries);
 
     });
@@ -397,7 +397,7 @@ describe("gameLogicTest", function() {
         jasmine.clock().tick(timecounter.totalListShowTime()+gameData.showResultTime/2);
         var events = evHandler.getStoredEvents();
         var settings = new Settings();
-        var result = calculateResult(events, 0, settings);
+        var result = CalculateResult(events, 0, settings);
         expect(result.numberOfCorrectGivenSeries).not.toBe(result.numberOfShownSeries);
 
     });

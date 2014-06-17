@@ -1,4 +1,4 @@
-function showResult(gameData, settings) {
+function ShowResult(gameData, settings) {
 
     function createHTML() {
         var htmlStructure = "<div id=\"Result\">\
@@ -12,7 +12,7 @@ function showResult(gameData, settings) {
 
     createHTML();
 
-    gameData.result = calculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
+    gameData.result = CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
 
     var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
 

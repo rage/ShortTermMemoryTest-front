@@ -1,4 +1,4 @@
-function showPracticeFeedbackEnd(gameData) {
+function ShowPracticeFeedbackEnd(gameData) {
 
     var gameData = gameData;
 
