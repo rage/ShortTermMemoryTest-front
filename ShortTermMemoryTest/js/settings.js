@@ -2,21 +2,6 @@
 //var failLimit = 2; //Correct numbers required in a series for series not to be considered a major fail
 //var droppedSeriesMinLength = 6;
 
-var debug = false;
-
-var konsoli = function (){
-    function log(logi){
-        if(debug){
-            console.log(logi);
-        }
-    }
-
-    return {
-        log:log
-    }
-
-}();
-
 function Settings(){
     var url = "http://shorttermmemorytest.herokuapp.com/";
     //var url = "http://localhost:3000/"

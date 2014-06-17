@@ -176,11 +176,8 @@ function GameLogic (eventHandler, user, settings) {
     }
 
     function startPracticeGame() {
-        if (gameData.getdonePracticeRounds() >= gameData.maxPracticeRounds) {
-            showDoneMaxPractice(gameData);
-        } else {
-            gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
-        }
+        gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_START", gameData.gameIdentifier, 0);
+
     }
 
     function startGame() {
