@@ -1,6 +1,6 @@
 function Settings(){
     var url = "http://shorttermmemorytest.herokuapp.com/";
-    //var url = "http://localhost:3000/"
+//    var url = "http://localhost:3000/"
 
     var game = {
         numberDisplayTime: 1000,

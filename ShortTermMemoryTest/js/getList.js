@@ -12,8 +12,9 @@ function GetList(user, settings){
     function getList(listType){
 
         var req = new Request();
-        var params = "username="+user.name();
+        var params = "username="+user.name()+"&testpath="+location.href;
         var jsonData = req.createPost(settings.url+listType, params);
+        console.log(jsonData)
 
         var jsonParsed = JSON.parse(jsonData);
         var numberSets = jsonParsed["list"]["numbersets"];
