@@ -80,7 +80,7 @@ function CreateUser(settings){
         }catch(err) {
             return false;
         }
-        
+
         return responseText === "true";
 
     }

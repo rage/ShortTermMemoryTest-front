@@ -11,7 +11,7 @@ describe("As a old User, I want to see instructions", function() {
         game = new GameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
-        jasmine.clock().tick(200);
+        jasmine.clock().tick(100);
     });
 
     function simulateKeyPress(c) {
@@ -91,7 +91,7 @@ describe("As a old User, I want to see instructions 2", function() {
         game = new GameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
-        jasmine.clock().tick(200);
+        jasmine.clock().tick(100);
     });
 
     function simulateKeyPress(c) {
@@ -263,7 +263,7 @@ describe("As a new User, I want to see instructions", function() {
         game = new GameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
-        jasmine.clock().tick(200);
+        jasmine.clock().tick(300);
     });
 
     function simulateKeyPress(c) {
