@@ -11,7 +11,7 @@ function ShowPracticeFeedbackEnd(gameData) {
 
     function setWrongOrRightText() {
 
-        if (gameData.result.lastSeriesCorrectness == true) {
+        if (gameData.result.lastSeriesCorrectness) {
             results += text["oikeinIlmoitus"];
         } else {
             results += text["vaarinIlmoitus"];

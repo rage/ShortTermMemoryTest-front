@@ -2,6 +2,11 @@
 
 describe("StartScreenTest", function() {
 
+    beforeEach(function() {
+
+        jasmine.clock().install();
+        jasmine.clock().tick(200);
+    });
     it("check start screen text when user is new and try press enter and check again", function() {
         var randomUser = "";
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -51,15 +56,15 @@ describe("StartScreenTest", function() {
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
-        //expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
         simulateKeyPress(32);
         simulateKeyPress(32);
         simulateKeyPress(32);
-        //expect(document.getElementById("startScreen")).toBe(null);
-        //expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
+        simulateKeyPress(32);
+        expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
     });
 
-/*
+
+
     it("use startscreen in keyboard 2", function() {
         stateMachine.start();
         document.getElementById('username').value = "Omena";
@@ -68,10 +73,19 @@ describe("StartScreenTest", function() {
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
+        jasmine.clock().tick(200);
         simulateKeyPress(32);
+        jasmine.clock().tick(200);
+        simulateKeyPress(32);
+        jasmine.clock().tick(200);
+        simulateKeyPress(32);
+        jasmine.clock().tick(200);
+        expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
+        jasmine.clock().tick(200);
         simulateKeyPress(13);
-        expect(document.getElementById("startScreen")).toBe(null);
+        jasmine.clock().tick(200);
+        expect(document.body.innerHTML).not.toContain(text["ohje1"]);
     });
-    */
+
 });
 

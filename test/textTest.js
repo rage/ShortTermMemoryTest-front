@@ -180,6 +180,10 @@ describe("As a old User, I want to see instructions 2", function() {
         simulateKeyUp(32);
         jasmine.clock().tick(20000);
 
+        simulateKeyDown(13);
+        jasmine.clock().tick(100);
+        simulateKeyUp(13);
+
         simulateKeyDown(32);
         jasmine.clock().tick(100);
         simulateKeyUp(32);
