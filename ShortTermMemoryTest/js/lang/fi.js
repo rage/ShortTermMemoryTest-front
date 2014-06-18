@@ -58,6 +58,6 @@ text["harjoitusValmis"] = "<p>Jos haluat, saat vielä jatkaa harjoittelua. Saat 
     "<p>Jos haluat jatkaa suoraan tehtävään, paina ENTER.</p>";
 
 text[ "tehtavaAlkaa"] = "<p>Tehtävä alkaa, kun painat ENTER.</p>";
-text['start'] = "Aloita";
+text["start"] = "Aloita";
 
-text['testiOnValmis'] = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
+text["testiOnValmis"] = "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.";
