@@ -74,13 +74,13 @@ function CreateUser(settings){
                 "&handedness=" + document.querySelector('input[name="handedness"]:checked').value +
                 "&education=" + document.getElementById("education").value;
 
+            var request = new Request();
+            var responseText = request.createPost(settings.url + "signup", params);
+
         }catch(err) {
             return false;
         }
-
-        var request = Request();
-        var responseText = request.createPost(settings.url + "signup", params);
-
+        
         return responseText === "true";
 
     }
