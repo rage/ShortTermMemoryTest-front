@@ -12,7 +12,7 @@ function ShowPracticeFeedback(gameData) {
     createHTML();
 
     function WrongRightFeedback() {
-        if (gameData.result.lastSeriesCorrectness === true) {
+        if (gameData.result.lastSeriesCorrectness) {
             $("#secondline").html(text["oikeinIlmoitus"]);
             $("#thirdline").html(text["seuraava"]);
         } else {

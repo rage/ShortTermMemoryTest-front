@@ -51,15 +51,15 @@ describe("StartScreenTest", function() {
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
-        //expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
         simulateKeyPress(32);
         simulateKeyPress(32);
         simulateKeyPress(32);
-        //expect(document.getElementById("startScreen")).toBe(null);
-        //expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
+        simulateKeyPress(32);
+        expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
     });
 
-/*
+
+
     it("use startscreen in keyboard 2", function() {
         stateMachine.start();
         document.getElementById('username').value = "Omena";
@@ -69,9 +69,12 @@ describe("StartScreenTest", function() {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
         simulateKeyPress(32);
+        simulateKeyPress(32);
+        simulateKeyPress(32);
+        expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
         simulateKeyPress(13);
-        expect(document.getElementById("startScreen")).toBe(null);
+        expect(document.body.innerHTML).not.toContain(text["ohje1"]);
     });
-    */
+
 });
 
