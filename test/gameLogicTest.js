@@ -639,24 +639,19 @@ describe("gameLogicTest", function() {
 
         var list = gameData.getNumberList();
         function seriesShowTime(index){
-            console.log("index: " + index + "time: ")
             var n=list[index].numbers.length;
             var numbersTime= n*gameData.ISITime;
             var crossTime = gameData.showCrossDelay+gameData.showCrossDelay;
-            console.log("index: " + index + "time: "+ numbersTime)
             return numbersTime+crossTime;
         }
 
 
         function totalListShowTime(){
             var totalTime = 0;
-            console.log(list)
             for(var i= 0; i<list.length; i++){
-                console.log(i);
                 totalTime = totalTime+seriesShowTime(i);
                 totalTime = totalTime+gameData.guessTime;
             }
-            console.log(list.length)
             return totalTime;
         }
 
