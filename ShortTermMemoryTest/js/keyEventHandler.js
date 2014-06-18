@@ -37,8 +37,8 @@ function KeyEventHandler(eventHandler) {
 
 
     $(document).keydown(function(eventInformation) {
-        if (active == true) {
-            if (keyStatus.isKeyDown(eventInformation.keyCode) == false) {
+        if (active) {
+            if (keyStatus.isKeyDown(eventInformation.keyCode) === false) {
                 keyStatus.setKeyDown(eventInformation.keyCode);
                 eventHandler.triggerEvent("EVENT_TYPE_KEYDOWN", eventInformation.keyCode, 0);
             }
@@ -46,7 +46,7 @@ function KeyEventHandler(eventHandler) {
     });
 
     $(document).keyup(function(eventInformation) {
-        if (active == true) {
+        if (active) {
             keyStatus.setKeyUp(eventInformation.keyCode);
             eventHandler.triggerEvent("EVENT_TYPE_KEYUP", eventInformation.keyCode, 0);
         }

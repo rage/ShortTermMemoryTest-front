@@ -37,11 +37,9 @@ function CalculateResult(events, fromTime, settings) {
 
     function updateLastSeriesCorrectness() {
 
-        if (numbersShown.length === correctChars && numbersShown.length === numbersGiven.length) {
+        lastSeriesCorrectness = (numbersShown.length === correctChars && numbersShown.length === numbersGiven.length);
+        if (lastSeriesCorrectness) {
             numberOfCorrectGivenSeries++;
-            lastSeriesCorrectness = true;
-        } else {
-            lastSeriesCorrectness = false;
         }
 
     }
