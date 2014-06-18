@@ -14,7 +14,7 @@ function Request(){
 
         req.send(params);
         return req.responseText;
-        
+
     }
     
     function createCORSRequest(method, url) {
@@ -26,8 +26,6 @@ function Request(){
         } else if (typeof XDomainRequest != "undefined") {
             req = new XDomainRequest();
             req.open(method, url);
-        } else {
-            req = null;
         }
 
         return req;

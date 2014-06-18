@@ -13,9 +13,9 @@ function GameData(gameMode, theNumberList, settings){
         var a;
         var i = numberListIndex;
         if (i < numberList.length) {
-            if (numberList[i].order == "upwards") {
+            if (numberList[i].order === "upwards") {
                 a = 0;
-            } else if (numberList[i].order == "backwards") {
+            } else if (numberList[i].order === "backwards") {
                 a = 1;
             }
         }
@@ -26,7 +26,7 @@ function GameData(gameMode, theNumberList, settings){
         numberListIndex++;
         shownSeries[numberListIndex] = true;
         if(settings.game.droppingSeriesPossible) {
-            if (mode == "GAME") {
+            if (mode === "GAME") {
                 var a = currentListDirection();
                 var loop = true;
                 while (true) {
@@ -59,7 +59,7 @@ function GameData(gameMode, theNumberList, settings){
     }
 
     function setEventHandler(newEventHandler){
-        eventHandler=newEventHandler;
+        eventHandler = newEventHandler;
     }
 
     function getEventHandler(){
@@ -69,7 +69,7 @@ function GameData(gameMode, theNumberList, settings){
         return numberList[numberListIndex];
     }
     function isFinished(){
-        if(numberListIndex>=numberList.length){
+        if(numberListIndex >= numberList.length){
             return true;
         } else {
             return false;
@@ -77,7 +77,7 @@ function GameData(gameMode, theNumberList, settings){
     }
 
     function numberListIndexToZero(){
-        numberListIndex=0;
+        numberListIndex = 0;
     }
 
     function setNumberList(newNumberList){

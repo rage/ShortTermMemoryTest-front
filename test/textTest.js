@@ -11,7 +11,7 @@ describe("As a old User, I want to see instructions", function() {
         game = new GameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
-        jasmine.clock().tick(200);
+        jasmine.clock().tick(100);
     });
 
     function simulateKeyPress(c) {
@@ -53,12 +53,13 @@ describe("As a old User, I want to see instructions", function() {
 
     });
 
-    it("instructions4", function() {
+    it("instructions4", function(done) {
         expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
+        done();
     });
 
 
-    it("instructions5", function() {
+    it("instructions5", function(done) {
 
         simulateKeyPress(32);
         jasmine.clock().tick(20000);
@@ -71,6 +72,7 @@ describe("As a old User, I want to see instructions", function() {
         expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
         new simulateKeyPress(32);
         jasmine.clock().tick(20000);
+        done();
 
     });
 
@@ -91,7 +93,7 @@ describe("As a old User, I want to see instructions 2", function() {
         game = new GameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
-        jasmine.clock().tick(200);
+        jasmine.clock().tick(100);
     });
 
     function simulateKeyPress(c) {
@@ -263,7 +265,7 @@ describe("As a new User, I want to see instructions", function() {
         game = new GameLogic(evHandler, user, settings);
 
         jasmine.clock().install();
-        jasmine.clock().tick(200);
+        jasmine.clock().tick(300);
     });
 
     function simulateKeyPress(c) {
