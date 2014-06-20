@@ -80,10 +80,6 @@ function CalculateResult(events, fromTime, settings) {
 
         }
 
-        if (event.eventtype === "EVENT_GAME_END") {
-            break;
-        }
-
     }
 
     return {
