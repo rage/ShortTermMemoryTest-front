@@ -6,33 +6,25 @@ function Request(){
     
     function create(url, params, type){
         
-        var req = createCORSRequest(type, url);
+        var resultData;
         
-        if(type == "POST"){
-            req.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        }
-
-        req.send(params);
-        return req.responseText;
-
-    }
-    
-    function createCORSRequest(method, url) {
+        $.ajax({
+            type: type,
+            url: url,
+            data: params,
+            success: function(result) { 
+               resultData = result;
+            },
+            dataType: 'text',
+            async:false
+        }); 
         
-        var req = new XMLHttpRequest();
+        return resultData;
         
-        if ("withCredentials" in req) {
-            req.open(method, url, false);
-        } else if (typeof XDomainRequest != "undefined") {
-            req = new XDomainRequest();
-            req.open(method, url);
-        }
-
-        return req;
-
     }
     
     return {
         createPost:createPost
-    }
+    };
+    
 }

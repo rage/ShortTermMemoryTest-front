@@ -28,8 +28,7 @@ var stateMachine = function (){
         game = new GameLogic(evHandler, user, settings);
 
         startLogin();
-        //startGame();
-        //startGameStartScreen(); //For debugging purposes, skip login
+        
     }
 
     function startLogin(){
@@ -133,5 +132,6 @@ var stateMachine = function (){
         startNotification:startNotification,
         checkUsername:checkUsername,
         startWaitPractice:startWaitPractice
-    }
+    };
+    
 }();
