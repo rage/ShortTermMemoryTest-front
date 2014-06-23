@@ -17,5 +17,5 @@ function Notification(){
     return {
         start:start,
         keyPress:keyPress
-    }
+    };
 }

@@ -138,7 +138,7 @@ function GameData(gameMode, theNumberList, settings){
         result: undefined,
         requestFocus: undefined
 
-    }
+    };
 }
 
 

@@ -17,6 +17,6 @@ function WaitPractiseStart(){
     return {
         start:start,
         keyPress:keyPress
-    }
+    };
 
 }

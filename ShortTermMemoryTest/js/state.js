@@ -51,5 +51,5 @@ function State(kList){
     return {
         set:set,
         is:is
-    }
+    };
 }

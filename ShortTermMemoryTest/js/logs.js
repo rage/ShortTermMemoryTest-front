@@ -65,5 +65,5 @@ function Logs(user, settings){
 
     return {
         post:post
-    }
+    };
 }

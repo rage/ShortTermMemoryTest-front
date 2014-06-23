@@ -194,5 +194,5 @@ function GameLogic (eventHandler, user, settings, postLogs) {
 
     return {
         start : start
-    }
+    };
 }

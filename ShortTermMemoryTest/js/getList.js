@@ -52,6 +52,6 @@ function GetList(user, settings){
     return {
         getNextList:getNextList,
         getTrainingList:getTrainingList
-    }
+    };
 
 }

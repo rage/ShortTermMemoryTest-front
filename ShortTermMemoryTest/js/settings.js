@@ -22,6 +22,6 @@ function Settings(){
         url:url,
         game:game,
         frontId:frontId
-    }
+    };
 
 }

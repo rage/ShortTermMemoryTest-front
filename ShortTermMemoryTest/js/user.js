@@ -33,5 +33,5 @@ function User(){
         isTrained:isTrained,
         testCase:testCase,
         setTestCase:setTestCase
-    }
+    };
 }
