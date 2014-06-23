@@ -1,7 +1,3 @@
-
-var show;
-
-
 var stateMachine = function (){
 
     var login;
