@@ -102,7 +102,7 @@ describe("gameLogicTest", function() {
 
 
     it("correct events in correct order are generated when playing one round of practice and then starting the actual game", function() {
-        gameData.tag="testi1"
+
         gameData.setNumberList(createMockList(3));
         gameData.setMode("PRACTICE");
         game.start(gameData);
@@ -125,7 +125,7 @@ describe("gameLogicTest", function() {
 
 
     it("correct events in correct order are generated when playing max rounds of practice and then starting the actual game", function() {
-        gameData.tag="testi2"
+
         gameData.setNumberList(createMockList(3));
 
         gameData.setMode("PRACTICE");
@@ -160,7 +160,7 @@ describe("gameLogicTest", function() {
 
 
     it("does not let user play more practice rounds than is allowed", function() {
-        gameData.tag="testi3"
+
         gameData.setNumberList(createMockList(3));
 
         gameData.setMode("PRACTICE");

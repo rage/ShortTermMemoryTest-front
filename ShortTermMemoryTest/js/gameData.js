@@ -136,10 +136,7 @@ function GameData(gameMode, theNumberList, settings){
 
         gameIdentifier: "ThisGame",
         result: undefined,
-        requestFocus: undefined,
-
-        tag: false
-
+        requestFocus: undefined
 
     }
 }
