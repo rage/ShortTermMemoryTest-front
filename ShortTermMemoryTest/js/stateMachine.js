@@ -1,7 +1,3 @@
-
-var show;
-
-
 var stateMachine = function (){
 
     var login;
@@ -25,7 +21,8 @@ var stateMachine = function (){
 
         evHandler = new EventHandler();
         keyHandler = new KeyEventHandler(evHandler);
-        game = new GameLogic(evHandler, user, settings);
+        var postLogs = new Logs(user, settings);
+        game = new GameLogic(evHandler, user, settings, postLogs);
 
         startLogin();
         

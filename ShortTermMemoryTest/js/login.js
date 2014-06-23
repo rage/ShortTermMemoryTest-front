@@ -16,11 +16,13 @@ function Login(settings){
     function checkUsername(checkName, user){
 
         var req = new Request();
-        var params = "username=" + checkName;
+
+        var params = new Params();
+        params.add("username", checkName);
 
         user.set(checkName);
 
-        var jsonData = req.createPost(settings.url + "login", params);
+        var jsonData = req.createPost(settings.url + "login", params.toString());
         var response = JSON.parse(jsonData);
 
         return checkResponse(response, user);

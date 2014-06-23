@@ -1,7 +1,4 @@
-function GameLogic (eventHandler, user, settings) {
-
-
-    var postLogs = new Logs(user, settings);
+function GameLogic (eventHandler, user, settings, postLogs) {
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
 
