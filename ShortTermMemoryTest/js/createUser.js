@@ -68,6 +68,14 @@ function CreateUser(settings){
                 return false;
             }
 
+            var params = new Params();
+
+            params.add("username", user.name());
+            params.add("sex", document.querySelector('input[name="sex"]:checked').value);
+            params.add("yearOfBirth", yearOfBirth);
+            params.add("handedness", document.querySelector('input[name="handedness"]:checked').value);
+            params.add("education", document.getElementById("education").value);
+
             var params = "username=" + user.name() +
                 "&sex=" + document.querySelector('input[name="sex"]:checked').value +
                 "&yearOfBirth=" + yearOfBirth +
@@ -75,13 +83,14 @@ function CreateUser(settings){
                 "&education=" + document.getElementById("education").value;
 
             var request = new Request();
-            var responseText = request.createPost(settings.url + "signup", params);
+            var responseText = request.createPost(settings.url + "signup", params.toString());
+
+            return responseText === "true";
 
         }catch(err) {
             return false;
         }
 
-        return responseText === "true";
 
     }
     

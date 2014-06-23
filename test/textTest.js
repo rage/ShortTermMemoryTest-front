@@ -8,7 +8,7 @@ describe("As a old User, I want to see instructions", function() {
         evHandler = new EventHandler();
         keyHandler = new KeyEventHandler(evHandler);
         user = new User();
-        game = new GameLogic(evHandler, user, settings);
+        game = new GameLogic(evHandler, user, settings, new Logs(user, settings));
 
         jasmine.clock().install();
         jasmine.clock().tick(100);
@@ -90,7 +90,7 @@ describe("As a old User, I want to see instructions 2", function() {
         evHandler = new EventHandler();
         keyHandler = new KeyEventHandler(evHandler);
         user = new User();
-        game = new GameLogic(evHandler, user, settings);
+        game = new GameLogic(evHandler, user, settings, new Logs(user, settings));
 
         jasmine.clock().install();
         jasmine.clock().tick(100);
@@ -231,7 +231,7 @@ describe("As a new User, I want to see instructions", function() {
         evHandler = new EventHandler();
         keyHandler = new KeyEventHandler(evHandler);
         user = new User();
-        game = new GameLogic(evHandler, user, settings);
+        game = new GameLogic(evHandler, user, settings, new Logs(user, settings));
 
         jasmine.clock().install();
         jasmine.clock().tick(300);

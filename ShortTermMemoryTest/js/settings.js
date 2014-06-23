@@ -2,6 +2,8 @@ function Settings(){
     var url = "http://shorttermmemorytest.herokuapp.com/";
 //    var url = "http://localhost:3000/"
 
+    var frontId = "1";
+
     var game = {
         numberDisplayTime: 1000,
         ISITime: 1500,
@@ -18,7 +20,8 @@ function Settings(){
 
     return {
         url:url,
-        game:game
+        game:game,
+        frontId:frontId
     }
 
 }
