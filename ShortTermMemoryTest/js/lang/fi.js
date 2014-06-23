@@ -1,4 +1,4 @@
-
+/* jshint -W100 */
 var text = {
     "ohjeHarjoitteluSuorittamatta1": "<p>Sinulle näytetään yksitellen numeroita 0-9 väliltä ruudulla. Numerot esitetään 2-7 numeron mittaisissa sarjoissa. " +
         "Ennen jokaisen sarjan alkamista, kohdista katseesi ruudulle ilmestyvään kohdistusristiin.</p>" +
