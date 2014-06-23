@@ -1,7 +1,3 @@
-/**
- * Created by mhaanran on 4.6.2014.
- */
-
 describe("PostTestlogTest", function() {
 
     beforeEach(function() {
@@ -9,7 +5,7 @@ describe("PostTestlogTest", function() {
     });
 
     it("postTestLog post() function called with results", function() {
-        var postTestlog = new PostTestLog();
+        var postTestlog = new Logs();
         var testcase_id = 3;
         var results = [{eventtype: "EVENT_GAME_START",
             timestamp: 1401882827646,
@@ -23,7 +19,7 @@ describe("PostTestlogTest", function() {
     });
 
     it("fail when postTestLog post() function called with invalid results", function() {
-        var postTestlog = new PostTestLog();
+        var postTestlog = new Logs();
 
         var results = [{eventty: "EVENT_GAME_START",
             timestamp: 1401882827646,

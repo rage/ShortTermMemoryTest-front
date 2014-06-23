@@ -1,4 +1,4 @@
-function PostResults(user, settings) {
+function Logs(user, settings){
 
     function createResultTableData(events) {
         var userInputStart = false;
@@ -33,7 +33,6 @@ function PostResults(user, settings) {
                     var result = {};
                     result.testcase_id = user.testCase();
                     result.keypressed = String.fromCharCode(event.value);
-                    //result.keypressed = event.value;
                     result.keypressindex = keypressindex++;
                     result.last_series = last_series;
                     result.timestamp = event.timestamp;
@@ -41,22 +40,30 @@ function PostResults(user, settings) {
                 }
             }
         }
+
         return resultTableData;
     }
 
-    function post(events) {
-        var resultData = createResultTableData(events);
-        var resultsJSON = {"result" : resultData};
-        $.ajax({
-            type: 'POST',
-            url: settings.url+"results",
-            data: resultsJSON,
-            dataType: 'json'
-        });
+
+    function prepareTestLog(events) {
+        for (var i = 0; i < events.length; i++) {
+            events[i].testcase_id = user.testCase();
+        }
+    }
+
+    function post(events){
+        var req = new Request();
+
+        var results = createResultTableData(events);
+        var resultsJSON = {"result" : results};
+        req.createPostAsync(settings.url + "results", resultsJSON);
+
+        var fullTestLog = prepareTestLog(events);
+        var eventsJSON = {"testlog" : fullTestLog};
+        req.createPostAsync(settings.url + "testlogs", eventsJSON);
     }
 
     return {
-        post: post
+        post:post
     }
 }
-

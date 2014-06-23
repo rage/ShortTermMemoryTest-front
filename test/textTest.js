@@ -210,44 +210,13 @@ describe("As a old User, I want to see instructions 2", function() {
         expect(document.getElementById('secondline').innerHTML).toBe("Sait tehtävästä 0% oikein");
         expect(document.getElementById('thirdline').innerHTML).toBe("Sivusto ohjaa sinut hetken kuluttua aloitussivulle.");
 
-//        while(document.getElementById('firstline')!=null){
-//            jasmine.clock().tick(2000);
-//        }
+// while(document.getElementById('firstline')!=null){
+// jasmine.clock().tick(2000);
+// }
         jasmine.clock().tick(settings.game.showResultTime+2000);
         expect(document.body.innerHTML).toContain(text["kirjoitaTunnus"]);
 
     });
-
-    /*
-
-     new simulateKeyPress(32);
-     jasmine.clock().tick(14000);
-
-     expect(document.body.innerHTML).toBe(null);
-     new simulateKeyPress(51);
-     jasmine.clock().tick(100);
-     new simulateKeyPress(50);
-     jasmine.clock().tick(100);
-     new simulateKeyPress(49);
-     jasmine.clock().tick(100);
-     new simulateKeyPress(48);
-     expect(document.body.innerHTML).toBe(null);
-     jasmine.clock().tick(20000);
-
-
-     simulateKeyPress(32);
-     jasmine.clock().tick(20000);
-     expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
-
-     simulateKeyPress(32);
-     jasmine.clock().tick(20000);
-     expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
-     new simulateKeyPress(32);
-     expect(document.getElementById("secondline").innerHTML).toBe(text["vaarinIlmoitus"]);
-     new simulateKeyPress(32);
-     jasmine.clock().tick(20000);
-     */
-
 
 
 });

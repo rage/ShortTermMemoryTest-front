@@ -129,7 +129,6 @@ var stateMachine = function (){
         startGameStartScreen:startGameStartScreen,
         createUser:createUser,
         startGame:startGame,
-        startNotification:startNotification,
         checkUsername:checkUsername,
         startWaitPractice:startWaitPractice
     };

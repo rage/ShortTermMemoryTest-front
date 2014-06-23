@@ -1,8 +1,7 @@
 function GameLogic (eventHandler, user, settings) {
 
 
-    var postResults = new PostResults(user, settings);
-    var postTestLog = new PostTestLog(user, settings);
+    var postLogs = new Logs(user, settings);
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
 
@@ -39,8 +38,7 @@ function GameLogic (eventHandler, user, settings) {
     function showResultEventHandler(event) {
         new ShowResult(gameData, settings);
         var events = gameData.getEventHandler().getStoredEvents();
-        postResults.post(events);
-        postTestLog.post(events);
+        postLogs.post(events);
         new Request().createPost(settings.url+"finish", "id=" + user.testCase());
         gameData.getEventHandler().triggerEvent("EVENT_SHOWRESULT_END", "", gameData.showResultTime);
         
@@ -71,8 +69,7 @@ function GameLogic (eventHandler, user, settings) {
             gameData.getEventHandler().triggerEvent("EVENT_SHOW_PRACTICE_RESULT_START", "", numberBlankTime);
         }
         var events = gameData.getEventHandler().getStoredEvents();
-        postResults.post(events);
-        postTestLog.post(events);
+        postLogs.post(events);
 
 
     }

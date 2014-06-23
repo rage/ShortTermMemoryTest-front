@@ -1,10 +1,13 @@
 function Request(){
-    
+
+    function createPostAsync(url, params){
+        return create(url, params, "POST", true);
+    }
     function createPost(url, params){
-        return create(url, params, "POST");
+        return create(url, params, "POST", false);
     }
     
-    function create(url, params, type){
+    function create(url, params, type, async){
         
         var resultData;
         
@@ -16,7 +19,7 @@ function Request(){
                resultData = result;
             },
             dataType: 'text',
-            async:false
+            async:async
         }); 
         
         return resultData;
@@ -24,7 +27,8 @@ function Request(){
     }
     
     return {
-        createPost:createPost
+        createPost:createPost,
+        createPostAsync:createPostAsync
     };
     
 }
