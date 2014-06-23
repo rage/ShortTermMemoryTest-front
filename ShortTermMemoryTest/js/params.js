@@ -1,12 +1,12 @@
 function Params(){
-    var params = new Array();
+    var params = [];
 
     function add(param, value){
         params.push(param+"="+value);
     }
 
     function toString(){
-        return params.join("&")
+        return params.join("&");
     }
 
     return {

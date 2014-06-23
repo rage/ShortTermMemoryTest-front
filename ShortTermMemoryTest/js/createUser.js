@@ -52,19 +52,19 @@ function CreateUser(settings){
         </div>';
 
     }
+
+    function getSelectListValue(listId){
+        return document.getElementById(listId).options[document.getElementById(listId).selectedIndex].value;
+    }
     
     function signUp(user){
 
         try {
 
-            var yearOfBirth = document.getElementById("yearofbirth").options[document.getElementById("yearofbirth").selectedIndex].value;
-            var education = document.getElementById("education").options[document.getElementById("education").selectedIndex].value;
+            var yearOfBirth = getSelectListValue("yearofbirth");
+            var education = getSelectListValue("education");
 
-            if(yearOfBirth === "valitse"){
-                return false;
-            }
-
-            if(education === "valitse"){
+            if((yearOfBirth || education) === "valitse"){
                 return false;
             }
 
@@ -75,12 +75,6 @@ function CreateUser(settings){
             params.add("yearOfBirth", yearOfBirth);
             params.add("handedness", document.querySelector('input[name="handedness"]:checked').value);
             params.add("education", document.getElementById("education").value);
-
-            var params = "username=" + user.name() +
-                "&sex=" + document.querySelector('input[name="sex"]:checked').value +
-                "&yearOfBirth=" + yearOfBirth +
-                "&handedness=" + document.querySelector('input[name="handedness"]:checked').value +
-                "&education=" + document.getElementById("education").value;
 
             var request = new Request();
             var responseText = request.createPost(settings.url + "signup", params.toString());
