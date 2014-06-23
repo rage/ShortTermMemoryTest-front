@@ -42,5 +42,5 @@ function GameStartScreen(user){
     return {
         start:start,
         keyPress:keyPress
-    }
+    };
 }

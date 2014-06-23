@@ -124,12 +124,28 @@ describe("login and createUser", function() {
 
         for( var i=0; i < 25; i++ )
             text += possible.charAt(Math.floor(Math.random() * possible.length));
-        stateMachine.start(); 
+        stateMachine.start();
         document.getElementById('username').value = text;
         stateMachine.checkUsername(document.getElementById('username').value);
-        document.getElementById('f').checked = true; 
+        document.getElementById('f').checked = true;
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
+        stateMachine.createUser();
+        expect(document.getElementById("varoitus").innerHTML).toBe("");
+
+    });
+    it("should fail when empty education", function() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+        for( var i=0; i < 25; i++ )
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        stateMachine.start();
+        document.getElementById('username').value = text;
+        stateMachine.checkUsername(document.getElementById('username').value);
+        document.getElementById('f').checked = true;
+        var element = document.getElementById('yearofbirth');
+        element.value = 1999;
         stateMachine.createUser();
         expect(document.getElementById("varoitus").innerHTML).toBe("");
 

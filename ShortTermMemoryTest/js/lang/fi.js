@@ -59,7 +59,18 @@ var text = {
 
     "aloita": "Aloita",
 
-    "testiOnValmis": "Sivusto ohjaa sinut hetken kuluttua aloitussivulle."
+    "testiOnValmis": "Sivusto ohjaa sinut hetken kuluttua aloitussivulle.",
+
+    "mies": "Mies",
+    "nainen": "Nainen",
+    "sukupuoli": "Sukupuoli",
+    "katisyys": "Kätisyys",
+    "koulutustausta": "Koulutustausta",
+    "syntymavuosi": "Syntymävuosi",
+    "oikea": "Oikea",
+    "vasen": "Vasen"
+
+
 
 
 };

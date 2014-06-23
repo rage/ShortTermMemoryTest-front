@@ -46,5 +46,5 @@ function Login(settings){
     return {
         start:start,
         checkUsername:checkUsername
-    }
+    };
 }

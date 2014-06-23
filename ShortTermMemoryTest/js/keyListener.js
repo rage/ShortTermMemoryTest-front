@@ -18,5 +18,5 @@ function KeyListener(){
 
     return {
         set:set
-    }
+    };
 }
