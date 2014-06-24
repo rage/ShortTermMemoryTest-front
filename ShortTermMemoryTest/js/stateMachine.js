@@ -37,21 +37,13 @@ var stateMachine = function (){
 
     function startLogin(){
 
-        login = new Login(settings, state);
+        login = new Login(settings, state, user);
         login.start();
 
     }
 
-    function checkUsername(checkName){
-
-        if(state.is(1)) {
-            if(login.checkUsername(checkName, user, settings)){
-                state.change(3);
-            }else{
-                state.change(2);
-            }
-        }
-
+    function checkUsername(cName){
+        checkName(cName);
     }
 
 
@@ -86,7 +78,6 @@ var stateMachine = function (){
         var startScreen = new GameStartScreen(user, state);
         kList.set(startScreen.keyPress);
         startScreen.start();
-
 
     }
 

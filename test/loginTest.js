@@ -5,19 +5,71 @@ describe("LoginTest", function() {
     it("checkUsername return false when user not found ", function() {
 
         var settings = new Settings();
-        var myfunc = new Login(settings);
+        var stateMock = function() {
+            var tila;
+            function change(a){
+                tila = a;
+            }
+
+            function getChange(){
+                return tila
+            }
+
+            return {
+                change:change,
+                getChange:getChange
+            }
+        }();
+        var userMock = function() {
+            function set(a){
+            }
+            return {
+                set:set
+            }
+        }();
+        var myfunc = new Login(settings, stateMock, userMock);
         var us = new User();
 
-        expect(myfunc.checkUsername("asdasdofiafjpioasdfsdfsdfufi", us)).toBe(false);
+        checkName("asdasdofiafjpioasdfsdfsdfufi", us);
+
+        expect(stateMock.getChange()).toBe(2);
 
     });
     it("checkUsername return true when user found", function() {
 
+
+        var stateMock = function() {
+            var tila;
+            function change(a){
+                tila = a;
+            }
+
+            function getChange(){
+                return tila
+            }
+
+            return {
+                change:change,
+                getChange:getChange
+            }
+        }();
+        var userMock = function() {
+            function set(a){
+            }
+            function setTrained(){
+            }
+            return {
+                set:set,
+                setTrained:setTrained
+            }
+        }();
         var settings = new Settings();
-        var myfunc = new Login(settings);
+        var myfunc = new Login(settings, stateMock, userMock);
         var us = new User();
 
-        expect(myfunc.checkUsername("Olen", us)).toBe(true);
+        checkName("Olen", us);
+
+        expect(stateMock.getChange()).toBe(3);
 
     });
     it("checkUsername return true when user found", function() {
