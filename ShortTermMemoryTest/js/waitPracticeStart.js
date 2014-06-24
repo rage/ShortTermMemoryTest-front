@@ -11,7 +11,14 @@ function WaitPractiseStart(state){
     }
 
     function createHtml(){
-        document.body.innerHTML = '<div id="PracticeStart">'+text["harjoittelunAloitushje"]+'</div>';
+        var a = new GUI();
+        
+        a.createNew(
+        [{  "type": "div",
+            "id": "PracticeStart",
+            "text": text["harjoittelunAloitushje"]
+        }]);
+            
     }
 
     return {
