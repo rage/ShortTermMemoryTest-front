@@ -1,4 +1,4 @@
-function Notification(){
+function Notification(state){
 
     function start(){
         createHtml();
@@ -10,7 +10,7 @@ function Notification(){
 
     function keyPress(key){
         if(key === 32) {
-            stateMachine.startGameStartScreen();
+            state.change(4);
         }
     }
 

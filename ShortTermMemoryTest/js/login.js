@@ -1,4 +1,4 @@
-function Login(settings){
+function Login(settings, state){
 
     function start(){
         createHtml();

@@ -16,6 +16,13 @@ var stateMachine = function (){
 
         kList = new KeyListener();
         state = new State(kList);
+        state.addStateFunction(1, startLogin);
+        state.addStateFunction(2, startRegister);
+        state.addStateFunction(3, startNotification);
+        state.addStateFunction(4, startGameStartScreen);
+        state.addStateFunction(5, startWaitPractice);
+        state.addStateFunction(6, startPractice);
+        state.addStateFunction(7, startTest);
         user = new User();
         settings = new Settings();
 
@@ -24,16 +31,14 @@ var stateMachine = function (){
         var postLogs = new Logs(user, settings);
         game = new GameLogic(evHandler, user, settings, postLogs);
 
-        startLogin();
+        state.change(1);
         
     }
 
     function startLogin(){
 
-        if(state.set(1)){
-            login = new Login(settings);
-            login.start();
-        }
+        login = new Login(settings, state);
+        login.start();
 
     }
 
@@ -41,9 +46,9 @@ var stateMachine = function (){
 
         if(state.is(1)) {
             if(login.checkUsername(checkName, user, settings)){
-                startNotification();
+                state.change(3);
             }else{
-                startRegister();
+                state.change(2);
             }
         }
 
@@ -52,10 +57,8 @@ var stateMachine = function (){
 
     function startRegister(){
 
-        if(state.set(2)) {
-            register = new CreateUser(settings);
-            register.start();
-        }
+        register = new CreateUser(settings);
+        register.start();
 
     }
 
@@ -63,7 +66,7 @@ var stateMachine = function (){
 
         if(state.is(2)) {
             if(register.signup(user)){
-                startNotification();
+                state.change(3);
             }else{
                 startRegister();
             }
@@ -72,39 +75,40 @@ var stateMachine = function (){
     }
 
     function startNotification(){
-
-        if(state.set(3)) {
-            var notification = new Notification();
-            kList.set(notification.keyPress);
-            notification.start();
-        }
+        var notification = new Notification(state);
+        kList.set(notification.keyPress);
+        notification.start();
 
     }
 
     function startGameStartScreen(){
 
-        if(state.set(4)) {
-            var startScreen = new GameStartScreen(user);
-            kList.set(startScreen.keyPress);
-            startScreen.start();
-        }
+        var startScreen = new GameStartScreen(user, state);
+        kList.set(startScreen.keyPress);
+        startScreen.start();
+
 
     }
 
     function startWaitPractice(){
 
-        if(state.set(5)) {
-            var waitPractice = new WaitPractiseStart();
-            kList.set(waitPractice.keyPress);
-            waitPractice.start();
-        }
+        var waitPractice = new WaitPractiseStart(state);
+        kList.set(waitPractice.keyPress);
+        waitPractice.start();
 
+    }
+
+    function startPractice(){
+        startGame("PRACTICE");
+    }
+
+    function startTest(){
+        startGame("GAME");
     }
 
     function startGame(mode) {
 
-        if(state.set(6)) {
-
+        if(state.is(6) || state.is(7)){
             var theNumberList;
             var list = new GetList(user, settings);
 
@@ -113,11 +117,13 @@ var stateMachine = function (){
             } else if (mode === "PRACTICE") {
                 theNumberList = list.getTrainingList();
             }
+
             var gameData = new GameData(mode, theNumberList, settings);
 
             game.start(gameData);
-
         }
+
+
 
     }
 
@@ -126,8 +132,7 @@ var stateMachine = function (){
         startGameStartScreen:startGameStartScreen,
         createUser:createUser,
         startGame:startGame,
-        checkUsername:checkUsername,
-        startWaitPractice:startWaitPractice
+        checkUsername:checkUsername
     };
     
 }();

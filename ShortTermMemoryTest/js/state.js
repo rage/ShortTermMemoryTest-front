@@ -8,10 +8,14 @@ function State(kList){
         [3, 4],
         [4, 5],
         [4, 6],
+        [4, 7],
         [5, 6],
         [6, 6],
-        [6, 1]
+        [6, 1],
+        [7, 1]
     ];
+
+    var states = [];
 
     function is(stateIs){
         return stateIs === state;
@@ -48,8 +52,30 @@ function State(kList){
 
     }
 
+    function change(stateId){
+
+        if(isAllowedStateChange(stateId)){
+
+            for(var i = 0; i < states.length; i++) {
+
+                if(states[i][0] === stateId){
+                    set(stateId);
+                    states[i][1]();
+                }
+
+            }
+        }
+
+    }
+
+    function addStateFunction(stateId, stateFunction){
+        states.push([stateId, stateFunction]);
+    }
+
     return {
         set:set,
-        is:is
+        is:is,
+        addStateFunction:addStateFunction,
+        change:change
     };
 }

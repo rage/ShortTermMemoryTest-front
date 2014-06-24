@@ -1,4 +1,4 @@
-function GameStartScreen(user){
+function GameStartScreen(user, state){
     var page = 1;
 
     function start(){
@@ -7,9 +7,9 @@ function GameStartScreen(user){
 
     function keyPress(key){
         if(key === 32 && page === 3) {
-            stateMachine.startWaitPractice();
+            state.change(5);
         }else if(key === 13 && user.isTrained() && page === 3) {
-            stateMachine.startGame('GAME');
+            state.change(7);
         }else if(key === 32) {
             changePage();
         }

@@ -1,4 +1,4 @@
-function WaitPractiseStart(){
+function WaitPractiseStart(state){
 
     function start(){
         createHtml();
@@ -6,7 +6,7 @@ function WaitPractiseStart(){
 
     function keyPress(key){
         if(key === 32) {
-            stateMachine.startGame('PRACTICE');
+            state.change(6);
         }
     }
 
