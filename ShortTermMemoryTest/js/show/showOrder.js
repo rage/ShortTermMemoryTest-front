@@ -1,4 +1,4 @@
-function ShowOrder(order) {
+function Order() {
 
     function createHTML() {
         $("body").html("<div id=\"Game\">\
@@ -7,17 +7,24 @@ function ShowOrder(order) {
         ");
     }
 
-    createHTML();
-
-    if (order == "upwards") {
-        $("#order_field").html(text["palautaEsitys"]);
-    } else {
-        $("#order_field").html(text["palautaKaantainen"]);
+    function show(order) {
+        createHTML();
+        if (order == "upwards") {
+            $("#order_field").html(text["palautaEsitys"]);
+        } else {
+            $("#order_field").html(text["palautaKaantainen"]);
+        }
+        $("#order_field").show();
     }
-    $("#order_field").show();
+
+    function hide() {
+        $("#order_field").hide();
+    }
+
+    return {
+        show:show,
+        hide:hide
+    }
+
 }
 
-
-function hideOrder() {
-    $("#order_field").hide();
-}

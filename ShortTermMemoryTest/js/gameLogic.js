@@ -1,6 +1,8 @@
 function GameLogic(eventHandler, user, settings, postLogs) {
 
     var numbers = Number();
+    var order = Order();
+    var req = new Request();
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
 
@@ -38,7 +40,7 @@ function GameLogic(eventHandler, user, settings, postLogs) {
         new ShowResult(gameData, settings);
         var events = gameData.getEventHandler().getStoredEvents();
         postLogs.post(events);
-        new Request().createPost(settings.url+"finish", "id=" + user.testCase());
+        req.createPost(settings.url+"finish", "id=" + user.testCase());
         gameData.getEventHandler().triggerEvent("EVENT_SHOWRESULT_END", "", gameData.showResultTime);
         
     }
@@ -49,12 +51,12 @@ function GameLogic(eventHandler, user, settings, postLogs) {
 
 
     function startUserInputEventHandler(event) {
-        new ShowOrder(gameData.getCurrentSeries().order);
+        order.show(gameData.getCurrentSeries().order);
         gameData.getEventHandler().triggerEvent("EVENT_USERINPUT_END", "", gameData.guessTime);
     }
 
     function endUserInputEventHandler(event) {
-        hideOrder();
+        order.hide();
         var numberBlankTime = settings.game.ISITime - settings.game.numberDisplayTime;
         gameData.updateFails(eventHandler);
         gameData.updateNumberListIndex();
@@ -77,7 +79,6 @@ function GameLogic(eventHandler, user, settings, postLogs) {
 
         gameData.result = new CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
         if (gameData.isFinished()) {
-            var req = new Request();
             req.createPost(settings.url+"finish", "id=" + user.testCase());
             gameData.addDonePracticeRounds();
             new ShowPracticeFeedbackEnd(gameData);
@@ -196,6 +197,6 @@ function GameLogic(eventHandler, user, settings, postLogs) {
     }
 
     return {
-        start : start
+        start:start
     };
 }
