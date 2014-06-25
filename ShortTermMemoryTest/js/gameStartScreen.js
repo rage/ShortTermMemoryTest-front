@@ -2,7 +2,40 @@ function GameStartScreen(user, state){
     var page = 1;
 
     function start(){
-        createHtml();
+
+        var type = "";
+
+        if(user.isTrained()){
+            type = "ohje";
+        }else{
+            type = "ohjeHarjoitteluSuorittamatta";
+        }
+
+        var gui = new GUI();
+
+        gui.createNew([
+            {
+                "type": "div",
+                "id": "startScreen",
+                "elements":[
+                    {
+                        "type": "div",
+                        "id": "startScreenP1",
+                        "text": text[type+"1"]
+                    },
+                    {
+                        "type": "div",
+                        "id": "startScreenP2",
+                        "text": text[type+"2"]
+                    },
+                    {
+                        "type": "div",
+                        "id": "startScreenP3",
+                        "text": text[type+"3"]
+                    }
+                    ]
+            }
+        ]);
     }
 
     function keyPress(key){
@@ -19,24 +52,6 @@ function GameStartScreen(user, state){
         document.getElementById("startScreenP"+page).style.display = "none";
         page = page+1;
         document.getElementById("startScreenP"+page).style.display = "inline";
-    }
-
-
-    function createHtml(){
-
-        function createPages(type) {
-            document.body.innerHTML = '<div id="startScreen">' +
-                '<div id="startScreenP1">' + text[type+"1"] + '</div>' +
-                '<div id="startScreenP2">' + text[type+"2"] + '</div>' +
-                '<div id="startScreenP3">' + text[type+"3"] + '</div></div>';
-        }
-
-        if(user.isTrained()){
-            createPages("ohje");
-        }else{
-            createPages("ohjeHarjoitteluSuorittamatta");
-        }
-
     }
 
     return {

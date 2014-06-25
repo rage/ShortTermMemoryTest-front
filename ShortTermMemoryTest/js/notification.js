@@ -1,11 +1,17 @@
 function Notification(state){
 
     function start(){
-        createHtml();
-    }
 
-    function createHtml(){
-        document.body.innerHTML = '<div id="Notification">'+text["testinTarkoitus"]+'</div>';
+        var gui = new GUI();
+
+        gui.createNew([
+            {
+                "type": "div",
+                "id": "Notification",
+                "text": text["testinTarkoitus"]
+            }
+        ]);
+
     }
 
     function keyPress(key){
