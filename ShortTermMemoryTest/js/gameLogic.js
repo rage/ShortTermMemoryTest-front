@@ -3,7 +3,7 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
     var numbers = Number();
     var order = Order();
     var req = new Request();
-
+    var result;
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
 
     eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", startPracticeGameEventHandler);
@@ -37,8 +37,10 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
 
 
     function showResultEventHandler(event) {
+        result = new Result(gameData, settings);
 
-        new ShowResult(gameData, settings);
+        result.show();
+
         var events = gameData.getEventHandler().getStoredEvents();
         postLogs.post(events);
 
@@ -98,7 +100,8 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
             new ShowPracticeFeedbackEnd(gameData);
 
         }else{
-            new ShowPracticeFeedback(gameData);
+            result = new Result(gameData, settings);
+            result.show();
         }
 
     }

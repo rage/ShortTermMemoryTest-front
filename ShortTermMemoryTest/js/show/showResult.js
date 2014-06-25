@@ -1,4 +1,4 @@
-function ShowResult(gameData, settings) {
+function Result(gameData, settings) {
 
     var gui = new GUI();
 
@@ -25,17 +25,54 @@ function ShowResult(gameData, settings) {
         ]
     );
 
+    function show(){
 
-    gameData.result = CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
+        if (gameData.getMode() === "PRACTICE") {
 
-    var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
+            function WrongRightFeedback() {
+                if (gameData.result.lastSeriesCorrectness) {
+                    $("#secondline").html(text["oikeinIlmoitus"]);
+                    $("#thirdline").html(text["seuraava"]);
+                } else {
+                    $("#secondline").html(text["vaarinIlmoitus"]);
+                    $("#thirdline").html(text["seuraava"]);
+                }
+            }
 
-    var firstline = text["kiitos"];
-    var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
-    var thirdline = text['testiOnValmis'];
+            WrongRightFeedback();
 
-    $("#firstline").html(firstline);
-    $("#secondline").html(secondline);
-    $("#thirdline").html(thirdline);
+            gameData.requestFocus(function (event, keyCode) {
+                if (keyCode === 32) {
+                    hide();
+                    gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_START", "", 0);
+                }
+            });
+
+        } else {
+
+            gameData.result = CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
+
+            var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
+
+            var firstline = text["kiitos"];
+            var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
+            var thirdline = text['testiOnValmis'];
+
+            $("#firstline").html(firstline);
+            $("#secondline").html(secondline);
+            $("#thirdline").html(thirdline);
+
+        }
+    }
+
+
+    function hide() {
+        $("#Result").hide();
+    }
+
+    return {
+        show:show,
+        hide:hide
+    };
 
 }

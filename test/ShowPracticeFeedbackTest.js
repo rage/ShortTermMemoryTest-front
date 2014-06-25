@@ -22,12 +22,18 @@ describe("ShowPracticeFeedbackTest", function() {
                 return true;
             }
 
+            function getMode(){
+                return "PRACTICE";
+            }
+
             return {
                 result:result,
-                requestFocus:requestFocus
+                requestFocus:requestFocus,
+                getMode:getMode
             }
         }();
-        var a = new ShowPracticeFeedback(gameDataMock);
+        var a = new Result(gameDataMock);
+        a.show();
 
         expect(document.getElementById("secondline").innerHTML).toBe(text["oikeinIlmoitus"]);
 
