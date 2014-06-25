@@ -68,7 +68,7 @@ function GameData(gameMode, theNumberList, settings){
             var fail = new CalculateResult(eventHandler.getStoredEvents(), 0, settings).lastSeriesFailed;
             var seriesLength = numberList[numberListIndex].numbers.length;
             var a = currentListDirection();
-            
+
             if (fail && seriesLength >= settings.game.droppedSeriesMinLength) {
                 fails[seriesLength][a]++;
             } else {
