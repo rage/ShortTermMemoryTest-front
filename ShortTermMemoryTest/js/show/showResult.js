@@ -31,12 +31,11 @@ function Result(gameData, settings) {
 
             function WrongRightFeedback() {
                 if (gameData.result.lastSeriesCorrectness) {
-                    $("#secondline").html(text["oikeinIlmoitus"]);
-                    $("#thirdline").html(text["seuraava"]);
+                    gui.updateText("secondline", "oikeinIlmoitus");
                 } else {
-                    $("#secondline").html(text["vaarinIlmoitus"]);
-                    $("#thirdline").html(text["seuraava"]);
+                    gui.updateText("secondline", "vaarinIlmoitus");
                 }
+                gui.updateText("thirdline", "seuraava");
             }
 
             WrongRightFeedback();
@@ -54,13 +53,11 @@ function Result(gameData, settings) {
 
             var percentCorrect = (100 * gameData.result.numberOfCorrectGivenSeries / gameData.result.numberOfShownSeries).toFixed();
 
-            var firstline = text["kiitos"];
             var secondline = text["sait"] + percentCorrect + "% "+text["oikein"];
-            var thirdline = text['testiOnValmis'];
 
-            $("#firstline").html(firstline);
+            gui.updateText("firstline", "kiitos");
             $("#secondline").html(secondline);
-            $("#thirdline").html(thirdline);
+            gui.updateText("thirdline", "testiOnValmis");
 
         }
     }

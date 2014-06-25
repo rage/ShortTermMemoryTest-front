@@ -48,12 +48,17 @@ function GUI(){
         }
 
     }
+
+    function updateText(elementId, updateText){
+            document.getElementById(elementId).innerHTML = text[updateText];
+    }
     
     function resetBody(){
         document.body.innerHTML = ""; 
     }
     
     return {
-        createNew:createNew
+        createNew:createNew,
+        updateText:updateText
     };
 }
