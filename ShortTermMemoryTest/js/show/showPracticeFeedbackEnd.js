@@ -1,11 +1,17 @@
 function ShowPracticeFeedbackEnd(gameData) {
 
-    function createHTML() {
-        var htmlStructure = "<div id=\"ResultEnd\"></div>";
-        $("body").html(htmlStructure);
-    }
+    var gui = new GUI();
 
-    createHTML();
+    gui.createNew(
+        [
+            {
+                "type": "div",
+                "id": "ResultEnd"
+            }
+        ]
+    );
+
+
 
     var results = "";
 

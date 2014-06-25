@@ -1,16 +1,30 @@
 function ShowResult(gameData, settings) {
 
-    function createHTML() {
-        var htmlStructure = '<div id="Result">\
-                                <h1 id="firstline\"></h1>\
-                                <h1 id="secondline"></h1>\
-                                <h1 id="thirdline"></h1>\
-                             </div>';
-        $("body").html(htmlStructure);
-    }
+    var gui = new GUI();
 
+    gui.createNew(
+        [
+            {
+                "type": "div",
+                "id": "Result",
+                "elements":[
+                    {
+                        "type": "div",
+                        "id": "firstline"
+                    },
+                    {
+                        "type": "div",
+                        "id": "secondline"
+                    },
+                    {
+                        "type": "div",
+                        "id": "thirdline"
+                    }
+                ]
+            }
+        ]
+    );
 
-    createHTML();
 
     gameData.result = CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
 

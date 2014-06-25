@@ -3,18 +3,20 @@ function Order() {
     function show(order) {
         var gui = new GUI();
 
-        gui.createNew([
-            {
-                "type": "div",
-                "id": "Game",
-                "elements":[
-                    {
-                        "type": "div",
-                        "id": "order_field"
-                    }
-                ]
-            }
-        ]);
+        gui.createNew(
+            [
+                {
+                    "type": "div",
+                    "id": "Game",
+                    "elements":[
+                        {
+                            "type": "div",
+                            "id": "order_field"
+                        }
+                    ]
+                }
+            ]
+        );
         if (order == "upwards") {
             $("#order_field").html(text["palautaEsitys"]);
         } else {
