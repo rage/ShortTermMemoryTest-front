@@ -8,7 +8,7 @@ function Notification(state){
             {
                 "type": "div",
                 "id": "Notification",
-                "text": text["testinTarkoitus"]
+                "text": "testinTarkoitus"
             }
         ]);
 

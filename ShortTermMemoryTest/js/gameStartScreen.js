@@ -21,17 +21,17 @@ function GameStartScreen(user, state){
                     {
                         "type": "div",
                         "id": "startScreenP1",
-                        "text": text[type+"1"]
+                        "text": type+"1"
                     },
                     {
                         "type": "div",
                         "id": "startScreenP2",
-                        "text": text[type+"2"]
+                        "text": type+"2"
                     },
                     {
                         "type": "div",
                         "id": "startScreenP3",
-                        "text": text[type+"3"]
+                        "text": type+"3"
                     }
                     ]
             }

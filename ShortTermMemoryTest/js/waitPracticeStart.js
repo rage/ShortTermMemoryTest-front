@@ -14,10 +14,13 @@ function WaitPractiseStart(state){
         var a = new GUI();
         
         a.createNew(
-        [{  "type": "div",
-            "id": "PracticeStart",
-            "text": text["harjoittelunAloitushje"]
-        }]);
+            [
+                {
+                    "type": "div",
+                    "id": "PracticeStart",
+                    "text": "harjoittelunAloitushje"
+                }
+            ]);
             
     }
 

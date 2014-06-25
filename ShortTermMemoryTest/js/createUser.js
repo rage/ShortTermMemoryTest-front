@@ -7,13 +7,230 @@ function CreateUser(settings){
     function createHtml(){
         
         var year = new Date().getFullYear();
-        var years = "";
+        var years = [];
+        years.push({
+            "id":"valitse",
+            "type": "option",
+            "value": "valitse",
+            "thisText": "Valitse"
+        });
 
-        for (var i = 1900; i <= year; i++) {
-            years = '<option value="' + i + '">' + i + '</option>' + years;
+        for (var i = year; i >= 1900; i--) {
+            years.push({
+                "id":"valitse",
+                "type": "option",
+                "value": i,
+                "thisText": i
+            });
         }
-        
-        document.body.innerHTML = '<div id="createUser"><div id="varoitus"></div><form onSubmit="stateMachine.createUser()">\
+
+        var gui = new GUI();
+
+        gui.createNew([
+            {
+                "type": "div",
+                "id": "createUser",
+                "elements":[
+                    {
+                        "type": "div",
+                        "id": "varoitus"
+                    },
+                    {
+                        "type": "p",
+                        "id": "userInf",
+                        "text": "henkilotiedot"
+                    },
+                    {
+                        "type": "form",
+                        "id": "createUserForm",
+                        "onSubmit": "stateMachine.createUser()",
+                        "elements":[
+                            {
+                                "type": "table",
+                                "id": "createUserTable",
+                                "elements":[
+                                    {
+                                        "type": "tr",
+                                        "id":"gender",
+                                        "elements":[
+                                            {
+                                                "type": "td",
+                                                "id": "genderText",
+                                                "text": 'sukupuoli'
+                                            },
+                                            {
+                                                "type": "td",
+                                                "id": "genderInputs",
+                                                "elements": [
+                                                    {
+                                                        "type": "input",
+                                                        "name": "sex",
+                                                        "class": "sex",
+                                                        "value": "m",
+                                                        "id": "m",
+                                                        "inputType": "radio"
+                                                    },
+                                                    {
+                                                        "type": "spawn",
+                                                        "text":'mies'
+                                                    },
+                                                    {
+                                                        "type": "input",
+                                                        "name": "sex",
+                                                        "class": "sex",
+                                                        "value": "f",
+                                                        "id": "f",
+                                                        "inputType": "radio"
+                                                    },
+                                                    {
+                                                        "type": "spawn",
+                                                        "text": 'nainen'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "tr",
+                                        "id":"yearOfBirths",
+                                        "elements":[
+                                            {
+                                                "type": "td",
+                                                "id": "yearOfBirthText",
+                                                "text": "syntymavuosi"
+                                            },
+                                            {
+                                                "type": "td",
+                                                "id": "yearOfBirthSelectList",
+                                                "elements":[
+                                                    {
+                                                        "type": "select",
+                                                        "name": "yearofbirth",
+                                                        "id": "yearofbirth",
+                                                        "elements":
+                                                            years
+
+
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "tr",
+                                        "id":"handedness",
+                                        "elements":[
+                                            {
+                                                "type": "td",
+                                                "id": "handednessText",
+                                                "text": 'katisyys'
+                                            },
+                                            {
+                                                "type": "td",
+                                                "id": "handednessInputs",
+                                                "elements": [
+                                                    {
+                                                        "type": "input",
+                                                        "name": "handedness",
+                                                        "value": "r",
+                                                        "id": "r",
+                                                        "inputType": "radio"
+                                                    },
+                                                    {
+                                                        "type": "spawn",
+                                                        "text": 'oikea'
+                                                    },
+                                                    {
+                                                        "type": "input",
+                                                        "name": "handedness",
+                                                        "value": "l",
+                                                        "id": "l",
+                                                        "inputType": "radio"
+                                                    },
+                                                    {
+                                                        "type": "spawn",
+                                                        "text":'vasen'
+                                                    }
+                                                ]
+                                            }
+                                        ]
+
+                                    },
+                                    {
+                                        "type": "tr",
+                                        "id":"educations",
+                                        "elements":[
+                                            {
+                                                "type": "td",
+                                                "id": "educationText",
+                                                "text": "koulutustausta"
+                                            },
+                                            {
+                                                "type": "td",
+                                                "id": "educationList",
+                                                "elements":[
+                                                    {
+                                                        "type": "select",
+                                                        "name": "education",
+                                                        "id": "education",
+                                                        "elements":[
+                                                            {
+                                                                "type": "option",
+                                                                "value": "valitse",
+                                                                "thisText": "Valitse"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "Peruskoulu",
+                                                                "text": "Peruskoulu"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "Lukio tai ammattikoulu",
+                                                                "text": "Lukio tai ammattikoulu"
+                                                            },
+                                                            {
+                                                                "type": "option",
+                                                                "value": "Korkeakoulu",
+                                                                "text": "Korkeakoulu"
+                                                            }
+                                                        ]
+
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "type": "tr",
+                                        "id":"continueButton",
+                                        "elements":[
+                                            {
+                                                "type": "td",
+                                                "id": "buttonContinue",
+                                                "elements":[
+                                                    {
+                                                        "type":"input",
+                                                        "id": "buttonId",
+                                                        "inputType": "button",
+                                                        "value": "Jatka",
+                                                        "onclick": "stateMachine.createUser()"
+                                                    }
+                                                ]
+                                            }
+                                        ]
+                                    }
+
+                                ]
+
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]);
+
+        /*document.body.innerHTML = '<div id="createUser"><div id="varoitus"></div><form onSubmit="stateMachine.createUser()">\
         HENKILÖTIEDOT:\
         <table>\
             <tr>\
@@ -49,7 +266,7 @@ function CreateUser(settings){
                 <td><input type="button" value="Jatka" onclick="stateMachine.createUser()" /></td><td>\
         </table>\
         </form>\
-        </div>';
+        </div>';*/
 
     }
 
@@ -58,6 +275,7 @@ function CreateUser(settings){
     }
     
     function signUp(user){
+        console.log("kfoasjdflasdjkföf");
 
         try {
 

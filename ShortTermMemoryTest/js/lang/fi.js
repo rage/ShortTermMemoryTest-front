@@ -63,12 +63,18 @@ var text = {
 
     "mies": "Mies",
     "nainen": "Nainen",
-    "sukupuoli": "Sukupuoli",
-    "katisyys": "Kätisyys",
-    "koulutustausta": "Koulutustausta",
-    "syntymavuosi": "Syntymävuosi",
+    "sukupuoli": "Sukupuoli:",
+    "katisyys": "Kätisyys:",
+    "koulutustausta": "Koulutustausta:",
+    "syntymavuosi": "Syntymävuosi:",
     "oikea": "Oikea",
-    "vasen": "Vasen"
+    "vasen": "Vasen",
+
+    "henkilotiedot": "HENKILÖTIEDOT",
+
+    "Peruskoulu":"Peruskoulu",
+    "Lukio tai ammattikoulu": "Lukio tai ammattikoulu",
+    "Korkeakoulu":"Korkeakoulu"
 
 
 
