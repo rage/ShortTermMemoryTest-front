@@ -1,4 +1,6 @@
-function GameLogic (eventHandler, user, settings, postLogs) {
+function GameLogic(eventHandler, user, settings, postLogs) {
+
+    var numbers = Number();
 
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
 
@@ -75,7 +77,8 @@ function GameLogic (eventHandler, user, settings, postLogs) {
 
         gameData.result = new CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
         if (gameData.isFinished()) {
-            new Request().createPost(settings.url+"finish", "id=" + user.testCase());
+            var req = new Request();
+            req.createPost(settings.url+"finish", "id=" + user.testCase());
             gameData.addDonePracticeRounds();
             new ShowPracticeFeedbackEnd(gameData);
         }else{
@@ -143,21 +146,21 @@ function GameLogic (eventHandler, user, settings, postLogs) {
     }
 
     function showCrossEventHandler(event) {
-        new ShowNumber("+");
+        numbers.show("+");
     }
 
     function endShowCrossEventHandler(event) {
-        hideNumber();
+        numbers.hide();
     }
 
 
     function showNumberEventHandler(event) {
         var number = event.message;
-        new ShowNumber(number);
+        numbers.show(number);
     }
 
     function endShowNumberEventHandler(event) {
-        hideNumber();
+        numbers.hide();
     }
 
     function startPracticeGame() {

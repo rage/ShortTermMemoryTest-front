@@ -1,4 +1,4 @@
-function ShowNumber(number) {
+function Number() {
 
     function createHTML() {
         $("body").html("<div id=\"Game\">\
@@ -6,12 +6,20 @@ function ShowNumber(number) {
         </div>");
     }
 
-    createHTML();
+    function show(number){
+        createHTML();
 
-    $("#num_field").show();
-    $("#num_field").html(number);
+        $("#num_field").show();
+        $("#num_field").html(number);
+    }
+
+    function hide() {
+        $("#num_field").hide();
+    }
+
+    return {
+        show:show,
+        hide:hide
+    }
 }
 
-function hideNumber() {
-    $("#num_field").hide();
-}

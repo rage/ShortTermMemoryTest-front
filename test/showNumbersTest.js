@@ -7,35 +7,40 @@ describe("showNumbersTest", function() {
 
 
 
-    it("ShowNumber puts number in #num_field", function() {
-        ShowNumber("1");
+    it("Number puts number in #num_field", function() {
+        var num = new Number();
+        num.show("1");
         expect($("#num_field").text()).toBe("1");
     });
 
-    it("After ShowNumber puts 2 numbers in #num_field only the latter is visible", function() {
-        ShowNumber("1");
-        ShowNumber("2");
+    it("After Number puts 2 numbers in #num_field only the latter is visible", function() {
+        var num = new Number();
+        num.show("1");
+        num.show("2");
         expect($("#num_field").text()).toBe("2");
     });
 
     it("hideNumber hides the text in #num_field", function() {
-        ShowNumber("1");
-        hideNumber();
+        var num = new Number();
+        num.show("1");
+        num.hide();
         expect($("#num_field").text()).hidden;
     });
 
-    it("When ShowNumber is called after hideNumber the number is visible in the #num_field", function() {
-        ShowNumber("1");
-        hideNumber();
-        ShowNumber("1");
+    it("When Number is called after hideNumber the number is visible in the #num_field", function() {
+        var num = new Number();
+        num.show("1");
+        num.hide();
+        num.show("1");
         expect($("#num_field").text()).not.hidden;
     });
 
     it("also shows the + sign instead of a number", function() {
-        ShowNumber("+");
+        var num = new Number();
+        num.show("+");
         expect($("#num_field").text()).toBe("+");
         expect($("#num_field").text()).not.hidden;
-        hideNumber();
+        num.hide();
         expect($("#num_field").text()).hidden;
     });
 

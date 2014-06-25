@@ -68,11 +68,7 @@ function GameData(gameMode, theNumberList, settings){
         return numberList[numberListIndex];
     }
     function isFinished(){
-        if(numberListIndex >= numberList.length){
-            return true;
-        } else {
-            return false;
-        }
+        return numberListIndex >= numberList.length;
     }
 
     function numberListIndexToZero(){
