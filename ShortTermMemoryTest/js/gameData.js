@@ -12,49 +12,71 @@ function GameData(gameMode, theNumberList, settings){
     function currentListDirection() { //0 = upwards, 1=backwards
         var a;
         var i = numberListIndex;
+
         if (i < numberList.length) {
+
             if (numberList[i].order === "upwards") {
                 a = 0;
-            } else if (numberList[i].order === "backwards") {
+            } else {
                 a = 1;
             }
+
         }
+
         return a;
+
     }
 
     function updateNumberListIndex() {
         numberListIndex++;
         shownSeries[numberListIndex] = true;
+
         if(settings.game.droppingSeriesPossible) {
+
             if (mode === "GAME") {
+
                 var a = currentListDirection();
+
                 while (true) {
+
                     if (numberListIndex >= numberList.length) {
                         break;
                     } else if (fails[numberList[numberListIndex].numbers.length][a] < settings.game.maxFails) {
                         break;
                     } else {
+
                         shownSeries[numberListIndex] = false;
                         numberListIndex++;
                         a = currentListDirection();
+
                     }
+
                 }
+
             }
+
         }
+
         return numberListIndex;
+
     }
 
     function updateFails(){
+
         if(settings.game.droppingSeriesPossible) {
+
             var fail = new CalculateResult(eventHandler.getStoredEvents(), 0, settings).lastSeriesFailed;
             var seriesLength = numberList[numberListIndex].numbers.length;
             var a = currentListDirection();
+            
             if (fail && seriesLength >= settings.game.droppedSeriesMinLength) {
                 fails[seriesLength][a]++;
             } else {
                 fails[seriesLength][a] = 0;
             }
+
         }
+
     }
 
     function setEventHandler(newEventHandler){
