@@ -75,7 +75,7 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
                 gameData.getEventHandler().triggerEvent("EVENT_SHOWLIST_END", "", numberBlankTime);
             }
 
-        } else if (gameData.getMode() === "PRACTICE") {
+        } else {
             gameData.getEventHandler().triggerEvent("EVENT_SHOW_PRACTICE_RESULT_START", "", numberBlankTime);
         }
 
@@ -212,7 +212,7 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
 
         if (gameData.getMode() === "PRACTICE") {
             startPracticeGame();
-        } else if (gameData.getMode() === "GAME") {
+        } else {
             startGame();
         }
     }
