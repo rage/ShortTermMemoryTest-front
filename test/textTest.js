@@ -25,7 +25,7 @@ describe("As a old User, I want to see instructions", function() {
 
 
         document.getElementById('username').value = "Omena";
-        stateMachine.checkUsername("Omena");
+        checkName("Omena");
         done();
 
     });
@@ -107,7 +107,7 @@ describe("As a old User, I want to see instructions 2", function() {
 
 
         document.getElementById('username').value = "Omena";
-        stateMachine.checkUsername("Omena");
+        checkName("Omena");
 
     });
     it("instructions2", function() {
@@ -254,7 +254,7 @@ describe("As a new User, I want to see instructions", function() {
 
         document.getElementById('username').value = randomUser;
         username = randomUser;
-        stateMachine.checkUsername(randomUser);
+        checkName(randomUser);
 
         document.getElementById("yearofbirth").selectedIndex = 2000;
         document.getElementById('m').checked = true;

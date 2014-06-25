@@ -23,13 +23,14 @@ var stateMachine = function (){
         state.addStateFunction(5, startWaitPractice);
         state.addStateFunction(6, startPractice);
         state.addStateFunction(7, startTest);
+
         user = new User();
         settings = new Settings();
 
         evHandler = new EventHandler();
         keyHandler = new KeyEventHandler(evHandler);
         var postLogs = new Logs(user, settings);
-        game = new GameLogic(evHandler, user, settings, postLogs);
+        game = new GameLogic(evHandler, user, settings, postLogs, state);
 
         state.change(1);
         
@@ -41,11 +42,6 @@ var stateMachine = function (){
         login.start();
 
     }
-
-    function checkUsername(cName){
-        checkName(cName);
-    }
-
 
     function startRegister(){
 
@@ -67,6 +63,7 @@ var stateMachine = function (){
     }
 
     function startNotification(){
+
         var notification = new Notification(state);
         kList.set(notification.keyPress);
         notification.start();
@@ -105,7 +102,7 @@ var stateMachine = function (){
 
             if (mode === "GAME") {
                 theNumberList = list.getNextList();
-            } else if (mode === "PRACTICE") {
+            } else {
                 theNumberList = list.getTrainingList();
             }
 
@@ -114,16 +111,13 @@ var stateMachine = function (){
             game.start(gameData);
         }
 
-
-
     }
 
     return {
         start:start,
         startGameStartScreen:startGameStartScreen,
         createUser:createUser,
-        startGame:startGame,
-        checkUsername:checkUsername
+        startGame:startGame
     };
     
 }();

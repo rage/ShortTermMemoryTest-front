@@ -15,7 +15,7 @@ describe("StartScreenTest", function() {
             randomUser += possible.charAt(Math.floor(Math.random() * possible.length));
         stateMachine.start();
         document.getElementById('username').value = randomUser;
-        stateMachine.checkUsername(document.getElementById('username').value);
+        checkName(document.getElementById('username').value);
         document.getElementById("yearofbirth").selectedIndex = 2000;
         document.getElementById('m').checked = true;
         document.getElementById('r').checked = true;
@@ -43,7 +43,7 @@ describe("StartScreenTest", function() {
     it("check start screen text when user is trained", function() {
         stateMachine.start();
         document.getElementById('username').value = "Omena";
-        stateMachine.checkUsername(document.getElementById('username').value);
+        checkName(document.getElementById('username').value);
         stateMachine.startGameStartScreen();
         expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
     });
@@ -52,7 +52,7 @@ describe("StartScreenTest", function() {
     it("use startscreen in keyboard", function() {
         stateMachine.start();
         document.getElementById('username').value = "Omena";
-        stateMachine.checkUsername(document.getElementById('username').value);
+        checkName(document.getElementById('username').value);
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });
         }
@@ -68,7 +68,7 @@ describe("StartScreenTest", function() {
     it("use startscreen in keyboard 2", function() {
         stateMachine.start();
         document.getElementById('username').value = "Omena";
-        stateMachine.checkUsername(document.getElementById('username').value)
+        checkName(document.getElementById('username').value)
 
         function simulateKeyPress(c) {
             jQuery.event.trigger({ type : 'keypress', which : c });

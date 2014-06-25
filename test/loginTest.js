@@ -76,7 +76,7 @@ describe("LoginTest", function() {
         stateMachine.start();
         document.getElementById('username').value = "Olen";
 
-        var o = stateMachine.checkUsername(document.getElementById('username').value);
+        var o = checkName(document.getElementById('username').value);
         expect(document.getElementById("Notification").innerHTML).toBe(text["testinTarkoitus"]);
 
     });

@@ -1,4 +1,4 @@
-function GameLogic(eventHandler, user, settings, postLogs) {
+function GameLogic(eventHandler, user, settings, postLogs, state) {
 
     var numbers = Number();
     var order = Order();
@@ -37,10 +37,15 @@ function GameLogic(eventHandler, user, settings, postLogs) {
 
 
     function showResultEventHandler(event) {
+
         new ShowResult(gameData, settings);
         var events = gameData.getEventHandler().getStoredEvents();
         postLogs.post(events);
-        req.createPost(settings.url+"finish", "id=" + user.testCase());
+
+        var param = new Params();
+        param.add("id", user.testCase());
+        req.createPost(settings.url + "finish", param.toString());
+
         gameData.getEventHandler().triggerEvent("EVENT_SHOWRESULT_END", "", gameData.showResultTime);
         
     }
@@ -56,32 +61,42 @@ function GameLogic(eventHandler, user, settings, postLogs) {
     }
 
     function endUserInputEventHandler(event) {
+
         order.hide();
         var numberBlankTime = settings.game.ISITime - settings.game.numberDisplayTime;
         gameData.updateFails(eventHandler);
         gameData.updateNumberListIndex();
+
         if (gameData.getMode() === "GAME") {
+
             if (!gameData.isFinished()) {
                 gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_START", "", 0);
             } else {
                 gameData.getEventHandler().triggerEvent("EVENT_SHOWLIST_END", "", numberBlankTime);
             }
+
         } else if (gameData.getMode() === "PRACTICE") {
             gameData.getEventHandler().triggerEvent("EVENT_SHOW_PRACTICE_RESULT_START", "", numberBlankTime);
         }
+
         var events = gameData.getEventHandler().getStoredEvents();
         postLogs.post(events);
-
 
     }
 
     function showPracticeResultEventHandler(event) {
 
         gameData.result = new CalculateResult(gameData.getEventHandler().getStoredEvents(), gameData.gameStartTime, settings);
+
         if (gameData.isFinished()) {
-            req.createPost(settings.url+"finish", "id=" + user.testCase());
+
+            var param = new Params();
+            param.add("id", user.testCase());
+            req.createPost(settings.url + "finish", param.toString());
+
             gameData.addDonePracticeRounds();
             new ShowPracticeFeedbackEnd(gameData);
+
         }else{
             new ShowPracticeFeedback(gameData);
         }
@@ -125,14 +140,18 @@ function GameLogic(eventHandler, user, settings, postLogs) {
     }
 
     function showSeriesEventHandler() {
+
         var delay = 0;
+
         delay += gameData.showCrossDelay;
         gameData.getEventHandler().triggerEvent("EVENT_SHOWCROSS_START", "", delay);
+
         delay += gameData.showCrossTime;
         gameData.getEventHandler().triggerEvent("EVENT_SHOWCROSS_END", "", delay);
 
         delay += gameData.ISITime - gameData.numberDisplayTime;
         var series = gameData.getCurrentSeries();
+
         for (var i = 0; i < series.numbers.length; i++) {
             gameData.getEventHandler().triggerEvent("EVENT_SHOWNUMBER_START", series.numbers[i], delay + gameData.ISITime * i);
             gameData.getEventHandler().triggerEvent("EVENT_SHOWNUMBER_END", series.numbers[i], delay + gameData.ISITime * i + gameData.numberDisplayTime);
@@ -140,6 +159,7 @@ function GameLogic(eventHandler, user, settings, postLogs) {
 
         gameData.getEventHandler().triggerEvent("EVENT_SHOWSERIES_END", "", delay + gameData.ISITime * i);
         gameData.getEventHandler().triggerEvent("EVENT_USERINPUT_START", gameData.getCurrentSeries().order, delay + gameData.ISITime * i);
+
     }
 
     function endShowSeriesEventHandler(event) {
@@ -189,6 +209,7 @@ function GameLogic(eventHandler, user, settings, postLogs) {
         gameData = newGameData;
         setup(gameData);
         $("body").html("");
+
         if (gameData.getMode() === "PRACTICE") {
             startPracticeGame();
         } else if (gameData.getMode() === "GAME") {
