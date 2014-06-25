@@ -28,7 +28,6 @@ function GameData(gameMode, theNumberList, settings){
         if(settings.game.droppingSeriesPossible) {
             if (mode === "GAME") {
                 var a = currentListDirection();
-                var loop = true;
                 while (true) {
                     if (numberListIndex >= numberList.length) {
                         break;

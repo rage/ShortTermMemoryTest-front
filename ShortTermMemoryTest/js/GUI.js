@@ -2,8 +2,7 @@ function GUI(){
     
     function createNew(guiData){
         resetBody();
-        createHTML(guiData, "body", "element")
-        
+        createHTML(guiData, "body", "element");
     }
     
     function createHTML(data, addUnder, type){
@@ -35,5 +34,5 @@ function GUI(){
     
     return {
         createNew:createNew
-    }
+    };
 }
