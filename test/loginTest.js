@@ -23,8 +23,11 @@ describe("LoginTest", function() {
         var userMock = function() {
             function set(a){
             }
+            function setTrained(a){
+            }
             return {
-                set:set
+                set:set,
+                setTrained:setTrained
             }
         }();
         var myfunc = new Login(settings, stateMock, userMock);

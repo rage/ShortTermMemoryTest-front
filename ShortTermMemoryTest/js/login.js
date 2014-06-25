@@ -37,14 +37,8 @@ function Login(settings, state, user){
 
     function checkResponse(response, user){
 
-        if (response.isReserved) {
-
-            user.setTrained(response.isTrained);
-            return true;
-
-        } else {
-            return false;
-        }
+        user.setTrained(response.isTrained);
+        return response.isReserved;
 
     }
     

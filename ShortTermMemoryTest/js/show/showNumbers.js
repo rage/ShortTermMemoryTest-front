@@ -1,13 +1,20 @@
 function Number() {
 
-    function createHTML() {
-        $("body").html("<div id=\"Game\">\
-        <div id = \"num_field\"></div>\
-        </div>");
-    }
-
     function show(number){
-        createHTML();
+        var gui = new GUI();
+
+        gui.createNew([
+            {
+                "type": "div",
+                "id": "Game",
+                "elements":[
+                    {
+                        "type": "div",
+                        "id": "num_field"
+                    }
+                ]
+            }
+        ]);
 
         $("#num_field").show();
         $("#num_field").html(number);
@@ -20,6 +27,6 @@ function Number() {
     return {
         show:show,
         hide:hide
-    }
+    };
 }
 
