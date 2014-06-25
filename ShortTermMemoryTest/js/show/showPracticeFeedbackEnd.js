@@ -36,11 +36,11 @@ function ShowPracticeFeedbackEnd(gameData) {
     $("#ResultEnd").html(results);
 
     gameData.requestFocus(function (event, keyCode) {
-        if (keyCode == 13) {
+        if (keyCode === 13) {
             gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
             stateMachine.startGame("GAME");
         }
-        if (keyCode == 32) {
+        if (keyCode === 32) {
             if (gameData.getdonePracticeRounds() < gameData.maxPracticeRounds) {
                 gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_END", "", 0);
                 gameData.getEventHandler().triggerEvent("EVENT_PRACTICE_GAME_START", "", 0);
