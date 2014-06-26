@@ -24,24 +24,9 @@ function GUI(){
         if(data[0]["name"]) {
             newDiv.name = data[0]["name"];
         }
-        if(data[0]["autocomplete"]) {
-            newDiv.autocomplete = data[0]["autocomplete"];
-        }
-        if(data[0]["autofocus"]) {
-            newDiv.autofocus = true;
-        }
-        if(data[0]["valueText"]) {
-            newDiv.value = text[data[0]["valueText"]];
-        }
-        if(data[0]["value"]) {
-            newDiv.value = data[0].value;
-        }
-        if(data[0]["inputType"]) {
-            newDiv.type = data[0]["inputType"];
-        }
-        if(data[0]["onclick"]) {
-            newDiv.setAttribute("onClick", data[0]["onclick"]);
-        }
+
+        elementIsInput(newDiv, data);
+
         if(type === "element"){
             document.getElementsByTagName(addUnder)[0].appendChild(newDiv);
         }else{
@@ -54,6 +39,28 @@ function GUI(){
 
         if(data.length > 1){
             createHTML(data.slice(1), addUnder, "id");
+        }
+
+    }
+
+    function elementIsInput(newDiv, data){
+        if(data[0]["autocomplete"]) {
+            newDiv.autocomplete = data[0]["autocomplete"];
+        }
+        if(data[0]["autofocus"]) {
+            newDiv.autofocus = true;
+        }
+        if(data[0]["valueText"]) {
+            newDiv.value = text[data[0]["valueText"]];
+        }
+        if(data[0]["value"]) {
+            newDiv.value = data[0]["value"];
+        }
+        if(data[0]["inputType"]) {
+            newDiv.type = data[0]["inputType"];
+        }
+        if(data[0]["onclick"]) {
+            newDiv.setAttribute("onClick", data[0]["onclick"]);
         }
 
     }
