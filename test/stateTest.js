@@ -8,8 +8,7 @@ describe("stateTest", function() {
         var kList = new KeyListener();
         var a = State(kList);
         a.set(1);
-        a.set(4);
-        expect(a.set(4)).toBe(false);
+        expect(a.set(5)).toBe(false);
 
 
     });
@@ -19,8 +18,11 @@ describe("stateTest", function() {
         a.addStateFunction(1, function(){
             console.log("fail");
         });
+        a.addStateFunction(5, function(){
+            console.log("fail");
+        });
         a.set(1);
-        a.change(5)
+        a.change(5);
         expect(a.is(1)).toBe(true);
 
 

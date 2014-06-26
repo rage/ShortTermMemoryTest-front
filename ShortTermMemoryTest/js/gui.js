@@ -121,6 +121,10 @@ function GUI(){
         if(data[0]["onclick"]) {
             newDiv.setAttribute("onClick", data[0]["onclick"]);
         }
+        if(data[0]["onSubmit"]) {
+            newDiv.setAttribute("onSubmit", data[0]["onSubmit"]);
+            newDiv.setAttribute("action", "#");
+        }
 
     }
 
