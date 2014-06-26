@@ -1,3 +1,4 @@
+/* global gameData */
 function GameLogic(eventHandler, user, settings, postLogs, state) {
 
     var numbers = Number();

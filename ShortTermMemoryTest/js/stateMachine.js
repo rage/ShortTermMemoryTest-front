@@ -105,7 +105,7 @@ var stateMachine = function (){
             } else {
                 theNumberList = list.getTrainingList();
             }
-            /* global gameData */
+
             var gameData = new GameData(mode, theNumberList, settings);
 
             game.start(gameData);
