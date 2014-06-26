@@ -6,36 +6,40 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
     var order = new Order();
     var req = new Request();
     var result;
-    eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
 
-    eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", startPracticeGameEventHandler);
-    eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_END", endPracticeGameEventHandler);
+    function registerEvents(){
 
+        eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
 
-    eventHandler.registerEventHandler("EVENT_SHOWLIST_START", showListEventHandler);
-    eventHandler.registerEventHandler("EVENT_SHOWLIST_END", endShowListEventHandler);
-
-    eventHandler.registerEventHandler("EVENT_SHOWSERIES_START", showSeriesEventHandler);
-    eventHandler.registerEventHandler("EVENT_SHOWSERIES_END", endShowSeriesEventHandler);
-
-    eventHandler.registerEventHandler("EVENT_SHOWNUMBER_START", showNumberEventHandler);
-    eventHandler.registerEventHandler("EVENT_SHOWNUMBER_END", endShowNumberEventHandler);
-
-    eventHandler.registerEventHandler("EVENT_USERINPUT_START", startUserInputEventHandler);
-    eventHandler.registerEventHandler("EVENT_USERINPUT_END", endUserInputEventHandler);
-
-    eventHandler.registerEventHandler("EVENT_SHOWRESULT_START", showResultEventHandler);
-    eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
-
-    eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
-
-    eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
+        eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_START", startPracticeGameEventHandler);
+        eventHandler.registerEventHandler("EVENT_PRACTICE_GAME_END", endPracticeGameEventHandler);
 
 
-    eventHandler.registerEventHandler("EVENT_SHOWCROSS_START", showCrossEventHandler);
-    eventHandler.registerEventHandler("EVENT_SHOWCROSS_END", endShowCrossEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWLIST_START", showListEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWLIST_END", endShowListEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOWSERIES_START", showSeriesEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWSERIES_END", endShowSeriesEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOWNUMBER_START", showNumberEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWNUMBER_END", endShowNumberEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_USERINPUT_START", startUserInputEventHandler);
+        eventHandler.registerEventHandler("EVENT_USERINPUT_END", endUserInputEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOWRESULT_START", showResultEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
+
+        eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
 
 
+        eventHandler.registerEventHandler("EVENT_SHOWCROSS_START", showCrossEventHandler);
+        eventHandler.registerEventHandler("EVENT_SHOWCROSS_END", endShowCrossEventHandler);
+    }
+    
+    registerEvents();
 
     function showResultEventHandler(event) {
         result = new Result(gameData, settings);
