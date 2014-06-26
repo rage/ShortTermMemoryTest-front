@@ -7,12 +7,45 @@ function Login(settings, state, user){
     }
     
     function createHtml(){
-        document.body.innerHTML = '<div id="login">\
-        ' + text["kirjoitaTunnus"] + '\
-        <form onSubmit="checkName(document.getElementById(\'username\').value)">\
-        <input type="text" id="username" autocomplete="off" autofocus required>\
-        <input type="button" value="'+text['aloita']+'" onclick="checkName(document.getElementById(\'username\').value)" />\
-        </form>';
+
+
+        var gui = new GUI();
+
+        gui.createNew([
+            {
+                "type": "div",
+                "id": "login",
+                "elements":[
+                    {
+                        "type": "p",
+                        "id": "write",
+                        "text": "kirjoitaTunnus"
+                    },
+                    {
+                        "type": "form",
+                        "id": "startScreenP1",
+                        "onSubmit": "checkName(document.getElementById('username').value)",
+                        "elements":
+                            [
+                                {
+                                    "type": "input",
+                                    "id": "username",
+                                    "inputType": "text",
+                                    "autocomplete": "off",
+                                    "autofocus": "true"
+                                },
+                                {
+                                    "type": "input",
+                                    "id": "button",
+                                    "inputType": "button",
+                                    "valueText": "aloita",
+                                    "onclick": "checkName(document.getElementById('username').value)",
+                                }
+                            ]
+                    }
+                ]
+            }
+        ]);
     }
     
     function checkUsername(checkThisName){

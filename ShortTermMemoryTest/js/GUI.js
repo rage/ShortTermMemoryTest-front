@@ -24,6 +24,15 @@ function GUI(){
         if(data[0]["name"]) {
             newDiv.name = data[0]["name"];
         }
+        if(data[0]["autocomplete"]) {
+            newDiv.autocomplete = data[0]["autocomplete"];
+        }
+        if(data[0]["autofocus"]) {
+            newDiv.autofocus = true;
+        }
+        if(data[0]["valueText"]) {
+            newDiv.value = text[data[0]["valueText"]];
+        }
         if(data[0]["value"]) {
             newDiv.value = data[0]["value"];
         }
