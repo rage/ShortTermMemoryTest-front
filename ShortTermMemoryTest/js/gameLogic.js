@@ -1,6 +1,6 @@
-/* global gameData, event */
-/*jshint unused:true */
-function GameLogic(eventHandler, user, settings, postLogs) {
+/* global gameData, event, Number, Order, Request */
+/* jshint unused:true */
+function GameLogic(eventHandler, user, settings, postLogs, state) {
 
     var numbers = new Number();
     var order = new Order();
@@ -140,7 +140,7 @@ function GameLogic(eventHandler, user, settings, postLogs) {
     }
 
     function endShowListEventHandler(event) {
-        
+
         gameData.getEventHandler().triggerEvent("EVENT_SHOWRESULT_START", "", 0);
 
     }
