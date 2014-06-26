@@ -1,3 +1,4 @@
+/* global text */
 function GUI(){
     
     function createNew(guiData){
@@ -57,6 +58,24 @@ function GUI(){
                                 "text": type+"3"
                             }
                             ]
+                    }
+                ]
+            );
+        }
+
+        if("GameNumbers" === guiName){
+
+            createNew(
+                [
+                    {
+                        "type": "div",
+                        "id": "Game",
+                        "elements":[
+                            {
+                                "type": "div",
+                                "id": "num_field"
+                            }
+                        ]
                     }
                 ]
             );
@@ -132,6 +151,10 @@ function GUI(){
         document.getElementById(elementId).innerHTML = text[updateText];
     }
 
+    function updateThisText(elementId, updateText){
+        document.getElementById(elementId).innerHTML = updateText;
+    }
+
     function resetBody(){
         document.body.innerHTML = ""; 
     }
@@ -139,6 +162,7 @@ function GUI(){
     return {
         createNew:createNew,
         updateText:updateText,
+        updateThisText:updateThisText,
         run:run
     };
 }
