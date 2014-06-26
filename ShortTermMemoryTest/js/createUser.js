@@ -1,4 +1,4 @@
-function CreateUser(settings){
+function CreateUser(settings, user){
     
     function start(){
         createHtml();
@@ -236,7 +236,7 @@ function CreateUser(settings){
         return document.getElementById(listId).options[document.getElementById(listId).selectedIndex].value;
     }
     
-    function signUp(user){
+    function signUp(){
 
         try {
 

@@ -52,10 +52,6 @@ function GUI(){
     function updateText(elementId, updateText){
         document.getElementById(elementId).innerHTML = text[updateText];
     }
-    
-    function updateThisText(elementId, updateText){
-        document.getElementById(elementId).innerHTML = updateText;
-    }
 
     function resetBody(){
         document.body.innerHTML = ""; 
@@ -63,7 +59,6 @@ function GUI(){
     
     return {
         createNew:createNew,
-        updateText:updateText,
-        updateThisText:updateThisText
+        updateText:updateText
     };
 }

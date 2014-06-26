@@ -45,7 +45,7 @@ var stateMachine = function (){
 
     function startRegister(){
 
-        register = new CreateUser(settings);
+        register = new CreateUser(settings, user);
         register.start();
 
     }
@@ -53,7 +53,7 @@ var stateMachine = function (){
     function createUser(){
 
         if(state.is(2)) {
-            if(register.signup(user)){
+            if(register.signup()){
                 state.change(3);
             }else{
                 startRegister();
