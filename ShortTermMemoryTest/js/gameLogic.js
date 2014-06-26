@@ -1,4 +1,4 @@
-/* global gameData, event, Number, Order, Request, Params, Result, PracticeFeedbackEnd */
+/* global gameData, Number, Order, Request, Params, Result, PracticeFeedbackEnd */
 /* jshint unused:true */
 function GameLogic(eventHandler, user, settings, postLogs, state) {
 
@@ -28,7 +28,6 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
     eventHandler.registerEventHandler("EVENT_SHOWRESULT_END", endShowResultEventHandler);
 
     eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_START", showPracticeResultEventHandler);
-    eventHandler.registerEventHandler("EVENT_SHOW_PRACTICE_RESULT_END", endShowPracticeResultEventHandler);
 
     eventHandler.registerEventHandler("EVENT_TYPE_KEYDOWN", keyDownEventHandler);
 
@@ -107,9 +106,6 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
             result.show();
         }
 
-    }
-
-    function endShowPracticeResultEventHandler(event) {
     }
 
 
