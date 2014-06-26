@@ -49,6 +49,8 @@ function Logs(user, settings){
         for (var i = 0; i < events.length; i++) {
             events[i].testcase_id = user.testCase();
         }
+
+        return events;
     }
 
     function post(events){
