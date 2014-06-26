@@ -1,7 +1,6 @@
-function WaitPractiseStart(state){
+function WaitPractiseStart(state, gui){
 
     function start(){
-        var gui = new GUI();
         gui.run("PracticeStart");
     }
 

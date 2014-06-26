@@ -1,10 +1,7 @@
-function Notification(state){
+function Notification(state, gui){
 
     function start(){
-
-        var gui = new GUI();
         gui.run("Notification");
-
     }
 
     function keyPress(key){

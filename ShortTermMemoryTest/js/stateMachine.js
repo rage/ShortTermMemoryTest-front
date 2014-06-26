@@ -6,6 +6,7 @@ var stateMachine = function (){
     var game;
     var user;
     var settings;
+    var gui;
 
     var evHandler;
     var keyHandler;
@@ -23,6 +24,7 @@ var stateMachine = function (){
         state.addStateFunction(5, startWaitPractice);
         state.addStateFunction(6, startPractice);
         state.addStateFunction(7, startTest);
+        gui = new GUI();
 
         user = new User();
         settings = new Settings();
@@ -52,7 +54,7 @@ var stateMachine = function (){
 
     function startNotification(){
 
-        var notification = new Notification(state);
+        var notification = new Notification(state, gui);
         kList.set(notification.keyPress);
         notification.start();
 
@@ -68,7 +70,7 @@ var stateMachine = function (){
 
     function startWaitPractice(){
 
-        var waitPractice = new WaitPractiseStart(state);
+        var waitPractice = new WaitPractiseStart(state, gui);
         kList.set(waitPractice.keyPress);
         waitPractice.start();
 
