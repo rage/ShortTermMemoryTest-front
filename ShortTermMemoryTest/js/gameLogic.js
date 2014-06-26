@@ -1,4 +1,5 @@
 /* global gameData, event */
+/*jshint unused:true */
 function GameLogic(eventHandler, user, settings, postLogs) {
 
     var numbers = new Number();
