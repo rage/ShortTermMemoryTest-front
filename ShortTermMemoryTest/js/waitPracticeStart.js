@@ -1,18 +1,8 @@
 function WaitPractiseStart(state){
 
     function start(){
-        createHtml();
-    }
-
-    function keyPress(key){
-        if(key === 32) {
-            state.change(6);
-        }
-    }
-
-    function createHtml(){
         var a = new GUI();
-        
+
         a.createNew(
             [
                 {
@@ -20,8 +10,14 @@ function WaitPractiseStart(state){
                     "id": "PracticeStart",
                     "text": "harjoittelunAloitushje"
                 }
-            ]);
-            
+            ]
+        );
+    }
+
+    function keyPress(key){
+        if(key === 32) {
+            state.change(6);
+        }
     }
 
     return {
