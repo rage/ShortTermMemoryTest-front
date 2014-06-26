@@ -3,14 +3,7 @@ function Notification(state){
     function start(){
 
         var gui = new GUI();
-
-        gui.createNew([
-            {
-                "type": "div",
-                "id": "Notification",
-                "text": "testinTarkoitus"
-            }
-        ]);
+        gui.run("Notification");
 
     }
 

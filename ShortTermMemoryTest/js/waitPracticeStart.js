@@ -1,17 +1,8 @@
 function WaitPractiseStart(state){
 
     function start(){
-        var a = new GUI();
-
-        a.createNew(
-            [
-                {
-                    "type": "div",
-                    "id": "PracticeStart",
-                    "text": "harjoittelunAloitushje"
-                }
-            ]
-        );
+        var gui = new GUI();
+        gui.run("PracticeStart");
     }
 
     function keyPress(key){

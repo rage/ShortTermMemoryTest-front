@@ -24,7 +24,10 @@ describe("StartScreenTest", function() {
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
         createUser();
-        stateMachine.startGameStartScreen();
+        function simulateKeyPress(c) {
+            jQuery.event.trigger({ type : 'keypress', which : c });
+        }
+        simulateKeyPress(32);
         expect(document.getElementById("startScreenP3").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta3"]);
 
         function simulateKeyPress(c) {
@@ -44,7 +47,10 @@ describe("StartScreenTest", function() {
         stateMachine.start();
         document.getElementById('username').value = "Omena";
         checkName(document.getElementById('username').value);
-        stateMachine.startGameStartScreen();
+        function simulateKeyPress(c) {
+            jQuery.event.trigger({ type : 'keypress', which : c });
+        }
+        simulateKeyPress(32);
         expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
     });
 

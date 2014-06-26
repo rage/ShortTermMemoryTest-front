@@ -4,6 +4,33 @@ function GUI(){
         resetBody();
         createHTML(guiData, "body", "element");
     }
+
+    function run(guiName){
+
+        if(guiName === "Notification"){
+            createNew(
+                [
+                    {
+                        "type": "div",
+                        "id": "Notification",
+                        "text": "testinTarkoitus"
+                    }
+                ]
+            );
+        }else if("PracticeStart"){
+            createNew(
+                [
+                    {
+                        "type": "div",
+                        "id": "PracticeStart",
+                        "text": "harjoittelunAloitushje"
+                    }
+                ]
+            );
+
+        }
+
+    }
     
     function createHTML(data, addUnder, type){
 
@@ -75,6 +102,7 @@ function GUI(){
     
     return {
         createNew:createNew,
-        updateText:updateText
+        updateText:updateText,
+        run:run
     };
 }

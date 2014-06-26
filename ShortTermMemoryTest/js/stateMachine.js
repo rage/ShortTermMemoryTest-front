@@ -103,7 +103,6 @@ var stateMachine = function (){
 
     return {
         start:start,
-        startGameStartScreen:startGameStartScreen,
         startGame:startGame
     };
     
