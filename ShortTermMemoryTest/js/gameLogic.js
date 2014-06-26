@@ -1,8 +1,8 @@
-/* global gameData */
-function GameLogic(eventHandler, user, settings, postLogs, state) {
+/* global gameData, event */
+function GameLogic(eventHandler, user, settings, postLogs) {
 
-    var numbers = Number();
-    var order = Order();
+    var numbers = new Number();
+    var order = new Order();
     var req = new Request();
     var result;
     eventHandler.registerEventHandler("EVENT_GAME_START", startGameEventHandler);
