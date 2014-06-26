@@ -34,7 +34,7 @@ function GUI(){
             newDiv.value = text[data[0]["valueText"]];
         }
         if(data[0]["value"]) {
-            newDiv.value = data[0]["value"];
+            newDiv.value = data[0].value;
         }
         if(data[0]["inputType"]) {
             newDiv.type = data[0]["inputType"];
