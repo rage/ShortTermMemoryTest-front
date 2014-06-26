@@ -1,4 +1,4 @@
-jasmine.getEnv().defaultTimeoutInterval = 1000000000000000000000
+jasmine.getEnv().defaultTimeoutInterval = 1000000000000000000000;
 describe("As a old User, I want to see instructions", function() {
 
     beforeEach(function() {
@@ -19,7 +19,7 @@ describe("As a old User, I want to see instructions", function() {
     }
 
 
-    it("instructions", function(done) {
+    it("Should see login", function(done) {
 
         stateMachine.start();
 
@@ -29,14 +29,11 @@ describe("As a old User, I want to see instructions", function() {
         done();
 
     });
-    it("instructions2", function(done) {
+    it("Should see gameStartScreen", function(done) {
         expect(document.getElementById("startScreenP0").innerHTML).toBe(text["testinTarkoitus"]);
 
         simulateKeyPress(32);
-        done();
 
-    });
-    it("instructions3", function(done) {
         expect(document.getElementById("startScreenP1").innerHTML).toBe(text["ohje1"]);
         simulateKeyPress(32);
         expect(document.getElementById("startScreenP2").innerHTML).toBe(text["ohje2"]);
@@ -53,13 +50,13 @@ describe("As a old User, I want to see instructions", function() {
 
     });
 
-    it("instructions4", function(done) {
+    it("Should see PracticeStart", function(done) {
         expect(document.getElementById("PracticeStart").innerHTML).toBe(text["harjoittelunAloitushje"]);
         done();
     });
 
 
-    it("instructions5", function(done) {
+    it("Should see practice", function(done) {
 
         simulateKeyPress(32);
         jasmine.clock().tick(20000);

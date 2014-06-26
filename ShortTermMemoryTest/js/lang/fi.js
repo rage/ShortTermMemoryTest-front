@@ -70,7 +70,7 @@ var text = {
     "oikea": "Oikea",
     "vasen": "Vasen",
 
-    "henkilotiedot": "HENKILÖTIEDOT",
+    "henkilotiedot": "HENKILÖTIEDOT:",
 
     "Peruskoulu":"Peruskoulu",
     "Lukio tai ammattikoulu": "Lukio tai ammattikoulu",
