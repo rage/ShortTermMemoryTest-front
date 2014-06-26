@@ -30,7 +30,7 @@ describe("As a old User, I want to see instructions", function() {
 
     });
     it("instructions2", function(done) {
-        expect(document.getElementById("Notification").innerHTML).toBe(text["testinTarkoitus"]);
+        expect(document.getElementById("startScreenP0").innerHTML).toBe(text["testinTarkoitus"]);
 
         simulateKeyPress(32);
         done();
@@ -267,7 +267,7 @@ describe("As a new User, I want to see instructions", function() {
 
         userIsTrained = false;
 
-        expect(document.getElementById("Notification").innerHTML).toBe(text["testinTarkoitus"]);
+        expect(document.getElementById("startScreenP0").innerHTML).toBe(text["testinTarkoitus"]);
 
         simulateKeyPress(32);
 

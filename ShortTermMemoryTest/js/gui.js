@@ -7,17 +7,7 @@ function GUI(){
 
     function run(guiName){
 
-        if(guiName === "Notification"){
-            createNew(
-                [
-                    {
-                        "type": "div",
-                        "id": "Notification",
-                        "text": "testinTarkoitus"
-                    }
-                ]
-            );
-        }else if("PracticeStart"){
+        if("PracticeStart"){
             createNew(
                 [
                     {

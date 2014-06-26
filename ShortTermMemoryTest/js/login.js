@@ -61,7 +61,7 @@ function Login(settings, state, user){
         var response = JSON.parse(jsonData);
 
         if(checkResponse(response, user)){
-            state.change(3);
+            state.change(4);
         }else{
             state.change(2);
         }

@@ -18,7 +18,7 @@ describe("login and createUser", function() {
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
         createUser();
-        expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
+        expect(document.getElementById("startScreenP0").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
     });
     
     it("when user not found start createUser (2)", function() {
@@ -37,7 +37,7 @@ describe("login and createUser", function() {
         var element = document.getElementById('education');
         element.value = "Lukio tai ammattikoulu";
         createUser();
-        expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
+        expect(document.getElementById("startScreenP0").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
 
     });
     
@@ -58,7 +58,7 @@ describe("login and createUser", function() {
         var element = document.getElementById('education');
         element.value = "Korkeakoulu";
         createUser();
-        expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
+        expect(document.getElementById("startScreenP0").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
 
     });
 

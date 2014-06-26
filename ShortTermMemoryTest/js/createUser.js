@@ -262,7 +262,7 @@ function CreateUser(settings, user, state){
             var request = new Request();
             var responseText = request.createPost(settings.url + "signup", params.toString());
 
-            state.change(3);
+            state.change(4);
 
         }catch(err) {
 

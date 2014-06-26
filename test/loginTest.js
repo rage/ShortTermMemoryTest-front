@@ -72,7 +72,7 @@ describe("LoginTest", function() {
 
         checkName("Olen", us);
 
-        expect(stateMock.getChange()).toBe(3);
+        expect(stateMock.getChange()).toBe(4);
 
     });
     it("checkUsername return true when user found", function() {
@@ -80,7 +80,7 @@ describe("LoginTest", function() {
         document.getElementById('username').value = "Olen";
 
         var o = checkName(document.getElementById('username').value);
-        expect(document.getElementById("Notification").innerHTML).toBe(text["testinTarkoitus"]);
+        expect(document.getElementById("startScreenP0").innerHTML).toBe(text["testinTarkoitus"]);
 
     });
     

@@ -19,7 +19,6 @@ var stateMachine = function (){
         state = new State(kList);
         state.addStateFunction(1, startLogin);
         state.addStateFunction(2, startRegister);
-        state.addStateFunction(3, startNotification);
         state.addStateFunction(4, startGameStartScreen);
         state.addStateFunction(5, startWaitPractice);
         state.addStateFunction(6, startPractice);
@@ -49,14 +48,6 @@ var stateMachine = function (){
 
         register = new CreateUser(settings, user, state);
         register.start();
-
-    }
-
-    function startNotification(){
-
-        var notification = new Notification(state, gui);
-        kList.set(notification.keyPress);
-        notification.start();
 
     }
 

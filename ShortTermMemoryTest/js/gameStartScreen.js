@@ -1,5 +1,5 @@
 function GameStartScreen(user, state){
-    var page = 1;
+    var page = 0;
 
     function start(){
 
@@ -18,6 +18,11 @@ function GameStartScreen(user, state){
                 "type": "div",
                 "id": "startScreen",
                 "elements":[
+                    {
+                        "type": "div",
+                        "id": "startScreenP0",
+                        "text": "testinTarkoitus"
+                    },
                     {
                         "type": "div",
                         "id": "startScreenP1",
