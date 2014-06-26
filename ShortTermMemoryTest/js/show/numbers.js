@@ -1,4 +1,4 @@
-function Number() {
+function Numbers() {
 
     function show(number){
         var gui = new GUI();

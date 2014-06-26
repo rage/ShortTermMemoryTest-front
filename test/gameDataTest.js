@@ -29,7 +29,7 @@ describe("GameDataTest", function() {
         settings.game.showCrossDelay = 1000;
         settings.game.showCrossTime = 500;
         settings.game.maxPracticeRounds = 3;
-        settings.game.maxFails = 2; //Number of failed series allowed before the series of that length are dropped out
+        settings.game.maxFails = 2; //Numbers of failed series allowed before the series of that length are dropped out
         settings.game.failLimit = 0; //Correct numbers required in a series for series not to be considered a major fail
         settings.game.droppedSeriesMinLength = 6;
 

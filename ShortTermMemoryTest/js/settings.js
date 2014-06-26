@@ -12,7 +12,7 @@ function Settings(){
         showCrossDelay: 1000,
         showCrossTime: 500,
         maxPracticeRounds: 3,
-        maxFails : 1, //Number of failed series allowed before the series of that length are dropped out
+        maxFails : 1, //Numbers of failed series allowed before the series of that length are dropped out
         failLimit : 2, //Correct numbers required in a series for series not to be considered a major fail
         droppedSeriesMinLength : 6,
         droppingSeriesPossible: true

@@ -147,7 +147,7 @@ function GameData(gameMode, theNumberList, settings){
         showCrossDelay: settings.game.showCrossDelay,
         showCrossTime: settings.game.showCrossTime,
         maxPracticeRounds: settings.game.maxPracticeRounds,
-        maxFails : settings.game.maxFails, //Number of failed series allowed before the series of that length are dropped out
+        maxFails : settings.game.maxFails, //Numbers of failed series allowed before the series of that length are dropped out
         failLimit : settings.game.failLimit, //Correct numbers required in a series for series not to be considered a major fail
         droppedSeriesMinLength : settings.game.droppedSeriesMinLength,
 

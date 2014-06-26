@@ -3,7 +3,7 @@
 function GameLogic(eventHandler, user, settings, postLogs, state) {
 
     var result;
-    var numbers = new Number();
+    var numbers = new Numbers();
     var order = new Order();
     var req = new Request();
 
