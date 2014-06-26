@@ -258,7 +258,7 @@ function CreateUser(settings, user, state){
             params.add("yearOfBirth", yearOfBirth);
             params.add("handedness", document.querySelector('input[name="handedness"]:checked').value);
             params.add("education", document.getElementById("education").value);
-            
+
             var request = new Request();
             var responseText = request.createPost(settings.url + "signup", params.toString());
 
