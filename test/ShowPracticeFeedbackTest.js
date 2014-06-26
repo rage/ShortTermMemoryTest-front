@@ -47,7 +47,7 @@ describe("ShowPracticeFeedbackTest", function() {
 describe("ShowPracticeFeedbackEndTest", function() {
 
 
-    it("ShowPracticeFeedbackEnd", function() {
+    it("PracticeFeedbackEnd", function() {
         var gameDataMock = function() {
             var maxPracticeRounds = 3;
 
@@ -73,7 +73,8 @@ describe("ShowPracticeFeedbackEndTest", function() {
                 maxPracticeRounds:maxPracticeRounds
             }
         }();
-        var a = new ShowPracticeFeedbackEnd(gameDataMock);
+        var a = new PracticeFeedbackEnd(gameDataMock);
+        a.show();
         expect(document.getElementById("ResultEnd").innerHTML).toContain(text["oikeinIlmoitus"]);
 
 

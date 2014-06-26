@@ -1,4 +1,3 @@
- /* global GameData */
 function GameData(gameMode, theNumberList, settings){
     var numberListIndex = 0;
     var numberList = theNumberList;

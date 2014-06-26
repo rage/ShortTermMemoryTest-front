@@ -18,7 +18,6 @@ function Number() {
             ]
         );
 
-        $("#num_field").show();
         $("#num_field").html(number);
     }
 

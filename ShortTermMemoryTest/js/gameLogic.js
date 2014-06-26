@@ -97,7 +97,8 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
             req.createPost(settings.url + "finish", param.toString());
 
             gameData.addDonePracticeRounds();
-            new ShowPracticeFeedbackEnd(gameData);
+            var a = new PracticeFeedbackEnd(gameData);
+            a.show();
 
         }else{
             result = new Result(gameData, settings);
