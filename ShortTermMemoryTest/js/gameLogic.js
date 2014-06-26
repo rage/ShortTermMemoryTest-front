@@ -2,10 +2,10 @@
 /* jshint unused:true */
 function GameLogic(eventHandler, user, settings, postLogs, state) {
 
+    var result;
     var numbers = new Number();
     var order = new Order();
     var req = new Request();
-    var result;
 
     function registerEvents(){
 
@@ -38,7 +38,7 @@ function GameLogic(eventHandler, user, settings, postLogs, state) {
         eventHandler.registerEventHandler("EVENT_SHOWCROSS_START", showCrossEventHandler);
         eventHandler.registerEventHandler("EVENT_SHOWCROSS_END", endShowCrossEventHandler);
     }
-    
+
     registerEvents();
 
     function showResultEventHandler(event) {
