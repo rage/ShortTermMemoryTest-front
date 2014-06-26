@@ -1,4 +1,4 @@
-/* global gameData, event, Number, Order, Request */
+/* global gameData, event, Number, Order, Request, Params, Result, PracticeFeedbackEnd */
 /* jshint unused:true */
 function GameLogic(eventHandler, user, settings, postLogs, state) {
 
