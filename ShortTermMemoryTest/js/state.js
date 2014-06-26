@@ -53,17 +53,17 @@ function State(kList){
 
     function change(stateId){
 
-        if(isAllowedStateChange(stateId)){
 
-            for(var i = 0; i < states.length; i++) {
+        for(var i = 0; i < states.length; i++) {
 
-                if(states[i][0] === stateId){
-                    set(stateId);
+            if(states[i][0] === stateId){
+                if(set(stateId)){
                     states[i][1]();
                 }
-
             }
+
         }
+
 
     }
 

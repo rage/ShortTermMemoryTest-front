@@ -20,7 +20,7 @@ describe("stateTest", function() {
             console.log("fail");
         });
         a.set(1);
-        a.change(4)
+        a.change(5)
         expect(a.is(1)).toBe(true);
 
 
