@@ -45,20 +45,8 @@ var stateMachine = function (){
 
     function startRegister(){
 
-        register = new CreateUser(settings, user);
+        register = new CreateUser(settings, user, state);
         register.start();
-
-    }
-
-    function createUser(){
-
-        if(state.is(2)) {
-            if(register.signup()){
-                state.change(3);
-            }else{
-                startRegister();
-            }
-        }
 
     }
 
@@ -116,7 +104,6 @@ var stateMachine = function (){
     return {
         start:start,
         startGameStartScreen:startGameStartScreen,
-        createUser:createUser,
         startGame:startGame
     };
     

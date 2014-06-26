@@ -23,7 +23,7 @@ describe("StartScreenTest", function() {
         element.value = 1999;
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
-        stateMachine.createUser();
+        createUser();
         stateMachine.startGameStartScreen();
         expect(document.getElementById("startScreenP3").innerHTML).toBe(text["ohjeHarjoitteluSuorittamatta3"]);
 

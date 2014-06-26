@@ -17,7 +17,7 @@ describe("login and createUser", function() {
         element.value = 1999;
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
     });
     
@@ -36,7 +36,7 @@ describe("login and createUser", function() {
         element.value = 2014;
         var element = document.getElementById('education');
         element.value = "Lukio tai ammattikoulu";
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
 
     });
@@ -57,7 +57,7 @@ describe("login and createUser", function() {
         element.value = 1900;
         var element = document.getElementById('education');
         element.value = "Korkeakoulu";
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("Notification").innerHTML).toBe("<p>Seuraavassa tehtävässä tutkitaan lyhytaikaista muistia.</p><p>Lue tehtävän ohjeet tarkasti ennen kuin aloitat.</p><p>Pääset tehtävään VÄLILYÖNNILLÄ.</p>");
 
     });
@@ -78,7 +78,7 @@ describe("login and createUser", function() {
         element.value = 1999;
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
@@ -97,7 +97,7 @@ describe("login and createUser", function() {
         element.value = 1999;
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
@@ -114,7 +114,7 @@ describe("login and createUser", function() {
         document.getElementById("yearofbirth").selectedIndex = 2000; 
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
@@ -130,7 +130,7 @@ describe("login and createUser", function() {
         document.getElementById('f').checked = true;
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });
@@ -146,7 +146,7 @@ describe("login and createUser", function() {
         document.getElementById('f').checked = true;
         var element = document.getElementById('yearofbirth');
         element.value = 1999;
-        stateMachine.createUser();
+        createUser();
         expect(document.getElementById("varoitus").innerHTML).toBe("");
 
     });

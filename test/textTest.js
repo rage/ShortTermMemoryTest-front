@@ -263,7 +263,7 @@ describe("As a new User, I want to see instructions", function() {
         element.value = 1999;
         var element = document.getElementById('education');
         element.value = "Peruskoulu";
-        stateMachine.createUser();
+        createUser();
 
         userIsTrained = false;
 
