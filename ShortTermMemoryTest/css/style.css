@@ -42,16 +42,17 @@ body{
     margin-top: -300px;
     margin-left: -500px;
 }
-#startScreenP1{
+#startScreenP0{
 
+}
+#startScreenP1{
+    display: none;
 }
 #startScreenP2{
     display: none;
-
 }
 #startScreenP3{
     display: none;
-
 }
 
 #Game{

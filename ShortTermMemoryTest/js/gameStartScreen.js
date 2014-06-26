@@ -3,44 +3,15 @@ function GameStartScreen(user, state){
 
     function start(){
 
-        var type = "";
-
-        if(user.isTrained()){
-            type = "ohje";
-        }else{
-            type = "ohjeHarjoitteluSuorittamatta";
-        }
-
         var gui = new GUI();
 
-        gui.createNew([
-            {
-                "type": "div",
-                "id": "startScreen",
-                "elements":[
-                    {
-                        "type": "div",
-                        "id": "startScreenP0",
-                        "text": "testinTarkoitus"
-                    },
-                    {
-                        "type": "div",
-                        "id": "startScreenP1",
-                        "text": type+"1"
-                    },
-                    {
-                        "type": "div",
-                        "id": "startScreenP2",
-                        "text": type+"2"
-                    },
-                    {
-                        "type": "div",
-                        "id": "startScreenP3",
-                        "text": type+"3"
-                    }
-                    ]
-            }
-        ]);
+        if(user.isTrained()){
+            gui.run("GameStartScreen");
+        }else{
+            gui.run("GameStartScreenPractice");
+        }
+
+
     }
 
     function keyPress(key){

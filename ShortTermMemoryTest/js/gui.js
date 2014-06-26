@@ -7,7 +7,7 @@ function GUI(){
 
     function run(guiName){
 
-        if("PracticeStart"){
+        if("PracticeStart" === guiName){
             createNew(
                 [
                     {
@@ -18,6 +18,48 @@ function GUI(){
                 ]
             );
 
+        }
+
+        if("GameStartScreenPractice" === guiName || "GameStartScreen" === guiName){
+
+            var type;
+
+            if("GameStartScreenPractice" === guiName){
+                type = "ohjeHarjoitteluSuorittamatta";
+            }else{
+                type = "ohje";
+            }
+
+            createNew(
+                [
+                    {
+                        "type": "div",
+                        "id": "startScreen",
+                        "elements":[
+                            {
+                                "type": "div",
+                                "id": "startScreenP0",
+                                "text": "testinTarkoitus"
+                            },
+                            {
+                                "type": "div",
+                                "id": "startScreenP1",
+                                "text": type+"1"
+                            },
+                            {
+                                "type": "div",
+                                "id": "startScreenP2",
+                                "text": type+"2"
+                            },
+                            {
+                                "type": "div",
+                                "id": "startScreenP3",
+                                "text": type+"3"
+                            }
+                            ]
+                    }
+                ]
+            );
         }
 
     }

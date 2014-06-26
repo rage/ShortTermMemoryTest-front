@@ -23,7 +23,7 @@ function Login(settings, state, user){
                     },
                     {
                         "type": "form",
-                        "id": "startScreenP1",
+                        "id": "loginScreen",
                         "onSubmit": "checkName(document.getElementById('username').value)",
                         "elements":
                             [
@@ -39,7 +39,7 @@ function Login(settings, state, user){
                                     "id": "button",
                                     "inputType": "button",
                                     "valueText": "aloita",
-                                    "onclick": "checkName(document.getElementById('username').value)",
+                                    "onclick": "checkName(document.getElementById('username').value)"
                                 }
                             ]
                     }
