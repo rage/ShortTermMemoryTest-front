@@ -17,6 +17,12 @@ body{
 	margin-top: -100px;
 	margin-left: -500px;
 }
+
+#write {
+    padding:0;
+    margin:0;
+}
+
 #createUser{
 	position: absolute;
     width: 1000px;
