@@ -175,28 +175,7 @@ function CreateUser(settings, user, state){
                                                         "type": "select",
                                                         "name": "education",
                                                         "id": "education",
-                                                        "elements":[
-                                                            {
-                                                                "type": "option",
-                                                                "value": "valitse",
-                                                                "thisText": "Valitse"
-                                                            },
-                                                            {
-                                                                "type": "option",
-                                                                "value": "Peruskoulu",
-                                                                "text": "Peruskoulu"
-                                                            },
-                                                            {
-                                                                "type": "option",
-                                                                "value": "Lukio tai ammattikoulu",
-                                                                "text": "Lukio tai ammattikoulu"
-                                                            },
-                                                            {
-                                                                "type": "option",
-                                                                "value": "Korkeakoulu",
-                                                                "text": "Korkeakoulu"
-                                                            }
-                                                        ]
+                                                        "elements": listEducations
 
                                                     }
                                                 ]
