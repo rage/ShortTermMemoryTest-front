@@ -216,7 +216,7 @@ function CreateUser(settings, user, state){
                                                         "id": "buttonId",
                                                         "inputType": "button",
                                                         "value": "Jatka",
-                                                        "onclick": "stateMachine.createUser()"
+                                                        "onclick": "createUser()"
                                                     }
                                                 ]
                                             }
