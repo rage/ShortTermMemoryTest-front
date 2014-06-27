@@ -26,13 +26,20 @@ body{
 #createUser{
 	position: absolute;
     width: 1000px;
-	height: 300px;
+	height: 600px;
 	top: 50%;
 	left: 50%;
-	margin-top: -150px;
+	margin-top: -300px;
 	margin-left: -500px;
 }
-
+input[type=radio] {
+    margin: 15px 15px 15px 15px;
+    transform: scale(2, 2);
+    -moz-transform: scale(2, 2);
+    -ms-transform: scale(2, 2);
+    -webkit-transform: scale(2, 2);
+    -o-transform: scale(2, 2);
+}
 #startScreen{
     position: absolute;
     width: 1000px;
