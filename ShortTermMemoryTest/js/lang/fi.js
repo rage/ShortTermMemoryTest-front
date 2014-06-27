@@ -74,9 +74,33 @@ var text = {
 
     "Peruskoulu":"Peruskoulu",
     "Lukio tai ammattikoulu": "Lukio tai ammattikoulu",
-    "Korkeakoulu":"Korkeakoulu"
+    "Korkeakoulu":"Korkeakoulu",
+    "valitse": "Valitse"
 
 
 
 
 };
+
+listEducations = [
+    {
+        "type": "option",
+        "value": "valitse",
+        "text": "valitse"
+    },
+    {
+        "type": "option",
+        "value": "Peruskoulu",
+        "text": "Peruskoulu"
+    },
+    {
+        "type": "option",
+        "value": "Lukio tai ammattikoulu",
+        "text": "Lukio tai ammattikoulu"
+    },
+    {
+        "type": "option",
+        "value": "Korkeakoulu",
+        "text": "Korkeakoulu"
+    }
+];
