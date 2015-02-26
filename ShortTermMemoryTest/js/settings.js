@@ -1,6 +1,5 @@
 function Settings(){
-    var url = "http://shorttermmemorytest.herokuapp.com/";
-//    var url = "http://localhost:3000/"
+    var url = "https://stmt.herokuapp.com/";
 
     var frontId = "1";
 
